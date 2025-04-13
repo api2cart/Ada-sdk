@@ -8884,6 +8884,7 @@ package .Models is
        Weight_Unit : Swagger.Nullable_UString;
        Sort_Order : Swagger.Nullable_Integer;
        In_Stock : Swagger.Nullable_Boolean;
+       On_Sale : Swagger.Nullable_Boolean;
        Backorders : Swagger.Nullable_UString;
        Manage_Stock : Swagger.Nullable_UString;
        Is_Stock_Managed : Swagger.Nullable_Boolean;
@@ -13130,6 +13131,7 @@ package .Models is
        Downloadable : Swagger.Nullable_Boolean;
        Materials : Swagger.UString_Vectors.Vector;
        Auto_Renew : Swagger.Nullable_Boolean;
+       On_Sale : Swagger.Nullable_Boolean;
      end record;
 
 

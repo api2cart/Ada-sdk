@@ -18343,6 +18343,9 @@ package body .Models is
       if not Value.In_Stock.Is_Null then
          Into.Write_Entity ("in_stock", Value.In_Stock);
       end if;
+      if not Value.On_Sale.Is_Null then
+         Into.Write_Entity ("on_sale", Value.On_Sale);
+      end if;
       if not Value.Backorders.Is_Null then
          Into.Write_Entity ("backorders", Value.Backorders);
       end if;
@@ -18443,6 +18446,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "weight_unit", Value.Weight_Unit);
       Swagger.Streams.Deserialize (Object, "sort_order", Value.Sort_Order);
       Swagger.Streams.Deserialize (Object, "in_stock", Value.In_Stock);
+      Swagger.Streams.Deserialize (Object, "on_sale", Value.On_Sale);
       Swagger.Streams.Deserialize (Object, "backorders", Value.Backorders);
       Swagger.Streams.Deserialize (Object, "manage_stock", Value.Manage_Stock);
       Swagger.Streams.Deserialize (Object, "is_stock_managed", Value.Is_Stock_Managed);
@@ -27337,6 +27341,9 @@ package body .Models is
       if not Value.Auto_Renew.Is_Null then
          Into.Write_Entity ("auto_renew", Value.Auto_Renew);
       end if;
+      if not Value.On_Sale.Is_Null then
+         Into.Write_Entity ("on_sale", Value.On_Sale);
+      end if;
       Into.End_Entity (Name);
    end Serialize;
 
@@ -27436,6 +27443,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "downloadable", Value.Downloadable);
       Swagger.Streams.Deserialize (Object, "materials", Value.Materials);
       Swagger.Streams.Deserialize (Object, "auto_renew", Value.Auto_Renew);
+      Swagger.Streams.Deserialize (Object, "on_sale", Value.On_Sale);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;
