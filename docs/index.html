@@ -85,19 +85,21 @@
                 color: #555;
             }
 
-            .hero .cta-btn {
-                display: inline-block;
-                padding: 0.75rem 1.5rem;
-                border-radius: 4px;
-                background: #2abd68;
-                color: #fff;
-                font-weight: 600;
-                transition: background 0.3s ease;
-            }
+        /* CTA Button (shared style) */
+        .cta-btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            background: #2abd68;
+            color: #fff;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            margin: 0.5rem 0.25rem; /* small spacing if we have multiple buttons */
+        }
 
-                .hero .cta-btn:hover {
-                    background: #279a58;
-                }
+            .cta-btn:hover {
+                background: #279a58;
+            }
 
         /* Main content area */
         main {
@@ -185,7 +187,14 @@
             One integration to streamline data from multiple eCommerce platforms
             and leverage AI-driven analytics through Ada-SDK.
         </p>
+        <!-- CTA Buttons -->
         <a href="#quickstart" class="cta-btn">Get Started</a>
+        <a href="https://api2cart.com/book-a-demo/"
+           class="cta-btn"
+           target="_blank"
+           rel="noopener noreferrer">
+            Book a Demo
+        </a>
     </section>
 
     <!-- MAIN CONTENT -->
