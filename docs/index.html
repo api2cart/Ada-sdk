@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ada & API2Cart — Integration Overview</title>
+    <title>API2Cart Ada SDK — Integration Overview</title>
 
     <!-- Example Google Font (Open Sans) -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -169,7 +169,7 @@
 
     <!-- HEADER -->
     <header>
-        <div class="logo">Ada &amp; API2Cart</div>
+        <div class="logo">API2Cart Ada SDK</div>
         <nav class="nav-links">
             <ul>
                 <li><a href="#description">Overview</a></li>
@@ -182,9 +182,9 @@
 
     <!-- HERO SECTION -->
     <section class="hero">
-        <h1>Reliable eCommerce Data Integration with Ada</h1>
+        <h1>API2Cart Ada SDK for eCommerce Data Integration</h1>
         <p>
-            Harness Ada's strong typing and safety features, combined with API2Cart’s universal eCommerce interface.
+            Build high-integrity Ada applications that connect to multiple eCommerce platforms using a single, unified API.
         </p>
         <a href="https://api2cart.com/book-a-demo/"
            class="cta-btn"
@@ -198,18 +198,19 @@
     <main>
         <!-- Section 1: Description -->
         <section id="description">
-            <h2>Description</h2>
+            <h2>Overview</h2>
             <p>
-                <strong>Ada</strong> is a statically typed, high-level programming language renowned for its reliability,
-                strong typing, and explicit support for safe concurrency. Originally developed under contract by the
-                U.S. Department of Defense, Ada is widely used in industries that demand high integrity and mission-critical
-                software (aerospace, defense, avionics, and more).
+                The <strong>API2Cart Ada SDK</strong> allows you to seamlessly integrate Ada-based solutions with
+                major eCommerce platforms such as Shopify, WooCommerce, Magento, PrestaShop, and more. By unifying
+                storefront interactions under one API, this SDK helps you streamline order processing,
+                product management, and real-time data analysis, all while benefiting from the robustness
+                and reliability of the Ada programming language.
             </p>
             <p>
-                <strong>API2Cart</strong> provides a single API for interacting with multiple eCommerce platforms
-                (Shopify, WooCommerce, Magento, PrestaShop, BigCommerce, etc.). By using Ada to consume API2Cart’s
-                endpoints, you can connect to numerous stores, retrieve critical data, and leverage Ada’s robust
-                features to create reliable, efficient automation and analytics solutions.
+                <strong>Ada</strong> is known for strong typing, safe concurrency, and error prevention
+                features—making it particularly well-suited for mission-critical systems. Combined with
+                the <strong>API2Cart</strong> hub of eCommerce platforms, you can build high-integrity
+                applications that handle diverse online stores with minimal overhead.
             </p>
         </section>
 
@@ -217,70 +218,76 @@
         <section style="background: #fafafa; padding: 2rem;" id="benefits">
             <h2>Key Benefits</h2>
             <ul class="benefits-list">
-                <li><strong>Broad eCommerce Coverage:</strong> A single point of access to major platforms.</li>
-                <li><strong>High Reliability:</strong> Ada’s strong typing and safe concurrency help prevent errors.</li>
-                <li><strong>Ease of Integration:</strong> API2Cart consolidates multiple storefront connections into a single API.</li>
-                <li><strong>Scalability &amp; Safety:</strong> Ideal for projects where correctness and robustness are paramount.</li>
+                <li><strong>Unified API Access:</strong> Interact with multiple platforms from one endpoint.</li>
+                <li><strong>Ada’s Reliability:</strong> Reduce bugs and crashes with a high-integrity language.</li>
+                <li><strong>Scalability &amp; Security:</strong> Add or remove stores without rewriting core logic.</li>
+                <li><strong>Easy Maintenance:</strong> Centralize updates, expansions, and store management in Ada.</li>
             </ul>
         </section>
 
-        <!-- Section 3: Quick Start (Code Example) -->
+        <!-- Section 3: Quick Start (Ada Code Example) -->
         <section id="quickstart">
-            <h2>Quick Start: Ada Example</h2>
+            <h2>Quick Start</h2>
             <p>
-                Below is a **simplified** Ada snippet using GNATCOLL libraries to fetch status data from API2Cart. Replace
-                the placeholder values with your actual API keys and endpoints. For a real-world project, ensure you have
-                GNATCOLL or another HTTP/JSON solution installed and properly configured.
+                Below is a simplified example using <strong>GNATCOLL</strong> libraries to fetch the “status” endpoint
+                through the API2Cart Ada SDK. Replace placeholders with your real keys and run the program to confirm
+                proper connectivity. In a production environment, you may encapsulate these calls in your own
+                Ada packages for better structure and testing.
             </p>
 <pre><code>with Ada.Text_IO; use Ada.Text_IO;
 with GNATCOLL.HTTP;
 with GNATCOLL.JSON;
 
-procedure Ada_API2Cart_Example is
-   API2CART_Key  : constant String := "YOUR_API2CART_KEY";
-   API2CART_Base : constant String := "https://api.api2cart.com/v1.0";
+procedure API2Cart_Ada_SDK_Example is
+   API2CART_Key   : constant String := "YOUR_API2CART_KEY";
+   API2CART_Base  : constant String := "https://api.api2cart.com/v1.0";
 
-   HTTP_Client   : GNATCOLL.HTTP.Client := GNATCOLL.HTTP.Create_Client;
-   Response_Text : String;
-   Status_Code   : GNATCOLL.HTTP.Response_Code;
+   -- Create an HTTP client (part of GNATCOLL)
+   HTTP_Client    : GNATCOLL.HTTP.Client := GNATCOLL.HTTP.Create_Client;
+   Response_Body  : String;
+   Status_Code    : GNATCOLL.HTTP.Response_Code;
 begin
+   -- Build the status endpoint URL
    declare
       Status_URL : constant String := API2CART_Base
                                       & "/status?api_key="
                                       & API2CART_Key;
    begin
-      Response_Text := HTTP_Client.Get (Status_URL, Status_Code);
-      Put_Line ("Response Code: " & Status_Code'Image);
-      Put_Line ("Raw JSON: " & Response_Text);
+      -- Perform the GET request
+      Response_Body := HTTP_Client.Get (Status_URL, Status_Code);
+      Put_Line ("HTTP Status Code: " & Status_Code'Image);
+      Put_Line ("Raw JSON: " & Response_Body);
 
+      -- If successful, parse JSON for further processing
       if Status_Code = 200 then
          declare
-            Parsed_Json : GNATCOLL.JSON.JSON_Value := GNATCOLL.JSON.Parse (Response_Text);
+            Parsed_Json : GNATCOLL.JSON.JSON_Value := GNATCOLL.JSON.Parse (Response_Body);
          begin
             Put_Line ("Parsed JSON:");
             Put_Line (GNATCOLL.JSON.To_String (Parsed_Json));
-            -- Process or store the JSON data as needed
          end;
       end if;
    end;
-end Ada_API2Cart_Example;</code></pre>
+end API2Cart_Ada_SDK_Example;</code></pre>
+
             <p>
-                Compile and run this program to confirm successful interaction with the API2Cart “status” endpoint. From
-                there, you can expand to other API2Cart operations (e.g., retrieving orders, products, store info, etc.),
-                all handled within Ada’s safe, high-integrity environment.
+                The code demonstrates the essential flow: building the request, calling the endpoint, and parsing the JSON.
+                You can extend this to access any of API2Cart’s numerous methods—orders, products, carts, etc.—directly
+                from your Ada application.
             </p>
         </section>
 
-        <!-- Section 4: Additional Docs -->
+        <!-- Section 4: Additional Documentation -->
         <section id="docs">
-            <h2>Further Documentation</h2>
+            <h2>Documentation</h2>
             <p>
-                For more details on how to connect Ada applications to multiple eCommerce platforms, review
-                <a href="https://api2cart.com/docs/" target="_blank">API2Cart’s official documentation</a>.
+                To explore the API2Cart endpoints and learn how to manage multiple storefronts, read the
+                <a href="https://api2cart.com/docs/" target="_blank" rel="noopener noreferrer">API2Cart documentation</a>.
             </p>
             <p>
-                To learn more about the Ada language and its wide range of applications, refer to
-                <a href="https://www.adaic.org/" target="_blank">AdaIC.org</a> or other comprehensive resources.
+                For more details on Ada’s features, tooling, and best practices, check resources like
+                <a href="https://www.adaic.org/" target="_blank" rel="noopener noreferrer">AdaIC.org</a>
+                or other Ada community sites.
             </p>
         </section>
     </main>
