@@ -1,56 +1,228 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ada-SDK & API2Cart — Integration Overview</title>
 
-    <!-- Link to your custom CSS (if any) -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- Example Google Font (Open Sans) -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
 
-    <!-- Optionally add a favicon -->
-    <!-- <link rel="icon" href="favicon.ico"> -->
+    <!-- Inline styles mimicking API2Cart-like design -->
+    <style>
+        /* Base reset / setup */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', Arial, sans-serif;
+        }
+
+        body {
+            color: #333;
+            background-color: #fff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: #2abd68; /* Primary accent color (green) */
+        }
+
+        /* Header (Navigation Bar) */
+        header {
+            width: 100%;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+        }
+
+        /* Logo or Title */
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #2abd68;
+        }
+
+        .nav-links ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #333;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+            .nav-links a:hover {
+                color: #2abd68;
+            }
+
+        /* Hero / Intro Section */
+        .hero {
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+            background: #fafafa;
+            border-bottom: 1px solid #eee;
+        }
+
+            .hero h1 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+                color: #333;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+                max-width: 600px;
+                margin: 0 auto 1.5rem;
+                color: #555;
+            }
+
+            .hero .cta-btn {
+                display: inline-block;
+                padding: 0.75rem 1.5rem;
+                border-radius: 4px;
+                background: #2abd68;
+                color: #fff;
+                font-weight: 600;
+                transition: background 0.3s ease;
+            }
+
+                .hero .cta-btn:hover {
+                    background: #279a58;
+                }
+
+        /* Main content area */
+        main {
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 3rem;
+        }
+
+            section h2 {
+                font-size: 1.5rem;
+                color: #333;
+                margin-bottom: 1rem;
+            }
+
+            section p {
+                margin-bottom: 1rem;
+                color: #555;
+            }
+
+        .benefits-list {
+            list-style: disc;
+            padding-left: 1.5rem;
+        }
+
+            .benefits-list li {
+                margin-bottom: 0.5rem;
+            }
+
+        pre {
+            background: #f5f5f5;
+            padding: 1rem;
+            overflow: auto;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #f9f9f9;
+            border-top: 1px solid #eee;
+            text-align: center;
+            padding: 1rem;
+        }
+
+            footer p {
+                color: #777;
+            }
+
+        /* Media queries for responsiveness */
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.125rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header / Hero section -->
-    <header style="text-align: center; padding: 2rem;">
-        <h1>Ada-SDK + API2Cart</h1>
-        <p>A single integration to handle eCommerce platform data using Ada’s intelligent algorithms</p>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">Ada-SDK + API2Cart</div>
+        <nav class="nav-links">
+            <ul>
+                <li><a href="#description">Overview</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#quickstart">Quick Start</a></li>
+                <li><a href="#docs">Documentation</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Main content -->
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>Powerful eCommerce Data Integration</h1>
+        <p>
+            One integration to streamline data from multiple eCommerce platforms
+            and leverage AI-driven analytics through Ada-SDK.
+        </p>
+        <a href="#quickstart" class="cta-btn">Get Started</a>
+    </section>
+
+    <!-- MAIN CONTENT -->
     <main>
         <!-- Section 1: Description -->
-        <section style="padding: 2rem;">
+        <section id="description">
             <h2>Description</h2>
             <p>
                 <strong>Ada-SDK</strong> is a platform that provides intelligent tools for data processing and analysis,
-                while <strong>API2Cart</strong> is a universal interface for interacting with various
-                eCommerce platforms (such as Shopify, WooCommerce, Magento, PrestaShop, BigCommerce, and more).
+                while <strong>API2Cart</strong> offers a universal interface for interacting with multiple
+                eCommerce platforms (Shopify, WooCommerce, Magento, PrestaShop, BigCommerce, etc.) via a single API.
             </p>
             <p>
-                By combining both tools, you can quickly connect to multiple stores simultaneously
-                (via API2Cart) and apply Ada’s algorithms (via Ada-SDK) for data analysis and automation.
-                This opens up a wide range of possibilities — from simple data gathering to implementing advanced ML solutions.
+                By combining these two tools, you can rapidly connect to multiple stores simultaneously
+                (using API2Cart) and apply Ada’s AI-driven algorithms (using Ada-SDK) for data analysis and automation.
+                This opens a wide range of possibilities — from simple data gathering to advanced ML solutions.
             </p>
         </section>
 
-        <!-- Section 2: Key Benefits -->
-        <section style="background: #f9f9f9; padding: 2rem;">
+        <!-- Section 2: Benefits -->
+        <section style="background: #fafafa; padding: 2rem;" id="benefits">
             <h2>Key Benefits</h2>
-            <ul>
-                <li><strong>Unified access to platforms:</strong> Shopify, WooCommerce, Magento, and others through a single API.</li>
-                <li><strong>Intelligent algorithms:</strong> Harness the power of AI and machine learning with Ada-SDK.</li>
-                <li><strong>Rapid development and deployment:</strong> Save time by avoiding multiple separate integrations.</li>
-                <li><strong>Flexibility and scalability:</strong> Suitable for both small projects and enterprise-level solutions.</li>
+            <ul class="benefits-list">
+                <li><strong>Unified Access:</strong> Connect to Shopify, WooCommerce, Magento, and more through a single API.</li>
+                <li><strong>AI & ML Power:</strong> Harness Ada-SDK for machine learning and intelligent data processing.</li>
+                <li><strong>Faster Development:</strong> Avoid building dozens of separate integrations.</li>
+                <li><strong>Scalability:</strong> Supports both small-scale projects and enterprise needs.</li>
             </ul>
         </section>
 
         <!-- Section 3: Quick Start (Code Example) -->
-        <section style="padding: 2rem;">
+        <section id="quickstart">
             <h2>Quick Start: Code Example</h2>
-            <p>Below is a sample showing how to initialize Ada-SDK and make a simple call via API2Cart.</p>
-
+            <p>
+                Below is a basic sample showing how to initialize Ada-SDK and make a simple request via API2Cart.
+                Adjust the keys and endpoints to match your own configuration.
+            </p>
             <pre>
 <code>&lt;script&gt;
   // Example Ada-SDK configuration
@@ -73,65 +245,44 @@
   // Test API2Cart call
   async function fetchStoreData() {
     try {
-      // Call "status" or "cart.list" (depending on your scenario)
       const response = await fetch(api2cartConfig.endpoint + "/status?api_key=" + api2cartConfig.apiKey);
       const data = await response.json();
       console.log("Data from API2Cart:", data);
 
-      // Process data through Ada-SDK (pseudo-call)
-      // const processed = Ada.processData(data);
-      // console.log("Processed data via Ada-SDK:", processed);
+      // Process data with Ada's methods (pseudo-call)
+      // const processedData = Ada.processData(data);
+      // console.log("Processed data:", processedData);
+
     } catch (error) {
       console.error("API request error:", error);
     }
   }
 
-  // Invoke the test function
+  // Run the test function
   fetchStoreData();
 &lt;/script&gt;</code>
       </pre>
-
-            <p>In this example, you:</p>
-            <ol>
-                <li>Set up keys for both services (Ada-SDK and API2Cart).</li>
-                <li>Make a request to check the status or retrieve data from the store.</li>
-                <li>Optionally (not shown here), pass the retrieved results to Ada-SDK for further processing.</li>
-            </ol>
         </section>
 
-        <!-- Section 4: Deployment -->
-        <section style="background: #fafafc; padding: 2rem;">
-            <h2>Deployment</h2>
+        <!-- Section 4: Additional Docs -->
+        <section id="docs">
+            <h2>Further Documentation</h2>
             <p>
-                You can host this demo project on any static hosting platform (GitHub Pages, Netlify, Vercel, etc.).
-                Simply upload your <code>index.html</code> and related scripts/styles. Then, in practice:
-            </p>
-            <ul>
-                <li>Update your <strong>Ada-SDK</strong> and <strong>API2Cart</strong> keys and configuration.</li>
-                <li>Add any additional JS libraries if Ada-SDK is provided as a separate file or npm package.</li>
-                <li>Use secure environment variables to store keys, if needed.</li>
-            </ul>
-        </section>
-
-        <!-- Section 5: Additional Information -->
-        <section style="padding: 2rem;">
-            <h2>Additional Information</h2>
-            <p>
-                For more details on Ada-SDK capabilities, check out the
-                <a href="https://ada-your-endpoint-docs.com" target="_blank">official Ada documentation</a>,
-                and to understand how to connect with different eCommerce platforms, see the
+                For more details on Ada-SDK capabilities, please refer to the
+                <a href="https://ada-your-endpoint-docs.com" target="_blank">official Ada documentation</a>.
+                To see how to connect with diverse eCommerce platforms, check the
                 <a href="https://api2cart.com/docs/" target="_blank">API2Cart documentation</a>.
             </p>
             <p>
-                If you have any questions, feel free to reach out to our technical support
-                or leave a comment in our <strong>GitHub</strong> repository.
+                If you need help, reach out to our support team or leave a comment on our <strong>GitHub</strong> repository.
             </p>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer style="text-align: center; padding: 1rem; background: #efefef;">
+    <!-- FOOTER -->
+    <footer>
         <p>&copy; 2025 Your Project. All rights reserved.</p>
     </footer>
+
 </body>
 </html>
