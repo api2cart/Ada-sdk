@@ -3387,6 +3387,7 @@ package body .Clients is
        Params : in Swagger.Nullable_UString;
        Brand_Ids : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
+       Category_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
@@ -3410,6 +3411,7 @@ package body .Clients is
       URI.Add_Param ("params", Params);
       URI.Add_Param ("brand_ids", Brand_Ids);
       URI.Add_Param ("exclude", Exclude);
+      URI.Add_Param ("category_id", Category_Id);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("lang_id", Lang_Id);
       URI.Add_Param ("created_from", Created_From);

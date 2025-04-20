@@ -1466,6 +1466,7 @@ package .Clients is
        Params : in Swagger.Nullable_UString;
        Brand_Ids : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
+       Category_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
