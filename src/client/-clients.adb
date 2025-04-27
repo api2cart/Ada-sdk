@@ -43,12 +43,12 @@ package body .Clients is
    --  This method lets you get a list of online stores connected to your API2Cart account. You can get the number of API requests to each store if you specify a period using parameters (request_from_date, request_to_date). The total_calls field is displayed only if there are parameters (request_from_date, request_to_date).
    procedure Account_Cart_List
       (Client : in out Client_Type;
-       Params : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
-       Request_From_Date : in Swagger.Nullable_UString;
-       Request_To_Date : in Swagger.Nullable_UString;
        Store_Url : in Swagger.Nullable_UString;
        Store_Key : in Swagger.Nullable_UString;
+       Request_From_Date : in Swagger.Nullable_UString;
+       Request_To_Date : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.AccountCartList200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -56,12 +56,12 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("params", Params);
-      URI.Add_Param ("exclude", Exclude);
-      URI.Add_Param ("request_from_date", Request_From_Date);
-      URI.Add_Param ("request_to_date", Request_To_Date);
       URI.Add_Param ("store_url", Store_Url);
       URI.Add_Param ("store_key", Store_Key);
+      URI.Add_Param ("request_from_date", Request_From_Date);
+      URI.Add_Param ("request_to_date", Request_To_Date);
+      URI.Add_Param ("params", Params);
+      URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/account.cart.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -130,6 +130,7 @@ package body .Clients is
        Shopline_Access_Token : in Swagger.Nullable_UString;
        Shopline_App_Key : in Swagger.Nullable_UString;
        Shopline_App_Secret : in Swagger.Nullable_UString;
+       Shopline_Shared_Secret : in Swagger.Nullable_UString;
        Shopify_Access_Token : in Swagger.Nullable_UString;
        Shopify_Api_Key : in Swagger.Nullable_UString;
        Shopify_Api_Password : in Swagger.Nullable_UString;
@@ -278,6 +279,7 @@ package body .Clients is
       URI.Add_Param ("shopline_access_token", Shopline_Access_Token);
       URI.Add_Param ("shopline_app_key", Shopline_App_Key);
       URI.Add_Param ("shopline_app_secret", Shopline_App_Secret);
+      URI.Add_Param ("shopline_shared_secret", Shopline_Shared_Secret);
       URI.Add_Param ("shopify_access_token", Shopify_Access_Token);
       URI.Add_Param ("shopify_api_key", Shopify_Api_Key);
       URI.Add_Param ("shopify_api_password", Shopify_Api_Password);
@@ -369,8 +371,8 @@ package body .Clients is
    --  If the callback of your service for some reason could not accept webhooks from API2Cart, then with the help of this method you can get a list of missed webhooks to perform synchronization again using entity_id. Please note that we keep such records for 24 hours.
    procedure Account_Failed_Webhooks
       (Client : in out Client_Type;
-       Count : in Swagger.Nullable_Integer;
        Start : in Swagger.Nullable_Integer;
+       Count : in Swagger.Nullable_Integer;
        Ids : in Swagger.Nullable_UString;
        Result : out .Models.AccountFailedWebhooks200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
@@ -379,8 +381,8 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("count", Count);
       URI.Add_Param ("start", Start);
+      URI.Add_Param ("count", Count);
       URI.Add_Param ("ids", Ids);
       URI.Set_Path ("/account.failed_webhooks.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
@@ -436,8 +438,8 @@ package body .Clients is
 
 
       URI.Add_Param ("type", P_Type);
-      URI.Add_Param ("code", Code);
       URI.Add_Param ("name", Name);
+      URI.Add_Param ("code", Code);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("lang_id", Lang_Id);
       URI.Add_Param ("visible", Visible);
@@ -511,9 +513,9 @@ package body .Clients is
       (Client : in out Client_Type;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseAttributeAttributesetList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -523,9 +525,9 @@ package body .Clients is
 
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
+      URI.Add_Param ("response_fields", Response_Fields);
       URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);
-      URI.Add_Param ("response_fields", Response_Fields);
       URI.Set_Path ("/attribute.attributeset.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -574,8 +576,8 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("id", Id);
+      URI.Add_Param ("store_id", Store_Id);
       URI.Set_Path ("/attribute.delete.json");
       Client.Call (Swagger.Clients.DELETE, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -587,11 +589,11 @@ package body .Clients is
       (Client : in out Client_Type;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Attribute_Set_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Attribute_Set_Id : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseAttributeGroupList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -601,11 +603,11 @@ package body .Clients is
 
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
+      URI.Add_Param ("attribute_set_id", Attribute_Set_Id);
       URI.Add_Param ("lang_id", Lang_Id);
+      URI.Add_Param ("response_fields", Response_Fields);
       URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);
-      URI.Add_Param ("response_fields", Response_Fields);
-      URI.Add_Param ("attribute_set_id", Attribute_Set_Id);
       URI.Set_Path ("/attribute.group.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -619,9 +621,9 @@ package body .Clients is
        Attribute_Set_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
        Result : out .Models.AttributeInfo200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -633,9 +635,9 @@ package body .Clients is
       URI.Add_Param ("attribute_set_id", Attribute_Set_Id);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("lang_id", Lang_Id);
+      URI.Add_Param ("response_fields", Response_Fields);
       URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);
-      URI.Add_Param ("response_fields", Response_Fields);
       URI.Set_Path ("/attribute.info.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -647,17 +649,17 @@ package body .Clients is
       (Client : in out Client_Type;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
-       P_Type : in Swagger.Nullable_UString;
        Attribute_Ids : in Swagger.Nullable_UString;
        Attribute_Set_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
+       P_Type : in Swagger.Nullable_UString;
        Visible : in Swagger.Nullable_Boolean;
        Required : in Swagger.Nullable_Boolean;
        System : in Swagger.Nullable_Boolean;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseAttributeList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -667,17 +669,17 @@ package body .Clients is
 
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
-      URI.Add_Param ("type", P_Type);
       URI.Add_Param ("attribute_ids", Attribute_Ids);
       URI.Add_Param ("attribute_set_id", Attribute_Set_Id);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("lang_id", Lang_Id);
-      URI.Add_Param ("params", Params);
-      URI.Add_Param ("exclude", Exclude);
-      URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("type", P_Type);
       URI.Add_Param ("visible", Visible);
       URI.Add_Param ("required", Required);
       URI.Add_Param ("system", System);
+      URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
+      URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/attribute.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -849,9 +851,9 @@ package body .Clients is
       (Client : in out Client_Type;
        Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
        Result : out .Models.BasketInfo200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -861,9 +863,9 @@ package body .Clients is
 
       URI.Add_Param ("id", Id);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("response_fields", Response_Fields);
       URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);
-      URI.Add_Param ("response_fields", Response_Fields);
       URI.Set_Path ("/basket.info.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -909,9 +911,9 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("name", Name);
       URI.Add_Param ("callback", Callback);
+      URI.Add_Param ("store_id", Store_Id);
       URI.Set_Path ("/basket.live_shipping_service.create.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -939,9 +941,9 @@ package body .Clients is
    --  Retrieve a list of live shipping rate services.
    procedure Basket_Live_Shipping_Service_List
       (Client : in out Client_Type;
-       Store_Id : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Store_Id : in Swagger.Nullable_UString;
        Result : out .Models.BasketLiveShippingServiceList200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -949,9 +951,9 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
+      URI.Add_Param ("store_id", Store_Id);
       URI.Set_Path ("/basket.live_shipping_service.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -963,11 +965,11 @@ package body .Clients is
       (Client : in out Client_Type;
        Count : in Swagger.Nullable_Integer;
        Page_Cursor : in Swagger.Nullable_UString;
+       Ids : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Processed_From : in Swagger.Nullable_UString;
        Processed_To : in Swagger.Nullable_UString;
-       Ids : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseBatchJobList_Type) is
       URI   : Swagger.Clients.URI_Type;
@@ -978,11 +980,11 @@ package body .Clients is
 
       URI.Add_Param ("count", Count);
       URI.Add_Param ("page_cursor", Page_Cursor);
+      URI.Add_Param ("ids", Ids);
       URI.Add_Param ("created_from", Created_From);
       URI.Add_Param ("created_to", Created_To);
       URI.Add_Param ("processed_from", Processed_From);
       URI.Add_Param ("processed_to", Processed_To);
-      URI.Add_Param ("ids", Ids);
       URI.Add_Param ("response_fields", Response_Fields);
       URI.Set_Path ("/batch.job.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
@@ -1093,12 +1095,12 @@ package body .Clients is
    --  Get cart catalog price rules discounts.
    procedure Cart_Catalog_Price_Rules_List
       (Client : in out Client_Type;
-       Page_Cursor : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
        Ids : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseCartCatalogPriceRulesList_Type) is
       URI   : Swagger.Clients.URI_Type;
@@ -1107,12 +1109,12 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
+      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("ids", Ids);
-      URI.Add_Param ("params", Params);
       URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/cart.catalog_price_rules.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
@@ -1204,10 +1206,10 @@ package body .Clients is
        Key : in Swagger.UString;
        Operator : in Swagger.UString;
        Value : in Swagger.UString;
-       Store_Id : in Swagger.Nullable_UString;
        Target : in Swagger.Nullable_UString;
        Include_Tax : in Swagger.Nullable_Boolean;
        Include_Shipping : in Swagger.Nullable_Boolean;
+       Store_Id : in Swagger.Nullable_UString;
        Result : out .Models.BasketLiveShippingServiceDelete200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -1215,15 +1217,15 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("coupon_id", Coupon_Id);
-      URI.Add_Param ("target", Target);
       URI.Add_Param ("entity", Entity);
       URI.Add_Param ("key", Key);
       URI.Add_Param ("operator", Operator);
       URI.Add_Param ("value", Value);
+      URI.Add_Param ("target", Target);
       URI.Add_Param ("include_tax", Include_Tax);
       URI.Add_Param ("include_shipping", Include_Shipping);
+      URI.Add_Param ("store_id", Store_Id);
       URI.Set_Path ("/cart.coupon.condition.add.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -1234,11 +1236,11 @@ package body .Clients is
    procedure Cart_Coupon_Count
       (Client : in out Client_Type;
        Store_Id : in Swagger.Nullable_UString;
+       Avail : in Swagger.Nullable_Boolean;
        Date_Start_From : in Swagger.Nullable_UString;
        Date_Start_To : in Swagger.Nullable_UString;
        Date_End_From : in Swagger.Nullable_UString;
        Date_End_To : in Swagger.Nullable_UString;
-       Avail : in Swagger.Nullable_Boolean;
        Result : out .Models.CartCouponCount200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -1247,11 +1249,11 @@ package body .Clients is
 
 
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("avail", Avail);
       URI.Add_Param ("date_start_from", Date_Start_From);
       URI.Add_Param ("date_start_to", Date_Start_To);
       URI.Add_Param ("date_end_from", Date_End_From);
       URI.Add_Param ("date_end_to", Date_End_To);
-      URI.Add_Param ("avail", Avail);
       URI.Set_Path ("/cart.coupon.count.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -1281,19 +1283,19 @@ package body .Clients is
    --  Get cart coupon discounts.
    procedure Cart_Coupon_List
       (Client : in out Client_Type;
-       Page_Cursor : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
        Coupons_Ids : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Lang_Id : in Swagger.Nullable_UString;
+       Avail : in Swagger.Nullable_Boolean;
        Date_Start_From : in Swagger.Nullable_UString;
        Date_Start_To : in Swagger.Nullable_UString;
        Date_End_From : in Swagger.Nullable_UString;
        Date_End_To : in Swagger.Nullable_UString;
-       Avail : in Swagger.Nullable_Boolean;
-       Lang_Id : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseCartCouponList_Type) is
       URI   : Swagger.Clients.URI_Type;
@@ -1302,19 +1304,19 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
+      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("coupons_ids", Coupons_Ids);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("lang_id", Lang_Id);
+      URI.Add_Param ("avail", Avail);
       URI.Add_Param ("date_start_from", Date_Start_From);
       URI.Add_Param ("date_start_to", Date_Start_To);
       URI.Add_Param ("date_end_from", Date_End_From);
       URI.Add_Param ("date_end_to", Date_End_To);
-      URI.Add_Param ("avail", Avail);
-      URI.Add_Param ("lang_id", Lang_Id);
-      URI.Add_Param ("params", Params);
       URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/cart.coupon.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
@@ -1444,12 +1446,12 @@ package body .Clients is
    --  Get gift cards list.
    procedure Cart_Giftcard_List
       (Client : in out Client_Type;
-       Page_Cursor : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseCartGiftCardList_Type) is
       URI   : Swagger.Clients.URI_Type;
@@ -1458,12 +1460,12 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
+      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("store_id", Store_Id);
-      URI.Add_Param ("params", Params);
       URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/cart.giftcard.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
@@ -1474,10 +1476,10 @@ package body .Clients is
    --  This method allows you to get various information about the store, including a list of stores (in the case of a multistore configuration), a list of supported languages, currencies, carriers, warehouses, and many other information. This information contains data that is relatively stable and rarely changes, so API2Cart can cache certain data to reduce the load on the store and speed up the execution of the request. We also recommend that you cache the response of this method on your side to save requests. If you need to clear the cache for a specific store, then use the cart.validate method.
    procedure Cart_Info
       (Client : in out Client_Type;
-       Params : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.CartInfo200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -1485,10 +1487,10 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("params", Params);
-      URI.Add_Param ("response_fields", Response_Fields);
-      URI.Add_Param ("exclude", Exclude);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
+      URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/cart.info.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -1515,14 +1517,14 @@ package body .Clients is
    procedure Cart_Meta_Data_List
       (Client : in out Client_Type;
        Entity_Id : in Swagger.UString;
+       Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
        Entity : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Key : in Swagger.Nullable_UString;
-       Count : in Swagger.Nullable_Integer;
-       Page_Cursor : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseCartMetaDataList_Type) is
       URI   : Swagger.Clients.URI_Type;
@@ -1531,15 +1533,15 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
+      URI.Add_Param ("count", Count);
+      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("entity_id", Entity_Id);
       URI.Add_Param ("entity", Entity);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("lang_id", Lang_Id);
       URI.Add_Param ("key", Key);
-      URI.Add_Param ("count", Count);
-      URI.Add_Param ("page_cursor", Page_Cursor);
-      URI.Add_Param ("params", Params);
       URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/cart.meta_data.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
@@ -1565,12 +1567,12 @@ package body .Clients is
 
 
       URI.Add_Param ("entity_id", Entity_Id);
-      URI.Add_Param ("entity", Entity);
-      URI.Add_Param ("store_id", Store_Id);
-      URI.Add_Param ("lang_id", Lang_Id);
       URI.Add_Param ("key", Key);
       URI.Add_Param ("value", Value);
       URI.Add_Param ("namespace", Namespace);
+      URI.Add_Param ("entity", Entity);
+      URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("lang_id", Lang_Id);
       URI.Set_Path ("/cart.meta_data.set.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -1593,10 +1595,10 @@ package body .Clients is
 
 
       URI.Add_Param ("entity_id", Entity_Id);
-      URI.Add_Param ("entity", Entity);
-      URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("key", Key);
       URI.Add_Param ("id", Id);
+      URI.Add_Param ("entity", Entity);
+      URI.Add_Param ("store_id", Store_Id);
       URI.Set_Path ("/cart.meta_data.unset.json");
       Client.Call (Swagger.Clients.DELETE, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -1622,9 +1624,9 @@ package body .Clients is
    --  Get a list of third-party plugins installed on the store.
    procedure Cart_Plugin_List
       (Client : in out Client_Type;
-       Store_Id : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Store_Id : in Swagger.Nullable_UString;
        Result : out .Models.CartPluginList200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -1632,9 +1634,9 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
+      URI.Add_Param ("store_id", Store_Id);
       URI.Set_Path ("/cart.plugin.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -1696,17 +1698,17 @@ package body .Clients is
    --  Get scripts installed to the storefront
    procedure Cart_Script_List
       (Client : in out Client_Type;
-       Page_Cursor : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
+       Script_Ids : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Script_Ids : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseCartScriptList_Type) is
       URI   : Swagger.Clients.URI_Type;
@@ -1715,17 +1717,17 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
+      URI.Add_Param ("page_cursor", Page_Cursor);
+      URI.Add_Param ("script_ids", Script_Ids);
+      URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("created_from", Created_From);
       URI.Add_Param ("created_to", Created_To);
       URI.Add_Param ("modified_from", Modified_From);
       URI.Add_Param ("modified_to", Modified_To);
-      URI.Add_Param ("script_ids", Script_Ids);
-      URI.Add_Param ("store_id", Store_Id);
-      URI.Add_Param ("params", Params);
       URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/cart.script.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
@@ -1736,11 +1738,11 @@ package body .Clients is
    --  Get list of shipping zones
    procedure Cart_Shipping_Zones_List
       (Client : in out Client_Type;
-       Store_Id : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
-       Params : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseCartShippingZonesList_Type) is
       URI   : Swagger.Clients.URI_Type;
@@ -1749,11 +1751,11 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
-      URI.Add_Param ("params", Params);
+      URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/cart.shipping_zones.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
@@ -1783,20 +1785,20 @@ package body .Clients is
    procedure Category_Add
       (Client : in out Client_Type;
        Name : in Swagger.UString;
-       Parent_Id : in Swagger.Nullable_UString;
-       Stores_Ids : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
-       Lang_Id : in Swagger.Nullable_UString;
-       Avail : in Swagger.Nullable_Boolean;
-       Sort_Order : in Swagger.Nullable_Integer;
-       Created_Time : in Swagger.Nullable_UString;
-       Modified_Time : in Swagger.Nullable_UString;
        Description : in Swagger.Nullable_UString;
        Short_Description : in Swagger.Nullable_UString;
+       Parent_Id : in Swagger.Nullable_UString;
+       Avail : in Swagger.Nullable_Boolean;
+       Created_Time : in Swagger.Nullable_UString;
+       Modified_Time : in Swagger.Nullable_UString;
+       Sort_Order : in Swagger.Nullable_Integer;
        Meta_Title : in Swagger.Nullable_UString;
        Meta_Description : in Swagger.Nullable_UString;
        Meta_Keywords : in Swagger.Nullable_UString;
        Seo_Url : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Stores_Ids : in Swagger.Nullable_UString;
+       Lang_Id : in Swagger.Nullable_UString;
        Result : out .Models.CategoryAdd200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -1805,20 +1807,20 @@ package body .Clients is
 
 
       URI.Add_Param ("name", Name);
-      URI.Add_Param ("parent_id", Parent_Id);
-      URI.Add_Param ("stores_ids", Stores_Ids);
-      URI.Add_Param ("store_id", Store_Id);
-      URI.Add_Param ("lang_id", Lang_Id);
-      URI.Add_Param ("avail", Avail);
-      URI.Add_Param ("sort_order", Sort_Order);
-      URI.Add_Param ("created_time", Created_Time);
-      URI.Add_Param ("modified_time", Modified_Time);
       URI.Add_Param ("description", Description);
       URI.Add_Param ("short_description", Short_Description);
+      URI.Add_Param ("parent_id", Parent_Id);
+      URI.Add_Param ("avail", Avail);
+      URI.Add_Param ("created_time", Created_Time);
+      URI.Add_Param ("modified_time", Modified_Time);
+      URI.Add_Param ("sort_order", Sort_Order);
       URI.Add_Param ("meta_title", Meta_Title);
       URI.Add_Param ("meta_description", Meta_Description);
       URI.Add_Param ("meta_keywords", Meta_Keywords);
       URI.Add_Param ("seo_url", Seo_Url);
+      URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("stores_ids", Stores_Ids);
+      URI.Add_Param ("lang_id", Lang_Id);
       URI.Set_Path ("/category.add.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -1847,8 +1849,8 @@ package body .Clients is
    --  Assign category to product
    procedure Category_Assign
       (Client : in out Client_Type;
-       Product_Id : in Swagger.UString;
        Category_Id : in Swagger.UString;
+       Product_Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
        Result : out .Models.CartConfigUpdate200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
@@ -1857,8 +1859,8 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("product_id", Product_Id);
       URI.Add_Param ("category_id", Category_Id);
+      URI.Add_Param ("product_id", Product_Id);
       URI.Add_Param ("store_id", Store_Id);
       URI.Set_Path ("/category.assign.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
@@ -1872,11 +1874,11 @@ package body .Clients is
        Parent_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Avail : in Swagger.Nullable_Boolean;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Avail : in Swagger.Nullable_Boolean;
        Product_Type : in Swagger.Nullable_UString;
        Find_Value : in Swagger.Nullable_UString;
        Find_Where : in Swagger.Nullable_UString;
@@ -1892,11 +1894,11 @@ package body .Clients is
       URI.Add_Param ("parent_id", Parent_Id);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("lang_id", Lang_Id);
+      URI.Add_Param ("avail", Avail);
       URI.Add_Param ("created_from", Created_From);
       URI.Add_Param ("created_to", Created_To);
       URI.Add_Param ("modified_from", Modified_From);
       URI.Add_Param ("modified_to", Modified_To);
-      URI.Add_Param ("avail", Avail);
       URI.Add_Param ("product_type", Product_Type);
       URI.Add_Param ("find_value", Find_Value);
       URI.Add_Param ("find_where", Find_Where);
@@ -1961,10 +1963,10 @@ package body .Clients is
        Image_Name : in Swagger.UString;
        Url : in Swagger.UString;
        P_Type : in Swagger.UString;
+       Store_Id : in Swagger.Nullable_UString;
        Label : in Swagger.Nullable_UString;
        Mime : in Swagger.Nullable_UString;
        Position : in Swagger.Nullable_Integer;
-       Store_Id : in Swagger.Nullable_UString;
        Result : out .Models.CategoryImageAdd200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -1975,11 +1977,11 @@ package body .Clients is
       URI.Add_Param ("category_id", Category_Id);
       URI.Add_Param ("image_name", Image_Name);
       URI.Add_Param ("url", Url);
+      URI.Add_Param ("type", P_Type);
+      URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("label", Label);
       URI.Add_Param ("mime", Mime);
-      URI.Add_Param ("type", P_Type);
       URI.Add_Param ("position", Position);
-      URI.Add_Param ("store_id", Store_Id);
       URI.Set_Path ("/category.image.add.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -2012,12 +2014,12 @@ package body .Clients is
    procedure Category_Info
       (Client : in out Client_Type;
        Id : in Swagger.UString;
-       Params : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Schema_Type : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Report_Request_Id : in Swagger.Nullable_UString;
        Disable_Report_Cache : in Swagger.Nullable_Boolean;
        Result : out .Models.CategoryInfo200Response_Type) is
@@ -2028,12 +2030,12 @@ package body .Clients is
 
 
       URI.Add_Param ("id", Id);
-      URI.Add_Param ("params", Params);
-      URI.Add_Param ("response_fields", Response_Fields);
-      URI.Add_Param ("exclude", Exclude);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("lang_id", Lang_Id);
       URI.Add_Param ("schema_type", Schema_Type);
+      URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
+      URI.Add_Param ("exclude", Exclude);
       URI.Add_Param ("report_request_id", Report_Request_Id);
       URI.Add_Param ("disable_report_cache", Disable_Report_Cache);
       URI.Set_Path ("/category.info.json");
@@ -2048,20 +2050,20 @@ package body .Clients is
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
        Page_Cursor : in Swagger.Nullable_UString;
-       Parent_Id : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Parent_Id : in Swagger.Nullable_UString;
+       Avail : in Swagger.Nullable_Boolean;
+       Product_Type : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Avail : in Swagger.Nullable_Boolean;
-       Product_Type : in Swagger.Nullable_UString;
        Find_Value : in Swagger.Nullable_UString;
        Find_Where : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Report_Request_Id : in Swagger.Nullable_UString;
        Disable_Report_Cache : in Swagger.Nullable_Boolean;
        Disable_Cache : in Swagger.Nullable_Boolean;
@@ -2075,20 +2077,20 @@ package body .Clients is
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
       URI.Add_Param ("page_cursor", Page_Cursor);
-      URI.Add_Param ("parent_id", Parent_Id);
-      URI.Add_Param ("params", Params);
-      URI.Add_Param ("response_fields", Response_Fields);
-      URI.Add_Param ("exclude", Exclude);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("lang_id", Lang_Id);
+      URI.Add_Param ("parent_id", Parent_Id);
+      URI.Add_Param ("avail", Avail);
+      URI.Add_Param ("product_type", Product_Type);
       URI.Add_Param ("created_from", Created_From);
       URI.Add_Param ("created_to", Created_To);
       URI.Add_Param ("modified_from", Modified_From);
       URI.Add_Param ("modified_to", Modified_To);
-      URI.Add_Param ("avail", Avail);
-      URI.Add_Param ("product_type", Product_Type);
       URI.Add_Param ("find_value", Find_Value);
       URI.Add_Param ("find_where", Find_Where);
+      URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
+      URI.Add_Param ("exclude", Exclude);
       URI.Add_Param ("report_request_id", Report_Request_Id);
       URI.Add_Param ("disable_report_cache", Disable_Report_Cache);
       URI.Add_Param ("disable_cache", Disable_Cache);
@@ -2125,19 +2127,19 @@ package body .Clients is
       (Client : in out Client_Type;
        Id : in Swagger.UString;
        Name : in Swagger.Nullable_UString;
+       Description : in Swagger.Nullable_UString;
+       Short_Description : in Swagger.Nullable_UString;
        Parent_Id : in Swagger.Nullable_UString;
-       Stores_Ids : in Swagger.Nullable_UString;
        Avail : in Swagger.Nullable_Boolean;
        Sort_Order : in Swagger.Nullable_Integer;
        Modified_Time : in Swagger.Nullable_UString;
-       Description : in Swagger.Nullable_UString;
-       Short_Description : in Swagger.Nullable_UString;
        Meta_Title : in Swagger.Nullable_UString;
        Meta_Description : in Swagger.Nullable_UString;
        Meta_Keywords : in Swagger.Nullable_UString;
        Seo_Url : in Swagger.Nullable_UString;
-       Lang_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Stores_Ids : in Swagger.Nullable_UString;
+       Lang_Id : in Swagger.Nullable_UString;
        Result : out .Models.AccountConfigUpdate200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -2147,19 +2149,19 @@ package body .Clients is
 
       URI.Add_Param ("id", Id);
       URI.Add_Param ("name", Name);
+      URI.Add_Param ("description", Description);
+      URI.Add_Param ("short_description", Short_Description);
       URI.Add_Param ("parent_id", Parent_Id);
-      URI.Add_Param ("stores_ids", Stores_Ids);
       URI.Add_Param ("avail", Avail);
       URI.Add_Param ("sort_order", Sort_Order);
       URI.Add_Param ("modified_time", Modified_Time);
-      URI.Add_Param ("description", Description);
-      URI.Add_Param ("short_description", Short_Description);
       URI.Add_Param ("meta_title", Meta_Title);
       URI.Add_Param ("meta_description", Meta_Description);
       URI.Add_Param ("meta_keywords", Meta_Keywords);
       URI.Add_Param ("seo_url", Seo_Url);
-      URI.Add_Param ("lang_id", Lang_Id);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("stores_ids", Stores_Ids);
+      URI.Add_Param ("lang_id", Lang_Id);
       URI.Set_Path ("/category.update.json");
       Client.Call (Swagger.Clients.PUT, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -2212,9 +2214,9 @@ package body .Clients is
        Page_Cursor : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseCustomerAttributeList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -2227,9 +2229,9 @@ package body .Clients is
       URI.Add_Param ("customer_id", Customer_Id);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("lang_id", Lang_Id);
+      URI.Add_Param ("response_fields", Response_Fields);
       URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);
-      URI.Add_Param ("response_fields", Response_Fields);
       URI.Set_Path ("/customer.attribute.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -2239,18 +2241,18 @@ package body .Clients is
    --  Get number of customers from store.
    procedure Customer_Count
       (Client : in out Client_Type;
+       Ids : in Swagger.Nullable_UString;
+       Since_Id : in Swagger.Nullable_UString;
+       Customer_List_Id : in Swagger.Nullable_UString;
        Group_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Avail : in Swagger.Nullable_Boolean;
+       Find_Value : in Swagger.Nullable_UString;
+       Find_Where : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
-       Customer_List_Id : in Swagger.Nullable_UString;
-       Avail : in Swagger.Nullable_Boolean;
-       Find_Value : in Swagger.Nullable_UString;
-       Find_Where : in Swagger.Nullable_UString;
-       Ids : in Swagger.Nullable_UString;
-       Since_Id : in Swagger.Nullable_UString;
        Result : out .Models.CustomerCount200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -2258,18 +2260,18 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
+      URI.Add_Param ("ids", Ids);
+      URI.Add_Param ("since_id", Since_Id);
+      URI.Add_Param ("customer_list_id", Customer_List_Id);
       URI.Add_Param ("group_id", Group_Id);
+      URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("avail", Avail);
+      URI.Add_Param ("find_value", Find_Value);
+      URI.Add_Param ("find_where", Find_Where);
       URI.Add_Param ("created_from", Created_From);
       URI.Add_Param ("created_to", Created_To);
       URI.Add_Param ("modified_from", Modified_From);
       URI.Add_Param ("modified_to", Modified_To);
-      URI.Add_Param ("store_id", Store_Id);
-      URI.Add_Param ("customer_list_id", Customer_List_Id);
-      URI.Add_Param ("avail", Avail);
-      URI.Add_Param ("find_value", Find_Value);
-      URI.Add_Param ("find_where", Find_Where);
-      URI.Add_Param ("ids", Ids);
-      URI.Add_Param ("since_id", Since_Id);
       URI.Set_Path ("/customer.count.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -2343,16 +2345,16 @@ package body .Clients is
    --  Get list of customers groups.
    procedure Customer_Group_List
       (Client : in out Client_Type;
-       Disable_Cache : in Swagger.Nullable_Boolean;
-       Page_Cursor : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
+       Group_Ids : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
-       Group_Ids : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
+       Disable_Cache : in Swagger.Nullable_Boolean;
        Result : out .Models.ModelResponseCustomerGroupList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -2360,16 +2362,16 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("disable_cache", Disable_Cache);
-      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
+      URI.Add_Param ("page_cursor", Page_Cursor);
+      URI.Add_Param ("group_ids", Group_Ids);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("lang_id", Lang_Id);
-      URI.Add_Param ("group_ids", Group_Ids);
+      URI.Add_Param ("response_fields", Response_Fields);
       URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);
-      URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("disable_cache", Disable_Cache);
       URI.Set_Path ("/customer.group.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -2380,10 +2382,10 @@ package body .Clients is
    procedure Customer_Info
       (Client : in out Client_Type;
        Id : in Swagger.UString;
-       Params : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.CustomerInfo200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -2392,10 +2394,10 @@ package body .Clients is
 
 
       URI.Add_Param ("id", Id);
-      URI.Add_Param ("params", Params);
-      URI.Add_Param ("response_fields", Response_Fields);
-      URI.Add_Param ("exclude", Exclude);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
+      URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/customer.info.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -2405,26 +2407,26 @@ package body .Clients is
    --  Get list of customers from store.
    procedure Customer_List
       (Client : in out Client_Type;
-       Page_Cursor : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
+       Ids : in Swagger.Nullable_UString;
+       Since_Id : in Swagger.Nullable_UString;
+       Customer_List_Id : in Swagger.Nullable_UString;
+       Group_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Avail : in Swagger.Nullable_Boolean;
+       Find_Value : in Swagger.Nullable_UString;
+       Find_Where : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
-       Group_Id : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
-       Customer_List_Id : in Swagger.Nullable_UString;
-       Avail : in Swagger.Nullable_Boolean;
-       Find_Value : in Swagger.Nullable_UString;
-       Find_Where : in Swagger.Nullable_UString;
        Sort_By : in Swagger.Nullable_UString;
        Sort_Direction : in Swagger.Nullable_UString;
-       Ids : in Swagger.Nullable_UString;
-       Since_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseCustomerList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -2432,26 +2434,26 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
+      URI.Add_Param ("page_cursor", Page_Cursor);
+      URI.Add_Param ("ids", Ids);
+      URI.Add_Param ("since_id", Since_Id);
+      URI.Add_Param ("customer_list_id", Customer_List_Id);
+      URI.Add_Param ("group_id", Group_Id);
+      URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("avail", Avail);
+      URI.Add_Param ("find_value", Find_Value);
+      URI.Add_Param ("find_where", Find_Where);
       URI.Add_Param ("created_from", Created_From);
       URI.Add_Param ("created_to", Created_To);
       URI.Add_Param ("modified_from", Modified_From);
       URI.Add_Param ("modified_to", Modified_To);
-      URI.Add_Param ("params", Params);
-      URI.Add_Param ("response_fields", Response_Fields);
-      URI.Add_Param ("exclude", Exclude);
-      URI.Add_Param ("group_id", Group_Id);
-      URI.Add_Param ("store_id", Store_Id);
-      URI.Add_Param ("customer_list_id", Customer_List_Id);
-      URI.Add_Param ("avail", Avail);
-      URI.Add_Param ("find_value", Find_Value);
-      URI.Add_Param ("find_where", Find_Where);
       URI.Add_Param ("sort_by", Sort_By);
       URI.Add_Param ("sort_direction", Sort_Direction);
-      URI.Add_Param ("ids", Ids);
-      URI.Add_Param ("since_id", Since_Id);
+      URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
+      URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/customer.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -2481,11 +2483,11 @@ package body .Clients is
    procedure Customer_Wishlist_List
       (Client : in out Client_Type;
        Customer_Id : in Swagger.UString;
-       Id : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
        Page_Cursor : in Swagger.Nullable_UString;
+       Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseCustomerWishlistList_Type) is
       URI   : Swagger.Clients.URI_Type;
@@ -2494,12 +2496,12 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("customer_id", Customer_Id);
-      URI.Add_Param ("id", Id);
-      URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
       URI.Add_Param ("page_cursor", Page_Cursor);
+      URI.Add_Param ("customer_id", Customer_Id);
+      URI.Add_Param ("id", Id);
+      URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("response_fields", Response_Fields);
       URI.Set_Path ("/customer.wishlist.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
@@ -2510,20 +2512,20 @@ package body .Clients is
    --  Search product in global catalog.
    procedure Marketplace_Product_Find
       (Client : in out Client_Type;
-       Store_Id : in Swagger.Nullable_UString;
        Count : in Swagger.Nullable_Integer;
        Page_Cursor : in Swagger.Nullable_UString;
-       Categories_Ids : in Swagger.Nullable_UString;
        Keyword : in Swagger.Nullable_UString;
+       Categories_Ids : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
        Asin : in Swagger.Nullable_UString;
        Ean : in Swagger.Nullable_UString;
        Gtin : in Swagger.Nullable_UString;
        Upc : in Swagger.Nullable_UString;
        Mpn : in Swagger.Nullable_UString;
        Isbn : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseMarketplaceProductFind_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -2531,20 +2533,20 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("count", Count);
       URI.Add_Param ("page_cursor", Page_Cursor);
-      URI.Add_Param ("categories_ids", Categories_Ids);
       URI.Add_Param ("keyword", Keyword);
+      URI.Add_Param ("categories_ids", Categories_Ids);
+      URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("asin", Asin);
       URI.Add_Param ("ean", Ean);
       URI.Add_Param ("gtin", Gtin);
       URI.Add_Param ("upc", Upc);
       URI.Add_Param ("mpn", Mpn);
       URI.Add_Param ("isbn", Isbn);
+      URI.Add_Param ("response_fields", Response_Fields);
       URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);
-      URI.Add_Param ("response_fields", Response_Fields);
       URI.Set_Path ("/marketplace.product.find.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -2554,19 +2556,19 @@ package body .Clients is
    --  Get list of orders that were left by customers before completing the order.
    procedure Order_Abandoned_List
       (Client : in out Client_Type;
+       Start : in Swagger.Nullable_Integer;
+       Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
        Customer_Id : in Swagger.Nullable_UString;
        Customer_Email : in Swagger.Nullable_UString;
-       Created_To : in Swagger.Nullable_UString;
-       Created_From : in Swagger.Nullable_UString;
-       Modified_To : in Swagger.Nullable_UString;
-       Modified_From : in Swagger.Nullable_UString;
-       Skip_Empty_Email : in Swagger.Nullable_Boolean;
        Store_Id : in Swagger.Nullable_UString;
-       Page_Cursor : in Swagger.Nullable_UString;
-       Count : in Swagger.Nullable_Integer;
-       Start : in Swagger.Nullable_Integer;
-       Params : in Swagger.Nullable_UString;
+       Created_From : in Swagger.Nullable_UString;
+       Created_To : in Swagger.Nullable_UString;
+       Modified_From : in Swagger.Nullable_UString;
+       Modified_To : in Swagger.Nullable_UString;
+       Skip_Empty_Email : in Swagger.Nullable_Boolean;
        Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseOrderAbandonedList_Type) is
       URI   : Swagger.Clients.URI_Type;
@@ -2575,19 +2577,19 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
+      URI.Add_Param ("start", Start);
+      URI.Add_Param ("count", Count);
+      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("customer_id", Customer_Id);
       URI.Add_Param ("customer_email", Customer_Email);
-      URI.Add_Param ("created_to", Created_To);
-      URI.Add_Param ("created_from", Created_From);
-      URI.Add_Param ("modified_to", Modified_To);
-      URI.Add_Param ("modified_from", Modified_From);
-      URI.Add_Param ("skip_empty_email", Skip_Empty_Email);
       URI.Add_Param ("store_id", Store_Id);
-      URI.Add_Param ("page_cursor", Page_Cursor);
-      URI.Add_Param ("count", Count);
-      URI.Add_Param ("start", Start);
-      URI.Add_Param ("params", Params);
+      URI.Add_Param ("created_from", Created_From);
+      URI.Add_Param ("created_to", Created_To);
+      URI.Add_Param ("modified_from", Modified_From);
+      URI.Add_Param ("modified_to", Modified_To);
+      URI.Add_Param ("skip_empty_email", Skip_Empty_Email);
       URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/order.abandoned.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
@@ -2617,17 +2619,13 @@ package body .Clients is
    --  Count orders in store
    procedure Order_Count
       (Client : in out Client_Type;
+       Order_Ids : in Swagger.Nullable_UString;
+       Ids : in Swagger.Nullable_UString;
        Customer_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
        Customer_Email : in Swagger.Nullable_UString;
        Order_Status : in Swagger.Nullable_UString;
        Order_Status_Ids : in Swagger.UString_Vectors.Vector;
-       Created_To : in Swagger.Nullable_UString;
-       Created_From : in Swagger.Nullable_UString;
-       Modified_To : in Swagger.Nullable_UString;
-       Modified_From : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
-       Ids : in Swagger.Nullable_UString;
-       Order_Ids : in Swagger.Nullable_UString;
        Ebay_Order_Status : in Swagger.Nullable_UString;
        Financial_Status : in Swagger.Nullable_UString;
        Financial_Status_Ids : in Swagger.UString_Vectors.Vector;
@@ -2637,6 +2635,10 @@ package body .Clients is
        Delivery_Method : in Swagger.Nullable_UString;
        Tags : in Swagger.Nullable_UString;
        Ship_Node_Type : in Swagger.Nullable_UString;
+       Created_From : in Swagger.Nullable_UString;
+       Created_To : in Swagger.Nullable_UString;
+       Modified_From : in Swagger.Nullable_UString;
+       Modified_To : in Swagger.Nullable_UString;
        Result : out .Models.OrderCount200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -2644,17 +2646,13 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
+      URI.Add_Param ("order_ids", Order_Ids);
+      URI.Add_Param ("ids", Ids);
       URI.Add_Param ("customer_id", Customer_Id);
+      URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("customer_email", Customer_Email);
       URI.Add_Param ("order_status", Order_Status);
       URI.Add_Param ("order_status_ids", Order_Status_Ids);
-      URI.Add_Param ("created_to", Created_To);
-      URI.Add_Param ("created_from", Created_From);
-      URI.Add_Param ("modified_to", Modified_To);
-      URI.Add_Param ("modified_from", Modified_From);
-      URI.Add_Param ("store_id", Store_Id);
-      URI.Add_Param ("ids", Ids);
-      URI.Add_Param ("order_ids", Order_Ids);
       URI.Add_Param ("ebay_order_status", Ebay_Order_Status);
       URI.Add_Param ("financial_status", Financial_Status);
       URI.Add_Param ("financial_status_ids", Financial_Status_Ids);
@@ -2664,6 +2662,10 @@ package body .Clients is
       URI.Add_Param ("delivery_method", Delivery_Method);
       URI.Add_Param ("tags", Tags);
       URI.Add_Param ("ship_node_type", Ship_Node_Type);
+      URI.Add_Param ("created_from", Created_From);
+      URI.Add_Param ("created_to", Created_To);
+      URI.Add_Param ("modified_from", Modified_From);
+      URI.Add_Param ("modified_to", Modified_To);
       URI.Set_Path ("/order.count.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -2689,18 +2691,18 @@ package body .Clients is
    --  This method is deprecated and won't be supported in the future. Please use "order.list" instead.
    procedure Order_Find
       (Client : in out Client_Type;
+       Start : in Swagger.Nullable_Integer;
+       Count : in Swagger.Nullable_Integer;
        Customer_Id : in Swagger.Nullable_UString;
        Customer_Email : in Swagger.Nullable_UString;
        Order_Status : in Swagger.Nullable_UString;
-       Start : in Swagger.Nullable_Integer;
-       Count : in Swagger.Nullable_Integer;
-       Params : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
+       Financial_Status : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
-       Financial_Status : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.OrderFind200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -2708,18 +2710,18 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
+      URI.Add_Param ("start", Start);
+      URI.Add_Param ("count", Count);
       URI.Add_Param ("customer_id", Customer_Id);
       URI.Add_Param ("customer_email", Customer_Email);
       URI.Add_Param ("order_status", Order_Status);
-      URI.Add_Param ("start", Start);
-      URI.Add_Param ("count", Count);
-      URI.Add_Param ("params", Params);
-      URI.Add_Param ("exclude", Exclude);
+      URI.Add_Param ("financial_status", Financial_Status);
       URI.Add_Param ("created_to", Created_To);
       URI.Add_Param ("created_from", Created_From);
       URI.Add_Param ("modified_to", Modified_To);
       URI.Add_Param ("modified_from", Modified_From);
-      URI.Add_Param ("financial_status", Financial_Status);
+      URI.Add_Param ("params", Params);
+      URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/order.find.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -2747,12 +2749,12 @@ package body .Clients is
    --  Info about a specific order by ID
    procedure Order_Info
       (Client : in out Client_Type;
-       Order_Id : in Swagger.Nullable_UString;
        Id : in Swagger.Nullable_UString;
+       Order_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
        Enable_Cache : in Swagger.Nullable_Boolean;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Result : out .Models.OrderInfo200Response_Type) is
@@ -2762,12 +2764,12 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("order_id", Order_Id);
       URI.Add_Param ("id", Id);
+      URI.Add_Param ("order_id", Order_Id);
+      URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("params", Params);
       URI.Add_Param ("response_fields", Response_Fields);
       URI.Add_Param ("exclude", Exclude);
-      URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("enable_cache", Enable_Cache);
       URI.Add_Param ("use_latest_api_version", Use_Latest_Api_Version);
       URI.Set_Path ("/order.info.json");
@@ -2779,43 +2781,43 @@ package body .Clients is
    --  Get list of orders from store.
    procedure Order_List
       (Client : in out Client_Type;
-       Customer_Id : in Swagger.Nullable_UString;
-       Customer_Email : in Swagger.Nullable_UString;
-       Phone : in Swagger.Nullable_UString;
-       Order_Status : in Swagger.Nullable_UString;
-       Order_Status_Ids : in Swagger.UString_Vectors.Vector;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
        Page_Cursor : in Swagger.Nullable_UString;
+       Ids : in Swagger.Nullable_UString;
+       Order_Ids : in Swagger.Nullable_UString;
+       Since_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Customer_Id : in Swagger.Nullable_UString;
+       Customer_Email : in Swagger.Nullable_UString;
+       Basket_Id : in Swagger.Nullable_UString;
+       Currency_Id : in Swagger.Nullable_UString;
+       Phone : in Swagger.Nullable_UString;
+       Order_Status : in Swagger.Nullable_UString;
+       Order_Status_Ids : in Swagger.UString_Vectors.Vector;
+       Ebay_Order_Status : in Swagger.Nullable_UString;
+       Financial_Status : in Swagger.Nullable_UString;
+       Financial_Status_Ids : in Swagger.UString_Vectors.Vector;
+       Fulfillment_Status : in Swagger.Nullable_UString;
+       Return_Status : in Swagger.Nullable_UString;
+       Fulfillment_Channel : in Swagger.Nullable_UString;
+       Shipping_Method : in Swagger.Nullable_UString;
+       Skip_Order_Ids : in Swagger.Nullable_UString;
+       Is_Deleted : in Swagger.Nullable_Boolean;
+       Shipping_Country_Iso_3 : in Swagger.Nullable_UString;
+       Delivery_Method : in Swagger.Nullable_UString;
+       Ship_Node_Type : in Swagger.Nullable_UString;
+       Created_To : in Swagger.Nullable_UString;
+       Created_From : in Swagger.Nullable_UString;
+       Modified_To : in Swagger.Nullable_UString;
+       Modified_From : in Swagger.Nullable_UString;
+       Tags : in Swagger.Nullable_UString;
        Sort_By : in Swagger.Nullable_UString;
        Sort_Direction : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Created_To : in Swagger.Nullable_UString;
-       Created_From : in Swagger.Nullable_UString;
-       Modified_To : in Swagger.Nullable_UString;
-       Modified_From : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
-       Ids : in Swagger.Nullable_UString;
-       Order_Ids : in Swagger.Nullable_UString;
-       Ebay_Order_Status : in Swagger.Nullable_UString;
-       Basket_Id : in Swagger.Nullable_UString;
-       Financial_Status : in Swagger.Nullable_UString;
-       Financial_Status_Ids : in Swagger.UString_Vectors.Vector;
-       Fulfillment_Status : in Swagger.Nullable_UString;
-       Fulfillment_Channel : in Swagger.Nullable_UString;
-       Shipping_Method : in Swagger.Nullable_UString;
-       Skip_Order_Ids : in Swagger.Nullable_UString;
-       Since_Id : in Swagger.Nullable_UString;
-       Is_Deleted : in Swagger.Nullable_Boolean;
-       Shipping_Country_Iso_3 : in Swagger.Nullable_UString;
        Enable_Cache : in Swagger.Nullable_Boolean;
-       Delivery_Method : in Swagger.Nullable_UString;
-       Tags : in Swagger.Nullable_UString;
-       Ship_Node_Type : in Swagger.Nullable_UString;
-       Currency_Id : in Swagger.Nullable_UString;
-       Return_Status : in Swagger.Nullable_UString;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Result : out .Models.ModelResponseOrderList_Type) is
       URI   : Swagger.Clients.URI_Type;
@@ -2824,43 +2826,43 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("customer_id", Customer_Id);
-      URI.Add_Param ("customer_email", Customer_Email);
-      URI.Add_Param ("phone", Phone);
-      URI.Add_Param ("order_status", Order_Status);
-      URI.Add_Param ("order_status_ids", Order_Status_Ids);
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
       URI.Add_Param ("page_cursor", Page_Cursor);
+      URI.Add_Param ("ids", Ids);
+      URI.Add_Param ("order_ids", Order_Ids);
+      URI.Add_Param ("since_id", Since_Id);
+      URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("customer_id", Customer_Id);
+      URI.Add_Param ("customer_email", Customer_Email);
+      URI.Add_Param ("basket_id", Basket_Id);
+      URI.Add_Param ("currency_id", Currency_Id);
+      URI.Add_Param ("phone", Phone);
+      URI.Add_Param ("order_status", Order_Status);
+      URI.Add_Param ("order_status_ids", Order_Status_Ids);
+      URI.Add_Param ("ebay_order_status", Ebay_Order_Status);
+      URI.Add_Param ("financial_status", Financial_Status);
+      URI.Add_Param ("financial_status_ids", Financial_Status_Ids);
+      URI.Add_Param ("fulfillment_status", Fulfillment_Status);
+      URI.Add_Param ("return_status", Return_Status);
+      URI.Add_Param ("fulfillment_channel", Fulfillment_Channel);
+      URI.Add_Param ("shipping_method", Shipping_Method);
+      URI.Add_Param ("skip_order_ids", Skip_Order_Ids);
+      URI.Add_Param ("is_deleted", Is_Deleted);
+      URI.Add_Param ("shipping_country_iso3", Shipping_Country_Iso_3);
+      URI.Add_Param ("delivery_method", Delivery_Method);
+      URI.Add_Param ("ship_node_type", Ship_Node_Type);
+      URI.Add_Param ("created_to", Created_To);
+      URI.Add_Param ("created_from", Created_From);
+      URI.Add_Param ("modified_to", Modified_To);
+      URI.Add_Param ("modified_from", Modified_From);
+      URI.Add_Param ("tags", Tags);
       URI.Add_Param ("sort_by", Sort_By);
       URI.Add_Param ("sort_direction", Sort_Direction);
       URI.Add_Param ("params", Params);
       URI.Add_Param ("response_fields", Response_Fields);
       URI.Add_Param ("exclude", Exclude);
-      URI.Add_Param ("created_to", Created_To);
-      URI.Add_Param ("created_from", Created_From);
-      URI.Add_Param ("modified_to", Modified_To);
-      URI.Add_Param ("modified_from", Modified_From);
-      URI.Add_Param ("store_id", Store_Id);
-      URI.Add_Param ("ids", Ids);
-      URI.Add_Param ("order_ids", Order_Ids);
-      URI.Add_Param ("ebay_order_status", Ebay_Order_Status);
-      URI.Add_Param ("basket_id", Basket_Id);
-      URI.Add_Param ("financial_status", Financial_Status);
-      URI.Add_Param ("financial_status_ids", Financial_Status_Ids);
-      URI.Add_Param ("fulfillment_status", Fulfillment_Status);
-      URI.Add_Param ("fulfillment_channel", Fulfillment_Channel);
-      URI.Add_Param ("shipping_method", Shipping_Method);
-      URI.Add_Param ("skip_order_ids", Skip_Order_Ids);
-      URI.Add_Param ("since_id", Since_Id);
-      URI.Add_Param ("is_deleted", Is_Deleted);
-      URI.Add_Param ("shipping_country_iso3", Shipping_Country_Iso_3);
       URI.Add_Param ("enable_cache", Enable_Cache);
-      URI.Add_Param ("delivery_method", Delivery_Method);
-      URI.Add_Param ("tags", Tags);
-      URI.Add_Param ("ship_node_type", Ship_Node_Type);
-      URI.Add_Param ("currency_id", Currency_Id);
-      URI.Add_Param ("return_status", Return_Status);
       URI.Add_Param ("use_latest_api_version", Use_Latest_Api_Version);
       URI.Set_Path ("/order.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
@@ -3032,10 +3034,10 @@ package body .Clients is
        Id : in Swagger.UString;
        Order_Id : in Swagger.UString;
        Start : in Swagger.Nullable_Integer;
-       Params : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.OrderShipmentInfo200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -3043,13 +3045,13 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
+      URI.Add_Param ("start", Start);
       URI.Add_Param ("id", Id);
       URI.Add_Param ("order_id", Order_Id);
-      URI.Add_Param ("start", Start);
-      URI.Add_Param ("params", Params);
-      URI.Add_Param ("response_fields", Response_Fields);
-      URI.Add_Param ("exclude", Exclude);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
+      URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/order.shipment.info.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -3060,17 +3062,17 @@ package body .Clients is
    procedure Order_Shipment_List
       (Client : in out Client_Type;
        Order_Id : in Swagger.UString;
-       Page_Cursor : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
-       Params : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
+       Page_Cursor : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseOrderShipmentList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -3078,18 +3080,18 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("order_id", Order_Id);
-      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
-      URI.Add_Param ("params", Params);
-      URI.Add_Param ("response_fields", Response_Fields);
-      URI.Add_Param ("exclude", Exclude);
+      URI.Add_Param ("page_cursor", Page_Cursor);
+      URI.Add_Param ("order_id", Order_Id);
+      URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("created_from", Created_From);
       URI.Add_Param ("created_to", Created_To);
       URI.Add_Param ("modified_from", Modified_From);
       URI.Add_Param ("modified_to", Modified_To);
-      URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
+      URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/order.shipment.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -3161,11 +3163,11 @@ package body .Clients is
       (Client : in out Client_Type;
        Order_Ids : in Swagger.UString;
        Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Page_Cursor : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseOrderTransactionList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -3174,12 +3176,12 @@ package body .Clients is
 
 
       URI.Add_Param ("count", Count);
+      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("order_ids", Order_Ids);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("params", Params);
       URI.Add_Param ("response_fields", Response_Fields);
       URI.Add_Param ("exclude", Exclude);
-      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Set_Path ("/order.transaction.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -3192,19 +3194,19 @@ package body .Clients is
        Order_Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
        Order_Status : in Swagger.Nullable_UString;
+       Financial_Status : in Swagger.Nullable_UString;
+       Fulfillment_Status : in Swagger.Nullable_UString;
        Cancellation_Reason : in Swagger.Nullable_UString;
+       Order_Payment_Method : in Swagger.Nullable_UString;
        Comment : in Swagger.Nullable_UString;
        Admin_Comment : in Swagger.Nullable_UString;
        Admin_Private_Comment : in Swagger.Nullable_UString;
+       Invoice_Admin_Comment : in Swagger.Nullable_UString;
        Date_Modified : in Swagger.Nullable_UString;
        Date_Finished : in Swagger.Nullable_UString;
-       Financial_Status : in Swagger.Nullable_UString;
-       Fulfillment_Status : in Swagger.Nullable_UString;
-       Order_Payment_Method : in Swagger.Nullable_UString;
        Send_Notifications : in Swagger.Nullable_Boolean;
-       Origin : in Swagger.Nullable_UString;
        Create_Invoice : in Swagger.Nullable_Boolean;
-       Invoice_Admin_Comment : in Swagger.Nullable_UString;
+       Origin : in Swagger.Nullable_UString;
        Result : out .Models.AccountConfigUpdate200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -3215,19 +3217,19 @@ package body .Clients is
       URI.Add_Param ("order_id", Order_Id);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("order_status", Order_Status);
+      URI.Add_Param ("financial_status", Financial_Status);
+      URI.Add_Param ("fulfillment_status", Fulfillment_Status);
       URI.Add_Param ("cancellation_reason", Cancellation_Reason);
+      URI.Add_Param ("order_payment_method", Order_Payment_Method);
       URI.Add_Param ("comment", Comment);
       URI.Add_Param ("admin_comment", Admin_Comment);
       URI.Add_Param ("admin_private_comment", Admin_Private_Comment);
+      URI.Add_Param ("invoice_admin_comment", Invoice_Admin_Comment);
       URI.Add_Param ("date_modified", Date_Modified);
       URI.Add_Param ("date_finished", Date_Finished);
-      URI.Add_Param ("financial_status", Financial_Status);
-      URI.Add_Param ("fulfillment_status", Fulfillment_Status);
-      URI.Add_Param ("order_payment_method", Order_Payment_Method);
       URI.Add_Param ("send_notifications", Send_Notifications);
-      URI.Add_Param ("origin", Origin);
       URI.Add_Param ("create_invoice", Create_Invoice);
-      URI.Add_Param ("invoice_admin_comment", Invoice_Admin_Comment);
+      URI.Add_Param ("origin", Origin);
       URI.Set_Path ("/order.update.json");
       Client.Call (Swagger.Clients.PUT, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -3276,19 +3278,19 @@ package body .Clients is
    procedure Product_Attribute_List
       (Client : in out Client_Type;
        Product_Id : in Swagger.UString;
-       Attribute_Id : in Swagger.Nullable_UString;
-       Variant_Id : in Swagger.Nullable_UString;
-       Page_Cursor : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
+       Attribute_Id : in Swagger.Nullable_UString;
+       Variant_Id : in Swagger.Nullable_UString;
        Attribute_Group_Id : in Swagger.Nullable_UString;
-       Set_Name : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Set_Name : in Swagger.Nullable_UString;
        Sort_By : in Swagger.Nullable_UString;
        Sort_Direction : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseProductAttributeList_Type) is
       URI   : Swagger.Clients.URI_Type;
@@ -3297,20 +3299,20 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
+      URI.Add_Param ("start", Start);
+      URI.Add_Param ("count", Count);
+      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("product_id", Product_Id);
       URI.Add_Param ("attribute_id", Attribute_Id);
       URI.Add_Param ("variant_id", Variant_Id);
-      URI.Add_Param ("page_cursor", Page_Cursor);
-      URI.Add_Param ("start", Start);
-      URI.Add_Param ("count", Count);
       URI.Add_Param ("attribute_group_id", Attribute_Group_Id);
-      URI.Add_Param ("set_name", Set_Name);
       URI.Add_Param ("lang_id", Lang_Id);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("set_name", Set_Name);
       URI.Add_Param ("sort_by", Sort_By);
       URI.Add_Param ("sort_direction", Sort_Direction);
-      URI.Add_Param ("params", Params);
       URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/product.attribute.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
@@ -3384,20 +3386,20 @@ package body .Clients is
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
        Page_Cursor : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
        Brand_Ids : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
        Category_Id : in Swagger.Nullable_UString;
+       Parent_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Find_Where : in Swagger.Nullable_UString;
+       Find_Value : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Parent_Id : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
-       Find_Where : in Swagger.Nullable_UString;
-       Find_Value : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseProductBrandList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -3408,20 +3410,20 @@ package body .Clients is
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
       URI.Add_Param ("page_cursor", Page_Cursor);
-      URI.Add_Param ("params", Params);
       URI.Add_Param ("brand_ids", Brand_Ids);
-      URI.Add_Param ("exclude", Exclude);
       URI.Add_Param ("category_id", Category_Id);
+      URI.Add_Param ("parent_id", Parent_Id);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("lang_id", Lang_Id);
+      URI.Add_Param ("find_where", Find_Where);
+      URI.Add_Param ("find_value", Find_Value);
       URI.Add_Param ("created_from", Created_From);
       URI.Add_Param ("created_to", Created_To);
       URI.Add_Param ("modified_from", Modified_From);
       URI.Add_Param ("modified_to", Modified_To);
-      URI.Add_Param ("parent_id", Parent_Id);
       URI.Add_Param ("response_fields", Response_Fields);
-      URI.Add_Param ("find_where", Find_Where);
-      URI.Add_Param ("find_value", Find_Value);
+      URI.Add_Param ("params", Params);
+      URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/product.brand.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -3457,12 +3459,12 @@ package body .Clients is
       (Client : in out Client_Type;
        Product_Id : in Swagger.UString;
        Id : in Swagger.UString;
-       Params : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Currency_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Result : out .Models.ProductChildItemInfo200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
@@ -3471,14 +3473,14 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("params", Params);
-      URI.Add_Param ("response_fields", Response_Fields);
-      URI.Add_Param ("exclude", Exclude);
       URI.Add_Param ("product_id", Product_Id);
       URI.Add_Param ("id", Id);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("lang_id", Lang_Id);
       URI.Add_Param ("currency_id", Currency_Id);
+      URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
+      URI.Add_Param ("exclude", Exclude);
       URI.Add_Param ("use_latest_api_version", Use_Latest_Api_Version);
       URI.Set_Path ("/product.child_item.info.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
@@ -3489,16 +3491,9 @@ package body .Clients is
    --  Get a list of a product's child items, such as variants or bundle components. The total_count field in the response indicates the total number of items in the context of the current filter.
    procedure Product_Child_Item_List
       (Client : in out Client_Type;
-       Page_Cursor : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
-       Params : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
-       Created_From : in Swagger.Nullable_UString;
-       Created_To : in Swagger.Nullable_UString;
-       Modified_From : in Swagger.Nullable_UString;
-       Modified_To : in Swagger.Nullable_UString;
+       Page_Cursor : in Swagger.Nullable_UString;
        Product_Id : in Swagger.Nullable_UString;
        Product_Ids : in Swagger.Nullable_UString;
        Sku : in Swagger.Nullable_UString;
@@ -3508,10 +3503,17 @@ package body .Clients is
        Avail_Sale : in Swagger.Nullable_Boolean;
        Find_Value : in Swagger.Nullable_UString;
        Find_Where : in Swagger.Nullable_UString;
+       Created_From : in Swagger.Nullable_UString;
+       Created_To : in Swagger.Nullable_UString;
+       Modified_From : in Swagger.Nullable_UString;
+       Modified_To : in Swagger.Nullable_UString;
+       Return_Global : in Swagger.Nullable_Boolean;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Report_Request_Id : in Swagger.Nullable_UString;
        Disable_Report_Cache : in Swagger.Nullable_Boolean;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
-       Return_Global : in Swagger.Nullable_Boolean;
        Result : out .Models.ModelResponseProductChildItemList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -3519,16 +3521,9 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
-      URI.Add_Param ("params", Params);
-      URI.Add_Param ("response_fields", Response_Fields);
-      URI.Add_Param ("exclude", Exclude);
-      URI.Add_Param ("created_from", Created_From);
-      URI.Add_Param ("created_to", Created_To);
-      URI.Add_Param ("modified_from", Modified_From);
-      URI.Add_Param ("modified_to", Modified_To);
+      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("product_id", Product_Id);
       URI.Add_Param ("product_ids", Product_Ids);
       URI.Add_Param ("sku", Sku);
@@ -3538,10 +3533,17 @@ package body .Clients is
       URI.Add_Param ("avail_sale", Avail_Sale);
       URI.Add_Param ("find_value", Find_Value);
       URI.Add_Param ("find_where", Find_Where);
+      URI.Add_Param ("created_from", Created_From);
+      URI.Add_Param ("created_to", Created_To);
+      URI.Add_Param ("modified_from", Modified_From);
+      URI.Add_Param ("modified_to", Modified_To);
+      URI.Add_Param ("return_global", Return_Global);
+      URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
+      URI.Add_Param ("exclude", Exclude);
       URI.Add_Param ("report_request_id", Report_Request_Id);
       URI.Add_Param ("disable_report_cache", Disable_Report_Cache);
       URI.Add_Param ("use_latest_api_version", Use_Latest_Api_Version);
-      URI.Add_Param ("return_global", Return_Global);
       URI.Set_Path ("/product.child_item.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -3551,28 +3553,28 @@ package body .Clients is
    --  Count products in store.
    procedure Product_Count
       (Client : in out Client_Type;
+       Product_Ids : in Swagger.Nullable_UString;
+       Since_Id : in Swagger.Nullable_UString;
+       Categories_Ids : in Swagger.Nullable_UString;
        Category_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Lang_Id : in Swagger.Nullable_UString;
+       Avail_View : in Swagger.Nullable_Boolean;
+       Avail_Sale : in Swagger.Nullable_Boolean;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Avail_View : in Swagger.Nullable_Boolean;
-       Avail_Sale : in Swagger.Nullable_Boolean;
-       Store_Id : in Swagger.Nullable_UString;
-       Lang_Id : in Swagger.Nullable_UString;
-       Product_Ids : in Swagger.Nullable_UString;
-       Since_Id : in Swagger.Nullable_UString;
-       Report_Request_Id : in Swagger.Nullable_UString;
-       Disable_Report_Cache : in Swagger.Nullable_Boolean;
        Brand_Name : in Swagger.Nullable_UString;
        Product_Attributes : in Swagger.UString_Vectors.Vector;
        Status : in Swagger.Nullable_UString;
        P_Type : in Swagger.Nullable_UString;
        Find_Value : in Swagger.Nullable_UString;
        Find_Where : in Swagger.Nullable_UString;
-       Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
+       Report_Request_Id : in Swagger.Nullable_UString;
        Return_Global : in Swagger.Nullable_Boolean;
-       Categories_Ids : in Swagger.Nullable_UString;
+       Disable_Report_Cache : in Swagger.Nullable_Boolean;
+       Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Result : out .Models.ProductCount200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -3580,28 +3582,28 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
+      URI.Add_Param ("product_ids", Product_Ids);
+      URI.Add_Param ("since_id", Since_Id);
+      URI.Add_Param ("categories_ids", Categories_Ids);
       URI.Add_Param ("category_id", Category_Id);
+      URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("lang_id", Lang_Id);
+      URI.Add_Param ("avail_view", Avail_View);
+      URI.Add_Param ("avail_sale", Avail_Sale);
       URI.Add_Param ("created_from", Created_From);
       URI.Add_Param ("created_to", Created_To);
       URI.Add_Param ("modified_from", Modified_From);
       URI.Add_Param ("modified_to", Modified_To);
-      URI.Add_Param ("avail_view", Avail_View);
-      URI.Add_Param ("avail_sale", Avail_Sale);
-      URI.Add_Param ("store_id", Store_Id);
-      URI.Add_Param ("lang_id", Lang_Id);
-      URI.Add_Param ("product_ids", Product_Ids);
-      URI.Add_Param ("since_id", Since_Id);
-      URI.Add_Param ("report_request_id", Report_Request_Id);
-      URI.Add_Param ("disable_report_cache", Disable_Report_Cache);
       URI.Add_Param ("brand_name", Brand_Name);
       URI.Add_Param ("product_attributes", Product_Attributes);
       URI.Add_Param ("status", Status);
       URI.Add_Param ("type", P_Type);
       URI.Add_Param ("find_value", Find_Value);
       URI.Add_Param ("find_where", Find_Where);
-      URI.Add_Param ("use_latest_api_version", Use_Latest_Api_Version);
+      URI.Add_Param ("report_request_id", Report_Request_Id);
       URI.Add_Param ("return_global", Return_Global);
-      URI.Add_Param ("categories_ids", Categories_Ids);
+      URI.Add_Param ("disable_report_cache", Disable_Report_Cache);
+      URI.Add_Param ("use_latest_api_version", Use_Latest_Api_Version);
       URI.Set_Path ("/product.count.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -3643,12 +3645,12 @@ package body .Clients is
       (Client : in out Client_Type;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
-       Params : in Swagger.Nullable_UString;
        Page_Cursor : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
        Default : in Swagger.Nullable_Boolean;
        Avail : in Swagger.Nullable_Boolean;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseProductCurrencyList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -3658,12 +3660,12 @@ package body .Clients is
 
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
-      URI.Add_Param ("params", Params);
       URI.Add_Param ("page_cursor", Page_Cursor);
-      URI.Add_Param ("exclude", Exclude);
-      URI.Add_Param ("response_fields", Response_Fields);
       URI.Add_Param ("default", Default);
       URI.Add_Param ("avail", Avail);
+      URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
+      URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/product.currency.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -3800,12 +3802,12 @@ package body .Clients is
        Product_Id : in Swagger.UString;
        Id : in Swagger.UString;
        Variant_Ids : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Lang_Id : in Swagger.Nullable_UString;
        Image_Name : in Swagger.Nullable_UString;
        P_Type : in Swagger.Nullable_UString;
        Label : in Swagger.Nullable_UString;
        Position : in Swagger.Nullable_Integer;
-       Store_Id : in Swagger.Nullable_UString;
-       Lang_Id : in Swagger.Nullable_UString;
        Hidden : in Swagger.Nullable_Boolean;
        Result : out .Models.ProductImageUpdate200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
@@ -3815,14 +3817,14 @@ package body .Clients is
 
 
       URI.Add_Param ("product_id", Product_Id);
+      URI.Add_Param ("id", Id);
       URI.Add_Param ("variant_ids", Variant_Ids);
+      URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("lang_id", Lang_Id);
       URI.Add_Param ("image_name", Image_Name);
       URI.Add_Param ("type", P_Type);
       URI.Add_Param ("label", Label);
       URI.Add_Param ("position", Position);
-      URI.Add_Param ("id", Id);
-      URI.Add_Param ("store_id", Store_Id);
-      URI.Add_Param ("lang_id", Lang_Id);
       URI.Add_Param ("hidden", Hidden);
       URI.Set_Path ("/product.image.update.json");
       Client.Call (Swagger.Clients.PUT, URI, Reply);
@@ -3834,12 +3836,12 @@ package body .Clients is
    procedure Product_Info
       (Client : in out Client_Type;
        Id : in Swagger.UString;
-       Params : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Currency_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Report_Request_Id : in Swagger.Nullable_UString;
        Disable_Report_Cache : in Swagger.Nullable_Boolean;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
@@ -3851,12 +3853,12 @@ package body .Clients is
 
 
       URI.Add_Param ("id", Id);
-      URI.Add_Param ("params", Params);
-      URI.Add_Param ("response_fields", Response_Fields);
-      URI.Add_Param ("exclude", Exclude);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("lang_id", Lang_Id);
       URI.Add_Param ("currency_id", Currency_Id);
+      URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
+      URI.Add_Param ("exclude", Exclude);
       URI.Add_Param ("report_request_id", Report_Request_Id);
       URI.Add_Param ("disable_report_cache", Disable_Report_Cache);
       URI.Add_Param ("use_latest_api_version", Use_Latest_Api_Version);
@@ -3869,39 +3871,39 @@ package body .Clients is
    --  Get list of products from your store. Returns 10 products by default.
    procedure Product_List
       (Client : in out Client_Type;
-       Page_Cursor : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
-       Params : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
+       Page_Cursor : in Swagger.Nullable_UString;
+       Product_Ids : in Swagger.Nullable_UString;
+       Since_Id : in Swagger.Nullable_UString;
+       Categories_Ids : in Swagger.Nullable_UString;
        Category_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Lang_Id : in Swagger.Nullable_UString;
+       Currency_Id : in Swagger.Nullable_UString;
+       Avail_View : in Swagger.Nullable_Boolean;
+       Avail_Sale : in Swagger.Nullable_Boolean;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Avail_View : in Swagger.Nullable_Boolean;
-       Avail_Sale : in Swagger.Nullable_Boolean;
-       Store_Id : in Swagger.Nullable_UString;
-       Lang_Id : in Swagger.Nullable_UString;
-       Currency_Id : in Swagger.Nullable_UString;
-       Product_Ids : in Swagger.Nullable_UString;
-       Since_Id : in Swagger.Nullable_UString;
-       Report_Request_Id : in Swagger.Nullable_UString;
-       Disable_Report_Cache : in Swagger.Nullable_Boolean;
-       Sort_By : in Swagger.Nullable_UString;
-       Sort_Direction : in Swagger.Nullable_UString;
        Sku : in Swagger.Nullable_UString;
-       Disable_Cache : in Swagger.Nullable_Boolean;
        Brand_Name : in Swagger.Nullable_UString;
        Product_Attributes : in Swagger.UString_Vectors.Vector;
        Status : in Swagger.Nullable_UString;
        P_Type : in Swagger.Nullable_UString;
        Find_Value : in Swagger.Nullable_UString;
        Find_Where : in Swagger.Nullable_UString;
-       Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Return_Global : in Swagger.Nullable_Boolean;
-       Categories_Ids : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
+       Sort_By : in Swagger.Nullable_UString;
+       Sort_Direction : in Swagger.Nullable_UString;
+       Report_Request_Id : in Swagger.Nullable_UString;
+       Disable_Cache : in Swagger.Nullable_Boolean;
+       Disable_Report_Cache : in Swagger.Nullable_Boolean;
+       Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Result : out .Models.ModelResponseProductList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -3909,39 +3911,39 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
-      URI.Add_Param ("params", Params);
-      URI.Add_Param ("response_fields", Response_Fields);
-      URI.Add_Param ("exclude", Exclude);
+      URI.Add_Param ("page_cursor", Page_Cursor);
+      URI.Add_Param ("product_ids", Product_Ids);
+      URI.Add_Param ("since_id", Since_Id);
+      URI.Add_Param ("categories_ids", Categories_Ids);
       URI.Add_Param ("category_id", Category_Id);
+      URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("lang_id", Lang_Id);
+      URI.Add_Param ("currency_id", Currency_Id);
+      URI.Add_Param ("avail_view", Avail_View);
+      URI.Add_Param ("avail_sale", Avail_Sale);
       URI.Add_Param ("created_from", Created_From);
       URI.Add_Param ("created_to", Created_To);
       URI.Add_Param ("modified_from", Modified_From);
       URI.Add_Param ("modified_to", Modified_To);
-      URI.Add_Param ("avail_view", Avail_View);
-      URI.Add_Param ("avail_sale", Avail_Sale);
-      URI.Add_Param ("store_id", Store_Id);
-      URI.Add_Param ("lang_id", Lang_Id);
-      URI.Add_Param ("currency_id", Currency_Id);
-      URI.Add_Param ("product_ids", Product_Ids);
-      URI.Add_Param ("since_id", Since_Id);
-      URI.Add_Param ("report_request_id", Report_Request_Id);
-      URI.Add_Param ("disable_report_cache", Disable_Report_Cache);
-      URI.Add_Param ("sort_by", Sort_By);
-      URI.Add_Param ("sort_direction", Sort_Direction);
       URI.Add_Param ("sku", Sku);
-      URI.Add_Param ("disable_cache", Disable_Cache);
       URI.Add_Param ("brand_name", Brand_Name);
       URI.Add_Param ("product_attributes", Product_Attributes);
       URI.Add_Param ("status", Status);
       URI.Add_Param ("type", P_Type);
       URI.Add_Param ("find_value", Find_Value);
       URI.Add_Param ("find_where", Find_Where);
-      URI.Add_Param ("use_latest_api_version", Use_Latest_Api_Version);
       URI.Add_Param ("return_global", Return_Global);
-      URI.Add_Param ("categories_ids", Categories_Ids);
+      URI.Add_Param ("params", Params);
+      URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("exclude", Exclude);
+      URI.Add_Param ("sort_by", Sort_By);
+      URI.Add_Param ("sort_direction", Sort_Direction);
+      URI.Add_Param ("report_request_id", Report_Request_Id);
+      URI.Add_Param ("disable_cache", Disable_Cache);
+      URI.Add_Param ("disable_report_cache", Disable_Report_Cache);
+      URI.Add_Param ("use_latest_api_version", Use_Latest_Api_Version);
       URI.Set_Path ("/product.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -4044,12 +4046,12 @@ package body .Clients is
       (Client : in out Client_Type;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
-       Params : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
        Product_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseProductOptionList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -4059,12 +4061,12 @@ package body .Clients is
 
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
-      URI.Add_Param ("params", Params);
-      URI.Add_Param ("exclude", Exclude);
-      URI.Add_Param ("response_fields", Response_Fields);
       URI.Add_Param ("product_id", Product_Id);
       URI.Add_Param ("lang_id", Lang_Id);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
+      URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/product.option.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -4244,14 +4246,14 @@ package body .Clients is
       (Client : in out Client_Type;
        Product_Id : in Swagger.UString;
        Start : in Swagger.Nullable_Integer;
-       Page_Cursor : in Swagger.Nullable_UString;
        Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
        Ids : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Status : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseProductReviewList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -4260,15 +4262,15 @@ package body .Clients is
 
 
       URI.Add_Param ("start", Start);
-      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("count", Count);
+      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("product_id", Product_Id);
       URI.Add_Param ("ids", Ids);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("status", Status);
+      URI.Add_Param ("response_fields", Response_Fields);
       URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);
-      URI.Add_Param ("response_fields", Response_Fields);
       URI.Set_Path ("/product.review.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -4394,12 +4396,12 @@ package body .Clients is
    procedure Product_Variant_Count
       (Client : in out Client_Type;
        Product_Id : in Swagger.UString;
+       Category_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Category_Id : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
        Result : out .Models.ProductVariantCount200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -4407,13 +4409,13 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
+      URI.Add_Param ("product_id", Product_Id);
+      URI.Add_Param ("category_id", Category_Id);
+      URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("created_from", Created_From);
       URI.Add_Param ("created_to", Created_To);
       URI.Add_Param ("modified_from", Modified_From);
       URI.Add_Param ("modified_to", Modified_To);
-      URI.Add_Param ("category_id", Category_Id);
-      URI.Add_Param ("product_id", Product_Id);
-      URI.Add_Param ("store_id", Store_Id);
       URI.Set_Path ("/product.variant.count.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -4508,9 +4510,9 @@ package body .Clients is
    procedure Product_Variant_Info
       (Client : in out Client_Type;
        Id : in Swagger.UString;
+       Store_Id : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
        Result : out .Models.ProductInfo200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -4518,10 +4520,10 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("params", Params);
-      URI.Add_Param ("exclude", Exclude);
       URI.Add_Param ("id", Id);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("params", Params);
+      URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/product.variant.info.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -4533,15 +4535,15 @@ package body .Clients is
       (Client : in out Client_Type;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
-       Params : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
+       Product_Id : in Swagger.Nullable_UString;
+       Category_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Category_Id : in Swagger.Nullable_UString;
-       Product_Id : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ProductVariantList200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -4551,15 +4553,15 @@ package body .Clients is
 
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
-      URI.Add_Param ("params", Params);
-      URI.Add_Param ("exclude", Exclude);
+      URI.Add_Param ("product_id", Product_Id);
+      URI.Add_Param ("category_id", Category_Id);
+      URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("created_from", Created_From);
       URI.Add_Param ("created_to", Created_To);
       URI.Add_Param ("modified_from", Modified_From);
       URI.Add_Param ("modified_to", Modified_To);
-      URI.Add_Param ("category_id", Category_Id);
-      URI.Add_Param ("product_id", Product_Id);
-      URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("params", Params);
+      URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/product.variant.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -4726,9 +4728,9 @@ package body .Clients is
        Id : in Swagger.UString;
        Order_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
        Result : out .Models.ReturnInfo200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -4739,9 +4741,9 @@ package body .Clients is
       URI.Add_Param ("id", Id);
       URI.Add_Param ("order_id", Order_Id);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("response_fields", Response_Fields);
       URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);
-      URI.Add_Param ("response_fields", Response_Fields);
       URI.Set_Path ("/return.info.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -4754,9 +4756,6 @@ package body .Clients is
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
        Page_Cursor : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
        Order_Id : in Swagger.Nullable_UString;
        Order_Ids : in Swagger.Nullable_UString;
        Customer_Id : in Swagger.Nullable_UString;
@@ -4767,6 +4766,9 @@ package body .Clients is
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Report_Request_Id : in Swagger.Nullable_UString;
        Disable_Report_Cache : in Swagger.Nullable_Boolean;
        Result : out .Models.ModelResponseReturnList_Type) is
@@ -4779,9 +4781,6 @@ package body .Clients is
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
       URI.Add_Param ("page_cursor", Page_Cursor);
-      URI.Add_Param ("params", Params);
-      URI.Add_Param ("exclude", Exclude);
-      URI.Add_Param ("response_fields", Response_Fields);
       URI.Add_Param ("order_id", Order_Id);
       URI.Add_Param ("order_ids", Order_Ids);
       URI.Add_Param ("customer_id", Customer_Id);
@@ -4792,6 +4791,9 @@ package body .Clients is
       URI.Add_Param ("created_to", Created_To);
       URI.Add_Param ("modified_from", Modified_From);
       URI.Add_Param ("modified_to", Modified_To);
+      URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
+      URI.Add_Param ("exclude", Exclude);
       URI.Add_Param ("report_request_id", Report_Request_Id);
       URI.Add_Param ("disable_report_cache", Disable_Report_Cache);
       URI.Set_Path ("/return.list.json");
@@ -4839,17 +4841,17 @@ package body .Clients is
       (Client : in out Client_Type;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
        Subscribed : in Swagger.Nullable_Boolean;
        Store_Id : in Swagger.Nullable_UString;
        Email : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Page_Cursor : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseSubscriberList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -4859,17 +4861,17 @@ package body .Clients is
 
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
+      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("subscribed", Subscribed);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("email", Email);
-      URI.Add_Param ("params", Params);
-      URI.Add_Param ("exclude", Exclude);
       URI.Add_Param ("created_from", Created_From);
       URI.Add_Param ("created_to", Created_To);
       URI.Add_Param ("modified_from", Modified_From);
       URI.Add_Param ("modified_to", Modified_To);
-      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
+      URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/subscriber.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -4882,8 +4884,8 @@ package body .Clients is
        Tax_Class_Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseTaxClassInfo_Type) is
       URI   : Swagger.Clients.URI_Type;
@@ -4895,8 +4897,8 @@ package body .Clients is
       URI.Add_Param ("tax_class_id", Tax_Class_Id);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("lang_id", Lang_Id);
-      URI.Add_Param ("params", Params);
       URI.Add_Param ("response_fields", Response_Fields);
+      URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/tax.class.info.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
@@ -4907,15 +4909,15 @@ package body .Clients is
    --  Get list of tax classes from your store.
    procedure Tax_Class_List
       (Client : in out Client_Type;
+       Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Find_Value : in Swagger.Nullable_UString;
+       Find_Where : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
-       Find_Value : in Swagger.Nullable_UString;
-       Find_Where : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
-       Count : in Swagger.Nullable_Integer;
-       Page_Cursor : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseTaxClassList_Type) is
       URI   : Swagger.Clients.URI_Type;
@@ -4924,15 +4926,15 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
+      URI.Add_Param ("count", Count);
+      URI.Add_Param ("page_cursor", Page_Cursor);
+      URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("find_value", Find_Value);
+      URI.Add_Param ("find_where", Find_Where);
       URI.Add_Param ("created_to", Created_To);
       URI.Add_Param ("created_from", Created_From);
       URI.Add_Param ("modified_to", Modified_To);
       URI.Add_Param ("modified_from", Modified_From);
-      URI.Add_Param ("find_value", Find_Value);
-      URI.Add_Param ("find_where", Find_Where);
-      URI.Add_Param ("store_id", Store_Id);
-      URI.Add_Param ("count", Count);
-      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("response_fields", Response_Fields);
       URI.Set_Path ("/tax.class.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
@@ -5029,13 +5031,13 @@ package body .Clients is
    --  List registered webhook on the store.
    procedure Webhook_List
       (Client : in out Client_Type;
-       Params : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
        Entity : in Swagger.Nullable_UString;
        Action : in Swagger.Nullable_UString;
        Active : in Swagger.Nullable_Boolean;
        Ids : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
        Result : out .Models.WebhookList200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -5043,13 +5045,13 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("params", Params);
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
       URI.Add_Param ("entity", Entity);
       URI.Add_Param ("action", Action);
       URI.Add_Param ("active", Active);
       URI.Add_Param ("ids", Ids);
+      URI.Add_Param ("params", Params);
       URI.Set_Path ("/webhook.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);

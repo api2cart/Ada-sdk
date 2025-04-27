@@ -26,12 +26,12 @@ package .Clients is
    --  This method lets you get a list of online stores connected to your API2Cart account. You can get the number of API requests to each store if you specify a period using parameters (request_from_date, request_to_date). The total_calls field is displayed only if there are parameters (request_from_date, request_to_date).
    procedure Account_Cart_List
       (Client : in out Client_Type;
-       Params : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
-       Request_From_Date : in Swagger.Nullable_UString;
-       Request_To_Date : in Swagger.Nullable_UString;
        Store_Url : in Swagger.Nullable_UString;
        Store_Key : in Swagger.Nullable_UString;
+       Request_From_Date : in Swagger.Nullable_UString;
+       Request_To_Date : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.AccountCartList200Response_Type);
 
    --  account.config.update
@@ -97,6 +97,7 @@ package .Clients is
        Shopline_Access_Token : in Swagger.Nullable_UString;
        Shopline_App_Key : in Swagger.Nullable_UString;
        Shopline_App_Secret : in Swagger.Nullable_UString;
+       Shopline_Shared_Secret : in Swagger.Nullable_UString;
        Shopify_Access_Token : in Swagger.Nullable_UString;
        Shopify_Api_Key : in Swagger.Nullable_UString;
        Shopify_Api_Password : in Swagger.Nullable_UString;
@@ -185,8 +186,8 @@ package .Clients is
    --  If the callback of your service for some reason could not accept webhooks from API2Cart, then with the help of this method you can get a list of missed webhooks to perform synchronization again using entity_id. Please note that we keep such records for 24 hours.
    procedure Account_Failed_Webhooks
       (Client : in out Client_Type;
-       Count : in Swagger.Nullable_Integer;
        Start : in Swagger.Nullable_Integer;
+       Count : in Swagger.Nullable_Integer;
        Ids : in Swagger.Nullable_UString;
        Result : out .Models.AccountFailedWebhooks200Response_Type);
 
@@ -247,9 +248,9 @@ package .Clients is
       (Client : in out Client_Type;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseAttributeAttributesetList_Type);
 
    --  attribute.count
@@ -279,11 +280,11 @@ package .Clients is
       (Client : in out Client_Type;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Attribute_Set_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Attribute_Set_Id : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseAttributeGroupList_Type);
 
    --  attribute.info
@@ -294,9 +295,9 @@ package .Clients is
        Attribute_Set_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
        Result : out .Models.AttributeInfo200Response_Type);
 
    --  attribute.list
@@ -305,17 +306,17 @@ package .Clients is
       (Client : in out Client_Type;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
-       P_Type : in Swagger.Nullable_UString;
        Attribute_Ids : in Swagger.Nullable_UString;
        Attribute_Set_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
+       P_Type : in Swagger.Nullable_UString;
        Visible : in Swagger.Nullable_Boolean;
        Required : in Swagger.Nullable_Boolean;
        System : in Swagger.Nullable_Boolean;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseAttributeList_Type);
 
    --  attribute.type.list
@@ -390,9 +391,9 @@ package .Clients is
       (Client : in out Client_Type;
        Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
        Result : out .Models.BasketInfo200Response_Type);
 
    --  basket.item.add
@@ -426,9 +427,9 @@ package .Clients is
    --  Retrieve a list of live shipping rate services.
    procedure Basket_Live_Shipping_Service_List
       (Client : in out Client_Type;
-       Store_Id : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Store_Id : in Swagger.Nullable_UString;
        Result : out .Models.BasketLiveShippingServiceList200Response_Type);
 
    --  batch.job.list
@@ -437,11 +438,11 @@ package .Clients is
       (Client : in out Client_Type;
        Count : in Swagger.Nullable_Integer;
        Page_Cursor : in Swagger.Nullable_UString;
+       Ids : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Processed_From : in Swagger.Nullable_UString;
        Processed_To : in Swagger.Nullable_UString;
-       Ids : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseBatchJobList_Type);
 
@@ -487,12 +488,12 @@ package .Clients is
    --  Get cart catalog price rules discounts.
    procedure Cart_Catalog_Price_Rules_List
       (Client : in out Client_Type;
-       Page_Cursor : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
        Ids : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseCartCatalogPriceRulesList_Type);
 
@@ -534,10 +535,10 @@ package .Clients is
        Key : in Swagger.UString;
        Operator : in Swagger.UString;
        Value : in Swagger.UString;
-       Store_Id : in Swagger.Nullable_UString;
        Target : in Swagger.Nullable_UString;
        Include_Tax : in Swagger.Nullable_Boolean;
        Include_Shipping : in Swagger.Nullable_Boolean;
+       Store_Id : in Swagger.Nullable_UString;
        Result : out .Models.BasketLiveShippingServiceDelete200Response_Type);
 
    --  cart.coupon.count
@@ -545,11 +546,11 @@ package .Clients is
    procedure Cart_Coupon_Count
       (Client : in out Client_Type;
        Store_Id : in Swagger.Nullable_UString;
+       Avail : in Swagger.Nullable_Boolean;
        Date_Start_From : in Swagger.Nullable_UString;
        Date_Start_To : in Swagger.Nullable_UString;
        Date_End_From : in Swagger.Nullable_UString;
        Date_End_To : in Swagger.Nullable_UString;
-       Avail : in Swagger.Nullable_Boolean;
        Result : out .Models.CartCouponCount200Response_Type);
 
    --  cart.coupon.delete
@@ -564,19 +565,19 @@ package .Clients is
    --  Get cart coupon discounts.
    procedure Cart_Coupon_List
       (Client : in out Client_Type;
-       Page_Cursor : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
        Coupons_Ids : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Lang_Id : in Swagger.Nullable_UString;
+       Avail : in Swagger.Nullable_Boolean;
        Date_Start_From : in Swagger.Nullable_UString;
        Date_Start_To : in Swagger.Nullable_UString;
        Date_End_From : in Swagger.Nullable_UString;
        Date_End_To : in Swagger.Nullable_UString;
-       Avail : in Swagger.Nullable_Boolean;
-       Lang_Id : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseCartCouponList_Type);
 
@@ -631,12 +632,12 @@ package .Clients is
    --  Get gift cards list.
    procedure Cart_Giftcard_List
       (Client : in out Client_Type;
-       Page_Cursor : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseCartGiftCardList_Type);
 
@@ -644,10 +645,10 @@ package .Clients is
    --  This method allows you to get various information about the store, including a list of stores (in the case of a multistore configuration), a list of supported languages, currencies, carriers, warehouses, and many other information. This information contains data that is relatively stable and rarely changes, so API2Cart can cache certain data to reduce the load on the store and speed up the execution of the request. We also recommend that you cache the response of this method on your side to save requests. If you need to clear the cache for a specific store, then use the cart.validate method.
    procedure Cart_Info
       (Client : in out Client_Type;
-       Params : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.CartInfo200Response_Type);
 
    --  cart.list
@@ -661,14 +662,14 @@ package .Clients is
    procedure Cart_Meta_Data_List
       (Client : in out Client_Type;
        Entity_Id : in Swagger.UString;
+       Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
        Entity : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Key : in Swagger.Nullable_UString;
-       Count : in Swagger.Nullable_Integer;
-       Page_Cursor : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseCartMetaDataList_Type);
 
@@ -706,9 +707,9 @@ package .Clients is
    --  Get a list of third-party plugins installed on the store.
    procedure Cart_Plugin_List
       (Client : in out Client_Type;
-       Store_Id : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Store_Id : in Swagger.Nullable_UString;
        Result : out .Models.CartPluginList200Response_Type);
 
    --  cart.script.add
@@ -737,17 +738,17 @@ package .Clients is
    --  Get scripts installed to the storefront
    procedure Cart_Script_List
       (Client : in out Client_Type;
-       Page_Cursor : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
+       Script_Ids : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Script_Ids : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseCartScriptList_Type);
 
@@ -755,11 +756,11 @@ package .Clients is
    --  Get list of shipping zones
    procedure Cart_Shipping_Zones_List
       (Client : in out Client_Type;
-       Store_Id : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
-       Params : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseCartShippingZonesList_Type);
 
@@ -775,20 +776,20 @@ package .Clients is
    procedure Category_Add
       (Client : in out Client_Type;
        Name : in Swagger.UString;
-       Parent_Id : in Swagger.Nullable_UString;
-       Stores_Ids : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
-       Lang_Id : in Swagger.Nullable_UString;
-       Avail : in Swagger.Nullable_Boolean;
-       Sort_Order : in Swagger.Nullable_Integer;
-       Created_Time : in Swagger.Nullable_UString;
-       Modified_Time : in Swagger.Nullable_UString;
        Description : in Swagger.Nullable_UString;
        Short_Description : in Swagger.Nullable_UString;
+       Parent_Id : in Swagger.Nullable_UString;
+       Avail : in Swagger.Nullable_Boolean;
+       Created_Time : in Swagger.Nullable_UString;
+       Modified_Time : in Swagger.Nullable_UString;
+       Sort_Order : in Swagger.Nullable_Integer;
        Meta_Title : in Swagger.Nullable_UString;
        Meta_Description : in Swagger.Nullable_UString;
        Meta_Keywords : in Swagger.Nullable_UString;
        Seo_Url : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Stores_Ids : in Swagger.Nullable_UString;
+       Lang_Id : in Swagger.Nullable_UString;
        Result : out .Models.CategoryAdd200Response_Type);
 
    --  category.add.batch
@@ -802,8 +803,8 @@ package .Clients is
    --  Assign category to product
    procedure Category_Assign
       (Client : in out Client_Type;
-       Product_Id : in Swagger.UString;
        Category_Id : in Swagger.UString;
+       Product_Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
        Result : out .Models.CartConfigUpdate200Response_Type);
 
@@ -814,11 +815,11 @@ package .Clients is
        Parent_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Avail : in Swagger.Nullable_Boolean;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Avail : in Swagger.Nullable_Boolean;
        Product_Type : in Swagger.Nullable_UString;
        Find_Value : in Swagger.Nullable_UString;
        Find_Where : in Swagger.Nullable_UString;
@@ -853,10 +854,10 @@ package .Clients is
        Image_Name : in Swagger.UString;
        Url : in Swagger.UString;
        P_Type : in Swagger.UString;
+       Store_Id : in Swagger.Nullable_UString;
        Label : in Swagger.Nullable_UString;
        Mime : in Swagger.Nullable_UString;
        Position : in Swagger.Nullable_Integer;
-       Store_Id : in Swagger.Nullable_UString;
        Result : out .Models.CategoryImageAdd200Response_Type);
 
    --  category.image.delete
@@ -873,12 +874,12 @@ package .Clients is
    procedure Category_Info
       (Client : in out Client_Type;
        Id : in Swagger.UString;
-       Params : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Schema_Type : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Report_Request_Id : in Swagger.Nullable_UString;
        Disable_Report_Cache : in Swagger.Nullable_Boolean;
        Result : out .Models.CategoryInfo200Response_Type);
@@ -890,20 +891,20 @@ package .Clients is
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
        Page_Cursor : in Swagger.Nullable_UString;
-       Parent_Id : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Parent_Id : in Swagger.Nullable_UString;
+       Avail : in Swagger.Nullable_Boolean;
+       Product_Type : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Avail : in Swagger.Nullable_Boolean;
-       Product_Type : in Swagger.Nullable_UString;
        Find_Value : in Swagger.Nullable_UString;
        Find_Where : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Report_Request_Id : in Swagger.Nullable_UString;
        Disable_Report_Cache : in Swagger.Nullable_Boolean;
        Disable_Cache : in Swagger.Nullable_Boolean;
@@ -924,19 +925,19 @@ package .Clients is
       (Client : in out Client_Type;
        Id : in Swagger.UString;
        Name : in Swagger.Nullable_UString;
+       Description : in Swagger.Nullable_UString;
+       Short_Description : in Swagger.Nullable_UString;
        Parent_Id : in Swagger.Nullable_UString;
-       Stores_Ids : in Swagger.Nullable_UString;
        Avail : in Swagger.Nullable_Boolean;
        Sort_Order : in Swagger.Nullable_Integer;
        Modified_Time : in Swagger.Nullable_UString;
-       Description : in Swagger.Nullable_UString;
-       Short_Description : in Swagger.Nullable_UString;
        Meta_Title : in Swagger.Nullable_UString;
        Meta_Description : in Swagger.Nullable_UString;
        Meta_Keywords : in Swagger.Nullable_UString;
        Seo_Url : in Swagger.Nullable_UString;
-       Lang_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Stores_Ids : in Swagger.Nullable_UString;
+       Lang_Id : in Swagger.Nullable_UString;
        Result : out .Models.AccountConfigUpdate200Response_Type);
 
    --  customer.add
@@ -962,27 +963,27 @@ package .Clients is
        Page_Cursor : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseCustomerAttributeList_Type);
 
    --  customer.count
    --  Get number of customers from store.
    procedure Customer_Count
       (Client : in out Client_Type;
+       Ids : in Swagger.Nullable_UString;
+       Since_Id : in Swagger.Nullable_UString;
+       Customer_List_Id : in Swagger.Nullable_UString;
        Group_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Avail : in Swagger.Nullable_Boolean;
+       Find_Value : in Swagger.Nullable_UString;
+       Find_Where : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
-       Customer_List_Id : in Swagger.Nullable_UString;
-       Avail : in Swagger.Nullable_Boolean;
-       Find_Value : in Swagger.Nullable_UString;
-       Find_Where : in Swagger.Nullable_UString;
-       Ids : in Swagger.Nullable_UString;
-       Since_Id : in Swagger.Nullable_UString;
        Result : out .Models.CustomerCount200Response_Type);
 
    --  customer.delete
@@ -1015,16 +1016,16 @@ package .Clients is
    --  Get list of customers groups.
    procedure Customer_Group_List
       (Client : in out Client_Type;
-       Disable_Cache : in Swagger.Nullable_Boolean;
-       Page_Cursor : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
+       Group_Ids : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
-       Group_Ids : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
+       Disable_Cache : in Swagger.Nullable_Boolean;
        Result : out .Models.ModelResponseCustomerGroupList_Type);
 
    --  customer.info
@@ -1032,36 +1033,36 @@ package .Clients is
    procedure Customer_Info
       (Client : in out Client_Type;
        Id : in Swagger.UString;
-       Params : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.CustomerInfo200Response_Type);
 
    --  customer.list
    --  Get list of customers from store.
    procedure Customer_List
       (Client : in out Client_Type;
-       Page_Cursor : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
+       Ids : in Swagger.Nullable_UString;
+       Since_Id : in Swagger.Nullable_UString;
+       Customer_List_Id : in Swagger.Nullable_UString;
+       Group_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Avail : in Swagger.Nullable_Boolean;
+       Find_Value : in Swagger.Nullable_UString;
+       Find_Where : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
-       Group_Id : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
-       Customer_List_Id : in Swagger.Nullable_UString;
-       Avail : in Swagger.Nullable_Boolean;
-       Find_Value : in Swagger.Nullable_UString;
-       Find_Where : in Swagger.Nullable_UString;
        Sort_By : in Swagger.Nullable_UString;
        Sort_Direction : in Swagger.Nullable_UString;
-       Ids : in Swagger.Nullable_UString;
-       Since_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseCustomerList_Type);
 
    --  customer.update
@@ -1076,11 +1077,11 @@ package .Clients is
    procedure Customer_Wishlist_List
       (Client : in out Client_Type;
        Customer_Id : in Swagger.UString;
-       Id : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
        Page_Cursor : in Swagger.Nullable_UString;
+       Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseCustomerWishlistList_Type);
 
@@ -1088,39 +1089,39 @@ package .Clients is
    --  Search product in global catalog.
    procedure Marketplace_Product_Find
       (Client : in out Client_Type;
-       Store_Id : in Swagger.Nullable_UString;
        Count : in Swagger.Nullable_Integer;
        Page_Cursor : in Swagger.Nullable_UString;
-       Categories_Ids : in Swagger.Nullable_UString;
        Keyword : in Swagger.Nullable_UString;
+       Categories_Ids : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
        Asin : in Swagger.Nullable_UString;
        Ean : in Swagger.Nullable_UString;
        Gtin : in Swagger.Nullable_UString;
        Upc : in Swagger.Nullable_UString;
        Mpn : in Swagger.Nullable_UString;
        Isbn : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseMarketplaceProductFind_Type);
 
    --  order.abandoned.list
    --  Get list of orders that were left by customers before completing the order.
    procedure Order_Abandoned_List
       (Client : in out Client_Type;
+       Start : in Swagger.Nullable_Integer;
+       Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
        Customer_Id : in Swagger.Nullable_UString;
        Customer_Email : in Swagger.Nullable_UString;
-       Created_To : in Swagger.Nullable_UString;
-       Created_From : in Swagger.Nullable_UString;
-       Modified_To : in Swagger.Nullable_UString;
-       Modified_From : in Swagger.Nullable_UString;
-       Skip_Empty_Email : in Swagger.Nullable_Boolean;
        Store_Id : in Swagger.Nullable_UString;
-       Page_Cursor : in Swagger.Nullable_UString;
-       Count : in Swagger.Nullable_Integer;
-       Start : in Swagger.Nullable_Integer;
-       Params : in Swagger.Nullable_UString;
+       Created_From : in Swagger.Nullable_UString;
+       Created_To : in Swagger.Nullable_UString;
+       Modified_From : in Swagger.Nullable_UString;
+       Modified_To : in Swagger.Nullable_UString;
+       Skip_Empty_Email : in Swagger.Nullable_Boolean;
        Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseOrderAbandonedList_Type);
 
@@ -1135,17 +1136,13 @@ package .Clients is
    --  Count orders in store
    procedure Order_Count
       (Client : in out Client_Type;
+       Order_Ids : in Swagger.Nullable_UString;
+       Ids : in Swagger.Nullable_UString;
        Customer_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
        Customer_Email : in Swagger.Nullable_UString;
        Order_Status : in Swagger.Nullable_UString;
        Order_Status_Ids : in Swagger.UString_Vectors.Vector;
-       Created_To : in Swagger.Nullable_UString;
-       Created_From : in Swagger.Nullable_UString;
-       Modified_To : in Swagger.Nullable_UString;
-       Modified_From : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
-       Ids : in Swagger.Nullable_UString;
-       Order_Ids : in Swagger.Nullable_UString;
        Ebay_Order_Status : in Swagger.Nullable_UString;
        Financial_Status : in Swagger.Nullable_UString;
        Financial_Status_Ids : in Swagger.UString_Vectors.Vector;
@@ -1155,6 +1152,10 @@ package .Clients is
        Delivery_Method : in Swagger.Nullable_UString;
        Tags : in Swagger.Nullable_UString;
        Ship_Node_Type : in Swagger.Nullable_UString;
+       Created_From : in Swagger.Nullable_UString;
+       Created_To : in Swagger.Nullable_UString;
+       Modified_From : in Swagger.Nullable_UString;
+       Modified_To : in Swagger.Nullable_UString;
        Result : out .Models.OrderCount200Response_Type);
 
    --  order.financial_status.list
@@ -1167,18 +1168,18 @@ package .Clients is
    --  This method is deprecated and won't be supported in the future. Please use "order.list" instead.
    procedure Order_Find
       (Client : in out Client_Type;
+       Start : in Swagger.Nullable_Integer;
+       Count : in Swagger.Nullable_Integer;
        Customer_Id : in Swagger.Nullable_UString;
        Customer_Email : in Swagger.Nullable_UString;
        Order_Status : in Swagger.Nullable_UString;
-       Start : in Swagger.Nullable_Integer;
-       Count : in Swagger.Nullable_Integer;
-       Params : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
+       Financial_Status : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
-       Financial_Status : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.OrderFind200Response_Type);
 
    --  order.fulfillment_status.list
@@ -1192,12 +1193,12 @@ package .Clients is
    --  Info about a specific order by ID
    procedure Order_Info
       (Client : in out Client_Type;
-       Order_Id : in Swagger.Nullable_UString;
        Id : in Swagger.Nullable_UString;
+       Order_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
        Enable_Cache : in Swagger.Nullable_Boolean;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Result : out .Models.OrderInfo200Response_Type);
@@ -1206,43 +1207,43 @@ package .Clients is
    --  Get list of orders from store.
    procedure Order_List
       (Client : in out Client_Type;
-       Customer_Id : in Swagger.Nullable_UString;
-       Customer_Email : in Swagger.Nullable_UString;
-       Phone : in Swagger.Nullable_UString;
-       Order_Status : in Swagger.Nullable_UString;
-       Order_Status_Ids : in Swagger.UString_Vectors.Vector;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
        Page_Cursor : in Swagger.Nullable_UString;
+       Ids : in Swagger.Nullable_UString;
+       Order_Ids : in Swagger.Nullable_UString;
+       Since_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Customer_Id : in Swagger.Nullable_UString;
+       Customer_Email : in Swagger.Nullable_UString;
+       Basket_Id : in Swagger.Nullable_UString;
+       Currency_Id : in Swagger.Nullable_UString;
+       Phone : in Swagger.Nullable_UString;
+       Order_Status : in Swagger.Nullable_UString;
+       Order_Status_Ids : in Swagger.UString_Vectors.Vector;
+       Ebay_Order_Status : in Swagger.Nullable_UString;
+       Financial_Status : in Swagger.Nullable_UString;
+       Financial_Status_Ids : in Swagger.UString_Vectors.Vector;
+       Fulfillment_Status : in Swagger.Nullable_UString;
+       Return_Status : in Swagger.Nullable_UString;
+       Fulfillment_Channel : in Swagger.Nullable_UString;
+       Shipping_Method : in Swagger.Nullable_UString;
+       Skip_Order_Ids : in Swagger.Nullable_UString;
+       Is_Deleted : in Swagger.Nullable_Boolean;
+       Shipping_Country_Iso_3 : in Swagger.Nullable_UString;
+       Delivery_Method : in Swagger.Nullable_UString;
+       Ship_Node_Type : in Swagger.Nullable_UString;
+       Created_To : in Swagger.Nullable_UString;
+       Created_From : in Swagger.Nullable_UString;
+       Modified_To : in Swagger.Nullable_UString;
+       Modified_From : in Swagger.Nullable_UString;
+       Tags : in Swagger.Nullable_UString;
        Sort_By : in Swagger.Nullable_UString;
        Sort_Direction : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Created_To : in Swagger.Nullable_UString;
-       Created_From : in Swagger.Nullable_UString;
-       Modified_To : in Swagger.Nullable_UString;
-       Modified_From : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
-       Ids : in Swagger.Nullable_UString;
-       Order_Ids : in Swagger.Nullable_UString;
-       Ebay_Order_Status : in Swagger.Nullable_UString;
-       Basket_Id : in Swagger.Nullable_UString;
-       Financial_Status : in Swagger.Nullable_UString;
-       Financial_Status_Ids : in Swagger.UString_Vectors.Vector;
-       Fulfillment_Status : in Swagger.Nullable_UString;
-       Fulfillment_Channel : in Swagger.Nullable_UString;
-       Shipping_Method : in Swagger.Nullable_UString;
-       Skip_Order_Ids : in Swagger.Nullable_UString;
-       Since_Id : in Swagger.Nullable_UString;
-       Is_Deleted : in Swagger.Nullable_Boolean;
-       Shipping_Country_Iso_3 : in Swagger.Nullable_UString;
        Enable_Cache : in Swagger.Nullable_Boolean;
-       Delivery_Method : in Swagger.Nullable_UString;
-       Tags : in Swagger.Nullable_UString;
-       Ship_Node_Type : in Swagger.Nullable_UString;
-       Currency_Id : in Swagger.Nullable_UString;
-       Return_Status : in Swagger.Nullable_UString;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Result : out .Models.ModelResponseOrderList_Type);
 
@@ -1313,10 +1314,10 @@ package .Clients is
        Id : in Swagger.UString;
        Order_Id : in Swagger.UString;
        Start : in Swagger.Nullable_Integer;
-       Params : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.OrderShipmentInfo200Response_Type);
 
    --  order.shipment.list
@@ -1324,17 +1325,17 @@ package .Clients is
    procedure Order_Shipment_List
       (Client : in out Client_Type;
        Order_Id : in Swagger.UString;
-       Page_Cursor : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
-       Params : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
+       Page_Cursor : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseOrderShipmentList_Type);
 
    --  order.shipment.tracking.add
@@ -1366,11 +1367,11 @@ package .Clients is
       (Client : in out Client_Type;
        Order_Ids : in Swagger.UString;
        Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Page_Cursor : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseOrderTransactionList_Type);
 
    --  order.update
@@ -1380,19 +1381,19 @@ package .Clients is
        Order_Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
        Order_Status : in Swagger.Nullable_UString;
+       Financial_Status : in Swagger.Nullable_UString;
+       Fulfillment_Status : in Swagger.Nullable_UString;
        Cancellation_Reason : in Swagger.Nullable_UString;
+       Order_Payment_Method : in Swagger.Nullable_UString;
        Comment : in Swagger.Nullable_UString;
        Admin_Comment : in Swagger.Nullable_UString;
        Admin_Private_Comment : in Swagger.Nullable_UString;
+       Invoice_Admin_Comment : in Swagger.Nullable_UString;
        Date_Modified : in Swagger.Nullable_UString;
        Date_Finished : in Swagger.Nullable_UString;
-       Financial_Status : in Swagger.Nullable_UString;
-       Fulfillment_Status : in Swagger.Nullable_UString;
-       Order_Payment_Method : in Swagger.Nullable_UString;
        Send_Notifications : in Swagger.Nullable_Boolean;
-       Origin : in Swagger.Nullable_UString;
        Create_Invoice : in Swagger.Nullable_Boolean;
-       Invoice_Admin_Comment : in Swagger.Nullable_UString;
+       Origin : in Swagger.Nullable_UString;
        Result : out .Models.AccountConfigUpdate200Response_Type);
 
    --  product.add
@@ -1414,19 +1415,19 @@ package .Clients is
    procedure Product_Attribute_List
       (Client : in out Client_Type;
        Product_Id : in Swagger.UString;
-       Attribute_Id : in Swagger.Nullable_UString;
-       Variant_Id : in Swagger.Nullable_UString;
-       Page_Cursor : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
+       Attribute_Id : in Swagger.Nullable_UString;
+       Variant_Id : in Swagger.Nullable_UString;
        Attribute_Group_Id : in Swagger.Nullable_UString;
-       Set_Name : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Set_Name : in Swagger.Nullable_UString;
        Sort_By : in Swagger.Nullable_UString;
        Sort_Direction : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseProductAttributeList_Type);
 
@@ -1463,20 +1464,20 @@ package .Clients is
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
        Page_Cursor : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
        Brand_Ids : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
        Category_Id : in Swagger.Nullable_UString;
+       Parent_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Find_Where : in Swagger.Nullable_UString;
+       Find_Value : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Parent_Id : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
-       Find_Where : in Swagger.Nullable_UString;
-       Find_Value : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseProductBrandList_Type);
 
    --  product.child_item.find
@@ -1495,12 +1496,12 @@ package .Clients is
       (Client : in out Client_Type;
        Product_Id : in Swagger.UString;
        Id : in Swagger.UString;
-       Params : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Currency_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Result : out .Models.ProductChildItemInfo200Response_Type);
 
@@ -1508,16 +1509,9 @@ package .Clients is
    --  Get a list of a product's child items, such as variants or bundle components. The total_count field in the response indicates the total number of items in the context of the current filter.
    procedure Product_Child_Item_List
       (Client : in out Client_Type;
-       Page_Cursor : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
-       Params : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
-       Created_From : in Swagger.Nullable_UString;
-       Created_To : in Swagger.Nullable_UString;
-       Modified_From : in Swagger.Nullable_UString;
-       Modified_To : in Swagger.Nullable_UString;
+       Page_Cursor : in Swagger.Nullable_UString;
        Product_Id : in Swagger.Nullable_UString;
        Product_Ids : in Swagger.Nullable_UString;
        Sku : in Swagger.Nullable_UString;
@@ -1527,38 +1521,45 @@ package .Clients is
        Avail_Sale : in Swagger.Nullable_Boolean;
        Find_Value : in Swagger.Nullable_UString;
        Find_Where : in Swagger.Nullable_UString;
+       Created_From : in Swagger.Nullable_UString;
+       Created_To : in Swagger.Nullable_UString;
+       Modified_From : in Swagger.Nullable_UString;
+       Modified_To : in Swagger.Nullable_UString;
+       Return_Global : in Swagger.Nullable_Boolean;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Report_Request_Id : in Swagger.Nullable_UString;
        Disable_Report_Cache : in Swagger.Nullable_Boolean;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
-       Return_Global : in Swagger.Nullable_Boolean;
        Result : out .Models.ModelResponseProductChildItemList_Type);
 
    --  product.count
    --  Count products in store.
    procedure Product_Count
       (Client : in out Client_Type;
+       Product_Ids : in Swagger.Nullable_UString;
+       Since_Id : in Swagger.Nullable_UString;
+       Categories_Ids : in Swagger.Nullable_UString;
        Category_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Lang_Id : in Swagger.Nullable_UString;
+       Avail_View : in Swagger.Nullable_Boolean;
+       Avail_Sale : in Swagger.Nullable_Boolean;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Avail_View : in Swagger.Nullable_Boolean;
-       Avail_Sale : in Swagger.Nullable_Boolean;
-       Store_Id : in Swagger.Nullable_UString;
-       Lang_Id : in Swagger.Nullable_UString;
-       Product_Ids : in Swagger.Nullable_UString;
-       Since_Id : in Swagger.Nullable_UString;
-       Report_Request_Id : in Swagger.Nullable_UString;
-       Disable_Report_Cache : in Swagger.Nullable_Boolean;
        Brand_Name : in Swagger.Nullable_UString;
        Product_Attributes : in Swagger.UString_Vectors.Vector;
        Status : in Swagger.Nullable_UString;
        P_Type : in Swagger.Nullable_UString;
        Find_Value : in Swagger.Nullable_UString;
        Find_Where : in Swagger.Nullable_UString;
-       Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
+       Report_Request_Id : in Swagger.Nullable_UString;
        Return_Global : in Swagger.Nullable_Boolean;
-       Categories_Ids : in Swagger.Nullable_UString;
+       Disable_Report_Cache : in Swagger.Nullable_Boolean;
+       Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Result : out .Models.ProductCount200Response_Type);
 
    --  product.currency.add
@@ -1580,12 +1581,12 @@ package .Clients is
       (Client : in out Client_Type;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
-       Params : in Swagger.Nullable_UString;
        Page_Cursor : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
        Default : in Swagger.Nullable_Boolean;
        Avail : in Swagger.Nullable_Boolean;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseProductCurrencyList_Type);
 
    --  product.delete
@@ -1644,12 +1645,12 @@ package .Clients is
        Product_Id : in Swagger.UString;
        Id : in Swagger.UString;
        Variant_Ids : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Lang_Id : in Swagger.Nullable_UString;
        Image_Name : in Swagger.Nullable_UString;
        P_Type : in Swagger.Nullable_UString;
        Label : in Swagger.Nullable_UString;
        Position : in Swagger.Nullable_Integer;
-       Store_Id : in Swagger.Nullable_UString;
-       Lang_Id : in Swagger.Nullable_UString;
        Hidden : in Swagger.Nullable_Boolean;
        Result : out .Models.ProductImageUpdate200Response_Type);
 
@@ -1658,12 +1659,12 @@ package .Clients is
    procedure Product_Info
       (Client : in out Client_Type;
        Id : in Swagger.UString;
-       Params : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Currency_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Report_Request_Id : in Swagger.Nullable_UString;
        Disable_Report_Cache : in Swagger.Nullable_Boolean;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
@@ -1673,39 +1674,39 @@ package .Clients is
    --  Get list of products from your store. Returns 10 products by default.
    procedure Product_List
       (Client : in out Client_Type;
-       Page_Cursor : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
-       Params : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
+       Page_Cursor : in Swagger.Nullable_UString;
+       Product_Ids : in Swagger.Nullable_UString;
+       Since_Id : in Swagger.Nullable_UString;
+       Categories_Ids : in Swagger.Nullable_UString;
        Category_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Lang_Id : in Swagger.Nullable_UString;
+       Currency_Id : in Swagger.Nullable_UString;
+       Avail_View : in Swagger.Nullable_Boolean;
+       Avail_Sale : in Swagger.Nullable_Boolean;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Avail_View : in Swagger.Nullable_Boolean;
-       Avail_Sale : in Swagger.Nullable_Boolean;
-       Store_Id : in Swagger.Nullable_UString;
-       Lang_Id : in Swagger.Nullable_UString;
-       Currency_Id : in Swagger.Nullable_UString;
-       Product_Ids : in Swagger.Nullable_UString;
-       Since_Id : in Swagger.Nullable_UString;
-       Report_Request_Id : in Swagger.Nullable_UString;
-       Disable_Report_Cache : in Swagger.Nullable_Boolean;
-       Sort_By : in Swagger.Nullable_UString;
-       Sort_Direction : in Swagger.Nullable_UString;
        Sku : in Swagger.Nullable_UString;
-       Disable_Cache : in Swagger.Nullable_Boolean;
        Brand_Name : in Swagger.Nullable_UString;
        Product_Attributes : in Swagger.UString_Vectors.Vector;
        Status : in Swagger.Nullable_UString;
        P_Type : in Swagger.Nullable_UString;
        Find_Value : in Swagger.Nullable_UString;
        Find_Where : in Swagger.Nullable_UString;
-       Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Return_Global : in Swagger.Nullable_Boolean;
-       Categories_Ids : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
+       Sort_By : in Swagger.Nullable_UString;
+       Sort_Direction : in Swagger.Nullable_UString;
+       Report_Request_Id : in Swagger.Nullable_UString;
+       Disable_Cache : in Swagger.Nullable_Boolean;
+       Disable_Report_Cache : in Swagger.Nullable_Boolean;
+       Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Result : out .Models.ModelResponseProductList_Type);
 
    --  product.manufacturer.add
@@ -1751,12 +1752,12 @@ package .Clients is
       (Client : in out Client_Type;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
-       Params : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
        Product_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseProductOptionList_Type);
 
    --  product.option.value.add
@@ -1834,14 +1835,14 @@ package .Clients is
       (Client : in out Client_Type;
        Product_Id : in Swagger.UString;
        Start : in Swagger.Nullable_Integer;
-       Page_Cursor : in Swagger.Nullable_UString;
        Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
        Ids : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Status : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseProductReviewList_Type);
 
    --  product.store.assign
@@ -1892,12 +1893,12 @@ package .Clients is
    procedure Product_Variant_Count
       (Client : in out Client_Type;
        Product_Id : in Swagger.UString;
+       Category_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Category_Id : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
        Result : out .Models.ProductVariantCount200Response_Type);
 
    --  product.variant.delete
@@ -1938,9 +1939,9 @@ package .Clients is
    procedure Product_Variant_Info
       (Client : in out Client_Type;
        Id : in Swagger.UString;
+       Store_Id : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
        Result : out .Models.ProductInfo200Response_Type);
 
    --  product.variant.list
@@ -1949,15 +1950,15 @@ package .Clients is
       (Client : in out Client_Type;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
-       Params : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
+       Product_Id : in Swagger.Nullable_UString;
+       Category_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Category_Id : in Swagger.Nullable_UString;
-       Product_Id : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ProductVariantList200Response_Type);
 
    --  product.variant.price.add
@@ -2028,9 +2029,9 @@ package .Clients is
        Id : in Swagger.UString;
        Order_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
        Result : out .Models.ReturnInfo200Response_Type);
 
    --  return.list
@@ -2040,9 +2041,6 @@ package .Clients is
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
        Page_Cursor : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
        Order_Id : in Swagger.Nullable_UString;
        Order_Ids : in Swagger.Nullable_UString;
        Customer_Id : in Swagger.Nullable_UString;
@@ -2053,6 +2051,9 @@ package .Clients is
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Report_Request_Id : in Swagger.Nullable_UString;
        Disable_Report_Cache : in Swagger.Nullable_Boolean;
        Result : out .Models.ModelResponseReturnList_Type);
@@ -2076,17 +2077,17 @@ package .Clients is
       (Client : in out Client_Type;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
        Subscribed : in Swagger.Nullable_Boolean;
        Store_Id : in Swagger.Nullable_UString;
        Email : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Page_Cursor : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
+       Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseSubscriberList_Type);
 
    --  tax.class.info
@@ -2096,8 +2097,8 @@ package .Clients is
        Tax_Class_Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseTaxClassInfo_Type);
 
@@ -2105,15 +2106,15 @@ package .Clients is
    --  Get list of tax classes from your store.
    procedure Tax_Class_List
       (Client : in out Client_Type;
+       Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Find_Value : in Swagger.Nullable_UString;
+       Find_Where : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
-       Find_Value : in Swagger.Nullable_UString;
-       Find_Where : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
-       Count : in Swagger.Nullable_Integer;
-       Page_Cursor : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseTaxClassList_Type);
 
@@ -2156,13 +2157,13 @@ package .Clients is
    --  List registered webhook on the store.
    procedure Webhook_List
       (Client : in out Client_Type;
-       Params : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
        Entity : in Swagger.Nullable_UString;
        Action : in Swagger.Nullable_UString;
        Active : in Swagger.Nullable_Boolean;
        Ids : in Swagger.Nullable_UString;
+       Params : in Swagger.Nullable_UString;
        Result : out .Models.WebhookList200Response_Type);
 
    --  webhook.update

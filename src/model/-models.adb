@@ -1501,18 +1501,15 @@ package body .Models is
                         Value : in .Models.CartCouponAdd_Type) is
    begin
       Into.Start_Entity (Name);
-      if not Value.Store_Id.Is_Null then
-         Into.Write_Entity ("store_id", Value.Store_Id);
-      end if;
       Into.Write_Entity ("code", Value.Code);
-      if not Value.Name.Is_Null then
-         Into.Write_Entity ("name", Value.Name);
-      end if;
-      Serialize (Into, "codes", Value.Codes);
       Into.Write_Entity ("action_type", Value.Action_Type);
       Into.Write_Entity ("action_apply_to", Value.Action_Apply_To);
       Into.Write_Entity ("action_scope", Value.Action_Scope);
       Serialize (Into, "action_amount", Value.Action_Amount);
+      Serialize (Into, "codes", Value.Codes);
+      if not Value.Name.Is_Null then
+         Into.Write_Entity ("name", Value.Name);
+      end if;
       if not Value.Date_Start.Is_Null then
          Into.Write_Entity ("date_start", Value.Date_Start);
       end if;
@@ -1540,6 +1537,9 @@ package body .Models is
       if not Value.Include_Tax.Is_Null then
          Into.Write_Entity ("include_tax", Value.Include_Tax);
       end if;
+      if not Value.Store_Id.Is_Null then
+         Into.Write_Entity ("store_id", Value.Store_Id);
+      end if;
       Into.End_Entity (Name);
    end Serialize;
 
@@ -1560,14 +1560,13 @@ package body .Models is
       Object : Swagger.Value_Type;
    begin
       Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Swagger.Streams.Deserialize (Object, "code", Value.Code);
-      Swagger.Streams.Deserialize (Object, "name", Value.Name);
-      Swagger.Streams.Deserialize (Object, "codes", Value.Codes);
       Swagger.Streams.Deserialize (Object, "action_type", Value.Action_Type);
       Swagger.Streams.Deserialize (Object, "action_apply_to", Value.Action_Apply_To);
       Swagger.Streams.Deserialize (Object, "action_scope", Value.Action_Scope);
       Swagger.Streams.Deserialize (Object, "action_amount", Value.Action_Amount);
+      Swagger.Streams.Deserialize (Object, "codes", Value.Codes);
+      Swagger.Streams.Deserialize (Object, "name", Value.Name);
       Swagger.Streams.Deserialize (Object, "date_start", Value.Date_Start);
       Swagger.Streams.Deserialize (Object, "date_end", Value.Date_End);
       Swagger.Streams.Deserialize (Object, "usage_limit", Value.Usage_Limit);
@@ -1577,6 +1576,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "action_condition_operator", Value.Action_Condition_Operator);
       Swagger.Streams.Deserialize (Object, "action_condition_value", Value.Action_Condition_Value);
       Swagger.Streams.Deserialize (Object, "include_tax", Value.Include_Tax);
+      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;
@@ -5024,15 +5024,15 @@ package body .Models is
                         Value : in .Models.OrderShipmentTrackingAdd_Type) is
    begin
       Into.Start_Entity (Name);
-      if not Value.Store_Id.Is_Null then
-         Into.Write_Entity ("store_id", Value.Store_Id);
-      end if;
       if not Value.Order_Id.Is_Null then
          Into.Write_Entity ("order_id", Value.Order_Id);
       end if;
       Into.Write_Entity ("shipment_id", Value.Shipment_Id);
       if not Value.Carrier_Id.Is_Null then
          Into.Write_Entity ("carrier_id", Value.Carrier_Id);
+      end if;
+      if not Value.Store_Id.Is_Null then
+         Into.Write_Entity ("store_id", Value.Store_Id);
       end if;
       if not Value.Tracking_Provider.Is_Null then
          Into.Write_Entity ("tracking_provider", Value.Tracking_Provider);
@@ -5064,10 +5064,10 @@ package body .Models is
       Object : Swagger.Value_Type;
    begin
       Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Swagger.Streams.Deserialize (Object, "order_id", Value.Order_Id);
       Swagger.Streams.Deserialize (Object, "shipment_id", Value.Shipment_Id);
       Swagger.Streams.Deserialize (Object, "carrier_id", Value.Carrier_Id);
+      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Swagger.Streams.Deserialize (Object, "tracking_provider", Value.Tracking_Provider);
       Swagger.Streams.Deserialize (Object, "tracking_number", Value.Tracking_Number);
       Swagger.Streams.Deserialize (Object, "tracking_link", Value.Tracking_Link);
@@ -7127,25 +7127,10 @@ package body .Models is
                         Value : in .Models.ProductImageAdd_Type) is
    begin
       Into.Start_Entity (Name);
+      Into.Write_Entity ("type", Value.P_Type);
+      Into.Write_Entity ("image_name", Value.Image_Name);
       if not Value.Product_Id.Is_Null then
          Into.Write_Entity ("product_id", Value.Product_Id);
-      end if;
-      Into.Write_Entity ("image_name", Value.Image_Name);
-      Into.Write_Entity ("type", Value.P_Type);
-      if not Value.Url.Is_Null then
-         Into.Write_Entity ("url", Value.Url);
-      end if;
-      if not Value.Label.Is_Null then
-         Into.Write_Entity ("label", Value.Label);
-      end if;
-      if not Value.Mime.Is_Null then
-         Into.Write_Entity ("mime", Value.Mime);
-      end if;
-      if not Value.Position.Is_Null then
-         Into.Write_Entity ("position", Value.Position);
-      end if;
-      if not Value.Content.Is_Null then
-         Into.Write_Entity ("content", Value.Content);
       end if;
       if not Value.Product_Variant_Id.Is_Null then
          Into.Write_Entity ("product_variant_id", Value.Product_Variant_Id);
@@ -7161,6 +7146,21 @@ package body .Models is
       end if;
       if not Value.Lang_Id.Is_Null then
          Into.Write_Entity ("lang_id", Value.Lang_Id);
+      end if;
+      if not Value.Url.Is_Null then
+         Into.Write_Entity ("url", Value.Url);
+      end if;
+      if not Value.Content.Is_Null then
+         Into.Write_Entity ("content", Value.Content);
+      end if;
+      if not Value.Label.Is_Null then
+         Into.Write_Entity ("label", Value.Label);
+      end if;
+      if not Value.Mime.Is_Null then
+         Into.Write_Entity ("mime", Value.Mime);
+      end if;
+      if not Value.Position.Is_Null then
+         Into.Write_Entity ("position", Value.Position);
       end if;
       if not Value.Use_Latest_Api_Version.Is_Null then
          Into.Write_Entity ("use_latest_api_version", Value.Use_Latest_Api_Version);
@@ -7185,19 +7185,19 @@ package body .Models is
       Object : Swagger.Value_Type;
    begin
       Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "product_id", Value.Product_Id);
-      Swagger.Streams.Deserialize (Object, "image_name", Value.Image_Name);
       Swagger.Streams.Deserialize (Object, "type", Value.P_Type);
-      Swagger.Streams.Deserialize (Object, "url", Value.Url);
-      Swagger.Streams.Deserialize (Object, "label", Value.Label);
-      Swagger.Streams.Deserialize (Object, "mime", Value.Mime);
-      Swagger.Streams.Deserialize (Object, "position", Value.Position);
-      Swagger.Streams.Deserialize (Object, "content", Value.Content);
+      Swagger.Streams.Deserialize (Object, "image_name", Value.Image_Name);
+      Swagger.Streams.Deserialize (Object, "product_id", Value.Product_Id);
       Swagger.Streams.Deserialize (Object, "product_variant_id", Value.Product_Variant_Id);
       Swagger.Streams.Deserialize (Object, "variant_ids", Value.Variant_Ids);
       Swagger.Streams.Deserialize (Object, "option_value_ids", Value.Option_Value_Ids);
       Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Swagger.Streams.Deserialize (Object, "lang_id", Value.Lang_Id);
+      Swagger.Streams.Deserialize (Object, "url", Value.Url);
+      Swagger.Streams.Deserialize (Object, "content", Value.Content);
+      Swagger.Streams.Deserialize (Object, "label", Value.Label);
+      Swagger.Streams.Deserialize (Object, "mime", Value.Mime);
+      Swagger.Streams.Deserialize (Object, "position", Value.Position);
       Swagger.Streams.Deserialize (Object, "use_latest_api_version", Value.Use_Latest_Api_Version);
    end Deserialize;
 
@@ -8356,6 +8356,9 @@ package body .Models is
          Into.Write_Entity ("product_id", Value.Product_Id);
       end if;
       Into.Write_Entity ("product_variant_id", Value.Product_Variant_Id);
+      if not Value.Store_Id.Is_Null then
+         Into.Write_Entity ("store_id", Value.Store_Id);
+      end if;
       Into.Write_Entity ("image_name", Value.Image_Name);
       Into.Write_Entity ("type", Value.P_Type);
       if not Value.Url.Is_Null then
@@ -8372,9 +8375,6 @@ package body .Models is
       end if;
       if not Value.Position.Is_Null then
          Into.Write_Entity ("position", Value.Position);
-      end if;
-      if not Value.Store_Id.Is_Null then
-         Into.Write_Entity ("store_id", Value.Store_Id);
       end if;
       if not Value.Option_Id.Is_Null then
          Into.Write_Entity ("option_id", Value.Option_Id);
@@ -8401,6 +8401,7 @@ package body .Models is
       Swagger.Streams.Deserialize (From, Name, Object);
       Swagger.Streams.Deserialize (Object, "product_id", Value.Product_Id);
       Swagger.Streams.Deserialize (Object, "product_variant_id", Value.Product_Variant_Id);
+      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Swagger.Streams.Deserialize (Object, "image_name", Value.Image_Name);
       Swagger.Streams.Deserialize (Object, "type", Value.P_Type);
       Swagger.Streams.Deserialize (Object, "url", Value.Url);
@@ -8408,7 +8409,6 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "label", Value.Label);
       Swagger.Streams.Deserialize (Object, "mime", Value.Mime);
       Swagger.Streams.Deserialize (Object, "position", Value.Position);
-      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Swagger.Streams.Deserialize (Object, "option_id", Value.Option_Id);
    end Deserialize;
 
@@ -9762,6 +9762,9 @@ package body .Models is
       if not Value.Shopline_App_Secret.Is_Null then
          Into.Write_Entity ("shopline_app_secret", Value.Shopline_App_Secret);
       end if;
+      if not Value.Shopline_Shared_Secret.Is_Null then
+         Into.Write_Entity ("shopline_shared_secret", Value.Shopline_Shared_Secret);
+      end if;
       if not Value.Shopify_Access_Token.Is_Null then
          Into.Write_Entity ("shopify_access_token", Value.Shopify_Access_Token);
       end if;
@@ -10074,6 +10077,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "shopline_access_token", Value.Shopline_Access_Token);
       Swagger.Streams.Deserialize (Object, "shopline_app_key", Value.Shopline_App_Key);
       Swagger.Streams.Deserialize (Object, "shopline_app_secret", Value.Shopline_App_Secret);
+      Swagger.Streams.Deserialize (Object, "shopline_shared_secret", Value.Shopline_Shared_Secret);
       Swagger.Streams.Deserialize (Object, "shopify_access_token", Value.Shopify_Access_Token);
       Swagger.Streams.Deserialize (Object, "shopify_api_key", Value.Shopify_Api_Key);
       Swagger.Streams.Deserialize (Object, "shopify_api_password", Value.Shopify_Api_Password);
@@ -16037,17 +16041,17 @@ package body .Models is
                         Value : in .Models.OrderPreestimateShippingList_Type) is
    begin
       Into.Start_Entity (Name);
-      if not Value.Store_Id.Is_Null then
-         Into.Write_Entity ("store_id", Value.Store_Id);
-      end if;
       if not Value.Warehouse_Id.Is_Null then
          Into.Write_Entity ("warehouse_id", Value.Warehouse_Id);
+      end if;
+      if not Value.Customer_Id.Is_Null then
+         Into.Write_Entity ("customer_id", Value.Customer_Id);
       end if;
       if not Value.Customer_Email.Is_Null then
          Into.Write_Entity ("customer_email", Value.Customer_Email);
       end if;
-      if not Value.Customer_Id.Is_Null then
-         Into.Write_Entity ("customer_id", Value.Customer_Id);
+      if not Value.Store_Id.Is_Null then
+         Into.Write_Entity ("store_id", Value.Store_Id);
       end if;
       if not Value.Shipp_Address_1.Is_Null then
          Into.Write_Entity ("shipp_address_1", Value.Shipp_Address_1);
@@ -16089,10 +16093,10 @@ package body .Models is
       Object : Swagger.Value_Type;
    begin
       Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Swagger.Streams.Deserialize (Object, "warehouse_id", Value.Warehouse_Id);
-      Swagger.Streams.Deserialize (Object, "customer_email", Value.Customer_Email);
       Swagger.Streams.Deserialize (Object, "customer_id", Value.Customer_Id);
+      Swagger.Streams.Deserialize (Object, "customer_email", Value.Customer_Email);
+      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Swagger.Streams.Deserialize (Object, "shipp_address_1", Value.Shipp_Address_1);
       Swagger.Streams.Deserialize (Object, "shipp_city", Value.Shipp_City);
       Swagger.Streams.Deserialize (Object, "shipp_postcode", Value.Shipp_Postcode);
@@ -16860,28 +16864,28 @@ package body .Models is
                         Value : in .Models.OrderShipmentUpdate_Type) is
    begin
       Into.Start_Entity (Name);
-      if not Value.Store_Id.Is_Null then
-         Into.Write_Entity ("store_id", Value.Store_Id);
-      end if;
       Into.Write_Entity ("shipment_id", Value.Shipment_Id);
       if not Value.Order_Id.Is_Null then
          Into.Write_Entity ("order_id", Value.Order_Id);
       end if;
+      if not Value.Store_Id.Is_Null then
+         Into.Write_Entity ("store_id", Value.Store_Id);
+      end if;
+      if not Value.Shipment_Provider.Is_Null then
+         Into.Write_Entity ("shipment_provider", Value.Shipment_Provider);
+      end if;
       Serialize (Into, "tracking_numbers", Value.Tracking_Numbers);
-      if not Value.Replace.Is_Null then
-         Into.Write_Entity ("replace", Value.Replace);
+      if not Value.Tracking_Link.Is_Null then
+         Into.Write_Entity ("tracking_link", Value.Tracking_Link);
       end if;
       if not Value.Is_Shipped.Is_Null then
          Into.Write_Entity ("is_shipped", Value.Is_Shipped);
       end if;
-      if not Value.Tracking_Link.Is_Null then
-         Into.Write_Entity ("tracking_link", Value.Tracking_Link);
-      end if;
       if not Value.Delivered_At.Is_Null then
          Into.Write_Entity ("delivered_at", Value.Delivered_At);
       end if;
-      if not Value.Shipment_Provider.Is_Null then
-         Into.Write_Entity ("shipment_provider", Value.Shipment_Provider);
+      if not Value.Replace.Is_Null then
+         Into.Write_Entity ("replace", Value.Replace);
       end if;
       Into.End_Entity (Name);
    end Serialize;
@@ -16903,15 +16907,15 @@ package body .Models is
       Object : Swagger.Value_Type;
    begin
       Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Swagger.Streams.Deserialize (Object, "shipment_id", Value.Shipment_Id);
       Swagger.Streams.Deserialize (Object, "order_id", Value.Order_Id);
-      Deserialize (Object, "tracking_numbers", Value.Tracking_Numbers);
-      Swagger.Streams.Deserialize (Object, "replace", Value.Replace);
-      Swagger.Streams.Deserialize (Object, "is_shipped", Value.Is_Shipped);
-      Swagger.Streams.Deserialize (Object, "tracking_link", Value.Tracking_Link);
-      Swagger.Streams.Deserialize (Object, "delivered_at", Value.Delivered_At);
+      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Swagger.Streams.Deserialize (Object, "shipment_provider", Value.Shipment_Provider);
+      Deserialize (Object, "tracking_numbers", Value.Tracking_Numbers);
+      Swagger.Streams.Deserialize (Object, "tracking_link", Value.Tracking_Link);
+      Swagger.Streams.Deserialize (Object, "is_shipped", Value.Is_Shipped);
+      Swagger.Streams.Deserialize (Object, "delivered_at", Value.Delivered_At);
+      Swagger.Streams.Deserialize (Object, "replace", Value.Replace);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;
@@ -20543,14 +20547,69 @@ package body .Models is
                         Value : in .Models.ProductVariantUpdate_Type) is
    begin
       Into.Start_Entity (Name);
-      if not Value.Store_Id.Is_Null then
-         Into.Write_Entity ("store_id", Value.Store_Id);
-      end if;
       if not Value.Id.Is_Null then
          Into.Write_Entity ("id", Value.Id);
       end if;
       if not Value.Product_Id.Is_Null then
          Into.Write_Entity ("product_id", Value.Product_Id);
+      end if;
+      if not Value.Store_Id.Is_Null then
+         Into.Write_Entity ("store_id", Value.Store_Id);
+      end if;
+      if not Value.Lang_Id.Is_Null then
+         Into.Write_Entity ("lang_id", Value.Lang_Id);
+      end if;
+      Serialize (Into, "options", Value.Options);
+      if not Value.Name.Is_Null then
+         Into.Write_Entity ("name", Value.Name);
+      end if;
+      if not Value.Description.Is_Null then
+         Into.Write_Entity ("description", Value.Description);
+      end if;
+      if not Value.Short_Description.Is_Null then
+         Into.Write_Entity ("short_description", Value.Short_Description);
+      end if;
+      if not Value.Model.Is_Null then
+         Into.Write_Entity ("model", Value.Model);
+      end if;
+      if not Value.Sku.Is_Null then
+         Into.Write_Entity ("sku", Value.Sku);
+      end if;
+      if not Value.Visible.Is_Null then
+         Into.Write_Entity ("visible", Value.Visible);
+      end if;
+      if not Value.Status.Is_Null then
+         Into.Write_Entity ("status", Value.Status);
+      end if;
+      if not Value.Backorder_Status.Is_Null then
+         Into.Write_Entity ("backorder_status", Value.Backorder_Status);
+      end if;
+      if not Value.Available_For_Sale.Is_Null then
+         Into.Write_Entity ("available_for_sale", Value.Available_For_Sale);
+      end if;
+      if not Value.Avail.Is_Null then
+         Into.Write_Entity ("avail", Value.Avail);
+      end if;
+      if not Value.Is_Default.Is_Null then
+         Into.Write_Entity ("is_default", Value.Is_Default);
+      end if;
+      if not Value.Is_Free_Shipping.Is_Null then
+         Into.Write_Entity ("is_free_shipping", Value.Is_Free_Shipping);
+      end if;
+      if not Value.Taxable.Is_Null then
+         Into.Write_Entity ("taxable", Value.Taxable);
+      end if;
+      if not Value.Tax_Class_Id.Is_Null then
+         Into.Write_Entity ("tax_class_id", Value.Tax_Class_Id);
+      end if;
+      if not Value.Is_Virtual.Is_Null then
+         Into.Write_Entity ("is_virtual", Value.Is_Virtual);
+      end if;
+      if not Value.Manage_Stock.Is_Null then
+         Into.Write_Entity ("manage_stock", Value.Manage_Stock);
+      end if;
+      if not Value.In_Stock.Is_Null then
+         Into.Write_Entity ("in_stock", Value.In_Stock);
       end if;
       if not Value.Warehouse_Id.Is_Null then
          Into.Write_Entity ("warehouse_id", Value.Warehouse_Id);
@@ -20571,58 +20630,9 @@ package body .Models is
       if not Value.Sprice_Expire.Is_Null then
          Into.Write_Entity ("sprice_expire", Value.Sprice_Expire);
       end if;
-      if not Value.Manage_Stock.Is_Null then
-         Into.Write_Entity ("manage_stock", Value.Manage_Stock);
-      end if;
-      if not Value.In_Stock.Is_Null then
-         Into.Write_Entity ("in_stock", Value.In_Stock);
-      end if;
-      if not Value.Name.Is_Null then
-         Into.Write_Entity ("name", Value.Name);
-      end if;
-      if not Value.Description.Is_Null then
-         Into.Write_Entity ("description", Value.Description);
-      end if;
-      if not Value.Sku.Is_Null then
-         Into.Write_Entity ("sku", Value.Sku);
-      end if;
-      if not Value.Meta_Title.Is_Null then
-         Into.Write_Entity ("meta_title", Value.Meta_Title);
-      end if;
-      if not Value.Meta_Description.Is_Null then
-         Into.Write_Entity ("meta_description", Value.Meta_Description);
-      end if;
-      if not Value.Meta_Keywords.Is_Null then
-         Into.Write_Entity ("meta_keywords", Value.Meta_Keywords);
-      end if;
-      if not Value.Short_Description.Is_Null then
-         Into.Write_Entity ("short_description", Value.Short_Description);
-      end if;
-      if not Value.Visible.Is_Null then
-         Into.Write_Entity ("visible", Value.Visible);
-      end if;
-      if not Value.Status.Is_Null then
-         Into.Write_Entity ("status", Value.Status);
-      end if;
-      if not Value.Backorder_Status.Is_Null then
-         Into.Write_Entity ("backorder_status", Value.Backorder_Status);
-      end if;
       Serialize (Into, "weight", Value.Weight);
       if not Value.Barcode.Is_Null then
          Into.Write_Entity ("barcode", Value.Barcode);
-      end if;
-      if not Value.Reindex.Is_Null then
-         Into.Write_Entity ("reindex", Value.Reindex);
-      end if;
-      if not Value.Taxable.Is_Null then
-         Into.Write_Entity ("taxable", Value.Taxable);
-      end if;
-      Serialize (Into, "options", Value.Options);
-      if not Value.Harmonized_System_Code.Is_Null then
-         Into.Write_Entity ("harmonized_system_code", Value.Harmonized_System_Code);
-      end if;
-      if not Value.Country_Of_Origin.Is_Null then
-         Into.Write_Entity ("country_of_origin", Value.Country_Of_Origin);
       end if;
       Serialize (Into, "width", Value.Width);
       if not Value.Weight_Unit.Is_Null then
@@ -20632,18 +20642,6 @@ package body .Models is
       Serialize (Into, "length", Value.Length);
       if not Value.Gtin.Is_Null then
          Into.Write_Entity ("gtin", Value.Gtin);
-      end if;
-      if not Value.Clear_Cache.Is_Null then
-         Into.Write_Entity ("clear_cache", Value.Clear_Cache);
-      end if;
-      if not Value.Lang_Id.Is_Null then
-         Into.Write_Entity ("lang_id", Value.Lang_Id);
-      end if;
-      if not Value.Model.Is_Null then
-         Into.Write_Entity ("model", Value.Model);
-      end if;
-      if not Value.Available_For_Sale.Is_Null then
-         Into.Write_Entity ("available_for_sale", Value.Available_For_Sale);
       end if;
       if not Value.Upc.Is_Null then
          Into.Write_Entity ("upc", Value.Upc);
@@ -20657,20 +20655,26 @@ package body .Models is
       if not Value.Isbn.Is_Null then
          Into.Write_Entity ("isbn", Value.Isbn);
       end if;
-      if not Value.Avail.Is_Null then
-         Into.Write_Entity ("avail", Value.Avail);
+      if not Value.Harmonized_System_Code.Is_Null then
+         Into.Write_Entity ("harmonized_system_code", Value.Harmonized_System_Code);
       end if;
-      if not Value.Is_Default.Is_Null then
-         Into.Write_Entity ("is_default", Value.Is_Default);
+      if not Value.Country_Of_Origin.Is_Null then
+         Into.Write_Entity ("country_of_origin", Value.Country_Of_Origin);
       end if;
-      if not Value.Is_Free_Shipping.Is_Null then
-         Into.Write_Entity ("is_free_shipping", Value.Is_Free_Shipping);
+      if not Value.Meta_Title.Is_Null then
+         Into.Write_Entity ("meta_title", Value.Meta_Title);
       end if;
-      if not Value.Tax_Class_Id.Is_Null then
-         Into.Write_Entity ("tax_class_id", Value.Tax_Class_Id);
+      if not Value.Meta_Description.Is_Null then
+         Into.Write_Entity ("meta_description", Value.Meta_Description);
       end if;
-      if not Value.Is_Virtual.Is_Null then
-         Into.Write_Entity ("is_virtual", Value.Is_Virtual);
+      if not Value.Meta_Keywords.Is_Null then
+         Into.Write_Entity ("meta_keywords", Value.Meta_Keywords);
+      end if;
+      if not Value.Reindex.Is_Null then
+         Into.Write_Entity ("reindex", Value.Reindex);
+      end if;
+      if not Value.Clear_Cache.Is_Null then
+         Into.Write_Entity ("clear_cache", Value.Clear_Cache);
       end if;
       Into.End_Entity (Name);
    end Serialize;
@@ -20692,9 +20696,28 @@ package body .Models is
       Object : Swagger.Value_Type;
    begin
       Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Swagger.Streams.Deserialize (Object, "id", Value.Id);
       Swagger.Streams.Deserialize (Object, "product_id", Value.Product_Id);
+      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
+      Swagger.Streams.Deserialize (Object, "lang_id", Value.Lang_Id);
+      Deserialize (Object, "options", Value.Options);
+      Swagger.Streams.Deserialize (Object, "name", Value.Name);
+      Swagger.Streams.Deserialize (Object, "description", Value.Description);
+      Swagger.Streams.Deserialize (Object, "short_description", Value.Short_Description);
+      Swagger.Streams.Deserialize (Object, "model", Value.Model);
+      Swagger.Streams.Deserialize (Object, "sku", Value.Sku);
+      Swagger.Streams.Deserialize (Object, "visible", Value.Visible);
+      Swagger.Streams.Deserialize (Object, "status", Value.Status);
+      Swagger.Streams.Deserialize (Object, "backorder_status", Value.Backorder_Status);
+      Swagger.Streams.Deserialize (Object, "available_for_sale", Value.Available_For_Sale);
+      Swagger.Streams.Deserialize (Object, "avail", Value.Avail);
+      Swagger.Streams.Deserialize (Object, "is_default", Value.Is_Default);
+      Swagger.Streams.Deserialize (Object, "is_free_shipping", Value.Is_Free_Shipping);
+      Swagger.Streams.Deserialize (Object, "taxable", Value.Taxable);
+      Swagger.Streams.Deserialize (Object, "tax_class_id", Value.Tax_Class_Id);
+      Swagger.Streams.Deserialize (Object, "is_virtual", Value.Is_Virtual);
+      Swagger.Streams.Deserialize (Object, "manage_stock", Value.Manage_Stock);
+      Swagger.Streams.Deserialize (Object, "in_stock", Value.In_Stock);
       Swagger.Streams.Deserialize (Object, "warehouse_id", Value.Warehouse_Id);
       Swagger.Streams.Deserialize (Object, "reserve_quantity", Value.Reserve_Quantity);
       Swagger.Streams.Deserialize (Object, "quantity", Value.Quantity);
@@ -20708,43 +20731,24 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "fixed_cost_shipping_price", Value.Fixed_Cost_Shipping_Price);
       Swagger.Streams.Deserialize (Object, "sprice_create", Value.Sprice_Create);
       Swagger.Streams.Deserialize (Object, "sprice_expire", Value.Sprice_Expire);
-      Swagger.Streams.Deserialize (Object, "manage_stock", Value.Manage_Stock);
-      Swagger.Streams.Deserialize (Object, "in_stock", Value.In_Stock);
-      Swagger.Streams.Deserialize (Object, "name", Value.Name);
-      Swagger.Streams.Deserialize (Object, "description", Value.Description);
-      Swagger.Streams.Deserialize (Object, "sku", Value.Sku);
-      Swagger.Streams.Deserialize (Object, "meta_title", Value.Meta_Title);
-      Swagger.Streams.Deserialize (Object, "meta_description", Value.Meta_Description);
-      Swagger.Streams.Deserialize (Object, "meta_keywords", Value.Meta_Keywords);
-      Swagger.Streams.Deserialize (Object, "short_description", Value.Short_Description);
-      Swagger.Streams.Deserialize (Object, "visible", Value.Visible);
-      Swagger.Streams.Deserialize (Object, "status", Value.Status);
-      Swagger.Streams.Deserialize (Object, "backorder_status", Value.Backorder_Status);
       Swagger.Streams.Deserialize (Object, "weight", Value.Weight);
       Swagger.Streams.Deserialize (Object, "barcode", Value.Barcode);
-      Swagger.Streams.Deserialize (Object, "reindex", Value.Reindex);
-      Swagger.Streams.Deserialize (Object, "taxable", Value.Taxable);
-      Deserialize (Object, "options", Value.Options);
-      Swagger.Streams.Deserialize (Object, "harmonized_system_code", Value.Harmonized_System_Code);
-      Swagger.Streams.Deserialize (Object, "country_of_origin", Value.Country_Of_Origin);
       Swagger.Streams.Deserialize (Object, "width", Value.Width);
       Swagger.Streams.Deserialize (Object, "weight_unit", Value.Weight_Unit);
       Swagger.Streams.Deserialize (Object, "height", Value.Height);
       Swagger.Streams.Deserialize (Object, "length", Value.Length);
       Swagger.Streams.Deserialize (Object, "gtin", Value.Gtin);
-      Swagger.Streams.Deserialize (Object, "clear_cache", Value.Clear_Cache);
-      Swagger.Streams.Deserialize (Object, "lang_id", Value.Lang_Id);
-      Swagger.Streams.Deserialize (Object, "model", Value.Model);
-      Swagger.Streams.Deserialize (Object, "available_for_sale", Value.Available_For_Sale);
       Swagger.Streams.Deserialize (Object, "upc", Value.Upc);
       Swagger.Streams.Deserialize (Object, "mpn", Value.Mpn);
       Swagger.Streams.Deserialize (Object, "ean", Value.Ean);
       Swagger.Streams.Deserialize (Object, "isbn", Value.Isbn);
-      Swagger.Streams.Deserialize (Object, "avail", Value.Avail);
-      Swagger.Streams.Deserialize (Object, "is_default", Value.Is_Default);
-      Swagger.Streams.Deserialize (Object, "is_free_shipping", Value.Is_Free_Shipping);
-      Swagger.Streams.Deserialize (Object, "tax_class_id", Value.Tax_Class_Id);
-      Swagger.Streams.Deserialize (Object, "is_virtual", Value.Is_Virtual);
+      Swagger.Streams.Deserialize (Object, "harmonized_system_code", Value.Harmonized_System_Code);
+      Swagger.Streams.Deserialize (Object, "country_of_origin", Value.Country_Of_Origin);
+      Swagger.Streams.Deserialize (Object, "meta_title", Value.Meta_Title);
+      Swagger.Streams.Deserialize (Object, "meta_description", Value.Meta_Description);
+      Swagger.Streams.Deserialize (Object, "meta_keywords", Value.Meta_Keywords);
+      Swagger.Streams.Deserialize (Object, "reindex", Value.Reindex);
+      Swagger.Streams.Deserialize (Object, "clear_cache", Value.Clear_Cache);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;
@@ -24370,8 +24374,12 @@ package body .Models is
    begin
       Into.Start_Entity (Name);
       Into.Write_Entity ("email", Value.Email);
-      Into.Write_Entity ("first_name", Value.First_Name);
-      Into.Write_Entity ("last_name", Value.Last_Name);
+      if not Value.First_Name.Is_Null then
+         Into.Write_Entity ("first_name", Value.First_Name);
+      end if;
+      if not Value.Last_Name.Is_Null then
+         Into.Write_Entity ("last_name", Value.Last_Name);
+      end if;
       if not Value.Password.Is_Null then
          Into.Write_Entity ("password", Value.Password);
       end if;
@@ -24380,6 +24388,9 @@ package body .Models is
       end if;
       if not Value.Group_Ids.Is_Null then
          Into.Write_Entity ("group_ids", Value.Group_Ids);
+      end if;
+      if not Value.Status.Is_Null then
+         Into.Write_Entity ("status", Value.Status);
       end if;
       if not Value.Created_Time.Is_Null then
          Into.Write_Entity ("created_time", Value.Created_Time);
@@ -24396,9 +24407,6 @@ package body .Models is
       if not Value.Birth_Day.Is_Null then
          Into.Write_Entity ("birth_day", Value.Birth_Day);
       end if;
-      if not Value.Status.Is_Null then
-         Into.Write_Entity ("status", Value.Status);
-      end if;
       if not Value.News_Letter_Subscription.Is_Null then
          Into.Write_Entity ("news_letter_subscription", Value.News_Letter_Subscription);
       end if;
@@ -24408,9 +24416,6 @@ package body .Models is
       end if;
       if not Value.Website.Is_Null then
          Into.Write_Entity ("website", Value.Website);
-      end if;
-      if not Value.Store_Id.Is_Null then
-         Into.Write_Entity ("store_id", Value.Store_Id);
       end if;
       if not Value.Fax.Is_Null then
          Into.Write_Entity ("fax", Value.Fax);
@@ -24426,6 +24431,9 @@ package body .Models is
       end if;
       if not Value.Country.Is_Null then
          Into.Write_Entity ("country", Value.Country);
+      end if;
+      if not Value.Store_Id.Is_Null then
+         Into.Write_Entity ("store_id", Value.Store_Id);
       end if;
       Serialize (Into, "address", Value.Address);
       Into.End_Entity (Name);
@@ -24454,22 +24462,22 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "password", Value.Password);
       Swagger.Streams.Deserialize (Object, "group", Value.Group);
       Swagger.Streams.Deserialize (Object, "group_ids", Value.Group_Ids);
+      Swagger.Streams.Deserialize (Object, "status", Value.Status);
       Swagger.Streams.Deserialize (Object, "created_time", Value.Created_Time);
       Swagger.Streams.Deserialize (Object, "modified_time", Value.Modified_Time);
       Swagger.Streams.Deserialize (Object, "login", Value.Login);
       Swagger.Streams.Deserialize (Object, "last_login", Value.Last_Login);
       Swagger.Streams.Deserialize (Object, "birth_day", Value.Birth_Day);
-      Swagger.Streams.Deserialize (Object, "status", Value.Status);
       Swagger.Streams.Deserialize (Object, "news_letter_subscription", Value.News_Letter_Subscription);
       Deserialize (Object, "consents", Value.Consents);
       Swagger.Streams.Deserialize (Object, "gender", Value.Gender);
       Swagger.Streams.Deserialize (Object, "website", Value.Website);
-      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Swagger.Streams.Deserialize (Object, "fax", Value.Fax);
       Swagger.Streams.Deserialize (Object, "company", Value.Company);
       Swagger.Streams.Deserialize (Object, "phone", Value.Phone);
       Swagger.Streams.Deserialize (Object, "note", Value.Note);
       Swagger.Streams.Deserialize (Object, "country", Value.Country);
+      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Deserialize (Object, "address", Value.Address);
    end Deserialize;
 
@@ -24529,14 +24537,14 @@ package body .Models is
       if not Value.Gender.Is_Null then
          Into.Write_Entity ("gender", Value.Gender);
       end if;
-      if not Value.Store_Id.Is_Null then
-         Into.Write_Entity ("store_id", Value.Store_Id);
-      end if;
       if not Value.Note.Is_Null then
          Into.Write_Entity ("note", Value.Note);
       end if;
       if not Value.Status.Is_Null then
          Into.Write_Entity ("status", Value.Status);
+      end if;
+      if not Value.Store_Id.Is_Null then
+         Into.Write_Entity ("store_id", Value.Store_Id);
       end if;
       Serialize (Into, "address", Value.Address);
       Into.End_Entity (Name);
@@ -24572,9 +24580,9 @@ package body .Models is
       Deserialize (Object, "consents", Value.Consents);
       Swagger.Streams.Deserialize (Object, "tags", Value.Tags);
       Swagger.Streams.Deserialize (Object, "gender", Value.Gender);
-      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Swagger.Streams.Deserialize (Object, "note", Value.Note);
       Swagger.Streams.Deserialize (Object, "status", Value.Status);
+      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Deserialize (Object, "address", Value.Address);
    end Deserialize;
 
@@ -26561,6 +26569,9 @@ package body .Models is
          Into.Write_Entity ("order_item_variant_id", Value.Order_Item_Variant_Id);
       end if;
       Serialize (Into, "order_item_tax", Value.Order_Item_Tax);
+      if not Value.Order_Item_Price_Includes_Tax.Is_Null then
+         Into.Write_Entity ("order_item_price_includes_tax", Value.Order_Item_Price_Includes_Tax);
+      end if;
       if not Value.Order_Item_Parent.Is_Null then
          Into.Write_Entity ("order_item_parent", Value.Order_Item_Parent);
       end if;
@@ -26572,9 +26583,6 @@ package body .Models is
       end if;
       if not Value.Order_Item_Allow_Ship_Items_Separately.Is_Null then
          Into.Write_Entity ("order_item_allow_ship_items_separately", Value.Order_Item_Allow_Ship_Items_Separately);
-      end if;
-      if not Value.Order_Item_Price_Includes_Tax.Is_Null then
-         Into.Write_Entity ("order_item_price_includes_tax", Value.Order_Item_Price_Includes_Tax);
       end if;
       Serialize (Into, "order_item_option", Value.Order_Item_Option);
       Serialize (Into, "order_item_property", Value.Order_Item_Property);
@@ -26606,11 +26614,11 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "order_item_weight", Value.Order_Item_Weight);
       Swagger.Streams.Deserialize (Object, "order_item_variant_id", Value.Order_Item_Variant_Id);
       Swagger.Streams.Deserialize (Object, "order_item_tax", Value.Order_Item_Tax);
+      Swagger.Streams.Deserialize (Object, "order_item_price_includes_tax", Value.Order_Item_Price_Includes_Tax);
       Swagger.Streams.Deserialize (Object, "order_item_parent", Value.Order_Item_Parent);
       Swagger.Streams.Deserialize (Object, "order_item_parent_option_name", Value.Order_Item_Parent_Option_Name);
       Swagger.Streams.Deserialize (Object, "order_item_allow_refund_items_separately", Value.Order_Item_Allow_Refund_Items_Separately);
       Swagger.Streams.Deserialize (Object, "order_item_allow_ship_items_separately", Value.Order_Item_Allow_Ship_Items_Separately);
-      Swagger.Streams.Deserialize (Object, "order_item_price_includes_tax", Value.Order_Item_Price_Includes_Tax);
       Deserialize (Object, "order_item_option", Value.Order_Item_Option);
       Deserialize (Object, "order_item_property", Value.Order_Item_Property);
    end Deserialize;
@@ -26647,78 +26655,13 @@ package body .Models is
          Into.Write_Entity ("channel_id", Value.Channel_Id);
       end if;
       Into.Write_Entity ("order_status", Value.Order_Status);
-      if not Value.Send_Notifications.Is_Null then
-         Into.Write_Entity ("send_notifications", Value.Send_Notifications);
+      if not Value.Fulfillment_Status.Is_Null then
+         Into.Write_Entity ("fulfillment_status", Value.Fulfillment_Status);
       end if;
-      if not Value.Send_Admin_Notifications.Is_Null then
-         Into.Write_Entity ("send_admin_notifications", Value.Send_Admin_Notifications);
+      if not Value.Financial_Status.Is_Null then
+         Into.Write_Entity ("financial_status", Value.Financial_Status);
       end if;
       Into.Write_Entity ("customer_email", Value.Customer_Email);
-      Into.Write_Entity ("bill_first_name", Value.Bill_First_Name);
-      Into.Write_Entity ("bill_last_name", Value.Bill_Last_Name);
-      Into.Write_Entity ("bill_address_1", Value.Bill_Address_1);
-      Into.Write_Entity ("bill_city", Value.Bill_City);
-      Into.Write_Entity ("bill_postcode", Value.Bill_Postcode);
-      Into.Write_Entity ("bill_state", Value.Bill_State);
-      Into.Write_Entity ("bill_country", Value.Bill_Country);
-      if not Value.Shipp_First_Name.Is_Null then
-         Into.Write_Entity ("shipp_first_name", Value.Shipp_First_Name);
-      end if;
-      if not Value.Shipp_Last_Name.Is_Null then
-         Into.Write_Entity ("shipp_last_name", Value.Shipp_Last_Name);
-      end if;
-      if not Value.Shipp_Address_1.Is_Null then
-         Into.Write_Entity ("shipp_address_1", Value.Shipp_Address_1);
-      end if;
-      if not Value.Shipp_City.Is_Null then
-         Into.Write_Entity ("shipp_city", Value.Shipp_City);
-      end if;
-      if not Value.Shipp_Postcode.Is_Null then
-         Into.Write_Entity ("shipp_postcode", Value.Shipp_Postcode);
-      end if;
-      if not Value.Shipp_State.Is_Null then
-         Into.Write_Entity ("shipp_state", Value.Shipp_State);
-      end if;
-      if not Value.Shipp_Country.Is_Null then
-         Into.Write_Entity ("shipp_country", Value.Shipp_Country);
-      end if;
-      Serialize (Into, "total_price", Value.Total_Price);
-      if not Value.Date.Is_Null then
-         Into.Write_Entity ("date", Value.Date);
-      end if;
-      if not Value.Order_Payment_Method.Is_Null then
-         Into.Write_Entity ("order_payment_method", Value.Order_Payment_Method);
-      end if;
-      if not Value.Transaction_Id.Is_Null then
-         Into.Write_Entity ("transaction_id", Value.Transaction_Id);
-      end if;
-      if not Value.Order_Shipping_Method.Is_Null then
-         Into.Write_Entity ("order_shipping_method", Value.Order_Shipping_Method);
-      end if;
-      if not Value.Currency.Is_Null then
-         Into.Write_Entity ("currency", Value.Currency);
-      end if;
-      if not Value.Bill_Address_2.Is_Null then
-         Into.Write_Entity ("bill_address_2", Value.Bill_Address_2);
-      end if;
-      if not Value.Bill_Company.Is_Null then
-         Into.Write_Entity ("bill_company", Value.Bill_Company);
-      end if;
-      if not Value.Bill_Phone.Is_Null then
-         Into.Write_Entity ("bill_phone", Value.Bill_Phone);
-      end if;
-      if not Value.Bill_Fax.Is_Null then
-         Into.Write_Entity ("bill_fax", Value.Bill_Fax);
-      end if;
-      if not Value.Comment.Is_Null then
-         Into.Write_Entity ("comment", Value.Comment);
-      end if;
-      if not Value.Admin_Comment.Is_Null then
-         Into.Write_Entity ("admin_comment", Value.Admin_Comment);
-      end if;
-      if not Value.Admin_Private_Comment.Is_Null then
-         Into.Write_Entity ("admin_private_comment", Value.Admin_Private_Comment);
-      end if;
       if not Value.Customer_First_Name.Is_Null then
          Into.Write_Entity ("customer_first_name", Value.Customer_First_Name);
       end if;
@@ -26737,8 +26680,66 @@ package body .Models is
       if not Value.Customer_Fax.Is_Null then
          Into.Write_Entity ("customer_fax", Value.Customer_Fax);
       end if;
+      if not Value.Order_Payment_Method.Is_Null then
+         Into.Write_Entity ("order_payment_method", Value.Order_Payment_Method);
+      end if;
+      if not Value.Transaction_Id.Is_Null then
+         Into.Write_Entity ("transaction_id", Value.Transaction_Id);
+      end if;
+      if not Value.Currency.Is_Null then
+         Into.Write_Entity ("currency", Value.Currency);
+      end if;
+      if not Value.Date.Is_Null then
+         Into.Write_Entity ("date", Value.Date);
+      end if;
+      if not Value.Date_Modified.Is_Null then
+         Into.Write_Entity ("date_modified", Value.Date_Modified);
+      end if;
+      if not Value.Date_Finished.Is_Null then
+         Into.Write_Entity ("date_finished", Value.Date_Finished);
+      end if;
+      Into.Write_Entity ("bill_first_name", Value.Bill_First_Name);
+      Into.Write_Entity ("bill_last_name", Value.Bill_Last_Name);
+      Into.Write_Entity ("bill_address_1", Value.Bill_Address_1);
+      if not Value.Bill_Address_2.Is_Null then
+         Into.Write_Entity ("bill_address_2", Value.Bill_Address_2);
+      end if;
+      Into.Write_Entity ("bill_city", Value.Bill_City);
+      Into.Write_Entity ("bill_postcode", Value.Bill_Postcode);
+      Into.Write_Entity ("bill_state", Value.Bill_State);
+      Into.Write_Entity ("bill_country", Value.Bill_Country);
+      if not Value.Bill_Company.Is_Null then
+         Into.Write_Entity ("bill_company", Value.Bill_Company);
+      end if;
+      if not Value.Bill_Phone.Is_Null then
+         Into.Write_Entity ("bill_phone", Value.Bill_Phone);
+      end if;
+      if not Value.Bill_Fax.Is_Null then
+         Into.Write_Entity ("bill_fax", Value.Bill_Fax);
+      end if;
+      if not Value.Shipp_First_Name.Is_Null then
+         Into.Write_Entity ("shipp_first_name", Value.Shipp_First_Name);
+      end if;
+      if not Value.Shipp_Last_Name.Is_Null then
+         Into.Write_Entity ("shipp_last_name", Value.Shipp_Last_Name);
+      end if;
+      if not Value.Shipp_Address_1.Is_Null then
+         Into.Write_Entity ("shipp_address_1", Value.Shipp_Address_1);
+      end if;
       if not Value.Shipp_Address_2.Is_Null then
          Into.Write_Entity ("shipp_address_2", Value.Shipp_Address_2);
+      end if;
+      if not Value.Shipp_City.Is_Null then
+         Into.Write_Entity ("shipp_city", Value.Shipp_City);
+      end if;
+      if not Value.Shipp_Postcode.Is_Null then
+         Into.Write_Entity ("shipp_postcode", Value.Shipp_Postcode);
+      end if;
+      if not Value.Shipp_State.Is_Null then
+         Into.Write_Entity ("shipp_state", Value.Shipp_State);
+      end if;
+      if not Value.Shipp_Country.Is_Null then
+         Into.Write_Entity ("shipp_country", Value.Shipp_Country);
       end if;
       if not Value.Shipp_Company.Is_Null then
          Into.Write_Entity ("shipp_company", Value.Shipp_Company);
@@ -26749,41 +26750,51 @@ package body .Models is
       if not Value.Shipp_Fax.Is_Null then
          Into.Write_Entity ("shipp_fax", Value.Shipp_Fax);
       end if;
-      if not Value.Date_Modified.Is_Null then
-         Into.Write_Entity ("date_modified", Value.Date_Modified);
-      end if;
-      if not Value.Date_Finished.Is_Null then
-         Into.Write_Entity ("date_finished", Value.Date_Finished);
-      end if;
       Serialize (Into, "subtotal_price", Value.Subtotal_Price);
       Serialize (Into, "tax_price", Value.Tax_Price);
+      Serialize (Into, "total_price", Value.Total_Price);
+      Serialize (Into, "total_paid", Value.Total_Paid);
+      if not Value.Total_Weight.Is_Null then
+         Into.Write_Entity ("total_weight", Value.Total_Weight);
+      end if;
       if not Value.Prices_Inc_Tax.Is_Null then
          Into.Write_Entity ("prices_inc_tax", Value.Prices_Inc_Tax);
       end if;
       Serialize (Into, "shipping_price", Value.Shipping_Price);
       Serialize (Into, "shipping_tax", Value.Shipping_Tax);
+      Serialize (Into, "discount", Value.Discount);
+      Serialize (Into, "coupon_discount", Value.Coupon_Discount);
+      Serialize (Into, "gift_certificate_discount", Value.Gift_Certificate_Discount);
+      if not Value.Order_Shipping_Method.Is_Null then
+         Into.Write_Entity ("order_shipping_method", Value.Order_Shipping_Method);
+      end if;
       if not Value.Carrier_Id.Is_Null then
          Into.Write_Entity ("carrier_id", Value.Carrier_Id);
       end if;
       if not Value.Warehouse_Id.Is_Null then
          Into.Write_Entity ("warehouse_id", Value.Warehouse_Id);
       end if;
-      Serialize (Into, "discount", Value.Discount);
-      Serialize (Into, "coupon_discount", Value.Coupon_Discount);
       Serialize (Into, "coupons", Value.Coupons);
-      Serialize (Into, "gift_certificate_discount", Value.Gift_Certificate_Discount);
-      if not Value.Fulfillment_Status.Is_Null then
-         Into.Write_Entity ("fulfillment_status", Value.Fulfillment_Status);
-      end if;
-      if not Value.Financial_Status.Is_Null then
-         Into.Write_Entity ("financial_status", Value.Financial_Status);
-      end if;
-      Serialize (Into, "total_paid", Value.Total_Paid);
-      if not Value.External_Source.Is_Null then
-         Into.Write_Entity ("external_source", Value.External_Source);
-      end if;
       if not Value.Tags.Is_Null then
          Into.Write_Entity ("tags", Value.Tags);
+      end if;
+      if not Value.Comment.Is_Null then
+         Into.Write_Entity ("comment", Value.Comment);
+      end if;
+      if not Value.Admin_Comment.Is_Null then
+         Into.Write_Entity ("admin_comment", Value.Admin_Comment);
+      end if;
+      if not Value.Admin_Private_Comment.Is_Null then
+         Into.Write_Entity ("admin_private_comment", Value.Admin_Private_Comment);
+      end if;
+      if not Value.Send_Notifications.Is_Null then
+         Into.Write_Entity ("send_notifications", Value.Send_Notifications);
+      end if;
+      if not Value.Send_Admin_Notifications.Is_Null then
+         Into.Write_Entity ("send_admin_notifications", Value.Send_Admin_Notifications);
+      end if;
+      if not Value.External_Source.Is_Null then
+         Into.Write_Entity ("external_source", Value.External_Source);
       end if;
       if not Value.Inventory_Behaviour.Is_Null then
          Into.Write_Entity ("inventory_behaviour", Value.Inventory_Behaviour);
@@ -26792,9 +26803,6 @@ package body .Models is
          Into.Write_Entity ("create_invoice", Value.Create_Invoice);
       end if;
       Serialize (Into, "note_attributes", Value.Note_Attributes);
-      if not Value.Total_Weight.Is_Null then
-         Into.Write_Entity ("total_weight", Value.Total_Weight);
-      end if;
       if not Value.Clear_Cache.Is_Null then
          Into.Write_Entity ("clear_cache", Value.Clear_Cache);
       end if;
@@ -26827,68 +26835,68 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Swagger.Streams.Deserialize (Object, "channel_id", Value.Channel_Id);
       Swagger.Streams.Deserialize (Object, "order_status", Value.Order_Status);
-      Swagger.Streams.Deserialize (Object, "send_notifications", Value.Send_Notifications);
-      Swagger.Streams.Deserialize (Object, "send_admin_notifications", Value.Send_Admin_Notifications);
+      Swagger.Streams.Deserialize (Object, "fulfillment_status", Value.Fulfillment_Status);
+      Swagger.Streams.Deserialize (Object, "financial_status", Value.Financial_Status);
       Swagger.Streams.Deserialize (Object, "customer_email", Value.Customer_Email);
-      Swagger.Streams.Deserialize (Object, "bill_first_name", Value.Bill_First_Name);
-      Swagger.Streams.Deserialize (Object, "bill_last_name", Value.Bill_Last_Name);
-      Swagger.Streams.Deserialize (Object, "bill_address_1", Value.Bill_Address_1);
-      Swagger.Streams.Deserialize (Object, "bill_city", Value.Bill_City);
-      Swagger.Streams.Deserialize (Object, "bill_postcode", Value.Bill_Postcode);
-      Swagger.Streams.Deserialize (Object, "bill_state", Value.Bill_State);
-      Swagger.Streams.Deserialize (Object, "bill_country", Value.Bill_Country);
-      Swagger.Streams.Deserialize (Object, "shipp_first_name", Value.Shipp_First_Name);
-      Swagger.Streams.Deserialize (Object, "shipp_last_name", Value.Shipp_Last_Name);
-      Swagger.Streams.Deserialize (Object, "shipp_address_1", Value.Shipp_Address_1);
-      Swagger.Streams.Deserialize (Object, "shipp_city", Value.Shipp_City);
-      Swagger.Streams.Deserialize (Object, "shipp_postcode", Value.Shipp_Postcode);
-      Swagger.Streams.Deserialize (Object, "shipp_state", Value.Shipp_State);
-      Swagger.Streams.Deserialize (Object, "shipp_country", Value.Shipp_Country);
-      Swagger.Streams.Deserialize (Object, "total_price", Value.Total_Price);
-      Swagger.Streams.Deserialize (Object, "date", Value.Date);
-      Swagger.Streams.Deserialize (Object, "order_payment_method", Value.Order_Payment_Method);
-      Swagger.Streams.Deserialize (Object, "transaction_id", Value.Transaction_Id);
-      Swagger.Streams.Deserialize (Object, "order_shipping_method", Value.Order_Shipping_Method);
-      Swagger.Streams.Deserialize (Object, "currency", Value.Currency);
-      Swagger.Streams.Deserialize (Object, "bill_address_2", Value.Bill_Address_2);
-      Swagger.Streams.Deserialize (Object, "bill_company", Value.Bill_Company);
-      Swagger.Streams.Deserialize (Object, "bill_phone", Value.Bill_Phone);
-      Swagger.Streams.Deserialize (Object, "bill_fax", Value.Bill_Fax);
-      Swagger.Streams.Deserialize (Object, "comment", Value.Comment);
-      Swagger.Streams.Deserialize (Object, "admin_comment", Value.Admin_Comment);
-      Swagger.Streams.Deserialize (Object, "admin_private_comment", Value.Admin_Private_Comment);
       Swagger.Streams.Deserialize (Object, "customer_first_name", Value.Customer_First_Name);
       Swagger.Streams.Deserialize (Object, "customer_last_name", Value.Customer_Last_Name);
       Swagger.Streams.Deserialize (Object, "customer_phone", Value.Customer_Phone);
       Swagger.Streams.Deserialize (Object, "customer_country", Value.Customer_Country);
       Swagger.Streams.Deserialize (Object, "customer_birthday", Value.Customer_Birthday);
       Swagger.Streams.Deserialize (Object, "customer_fax", Value.Customer_Fax);
+      Swagger.Streams.Deserialize (Object, "order_payment_method", Value.Order_Payment_Method);
+      Swagger.Streams.Deserialize (Object, "transaction_id", Value.Transaction_Id);
+      Swagger.Streams.Deserialize (Object, "currency", Value.Currency);
+      Swagger.Streams.Deserialize (Object, "date", Value.Date);
+      Swagger.Streams.Deserialize (Object, "date_modified", Value.Date_Modified);
+      Swagger.Streams.Deserialize (Object, "date_finished", Value.Date_Finished);
+      Swagger.Streams.Deserialize (Object, "bill_first_name", Value.Bill_First_Name);
+      Swagger.Streams.Deserialize (Object, "bill_last_name", Value.Bill_Last_Name);
+      Swagger.Streams.Deserialize (Object, "bill_address_1", Value.Bill_Address_1);
+      Swagger.Streams.Deserialize (Object, "bill_address_2", Value.Bill_Address_2);
+      Swagger.Streams.Deserialize (Object, "bill_city", Value.Bill_City);
+      Swagger.Streams.Deserialize (Object, "bill_postcode", Value.Bill_Postcode);
+      Swagger.Streams.Deserialize (Object, "bill_state", Value.Bill_State);
+      Swagger.Streams.Deserialize (Object, "bill_country", Value.Bill_Country);
+      Swagger.Streams.Deserialize (Object, "bill_company", Value.Bill_Company);
+      Swagger.Streams.Deserialize (Object, "bill_phone", Value.Bill_Phone);
+      Swagger.Streams.Deserialize (Object, "bill_fax", Value.Bill_Fax);
+      Swagger.Streams.Deserialize (Object, "shipp_first_name", Value.Shipp_First_Name);
+      Swagger.Streams.Deserialize (Object, "shipp_last_name", Value.Shipp_Last_Name);
+      Swagger.Streams.Deserialize (Object, "shipp_address_1", Value.Shipp_Address_1);
       Swagger.Streams.Deserialize (Object, "shipp_address_2", Value.Shipp_Address_2);
+      Swagger.Streams.Deserialize (Object, "shipp_city", Value.Shipp_City);
+      Swagger.Streams.Deserialize (Object, "shipp_postcode", Value.Shipp_Postcode);
+      Swagger.Streams.Deserialize (Object, "shipp_state", Value.Shipp_State);
+      Swagger.Streams.Deserialize (Object, "shipp_country", Value.Shipp_Country);
       Swagger.Streams.Deserialize (Object, "shipp_company", Value.Shipp_Company);
       Swagger.Streams.Deserialize (Object, "shipp_phone", Value.Shipp_Phone);
       Swagger.Streams.Deserialize (Object, "shipp_fax", Value.Shipp_Fax);
-      Swagger.Streams.Deserialize (Object, "date_modified", Value.Date_Modified);
-      Swagger.Streams.Deserialize (Object, "date_finished", Value.Date_Finished);
       Swagger.Streams.Deserialize (Object, "subtotal_price", Value.Subtotal_Price);
       Swagger.Streams.Deserialize (Object, "tax_price", Value.Tax_Price);
+      Swagger.Streams.Deserialize (Object, "total_price", Value.Total_Price);
+      Swagger.Streams.Deserialize (Object, "total_paid", Value.Total_Paid);
+      Swagger.Streams.Deserialize (Object, "total_weight", Value.Total_Weight);
       Swagger.Streams.Deserialize (Object, "prices_inc_tax", Value.Prices_Inc_Tax);
       Swagger.Streams.Deserialize (Object, "shipping_price", Value.Shipping_Price);
       Swagger.Streams.Deserialize (Object, "shipping_tax", Value.Shipping_Tax);
-      Swagger.Streams.Deserialize (Object, "carrier_id", Value.Carrier_Id);
-      Swagger.Streams.Deserialize (Object, "warehouse_id", Value.Warehouse_Id);
       Swagger.Streams.Deserialize (Object, "discount", Value.Discount);
       Swagger.Streams.Deserialize (Object, "coupon_discount", Value.Coupon_Discount);
-      Swagger.Streams.Deserialize (Object, "coupons", Value.Coupons);
       Swagger.Streams.Deserialize (Object, "gift_certificate_discount", Value.Gift_Certificate_Discount);
-      Swagger.Streams.Deserialize (Object, "fulfillment_status", Value.Fulfillment_Status);
-      Swagger.Streams.Deserialize (Object, "financial_status", Value.Financial_Status);
-      Swagger.Streams.Deserialize (Object, "total_paid", Value.Total_Paid);
-      Swagger.Streams.Deserialize (Object, "external_source", Value.External_Source);
+      Swagger.Streams.Deserialize (Object, "order_shipping_method", Value.Order_Shipping_Method);
+      Swagger.Streams.Deserialize (Object, "carrier_id", Value.Carrier_Id);
+      Swagger.Streams.Deserialize (Object, "warehouse_id", Value.Warehouse_Id);
+      Swagger.Streams.Deserialize (Object, "coupons", Value.Coupons);
       Swagger.Streams.Deserialize (Object, "tags", Value.Tags);
+      Swagger.Streams.Deserialize (Object, "comment", Value.Comment);
+      Swagger.Streams.Deserialize (Object, "admin_comment", Value.Admin_Comment);
+      Swagger.Streams.Deserialize (Object, "admin_private_comment", Value.Admin_Private_Comment);
+      Swagger.Streams.Deserialize (Object, "send_notifications", Value.Send_Notifications);
+      Swagger.Streams.Deserialize (Object, "send_admin_notifications", Value.Send_Admin_Notifications);
+      Swagger.Streams.Deserialize (Object, "external_source", Value.External_Source);
       Swagger.Streams.Deserialize (Object, "inventory_behaviour", Value.Inventory_Behaviour);
       Swagger.Streams.Deserialize (Object, "create_invoice", Value.Create_Invoice);
       Deserialize (Object, "note_attributes", Value.Note_Attributes);
-      Swagger.Streams.Deserialize (Object, "total_weight", Value.Total_Weight);
       Swagger.Streams.Deserialize (Object, "clear_cache", Value.Clear_Cache);
       Swagger.Streams.Deserialize (Object, "origin", Value.Origin);
       Deserialize (Object, "order_item", Value.Order_Item);
@@ -26985,11 +26993,11 @@ package body .Models is
       if not Value.Order_Id.Is_Null then
          Into.Write_Entity ("order_id", Value.Order_Id);
       end if;
-      if not Value.Store_Id.Is_Null then
-         Into.Write_Entity ("store_id", Value.Store_Id);
-      end if;
       if not Value.Warehouse_Id.Is_Null then
          Into.Write_Entity ("warehouse_id", Value.Warehouse_Id);
+      end if;
+      if not Value.Store_Id.Is_Null then
+         Into.Write_Entity ("store_id", Value.Store_Id);
       end if;
       if not Value.Shipment_Provider.Is_Null then
          Into.Write_Entity ("shipment_provider", Value.Shipment_Provider);
@@ -26998,21 +27006,21 @@ package body .Models is
          Into.Write_Entity ("shipping_method", Value.Shipping_Method);
       end if;
       Serialize (Into, "items", Value.Items);
-      if not Value.Send_Notifications.Is_Null then
-         Into.Write_Entity ("send_notifications", Value.Send_Notifications);
-      end if;
       Serialize (Into, "tracking_numbers", Value.Tracking_Numbers);
-      if not Value.Adjust_Stock.Is_Null then
-         Into.Write_Entity ("adjust_stock", Value.Adjust_Stock);
-      end if;
-      if not Value.Enable_Cache.Is_Null then
-         Into.Write_Entity ("enable_cache", Value.Enable_Cache);
-      end if;
       if not Value.Tracking_Link.Is_Null then
          Into.Write_Entity ("tracking_link", Value.Tracking_Link);
       end if;
       if not Value.Is_Shipped.Is_Null then
          Into.Write_Entity ("is_shipped", Value.Is_Shipped);
+      end if;
+      if not Value.Send_Notifications.Is_Null then
+         Into.Write_Entity ("send_notifications", Value.Send_Notifications);
+      end if;
+      if not Value.Adjust_Stock.Is_Null then
+         Into.Write_Entity ("adjust_stock", Value.Adjust_Stock);
+      end if;
+      if not Value.Enable_Cache.Is_Null then
+         Into.Write_Entity ("enable_cache", Value.Enable_Cache);
       end if;
       if not Value.Check_Process_Status.Is_Null then
          Into.Write_Entity ("check_process_status", Value.Check_Process_Status);
@@ -27041,17 +27049,17 @@ package body .Models is
    begin
       Swagger.Streams.Deserialize (From, Name, Object);
       Swagger.Streams.Deserialize (Object, "order_id", Value.Order_Id);
-      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Swagger.Streams.Deserialize (Object, "warehouse_id", Value.Warehouse_Id);
+      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Swagger.Streams.Deserialize (Object, "shipment_provider", Value.Shipment_Provider);
       Swagger.Streams.Deserialize (Object, "shipping_method", Value.Shipping_Method);
       Deserialize (Object, "items", Value.Items);
-      Swagger.Streams.Deserialize (Object, "send_notifications", Value.Send_Notifications);
       Deserialize (Object, "tracking_numbers", Value.Tracking_Numbers);
-      Swagger.Streams.Deserialize (Object, "adjust_stock", Value.Adjust_Stock);
-      Swagger.Streams.Deserialize (Object, "enable_cache", Value.Enable_Cache);
       Swagger.Streams.Deserialize (Object, "tracking_link", Value.Tracking_Link);
       Swagger.Streams.Deserialize (Object, "is_shipped", Value.Is_Shipped);
+      Swagger.Streams.Deserialize (Object, "send_notifications", Value.Send_Notifications);
+      Swagger.Streams.Deserialize (Object, "adjust_stock", Value.Adjust_Stock);
+      Swagger.Streams.Deserialize (Object, "enable_cache", Value.Enable_Cache);
       Swagger.Streams.Deserialize (Object, "check_process_status", Value.Check_Process_Status);
       Swagger.Streams.Deserialize (Object, "use_latest_api_version", Value.Use_Latest_Api_Version);
    end Deserialize;
@@ -27308,356 +27316,47 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in .Models.ProductUpdate_Type) is
-   begin
-      Into.Start_Entity (Name);
-      if not Value.Id.Is_Null then
-         Into.Write_Entity ("id", Value.Id);
-      end if;
-      if not Value.Model.Is_Null then
-         Into.Write_Entity ("model", Value.Model);
-      end if;
-      Serialize (Into, "old_price", Value.Old_Price);
-      Serialize (Into, "price", Value.Price);
-      Serialize (Into, "special_price", Value.Special_Price);
-      if not Value.Sprice_Create.Is_Null then
-         Into.Write_Entity ("sprice_create", Value.Sprice_Create);
-      end if;
-      if not Value.Sprice_Expire.Is_Null then
-         Into.Write_Entity ("sprice_expire", Value.Sprice_Expire);
-      end if;
-      Serialize (Into, "cost_price", Value.Cost_Price);
-      Serialize (Into, "fixed_cost_shipping_price", Value.Fixed_Cost_Shipping_Price);
-      Serialize (Into, "retail_price", Value.Retail_Price);
-      Serialize (Into, "quantity", Value.Quantity);
-      if not Value.Available_For_View.Is_Null then
-         Into.Write_Entity ("available_for_view", Value.Available_For_View);
-      end if;
-      Serialize (Into, "weight", Value.Weight);
-      if not Value.Weight_Unit.Is_Null then
-         Into.Write_Entity ("weight_unit", Value.Weight_Unit);
-      end if;
-      if not Value.Dimensions_Unit.Is_Null then
-         Into.Write_Entity ("dimensions_unit", Value.Dimensions_Unit);
-      end if;
-      Serialize (Into, "increase_quantity", Value.Increase_Quantity);
-      Serialize (Into, "reduce_quantity", Value.Reduce_Quantity);
-      if not Value.Warehouse_Id.Is_Null then
-         Into.Write_Entity ("warehouse_id", Value.Warehouse_Id);
-      end if;
-      Serialize (Into, "reserve_quantity", Value.Reserve_Quantity);
-      if not Value.Manage_Stock.Is_Null then
-         Into.Write_Entity ("manage_stock", Value.Manage_Stock);
-      end if;
-      if not Value.Backorder_Status.Is_Null then
-         Into.Write_Entity ("backorder_status", Value.Backorder_Status);
-      end if;
-      if not Value.Name.Is_Null then
-         Into.Write_Entity ("name", Value.Name);
-      end if;
-      if not Value.Sku.Is_Null then
-         Into.Write_Entity ("sku", Value.Sku);
-      end if;
-      if not Value.Visible.Is_Null then
-         Into.Write_Entity ("visible", Value.Visible);
-      end if;
-      if not Value.Manufacturer.Is_Null then
-         Into.Write_Entity ("manufacturer", Value.Manufacturer);
-      end if;
-      if not Value.Manufacturer_Id.Is_Null then
-         Into.Write_Entity ("manufacturer_id", Value.Manufacturer_Id);
-      end if;
-      if not Value.Categories_Ids.Is_Null then
-         Into.Write_Entity ("categories_ids", Value.Categories_Ids);
-      end if;
-      if not Value.Related_Products_Ids.Is_Null then
-         Into.Write_Entity ("related_products_ids", Value.Related_Products_Ids);
-      end if;
-      if not Value.Up_Sell_Products_Ids.Is_Null then
-         Into.Write_Entity ("up_sell_products_ids", Value.Up_Sell_Products_Ids);
-      end if;
-      if not Value.Cross_Sell_Products_Ids.Is_Null then
-         Into.Write_Entity ("cross_sell_products_ids", Value.Cross_Sell_Products_Ids);
-      end if;
-      if not Value.Description.Is_Null then
-         Into.Write_Entity ("description", Value.Description);
-      end if;
-      if not Value.Short_Description.Is_Null then
-         Into.Write_Entity ("short_description", Value.Short_Description);
-      end if;
-      if not Value.Meta_Title.Is_Null then
-         Into.Write_Entity ("meta_title", Value.Meta_Title);
-      end if;
-      if not Value.Meta_Keywords.Is_Null then
-         Into.Write_Entity ("meta_keywords", Value.Meta_Keywords);
-      end if;
-      if not Value.Meta_Description.Is_Null then
-         Into.Write_Entity ("meta_description", Value.Meta_Description);
-      end if;
-      if not Value.Store_Id.Is_Null then
-         Into.Write_Entity ("store_id", Value.Store_Id);
-      end if;
-      if not Value.Lang_Id.Is_Null then
-         Into.Write_Entity ("lang_id", Value.Lang_Id);
-      end if;
-      if not Value.In_Stock.Is_Null then
-         Into.Write_Entity ("in_stock", Value.In_Stock);
-      end if;
-      if not Value.Status.Is_Null then
-         Into.Write_Entity ("status", Value.Status);
-      end if;
-      if not Value.Seo_Url.Is_Null then
-         Into.Write_Entity ("seo_url", Value.Seo_Url);
-      end if;
-      if not Value.Report_Request_Id.Is_Null then
-         Into.Write_Entity ("report_request_id", Value.Report_Request_Id);
-      end if;
-      if not Value.Disable_Report_Cache.Is_Null then
-         Into.Write_Entity ("disable_report_cache", Value.Disable_Report_Cache);
-      end if;
-      if not Value.Reindex.Is_Null then
-         Into.Write_Entity ("reindex", Value.Reindex);
-      end if;
-      if not Value.Tags.Is_Null then
-         Into.Write_Entity ("tags", Value.Tags);
-      end if;
-      if not Value.Clear_Cache.Is_Null then
-         Into.Write_Entity ("clear_cache", Value.Clear_Cache);
-      end if;
-      if not Value.Gtin.Is_Null then
-         Into.Write_Entity ("gtin", Value.Gtin);
-      end if;
-      if not Value.Upc.Is_Null then
-         Into.Write_Entity ("upc", Value.Upc);
-      end if;
-      if not Value.Mpn.Is_Null then
-         Into.Write_Entity ("mpn", Value.Mpn);
-      end if;
-      if not Value.Ean.Is_Null then
-         Into.Write_Entity ("ean", Value.Ean);
-      end if;
-      if not Value.Isbn.Is_Null then
-         Into.Write_Entity ("isbn", Value.Isbn);
-      end if;
-      if not Value.Taxable.Is_Null then
-         Into.Write_Entity ("taxable", Value.Taxable);
-      end if;
-      if not Value.Product_Class.Is_Null then
-         Into.Write_Entity ("product_class", Value.Product_Class);
-      end if;
-      Serialize (Into, "height", Value.Height);
-      Serialize (Into, "length", Value.Length);
-      Serialize (Into, "width", Value.Width);
-      if not Value.Harmonized_System_Code.Is_Null then
-         Into.Write_Entity ("harmonized_system_code", Value.Harmonized_System_Code);
-      end if;
-      if not Value.Country_Of_Origin.Is_Null then
-         Into.Write_Entity ("country_of_origin", Value.Country_Of_Origin);
-      end if;
-      if not Value.Search_Keywords.Is_Null then
-         Into.Write_Entity ("search_keywords", Value.Search_Keywords);
-      end if;
-      if not Value.Barcode.Is_Null then
-         Into.Write_Entity ("barcode", Value.Barcode);
-      end if;
-      if not Value.Is_Virtual.Is_Null then
-         Into.Write_Entity ("is_virtual", Value.Is_Virtual);
-      end if;
-      if not Value.Is_Free_Shipping.Is_Null then
-         Into.Write_Entity ("is_free_shipping", Value.Is_Free_Shipping);
-      end if;
-      Serialize (Into, "reserve_price", Value.Reserve_Price);
-      Serialize (Into, "buyitnow_price", Value.Buyitnow_Price);
-      if not Value.Avail_From.Is_Null then
-         Into.Write_Entity ("avail_from", Value.Avail_From);
-      end if;
-      if not Value.Tax_Class_Id.Is_Null then
-         Into.Write_Entity ("tax_class_id", Value.Tax_Class_Id);
-      end if;
-      if not Value.P_Type.Is_Null then
-         Into.Write_Entity ("type", Value.P_Type);
-      end if;
-      if not Value.Avail.Is_Null then
-         Into.Write_Entity ("avail", Value.Avail);
-      end if;
-      if not Value.Delivery_Code.Is_Null then
-         Into.Write_Entity ("delivery_code", Value.Delivery_Code);
-      end if;
-      if not Value.Check_Process_Status.Is_Null then
-         Into.Write_Entity ("check_process_status", Value.Check_Process_Status);
-      end if;
-      Serialize (Into, "package_details", Value.Package_Details);
-      if not Value.Stores_Ids.Is_Null then
-         Into.Write_Entity ("stores_ids", Value.Stores_Ids);
-      end if;
-      Serialize (Into, "manufacturer_info", Value.Manufacturer_Info);
-      if not Value.Production_Partner_Ids.Is_Null then
-         Into.Write_Entity ("production_partner_ids", Value.Production_Partner_Ids);
-      end if;
-      if not Value.Shipping_Template_Id.Is_Null then
-         Into.Write_Entity ("shipping_template_id", Value.Shipping_Template_Id);
-      end if;
-      if not Value.When_Made.Is_Null then
-         Into.Write_Entity ("when_made", Value.When_Made);
-      end if;
-      if not Value.Is_Supply.Is_Null then
-         Into.Write_Entity ("is_supply", Value.Is_Supply);
-      end if;
-      if not Value.Downloadable.Is_Null then
-         Into.Write_Entity ("downloadable", Value.Downloadable);
-      end if;
-      Serialize (Into, "materials", Value.Materials);
-      if not Value.Auto_Renew.Is_Null then
-         Into.Write_Entity ("auto_renew", Value.Auto_Renew);
-      end if;
-      if not Value.On_Sale.Is_Null then
-         Into.Write_Entity ("on_sale", Value.On_Sale);
-      end if;
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ProductUpdate_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.ProductUpdate_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "id", Value.Id);
-      Swagger.Streams.Deserialize (Object, "model", Value.Model);
-      Swagger.Streams.Deserialize (Object, "old_price", Value.Old_Price);
-      Swagger.Streams.Deserialize (Object, "price", Value.Price);
-      Swagger.Streams.Deserialize (Object, "special_price", Value.Special_Price);
-      Swagger.Streams.Deserialize (Object, "sprice_create", Value.Sprice_Create);
-      Swagger.Streams.Deserialize (Object, "sprice_expire", Value.Sprice_Expire);
-      Swagger.Streams.Deserialize (Object, "cost_price", Value.Cost_Price);
-      Swagger.Streams.Deserialize (Object, "fixed_cost_shipping_price", Value.Fixed_Cost_Shipping_Price);
-      Swagger.Streams.Deserialize (Object, "retail_price", Value.Retail_Price);
-      Swagger.Streams.Deserialize (Object, "quantity", Value.Quantity);
-      Swagger.Streams.Deserialize (Object, "available_for_view", Value.Available_For_View);
-      Swagger.Streams.Deserialize (Object, "weight", Value.Weight);
-      Swagger.Streams.Deserialize (Object, "weight_unit", Value.Weight_Unit);
-      Swagger.Streams.Deserialize (Object, "dimensions_unit", Value.Dimensions_Unit);
-      Swagger.Streams.Deserialize (Object, "increase_quantity", Value.Increase_Quantity);
-      Swagger.Streams.Deserialize (Object, "reduce_quantity", Value.Reduce_Quantity);
-      Swagger.Streams.Deserialize (Object, "warehouse_id", Value.Warehouse_Id);
-      Swagger.Streams.Deserialize (Object, "reserve_quantity", Value.Reserve_Quantity);
-      Swagger.Streams.Deserialize (Object, "manage_stock", Value.Manage_Stock);
-      Swagger.Streams.Deserialize (Object, "backorder_status", Value.Backorder_Status);
-      Swagger.Streams.Deserialize (Object, "name", Value.Name);
-      Swagger.Streams.Deserialize (Object, "sku", Value.Sku);
-      Swagger.Streams.Deserialize (Object, "visible", Value.Visible);
-      Swagger.Streams.Deserialize (Object, "manufacturer", Value.Manufacturer);
-      Swagger.Streams.Deserialize (Object, "manufacturer_id", Value.Manufacturer_Id);
-      Swagger.Streams.Deserialize (Object, "categories_ids", Value.Categories_Ids);
-      Swagger.Streams.Deserialize (Object, "related_products_ids", Value.Related_Products_Ids);
-      Swagger.Streams.Deserialize (Object, "up_sell_products_ids", Value.Up_Sell_Products_Ids);
-      Swagger.Streams.Deserialize (Object, "cross_sell_products_ids", Value.Cross_Sell_Products_Ids);
-      Swagger.Streams.Deserialize (Object, "description", Value.Description);
-      Swagger.Streams.Deserialize (Object, "short_description", Value.Short_Description);
-      Swagger.Streams.Deserialize (Object, "meta_title", Value.Meta_Title);
-      Swagger.Streams.Deserialize (Object, "meta_keywords", Value.Meta_Keywords);
-      Swagger.Streams.Deserialize (Object, "meta_description", Value.Meta_Description);
-      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
-      Swagger.Streams.Deserialize (Object, "lang_id", Value.Lang_Id);
-      Swagger.Streams.Deserialize (Object, "in_stock", Value.In_Stock);
-      Swagger.Streams.Deserialize (Object, "status", Value.Status);
-      Swagger.Streams.Deserialize (Object, "seo_url", Value.Seo_Url);
-      Swagger.Streams.Deserialize (Object, "report_request_id", Value.Report_Request_Id);
-      Swagger.Streams.Deserialize (Object, "disable_report_cache", Value.Disable_Report_Cache);
-      Swagger.Streams.Deserialize (Object, "reindex", Value.Reindex);
-      Swagger.Streams.Deserialize (Object, "tags", Value.Tags);
-      Swagger.Streams.Deserialize (Object, "clear_cache", Value.Clear_Cache);
-      Swagger.Streams.Deserialize (Object, "gtin", Value.Gtin);
-      Swagger.Streams.Deserialize (Object, "upc", Value.Upc);
-      Swagger.Streams.Deserialize (Object, "mpn", Value.Mpn);
-      Swagger.Streams.Deserialize (Object, "ean", Value.Ean);
-      Swagger.Streams.Deserialize (Object, "isbn", Value.Isbn);
-      Swagger.Streams.Deserialize (Object, "taxable", Value.Taxable);
-      Swagger.Streams.Deserialize (Object, "product_class", Value.Product_Class);
-      Swagger.Streams.Deserialize (Object, "height", Value.Height);
-      Swagger.Streams.Deserialize (Object, "length", Value.Length);
-      Swagger.Streams.Deserialize (Object, "width", Value.Width);
-      Swagger.Streams.Deserialize (Object, "harmonized_system_code", Value.Harmonized_System_Code);
-      Swagger.Streams.Deserialize (Object, "country_of_origin", Value.Country_Of_Origin);
-      Swagger.Streams.Deserialize (Object, "search_keywords", Value.Search_Keywords);
-      Swagger.Streams.Deserialize (Object, "barcode", Value.Barcode);
-      Swagger.Streams.Deserialize (Object, "is_virtual", Value.Is_Virtual);
-      Swagger.Streams.Deserialize (Object, "is_free_shipping", Value.Is_Free_Shipping);
-      Swagger.Streams.Deserialize (Object, "reserve_price", Value.Reserve_Price);
-      Swagger.Streams.Deserialize (Object, "buyitnow_price", Value.Buyitnow_Price);
-      Swagger.Streams.Deserialize (Object, "avail_from", Value.Avail_From);
-      Swagger.Streams.Deserialize (Object, "tax_class_id", Value.Tax_Class_Id);
-      Swagger.Streams.Deserialize (Object, "type", Value.P_Type);
-      Swagger.Streams.Deserialize (Object, "avail", Value.Avail);
-      Swagger.Streams.Deserialize (Object, "delivery_code", Value.Delivery_Code);
-      Swagger.Streams.Deserialize (Object, "check_process_status", Value.Check_Process_Status);
-      Deserialize (Object, "package_details", Value.Package_Details);
-      Swagger.Streams.Deserialize (Object, "stores_ids", Value.Stores_Ids);
-      Deserialize (Object, "manufacturer_info", Value.Manufacturer_Info);
-      Swagger.Streams.Deserialize (Object, "production_partner_ids", Value.Production_Partner_Ids);
-      Swagger.Streams.Deserialize (Object, "shipping_template_id", Value.Shipping_Template_Id);
-      Swagger.Streams.Deserialize (Object, "when_made", Value.When_Made);
-      Swagger.Streams.Deserialize (Object, "is_supply", Value.Is_Supply);
-      Swagger.Streams.Deserialize (Object, "downloadable", Value.Downloadable);
-      Swagger.Streams.Deserialize (Object, "materials", Value.Materials);
-      Swagger.Streams.Deserialize (Object, "auto_renew", Value.Auto_Renew);
-      Swagger.Streams.Deserialize (Object, "on_sale", Value.On_Sale);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out ProductUpdate_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.ProductUpdate_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
                         Value : in .Models.ProductVariantAdd_Type) is
    begin
       Into.Start_Entity (Name);
       if not Value.Product_Id.Is_Null then
          Into.Write_Entity ("product_id", Value.Product_Id);
       end if;
+      Serialize (Into, "attributes", Value.Attributes);
       if not Value.Name.Is_Null then
          Into.Write_Entity ("name", Value.Name);
       end if;
       Into.Write_Entity ("model", Value.Model);
-      if not Value.Sku.Is_Null then
-         Into.Write_Entity ("sku", Value.Sku);
+      if not Value.Description.Is_Null then
+         Into.Write_Entity ("description", Value.Description);
       end if;
-      if not Value.Barcode.Is_Null then
-         Into.Write_Entity ("barcode", Value.Barcode);
+      if not Value.Short_Description.Is_Null then
+         Into.Write_Entity ("short_description", Value.Short_Description);
       end if;
-      if not Value.Gtin.Is_Null then
-         Into.Write_Entity ("gtin", Value.Gtin);
+      if not Value.Available_For_View.Is_Null then
+         Into.Write_Entity ("available_for_view", Value.Available_For_View);
+      end if;
+      if not Value.Available_For_Sale.Is_Null then
+         Into.Write_Entity ("available_for_sale", Value.Available_For_Sale);
+      end if;
+      if not Value.Is_Virtual.Is_Null then
+         Into.Write_Entity ("is_virtual", Value.Is_Virtual);
+      end if;
+      if not Value.Is_Default.Is_Null then
+         Into.Write_Entity ("is_default", Value.Is_Default);
+      end if;
+      if not Value.Store_Id.Is_Null then
+         Into.Write_Entity ("store_id", Value.Store_Id);
+      end if;
+      if not Value.Stores_Ids.Is_Null then
+         Into.Write_Entity ("stores_ids", Value.Stores_Ids);
+      end if;
+      if not Value.Lang_Id.Is_Null then
+         Into.Write_Entity ("lang_id", Value.Lang_Id);
       end if;
       Serialize (Into, "price", Value.Price);
       Serialize (Into, "old_price", Value.Old_Price);
       Serialize (Into, "cost_price", Value.Cost_Price);
-      Serialize (Into, "fixed_cost_shipping_price", Value.Fixed_Cost_Shipping_Price);
-      Serialize (Into, "attributes", Value.Attributes);
-      if not Value.Description.Is_Null then
-         Into.Write_Entity ("description", Value.Description);
-      end if;
       Serialize (Into, "special_price", Value.Special_Price);
       if not Value.Sprice_Create.Is_Null then
          Into.Write_Entity ("sprice_create", Value.Sprice_Create);
@@ -27668,11 +27367,19 @@ package body .Models is
       if not Value.Sprice_Expire.Is_Null then
          Into.Write_Entity ("sprice_expire", Value.Sprice_Expire);
       end if;
-      if not Value.Available_For_View.Is_Null then
-         Into.Write_Entity ("available_for_view", Value.Available_For_View);
+      Serialize (Into, "tier_prices", Value.Tier_Prices);
+      Serialize (Into, "quantity", Value.Quantity);
+      if not Value.Warehouse_Id.Is_Null then
+         Into.Write_Entity ("warehouse_id", Value.Warehouse_Id);
       end if;
-      if not Value.Available_For_Sale.Is_Null then
-         Into.Write_Entity ("available_for_sale", Value.Available_For_Sale);
+      if not Value.In_Stock.Is_Null then
+         Into.Write_Entity ("in_stock", Value.In_Stock);
+      end if;
+      if not Value.Backorder_Status.Is_Null then
+         Into.Write_Entity ("backorder_status", Value.Backorder_Status);
+      end if;
+      if not Value.Manage_Stock.Is_Null then
+         Into.Write_Entity ("manage_stock", Value.Manage_Stock);
       end if;
       Serialize (Into, "weight", Value.Weight);
       Serialize (Into, "width", Value.Width);
@@ -27681,21 +27388,32 @@ package body .Models is
       if not Value.Weight_Unit.Is_Null then
          Into.Write_Entity ("weight_unit", Value.Weight_Unit);
       end if;
-      if not Value.Short_Description.Is_Null then
-         Into.Write_Entity ("short_description", Value.Short_Description);
+      if not Value.Sku.Is_Null then
+         Into.Write_Entity ("sku", Value.Sku);
       end if;
-      if not Value.Warehouse_Id.Is_Null then
-         Into.Write_Entity ("warehouse_id", Value.Warehouse_Id);
+      if not Value.Barcode.Is_Null then
+         Into.Write_Entity ("barcode", Value.Barcode);
       end if;
-      Serialize (Into, "quantity", Value.Quantity);
-      if not Value.Created_At.Is_Null then
-         Into.Write_Entity ("created_at", Value.Created_At);
+      if not Value.Gtin.Is_Null then
+         Into.Write_Entity ("gtin", Value.Gtin);
+      end if;
+      if not Value.Upc.Is_Null then
+         Into.Write_Entity ("upc", Value.Upc);
+      end if;
+      if not Value.Ean.Is_Null then
+         Into.Write_Entity ("ean", Value.Ean);
+      end if;
+      if not Value.Mpn.Is_Null then
+         Into.Write_Entity ("mpn", Value.Mpn);
+      end if;
+      if not Value.Isbn.Is_Null then
+         Into.Write_Entity ("isbn", Value.Isbn);
       end if;
       if not Value.Manufacturer.Is_Null then
          Into.Write_Entity ("manufacturer", Value.Manufacturer);
       end if;
-      if not Value.Tax_Class_Id.Is_Null then
-         Into.Write_Entity ("tax_class_id", Value.Tax_Class_Id);
+      if not Value.Created_At.Is_Null then
+         Into.Write_Entity ("created_at", Value.Created_At);
       end if;
       if not Value.Meta_Title.Is_Null then
          Into.Write_Entity ("meta_title", Value.Meta_Title);
@@ -27709,60 +27427,27 @@ package body .Models is
       if not Value.Url.Is_Null then
          Into.Write_Entity ("url", Value.Url);
       end if;
-      if not Value.Store_Id.Is_Null then
-         Into.Write_Entity ("store_id", Value.Store_Id);
-      end if;
-      if not Value.Lang_Id.Is_Null then
-         Into.Write_Entity ("lang_id", Value.Lang_Id);
-      end if;
-      if not Value.Clear_Cache.Is_Null then
-         Into.Write_Entity ("clear_cache", Value.Clear_Cache);
+      if not Value.Tax_Class_Id.Is_Null then
+         Into.Write_Entity ("tax_class_id", Value.Tax_Class_Id);
       end if;
       if not Value.Taxable.Is_Null then
          Into.Write_Entity ("taxable", Value.Taxable);
       end if;
-      if not Value.Harmonized_System_Code.Is_Null then
-         Into.Write_Entity ("harmonized_system_code", Value.Harmonized_System_Code);
+      Serialize (Into, "fixed_cost_shipping_price", Value.Fixed_Cost_Shipping_Price);
+      if not Value.Is_Free_Shipping.Is_Null then
+         Into.Write_Entity ("is_free_shipping", Value.Is_Free_Shipping);
       end if;
       if not Value.Country_Of_Origin.Is_Null then
          Into.Write_Entity ("country_of_origin", Value.Country_Of_Origin);
       end if;
-      if not Value.Manage_Stock.Is_Null then
-         Into.Write_Entity ("manage_stock", Value.Manage_Stock);
-      end if;
-      if not Value.Upc.Is_Null then
-         Into.Write_Entity ("upc", Value.Upc);
-      end if;
-      if not Value.Mpn.Is_Null then
-         Into.Write_Entity ("mpn", Value.Mpn);
-      end if;
-      if not Value.Ean.Is_Null then
-         Into.Write_Entity ("ean", Value.Ean);
-      end if;
-      if not Value.Isbn.Is_Null then
-         Into.Write_Entity ("isbn", Value.Isbn);
-      end if;
-      if not Value.Stores_Ids.Is_Null then
-         Into.Write_Entity ("stores_ids", Value.Stores_Ids);
-      end if;
-      if not Value.Is_Default.Is_Null then
-         Into.Write_Entity ("is_default", Value.Is_Default);
-      end if;
-      if not Value.Is_Free_Shipping.Is_Null then
-         Into.Write_Entity ("is_free_shipping", Value.Is_Free_Shipping);
+      if not Value.Harmonized_System_Code.Is_Null then
+         Into.Write_Entity ("harmonized_system_code", Value.Harmonized_System_Code);
       end if;
       if not Value.Marketplace_Item_Properties.Is_Null then
          Into.Write_Entity ("marketplace_item_properties", Value.Marketplace_Item_Properties);
       end if;
-      if not Value.In_Stock.Is_Null then
-         Into.Write_Entity ("in_stock", Value.In_Stock);
-      end if;
-      if not Value.Backorder_Status.Is_Null then
-         Into.Write_Entity ("backorder_status", Value.Backorder_Status);
-      end if;
-      Serialize (Into, "tier_prices", Value.Tier_Prices);
-      if not Value.Is_Virtual.Is_Null then
-         Into.Write_Entity ("is_virtual", Value.Is_Virtual);
+      if not Value.Clear_Cache.Is_Null then
+         Into.Write_Entity ("clear_cache", Value.Clear_Cache);
       end if;
       Into.End_Entity (Name);
    end Serialize;
@@ -27785,57 +27470,57 @@ package body .Models is
    begin
       Swagger.Streams.Deserialize (From, Name, Object);
       Swagger.Streams.Deserialize (Object, "product_id", Value.Product_Id);
+      Deserialize (Object, "attributes", Value.Attributes);
       Swagger.Streams.Deserialize (Object, "name", Value.Name);
       Swagger.Streams.Deserialize (Object, "model", Value.Model);
-      Swagger.Streams.Deserialize (Object, "sku", Value.Sku);
-      Swagger.Streams.Deserialize (Object, "barcode", Value.Barcode);
-      Swagger.Streams.Deserialize (Object, "gtin", Value.Gtin);
+      Swagger.Streams.Deserialize (Object, "description", Value.Description);
+      Swagger.Streams.Deserialize (Object, "short_description", Value.Short_Description);
+      Swagger.Streams.Deserialize (Object, "available_for_view", Value.Available_For_View);
+      Swagger.Streams.Deserialize (Object, "available_for_sale", Value.Available_For_Sale);
+      Swagger.Streams.Deserialize (Object, "is_virtual", Value.Is_Virtual);
+      Swagger.Streams.Deserialize (Object, "is_default", Value.Is_Default);
+      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
+      Swagger.Streams.Deserialize (Object, "stores_ids", Value.Stores_Ids);
+      Swagger.Streams.Deserialize (Object, "lang_id", Value.Lang_Id);
       Swagger.Streams.Deserialize (Object, "price", Value.Price);
       Swagger.Streams.Deserialize (Object, "old_price", Value.Old_Price);
       Swagger.Streams.Deserialize (Object, "cost_price", Value.Cost_Price);
-      Swagger.Streams.Deserialize (Object, "fixed_cost_shipping_price", Value.Fixed_Cost_Shipping_Price);
-      Deserialize (Object, "attributes", Value.Attributes);
-      Swagger.Streams.Deserialize (Object, "description", Value.Description);
       Swagger.Streams.Deserialize (Object, "special_price", Value.Special_Price);
       Swagger.Streams.Deserialize (Object, "sprice_create", Value.Sprice_Create);
       Swagger.Streams.Deserialize (Object, "sprice_modified", Value.Sprice_Modified);
       Swagger.Streams.Deserialize (Object, "sprice_expire", Value.Sprice_Expire);
-      Swagger.Streams.Deserialize (Object, "available_for_view", Value.Available_For_View);
-      Swagger.Streams.Deserialize (Object, "available_for_sale", Value.Available_For_Sale);
+      Deserialize (Object, "tier_prices", Value.Tier_Prices);
+      Swagger.Streams.Deserialize (Object, "quantity", Value.Quantity);
+      Swagger.Streams.Deserialize (Object, "warehouse_id", Value.Warehouse_Id);
+      Swagger.Streams.Deserialize (Object, "in_stock", Value.In_Stock);
+      Swagger.Streams.Deserialize (Object, "backorder_status", Value.Backorder_Status);
+      Swagger.Streams.Deserialize (Object, "manage_stock", Value.Manage_Stock);
       Swagger.Streams.Deserialize (Object, "weight", Value.Weight);
       Swagger.Streams.Deserialize (Object, "width", Value.Width);
       Swagger.Streams.Deserialize (Object, "height", Value.Height);
       Swagger.Streams.Deserialize (Object, "length", Value.Length);
       Swagger.Streams.Deserialize (Object, "weight_unit", Value.Weight_Unit);
-      Swagger.Streams.Deserialize (Object, "short_description", Value.Short_Description);
-      Swagger.Streams.Deserialize (Object, "warehouse_id", Value.Warehouse_Id);
-      Swagger.Streams.Deserialize (Object, "quantity", Value.Quantity);
-      Swagger.Streams.Deserialize (Object, "created_at", Value.Created_At);
+      Swagger.Streams.Deserialize (Object, "sku", Value.Sku);
+      Swagger.Streams.Deserialize (Object, "barcode", Value.Barcode);
+      Swagger.Streams.Deserialize (Object, "gtin", Value.Gtin);
+      Swagger.Streams.Deserialize (Object, "upc", Value.Upc);
+      Swagger.Streams.Deserialize (Object, "ean", Value.Ean);
+      Swagger.Streams.Deserialize (Object, "mpn", Value.Mpn);
+      Swagger.Streams.Deserialize (Object, "isbn", Value.Isbn);
       Swagger.Streams.Deserialize (Object, "manufacturer", Value.Manufacturer);
-      Swagger.Streams.Deserialize (Object, "tax_class_id", Value.Tax_Class_Id);
+      Swagger.Streams.Deserialize (Object, "created_at", Value.Created_At);
       Swagger.Streams.Deserialize (Object, "meta_title", Value.Meta_Title);
       Swagger.Streams.Deserialize (Object, "meta_keywords", Value.Meta_Keywords);
       Swagger.Streams.Deserialize (Object, "meta_description", Value.Meta_Description);
       Swagger.Streams.Deserialize (Object, "url", Value.Url);
-      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
-      Swagger.Streams.Deserialize (Object, "lang_id", Value.Lang_Id);
-      Swagger.Streams.Deserialize (Object, "clear_cache", Value.Clear_Cache);
+      Swagger.Streams.Deserialize (Object, "tax_class_id", Value.Tax_Class_Id);
       Swagger.Streams.Deserialize (Object, "taxable", Value.Taxable);
-      Swagger.Streams.Deserialize (Object, "harmonized_system_code", Value.Harmonized_System_Code);
-      Swagger.Streams.Deserialize (Object, "country_of_origin", Value.Country_Of_Origin);
-      Swagger.Streams.Deserialize (Object, "manage_stock", Value.Manage_Stock);
-      Swagger.Streams.Deserialize (Object, "upc", Value.Upc);
-      Swagger.Streams.Deserialize (Object, "mpn", Value.Mpn);
-      Swagger.Streams.Deserialize (Object, "ean", Value.Ean);
-      Swagger.Streams.Deserialize (Object, "isbn", Value.Isbn);
-      Swagger.Streams.Deserialize (Object, "stores_ids", Value.Stores_Ids);
-      Swagger.Streams.Deserialize (Object, "is_default", Value.Is_Default);
+      Swagger.Streams.Deserialize (Object, "fixed_cost_shipping_price", Value.Fixed_Cost_Shipping_Price);
       Swagger.Streams.Deserialize (Object, "is_free_shipping", Value.Is_Free_Shipping);
+      Swagger.Streams.Deserialize (Object, "country_of_origin", Value.Country_Of_Origin);
+      Swagger.Streams.Deserialize (Object, "harmonized_system_code", Value.Harmonized_System_Code);
       Swagger.Streams.Deserialize (Object, "marketplace_item_properties", Value.Marketplace_Item_Properties);
-      Swagger.Streams.Deserialize (Object, "in_stock", Value.In_Stock);
-      Swagger.Streams.Deserialize (Object, "backorder_status", Value.Backorder_Status);
-      Deserialize (Object, "tier_prices", Value.Tier_Prices);
-      Swagger.Streams.Deserialize (Object, "is_virtual", Value.Is_Virtual);
+      Swagger.Streams.Deserialize (Object, "clear_cache", Value.Clear_Cache);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;
@@ -27992,6 +27677,335 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
+                        Value : in .Models.ProductUpdate_Type) is
+   begin
+      Into.Start_Entity (Name);
+      if not Value.Id.Is_Null then
+         Into.Write_Entity ("id", Value.Id);
+      end if;
+      if not Value.Model.Is_Null then
+         Into.Write_Entity ("model", Value.Model);
+      end if;
+      if not Value.Sku.Is_Null then
+         Into.Write_Entity ("sku", Value.Sku);
+      end if;
+      if not Value.Name.Is_Null then
+         Into.Write_Entity ("name", Value.Name);
+      end if;
+      if not Value.Description.Is_Null then
+         Into.Write_Entity ("description", Value.Description);
+      end if;
+      if not Value.Short_Description.Is_Null then
+         Into.Write_Entity ("short_description", Value.Short_Description);
+      end if;
+      Serialize (Into, "price", Value.Price);
+      Serialize (Into, "old_price", Value.Old_Price);
+      Serialize (Into, "special_price", Value.Special_Price);
+      if not Value.Sprice_Create.Is_Null then
+         Into.Write_Entity ("sprice_create", Value.Sprice_Create);
+      end if;
+      if not Value.Sprice_Expire.Is_Null then
+         Into.Write_Entity ("sprice_expire", Value.Sprice_Expire);
+      end if;
+      Serialize (Into, "cost_price", Value.Cost_Price);
+      Serialize (Into, "fixed_cost_shipping_price", Value.Fixed_Cost_Shipping_Price);
+      Serialize (Into, "retail_price", Value.Retail_Price);
+      Serialize (Into, "tier_prices", Value.Tier_Prices);
+      Serialize (Into, "reserve_price", Value.Reserve_Price);
+      Serialize (Into, "buyitnow_price", Value.Buyitnow_Price);
+      if not Value.Taxable.Is_Null then
+         Into.Write_Entity ("taxable", Value.Taxable);
+      end if;
+      if not Value.Tax_Class_Id.Is_Null then
+         Into.Write_Entity ("tax_class_id", Value.Tax_Class_Id);
+      end if;
+      if not Value.P_Type.Is_Null then
+         Into.Write_Entity ("type", Value.P_Type);
+      end if;
+      if not Value.Status.Is_Null then
+         Into.Write_Entity ("status", Value.Status);
+      end if;
+      if not Value.Condition.Is_Null then
+         Into.Write_Entity ("condition", Value.Condition);
+      end if;
+      if not Value.Visible.Is_Null then
+         Into.Write_Entity ("visible", Value.Visible);
+      end if;
+      if not Value.In_Stock.Is_Null then
+         Into.Write_Entity ("in_stock", Value.In_Stock);
+      end if;
+      if not Value.Avail.Is_Null then
+         Into.Write_Entity ("avail", Value.Avail);
+      end if;
+      if not Value.Avail_From.Is_Null then
+         Into.Write_Entity ("avail_from", Value.Avail_From);
+      end if;
+      if not Value.Product_Class.Is_Null then
+         Into.Write_Entity ("product_class", Value.Product_Class);
+      end if;
+      if not Value.Available_For_View.Is_Null then
+         Into.Write_Entity ("available_for_view", Value.Available_For_View);
+      end if;
+      if not Value.Stores_Ids.Is_Null then
+         Into.Write_Entity ("stores_ids", Value.Stores_Ids);
+      end if;
+      if not Value.Store_Id.Is_Null then
+         Into.Write_Entity ("store_id", Value.Store_Id);
+      end if;
+      if not Value.Lang_Id.Is_Null then
+         Into.Write_Entity ("lang_id", Value.Lang_Id);
+      end if;
+      Serialize (Into, "quantity", Value.Quantity);
+      Serialize (Into, "reserve_quantity", Value.Reserve_Quantity);
+      if not Value.Manage_Stock.Is_Null then
+         Into.Write_Entity ("manage_stock", Value.Manage_Stock);
+      end if;
+      if not Value.Backorder_Status.Is_Null then
+         Into.Write_Entity ("backorder_status", Value.Backorder_Status);
+      end if;
+      Serialize (Into, "increase_quantity", Value.Increase_Quantity);
+      Serialize (Into, "reduce_quantity", Value.Reduce_Quantity);
+      if not Value.Warehouse_Id.Is_Null then
+         Into.Write_Entity ("warehouse_id", Value.Warehouse_Id);
+      end if;
+      Serialize (Into, "weight", Value.Weight);
+      if not Value.Weight_Unit.Is_Null then
+         Into.Write_Entity ("weight_unit", Value.Weight_Unit);
+      end if;
+      Serialize (Into, "height", Value.Height);
+      Serialize (Into, "length", Value.Length);
+      Serialize (Into, "width", Value.Width);
+      if not Value.Dimensions_Unit.Is_Null then
+         Into.Write_Entity ("dimensions_unit", Value.Dimensions_Unit);
+      end if;
+      if not Value.Is_Virtual.Is_Null then
+         Into.Write_Entity ("is_virtual", Value.Is_Virtual);
+      end if;
+      if not Value.Is_Free_Shipping.Is_Null then
+         Into.Write_Entity ("is_free_shipping", Value.Is_Free_Shipping);
+      end if;
+      if not Value.Gtin.Is_Null then
+         Into.Write_Entity ("gtin", Value.Gtin);
+      end if;
+      if not Value.Upc.Is_Null then
+         Into.Write_Entity ("upc", Value.Upc);
+      end if;
+      if not Value.Mpn.Is_Null then
+         Into.Write_Entity ("mpn", Value.Mpn);
+      end if;
+      if not Value.Ean.Is_Null then
+         Into.Write_Entity ("ean", Value.Ean);
+      end if;
+      if not Value.Isbn.Is_Null then
+         Into.Write_Entity ("isbn", Value.Isbn);
+      end if;
+      if not Value.Barcode.Is_Null then
+         Into.Write_Entity ("barcode", Value.Barcode);
+      end if;
+      if not Value.Manufacturer.Is_Null then
+         Into.Write_Entity ("manufacturer", Value.Manufacturer);
+      end if;
+      if not Value.Manufacturer_Id.Is_Null then
+         Into.Write_Entity ("manufacturer_id", Value.Manufacturer_Id);
+      end if;
+      if not Value.Categories_Ids.Is_Null then
+         Into.Write_Entity ("categories_ids", Value.Categories_Ids);
+      end if;
+      if not Value.Related_Products_Ids.Is_Null then
+         Into.Write_Entity ("related_products_ids", Value.Related_Products_Ids);
+      end if;
+      if not Value.Up_Sell_Products_Ids.Is_Null then
+         Into.Write_Entity ("up_sell_products_ids", Value.Up_Sell_Products_Ids);
+      end if;
+      if not Value.Cross_Sell_Products_Ids.Is_Null then
+         Into.Write_Entity ("cross_sell_products_ids", Value.Cross_Sell_Products_Ids);
+      end if;
+      if not Value.Meta_Title.Is_Null then
+         Into.Write_Entity ("meta_title", Value.Meta_Title);
+      end if;
+      if not Value.Meta_Keywords.Is_Null then
+         Into.Write_Entity ("meta_keywords", Value.Meta_Keywords);
+      end if;
+      if not Value.Meta_Description.Is_Null then
+         Into.Write_Entity ("meta_description", Value.Meta_Description);
+      end if;
+      if not Value.Seo_Url.Is_Null then
+         Into.Write_Entity ("seo_url", Value.Seo_Url);
+      end if;
+      if not Value.Search_Keywords.Is_Null then
+         Into.Write_Entity ("search_keywords", Value.Search_Keywords);
+      end if;
+      if not Value.Tags.Is_Null then
+         Into.Write_Entity ("tags", Value.Tags);
+      end if;
+      if not Value.Delivery_Code.Is_Null then
+         Into.Write_Entity ("delivery_code", Value.Delivery_Code);
+      end if;
+      Serialize (Into, "package_details", Value.Package_Details);
+      if not Value.Country_Of_Origin.Is_Null then
+         Into.Write_Entity ("country_of_origin", Value.Country_Of_Origin);
+      end if;
+      if not Value.Harmonized_System_Code.Is_Null then
+         Into.Write_Entity ("harmonized_system_code", Value.Harmonized_System_Code);
+      end if;
+      if not Value.Shipping_Template_Id.Is_Null then
+         Into.Write_Entity ("shipping_template_id", Value.Shipping_Template_Id);
+      end if;
+      if not Value.When_Made.Is_Null then
+         Into.Write_Entity ("when_made", Value.When_Made);
+      end if;
+      if not Value.Is_Supply.Is_Null then
+         Into.Write_Entity ("is_supply", Value.Is_Supply);
+      end if;
+      if not Value.Downloadable.Is_Null then
+         Into.Write_Entity ("downloadable", Value.Downloadable);
+      end if;
+      Serialize (Into, "materials", Value.Materials);
+      if not Value.Auto_Renew.Is_Null then
+         Into.Write_Entity ("auto_renew", Value.Auto_Renew);
+      end if;
+      if not Value.On_Sale.Is_Null then
+         Into.Write_Entity ("on_sale", Value.On_Sale);
+      end if;
+      if not Value.Production_Partner_Ids.Is_Null then
+         Into.Write_Entity ("production_partner_ids", Value.Production_Partner_Ids);
+      end if;
+      Serialize (Into, "manufacturer_info", Value.Manufacturer_Info);
+      if not Value.Report_Request_Id.Is_Null then
+         Into.Write_Entity ("report_request_id", Value.Report_Request_Id);
+      end if;
+      if not Value.Disable_Report_Cache.Is_Null then
+         Into.Write_Entity ("disable_report_cache", Value.Disable_Report_Cache);
+      end if;
+      if not Value.Reindex.Is_Null then
+         Into.Write_Entity ("reindex", Value.Reindex);
+      end if;
+      if not Value.Clear_Cache.Is_Null then
+         Into.Write_Entity ("clear_cache", Value.Clear_Cache);
+      end if;
+      if not Value.Check_Process_Status.Is_Null then
+         Into.Write_Entity ("check_process_status", Value.Check_Process_Status);
+      end if;
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ProductUpdate_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.ProductUpdate_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "id", Value.Id);
+      Swagger.Streams.Deserialize (Object, "model", Value.Model);
+      Swagger.Streams.Deserialize (Object, "sku", Value.Sku);
+      Swagger.Streams.Deserialize (Object, "name", Value.Name);
+      Swagger.Streams.Deserialize (Object, "description", Value.Description);
+      Swagger.Streams.Deserialize (Object, "short_description", Value.Short_Description);
+      Swagger.Streams.Deserialize (Object, "price", Value.Price);
+      Swagger.Streams.Deserialize (Object, "old_price", Value.Old_Price);
+      Swagger.Streams.Deserialize (Object, "special_price", Value.Special_Price);
+      Swagger.Streams.Deserialize (Object, "sprice_create", Value.Sprice_Create);
+      Swagger.Streams.Deserialize (Object, "sprice_expire", Value.Sprice_Expire);
+      Swagger.Streams.Deserialize (Object, "cost_price", Value.Cost_Price);
+      Swagger.Streams.Deserialize (Object, "fixed_cost_shipping_price", Value.Fixed_Cost_Shipping_Price);
+      Swagger.Streams.Deserialize (Object, "retail_price", Value.Retail_Price);
+      Deserialize (Object, "tier_prices", Value.Tier_Prices);
+      Swagger.Streams.Deserialize (Object, "reserve_price", Value.Reserve_Price);
+      Swagger.Streams.Deserialize (Object, "buyitnow_price", Value.Buyitnow_Price);
+      Swagger.Streams.Deserialize (Object, "taxable", Value.Taxable);
+      Swagger.Streams.Deserialize (Object, "tax_class_id", Value.Tax_Class_Id);
+      Swagger.Streams.Deserialize (Object, "type", Value.P_Type);
+      Swagger.Streams.Deserialize (Object, "status", Value.Status);
+      Swagger.Streams.Deserialize (Object, "condition", Value.Condition);
+      Swagger.Streams.Deserialize (Object, "visible", Value.Visible);
+      Swagger.Streams.Deserialize (Object, "in_stock", Value.In_Stock);
+      Swagger.Streams.Deserialize (Object, "avail", Value.Avail);
+      Swagger.Streams.Deserialize (Object, "avail_from", Value.Avail_From);
+      Swagger.Streams.Deserialize (Object, "product_class", Value.Product_Class);
+      Swagger.Streams.Deserialize (Object, "available_for_view", Value.Available_For_View);
+      Swagger.Streams.Deserialize (Object, "stores_ids", Value.Stores_Ids);
+      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
+      Swagger.Streams.Deserialize (Object, "lang_id", Value.Lang_Id);
+      Swagger.Streams.Deserialize (Object, "quantity", Value.Quantity);
+      Swagger.Streams.Deserialize (Object, "reserve_quantity", Value.Reserve_Quantity);
+      Swagger.Streams.Deserialize (Object, "manage_stock", Value.Manage_Stock);
+      Swagger.Streams.Deserialize (Object, "backorder_status", Value.Backorder_Status);
+      Swagger.Streams.Deserialize (Object, "increase_quantity", Value.Increase_Quantity);
+      Swagger.Streams.Deserialize (Object, "reduce_quantity", Value.Reduce_Quantity);
+      Swagger.Streams.Deserialize (Object, "warehouse_id", Value.Warehouse_Id);
+      Swagger.Streams.Deserialize (Object, "weight", Value.Weight);
+      Swagger.Streams.Deserialize (Object, "weight_unit", Value.Weight_Unit);
+      Swagger.Streams.Deserialize (Object, "height", Value.Height);
+      Swagger.Streams.Deserialize (Object, "length", Value.Length);
+      Swagger.Streams.Deserialize (Object, "width", Value.Width);
+      Swagger.Streams.Deserialize (Object, "dimensions_unit", Value.Dimensions_Unit);
+      Swagger.Streams.Deserialize (Object, "is_virtual", Value.Is_Virtual);
+      Swagger.Streams.Deserialize (Object, "is_free_shipping", Value.Is_Free_Shipping);
+      Swagger.Streams.Deserialize (Object, "gtin", Value.Gtin);
+      Swagger.Streams.Deserialize (Object, "upc", Value.Upc);
+      Swagger.Streams.Deserialize (Object, "mpn", Value.Mpn);
+      Swagger.Streams.Deserialize (Object, "ean", Value.Ean);
+      Swagger.Streams.Deserialize (Object, "isbn", Value.Isbn);
+      Swagger.Streams.Deserialize (Object, "barcode", Value.Barcode);
+      Swagger.Streams.Deserialize (Object, "manufacturer", Value.Manufacturer);
+      Swagger.Streams.Deserialize (Object, "manufacturer_id", Value.Manufacturer_Id);
+      Swagger.Streams.Deserialize (Object, "categories_ids", Value.Categories_Ids);
+      Swagger.Streams.Deserialize (Object, "related_products_ids", Value.Related_Products_Ids);
+      Swagger.Streams.Deserialize (Object, "up_sell_products_ids", Value.Up_Sell_Products_Ids);
+      Swagger.Streams.Deserialize (Object, "cross_sell_products_ids", Value.Cross_Sell_Products_Ids);
+      Swagger.Streams.Deserialize (Object, "meta_title", Value.Meta_Title);
+      Swagger.Streams.Deserialize (Object, "meta_keywords", Value.Meta_Keywords);
+      Swagger.Streams.Deserialize (Object, "meta_description", Value.Meta_Description);
+      Swagger.Streams.Deserialize (Object, "seo_url", Value.Seo_Url);
+      Swagger.Streams.Deserialize (Object, "search_keywords", Value.Search_Keywords);
+      Swagger.Streams.Deserialize (Object, "tags", Value.Tags);
+      Swagger.Streams.Deserialize (Object, "delivery_code", Value.Delivery_Code);
+      Deserialize (Object, "package_details", Value.Package_Details);
+      Swagger.Streams.Deserialize (Object, "country_of_origin", Value.Country_Of_Origin);
+      Swagger.Streams.Deserialize (Object, "harmonized_system_code", Value.Harmonized_System_Code);
+      Swagger.Streams.Deserialize (Object, "shipping_template_id", Value.Shipping_Template_Id);
+      Swagger.Streams.Deserialize (Object, "when_made", Value.When_Made);
+      Swagger.Streams.Deserialize (Object, "is_supply", Value.Is_Supply);
+      Swagger.Streams.Deserialize (Object, "downloadable", Value.Downloadable);
+      Swagger.Streams.Deserialize (Object, "materials", Value.Materials);
+      Swagger.Streams.Deserialize (Object, "auto_renew", Value.Auto_Renew);
+      Swagger.Streams.Deserialize (Object, "on_sale", Value.On_Sale);
+      Swagger.Streams.Deserialize (Object, "production_partner_ids", Value.Production_Partner_Ids);
+      Deserialize (Object, "manufacturer_info", Value.Manufacturer_Info);
+      Swagger.Streams.Deserialize (Object, "report_request_id", Value.Report_Request_Id);
+      Swagger.Streams.Deserialize (Object, "disable_report_cache", Value.Disable_Report_Cache);
+      Swagger.Streams.Deserialize (Object, "reindex", Value.Reindex);
+      Swagger.Streams.Deserialize (Object, "clear_cache", Value.Clear_Cache);
+      Swagger.Streams.Deserialize (Object, "check_process_status", Value.Check_Process_Status);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out ProductUpdate_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.ProductUpdate_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
                         Value : in .Models.CartStoreInfo_Type) is
    begin
       Into.Start_Entity (Name);
@@ -28106,44 +28120,74 @@ package body .Models is
       Into.Start_Entity (Name);
       Into.Write_Entity ("name", Value.Name);
       Into.Write_Entity ("model", Value.Model);
+      Into.Write_Entity ("description", Value.Description);
+      Serialize (Into, "price", Value.Price);
       if not Value.Sku.Is_Null then
          Into.Write_Entity ("sku", Value.Sku);
       end if;
-      Into.Write_Entity ("description", Value.Description);
-      Serialize (Into, "price", Value.Price);
-      Serialize (Into, "old_price", Value.Old_Price);
-      Serialize (Into, "special_price", Value.Special_Price);
-      Serialize (Into, "cost_price", Value.Cost_Price);
-      Serialize (Into, "fixed_cost_shipping_price", Value.Fixed_Cost_Shipping_Price);
-      if not Value.Sprice_Create.Is_Null then
-         Into.Write_Entity ("sprice_create", Value.Sprice_Create);
+      if not Value.Short_Description.Is_Null then
+         Into.Write_Entity ("short_description", Value.Short_Description);
       end if;
-      if not Value.Sprice_Modified.Is_Null then
-         Into.Write_Entity ("sprice_modified", Value.Sprice_Modified);
+      if not Value.P_Type.Is_Null then
+         Into.Write_Entity ("type", Value.P_Type);
       end if;
-      if not Value.Sprice_Expire.Is_Null then
-         Into.Write_Entity ("sprice_expire", Value.Sprice_Expire);
+      if not Value.Status.Is_Null then
+         Into.Write_Entity ("status", Value.Status);
       end if;
-      Serialize (Into, "tier_prices", Value.Tier_Prices);
-      Serialize (Into, "group_prices", Value.Group_Prices);
+      if not Value.Visible.Is_Null then
+         Into.Write_Entity ("visible", Value.Visible);
+      end if;
+      if not Value.Category_Id.Is_Null then
+         Into.Write_Entity ("category_id", Value.Category_Id);
+      end if;
+      if not Value.Categories_Ids.Is_Null then
+         Into.Write_Entity ("categories_ids", Value.Categories_Ids);
+      end if;
+      if not Value.Product_Class.Is_Null then
+         Into.Write_Entity ("product_class", Value.Product_Class);
+      end if;
+      if not Value.Product_Type.Is_Null then
+         Into.Write_Entity ("product_type", Value.Product_Type);
+      end if;
+      if not Value.Is_Virtual.Is_Null then
+         Into.Write_Entity ("is_virtual", Value.Is_Virtual);
+      end if;
+      if not Value.Downloadable.Is_Null then
+         Into.Write_Entity ("downloadable", Value.Downloadable);
+      end if;
+      if not Value.Is_Supply.Is_Null then
+         Into.Write_Entity ("is_supply", Value.Is_Supply);
+      end if;
       if not Value.Available_For_View.Is_Null then
          Into.Write_Entity ("available_for_view", Value.Available_For_View);
       end if;
       if not Value.Available_For_Sale.Is_Null then
          Into.Write_Entity ("available_for_sale", Value.Available_For_Sale);
       end if;
-      Serialize (Into, "weight", Value.Weight);
-      Serialize (Into, "width", Value.Width);
-      Serialize (Into, "height", Value.Height);
-      Serialize (Into, "length", Value.Length);
-      if not Value.Weight_Unit.Is_Null then
-         Into.Write_Entity ("weight_unit", Value.Weight_Unit);
+      if not Value.Store_Id.Is_Null then
+         Into.Write_Entity ("store_id", Value.Store_Id);
       end if;
-      if not Value.Dimensions_Unit.Is_Null then
-         Into.Write_Entity ("dimensions_unit", Value.Dimensions_Unit);
+      if not Value.Stores_Ids.Is_Null then
+         Into.Write_Entity ("stores_ids", Value.Stores_Ids);
       end if;
-      if not Value.Short_Description.Is_Null then
-         Into.Write_Entity ("short_description", Value.Short_Description);
+      if not Value.Lang_Id.Is_Null then
+         Into.Write_Entity ("lang_id", Value.Lang_Id);
+      end if;
+      Serialize (Into, "old_price", Value.Old_Price);
+      Serialize (Into, "special_price", Value.Special_Price);
+      Serialize (Into, "wholesale_price", Value.Wholesale_Price);
+      Serialize (Into, "cost_price", Value.Cost_Price);
+      Serialize (Into, "fixed_cost_shipping_price", Value.Fixed_Cost_Shipping_Price);
+      Serialize (Into, "tier_prices", Value.Tier_Prices);
+      Serialize (Into, "group_prices", Value.Group_Prices);
+      Serialize (Into, "buyitnow_price", Value.Buyitnow_Price);
+      Serialize (Into, "reserve_price", Value.Reserve_Price);
+      Serialize (Into, "quantity", Value.Quantity);
+      if not Value.In_Stock.Is_Null then
+         Into.Write_Entity ("in_stock", Value.In_Stock);
+      end if;
+      if not Value.Manage_Stock.Is_Null then
+         Into.Write_Entity ("manage_stock", Value.Manage_Stock);
       end if;
       if not Value.Warehouse_Id.Is_Null then
          Into.Write_Entity ("warehouse_id", Value.Warehouse_Id);
@@ -28151,13 +28195,47 @@ package body .Models is
       if not Value.Backorder_Status.Is_Null then
          Into.Write_Entity ("backorder_status", Value.Backorder_Status);
       end if;
-      Serialize (Into, "quantity", Value.Quantity);
-      if not Value.Downloadable.Is_Null then
-         Into.Write_Entity ("downloadable", Value.Downloadable);
+      Serialize (Into, "min_order_quantity", Value.Min_Order_Quantity);
+      Serialize (Into, "max_order_quantity", Value.Max_Order_Quantity);
+      Serialize (Into, "weight", Value.Weight);
+      if not Value.Weight_Unit.Is_Null then
+         Into.Write_Entity ("weight_unit", Value.Weight_Unit);
       end if;
-      Serialize (Into, "wholesale_price", Value.Wholesale_Price);
-      if not Value.Created_At.Is_Null then
-         Into.Write_Entity ("created_at", Value.Created_At);
+      Serialize (Into, "width", Value.Width);
+      Serialize (Into, "height", Value.Height);
+      Serialize (Into, "length", Value.Length);
+      if not Value.Dimensions_Unit.Is_Null then
+         Into.Write_Entity ("dimensions_unit", Value.Dimensions_Unit);
+      end if;
+      if not Value.Barcode.Is_Null then
+         Into.Write_Entity ("barcode", Value.Barcode);
+      end if;
+      if not Value.Upc.Is_Null then
+         Into.Write_Entity ("upc", Value.Upc);
+      end if;
+      if not Value.Ean.Is_Null then
+         Into.Write_Entity ("ean", Value.Ean);
+      end if;
+      if not Value.Isbn.Is_Null then
+         Into.Write_Entity ("isbn", Value.Isbn);
+      end if;
+      if not Value.Gtin.Is_Null then
+         Into.Write_Entity ("gtin", Value.Gtin);
+      end if;
+      if not Value.Mpn.Is_Null then
+         Into.Write_Entity ("mpn", Value.Mpn);
+      end if;
+      if not Value.Asin.Is_Null then
+         Into.Write_Entity ("asin", Value.Asin);
+      end if;
+      if not Value.Product_Reference.Is_Null then
+         Into.Write_Entity ("product_reference", Value.Product_Reference);
+      end if;
+      if not Value.Harmonized_System_Code.Is_Null then
+         Into.Write_Entity ("harmonized_system_code", Value.Harmonized_System_Code);
+      end if;
+      if not Value.Country_Of_Origin.Is_Null then
+         Into.Write_Entity ("country_of_origin", Value.Country_Of_Origin);
       end if;
       if not Value.Manufacturer.Is_Null then
          Into.Write_Entity ("manufacturer", Value.Manufacturer);
@@ -28165,9 +28243,19 @@ package body .Models is
       if not Value.Manufacturer_Id.Is_Null then
          Into.Write_Entity ("manufacturer_id", Value.Manufacturer_Id);
       end if;
-      if not Value.Categories_Ids.Is_Null then
-         Into.Write_Entity ("categories_ids", Value.Categories_Ids);
+      Serialize (Into, "manufacturer_info", Value.Manufacturer_Info);
+      if not Value.Brand_Name.Is_Null then
+         Into.Write_Entity ("brand_name", Value.Brand_Name);
       end if;
+      if not Value.Image_Url.Is_Null then
+         Into.Write_Entity ("image_url", Value.Image_Url);
+      end if;
+      if not Value.Image_Name.Is_Null then
+         Into.Write_Entity ("image_name", Value.Image_Name);
+      end if;
+      Serialize (Into, "additional_image_urls", Value.Additional_Image_Urls);
+      Serialize (Into, "files", Value.Files);
+      Serialize (Into, "size_chart", Value.Size_Chart);
       if not Value.Related_Products_Ids.Is_Null then
          Into.Write_Entity ("related_products_ids", Value.Related_Products_Ids);
       end if;
@@ -28177,11 +28265,41 @@ package body .Models is
       if not Value.Cross_Sell_Products_Ids.Is_Null then
          Into.Write_Entity ("cross_sell_products_ids", Value.Cross_Sell_Products_Ids);
       end if;
-      if not Value.Tax_Class_Id.Is_Null then
-         Into.Write_Entity ("tax_class_id", Value.Tax_Class_Id);
+      if not Value.Attribute_Set_Name.Is_Null then
+         Into.Write_Entity ("attribute_set_name", Value.Attribute_Set_Name);
       end if;
-      if not Value.P_Type.Is_Null then
-         Into.Write_Entity ("type", Value.P_Type);
+      if not Value.Attribute_Name.Is_Null then
+         Into.Write_Entity ("attribute_name", Value.Attribute_Name);
+      end if;
+      if not Value.Search_Keywords.Is_Null then
+         Into.Write_Entity ("search_keywords", Value.Search_Keywords);
+      end if;
+      if not Value.Tags.Is_Null then
+         Into.Write_Entity ("tags", Value.Tags);
+      end if;
+      Serialize (Into, "materials", Value.Materials);
+      Serialize (Into, "certifications", Value.Certifications);
+      Serialize (Into, "specifics", Value.Specifics);
+      if not Value.Avail_From.Is_Null then
+         Into.Write_Entity ("avail_from", Value.Avail_From);
+      end if;
+      if not Value.Sprice_Create.Is_Null then
+         Into.Write_Entity ("sprice_create", Value.Sprice_Create);
+      end if;
+      if not Value.Sprice_Modified.Is_Null then
+         Into.Write_Entity ("sprice_modified", Value.Sprice_Modified);
+      end if;
+      if not Value.Sprice_Expire.Is_Null then
+         Into.Write_Entity ("sprice_expire", Value.Sprice_Expire);
+      end if;
+      if not Value.Created_At.Is_Null then
+         Into.Write_Entity ("created_at", Value.Created_At);
+      end if;
+      if not Value.Auto_Renew.Is_Null then
+         Into.Write_Entity ("auto_renew", Value.Auto_Renew);
+      end if;
+      if not Value.When_Made.Is_Null then
+         Into.Write_Entity ("when_made", Value.When_Made);
       end if;
       if not Value.Meta_Title.Is_Null then
          Into.Write_Entity ("meta_title", Value.Meta_Title);
@@ -28195,155 +28313,38 @@ package body .Models is
       if not Value.Url.Is_Null then
          Into.Write_Entity ("url", Value.Url);
       end if;
-      if not Value.Lang_Id.Is_Null then
-         Into.Write_Entity ("lang_id", Value.Lang_Id);
+      if not Value.Seo_Url.Is_Null then
+         Into.Write_Entity ("seo_url", Value.Seo_Url);
       end if;
-      if not Value.Stores_Ids.Is_Null then
-         Into.Write_Entity ("stores_ids", Value.Stores_Ids);
-      end if;
-      if not Value.Category_Id.Is_Null then
-         Into.Write_Entity ("category_id", Value.Category_Id);
-      end if;
-      if not Value.Viewed_Count.Is_Null then
-         Into.Write_Entity ("viewed_count", Value.Viewed_Count);
-      end if;
-      if not Value.Ordered_Count.Is_Null then
-         Into.Write_Entity ("ordered_count", Value.Ordered_Count);
-      end if;
-      if not Value.Attribute_Set_Name.Is_Null then
-         Into.Write_Entity ("attribute_set_name", Value.Attribute_Set_Name);
-      end if;
-      if not Value.Attribute_Name.Is_Null then
-         Into.Write_Entity ("attribute_name", Value.Attribute_Name);
-      end if;
-      if not Value.Shipping_Template_Id.Is_Null then
-         Into.Write_Entity ("shipping_template_id", Value.Shipping_Template_Id);
-      end if;
-      if not Value.Production_Partner_Ids.Is_Null then
-         Into.Write_Entity ("production_partner_ids", Value.Production_Partner_Ids);
-      end if;
-      if not Value.Condition.Is_Null then
-         Into.Write_Entity ("condition", Value.Condition);
-      end if;
-      if not Value.Listing_Duration.Is_Null then
-         Into.Write_Entity ("listing_duration", Value.Listing_Duration);
-      end if;
-      if not Value.Listing_Type.Is_Null then
-         Into.Write_Entity ("listing_type", Value.Listing_Type);
-      end if;
-      Serialize (Into, "payment_methods", Value.Payment_Methods);
-      if not Value.Return_Accepted.Is_Null then
-         Into.Write_Entity ("return_accepted", Value.Return_Accepted);
-      end if;
-      Serialize (Into, "shipping_details", Value.Shipping_Details);
-      if not Value.Paypal_Email.Is_Null then
-         Into.Write_Entity ("paypal_email", Value.Paypal_Email);
-      end if;
-      Serialize (Into, "seller_profiles", Value.Seller_Profiles);
-      Serialize (Into, "package_details", Value.Package_Details);
-      Serialize (Into, "best_offer", Value.Best_Offer);
-      Serialize (Into, "sales_tax", Value.Sales_Tax);
-      if not Value.Barcode.Is_Null then
-         Into.Write_Entity ("barcode", Value.Barcode);
-      end if;
-      if not Value.Upc.Is_Null then
-         Into.Write_Entity ("upc", Value.Upc);
-      end if;
-      if not Value.Ean.Is_Null then
-         Into.Write_Entity ("ean", Value.Ean);
-      end if;
-      if not Value.Isbn.Is_Null then
-         Into.Write_Entity ("isbn", Value.Isbn);
-      end if;
-      Serialize (Into, "specifics", Value.Specifics);
-      if not Value.Image_Url.Is_Null then
-         Into.Write_Entity ("image_url", Value.Image_Url);
-      end if;
-      if not Value.Image_Name.Is_Null then
-         Into.Write_Entity ("image_name", Value.Image_Name);
-      end if;
-      Serialize (Into, "additional_image_urls", Value.Additional_Image_Urls);
-      Serialize (Into, "reserve_price", Value.Reserve_Price);
-      Serialize (Into, "buyitnow_price", Value.Buyitnow_Price);
-      if not Value.Condition_Description.Is_Null then
-         Into.Write_Entity ("condition_description", Value.Condition_Description);
-      end if;
-      if not Value.Auction_Confidentiality_Level.Is_Null then
-         Into.Write_Entity ("auction_confidentiality_level", Value.Auction_Confidentiality_Level);
-      end if;
-      Serialize (Into, "logistic_info", Value.Logistic_Info);
-      if not Value.Avail_From.Is_Null then
-         Into.Write_Entity ("avail_from", Value.Avail_From);
-      end if;
-      if not Value.Tags.Is_Null then
-         Into.Write_Entity ("tags", Value.Tags);
-      end if;
-      if not Value.Clear_Cache.Is_Null then
-         Into.Write_Entity ("clear_cache", Value.Clear_Cache);
-      end if;
-      if not Value.Asin.Is_Null then
-         Into.Write_Entity ("asin", Value.Asin);
-      end if;
-      if not Value.Gtin.Is_Null then
-         Into.Write_Entity ("gtin", Value.Gtin);
-      end if;
-      if not Value.Mpn.Is_Null then
-         Into.Write_Entity ("mpn", Value.Mpn);
+      if not Value.Tax_Class_Id.Is_Null then
+         Into.Write_Entity ("tax_class_id", Value.Tax_Class_Id);
       end if;
       if not Value.Taxable.Is_Null then
          Into.Write_Entity ("taxable", Value.Taxable);
       end if;
-      if not Value.Visible.Is_Null then
-         Into.Write_Entity ("visible", Value.Visible);
+      Serialize (Into, "sales_tax", Value.Sales_Tax);
+      if not Value.Condition.Is_Null then
+         Into.Write_Entity ("condition", Value.Condition);
       end if;
-      if not Value.Status.Is_Null then
-         Into.Write_Entity ("status", Value.Status);
+      if not Value.Condition_Description.Is_Null then
+         Into.Write_Entity ("condition_description", Value.Condition_Description);
       end if;
-      if not Value.Seo_Url.Is_Null then
-         Into.Write_Entity ("seo_url", Value.Seo_Url);
+      if not Value.Allow_Display_Condition.Is_Null then
+         Into.Write_Entity ("allow_display_condition", Value.Allow_Display_Condition);
       end if;
-      if not Value.Product_Class.Is_Null then
-         Into.Write_Entity ("product_class", Value.Product_Class);
+      Serialize (Into, "payment_methods", Value.Payment_Methods);
+      if not Value.Paypal_Email.Is_Null then
+         Into.Write_Entity ("paypal_email", Value.Paypal_Email);
       end if;
-      if not Value.Product_Type.Is_Null then
-         Into.Write_Entity ("product_type", Value.Product_Type);
+      if not Value.Shipping_Template_Id.Is_Null then
+         Into.Write_Entity ("shipping_template_id", Value.Shipping_Template_Id);
       end if;
-      if not Value.Marketplace_Item_Properties.Is_Null then
-         Into.Write_Entity ("marketplace_item_properties", Value.Marketplace_Item_Properties);
-      end if;
-      if not Value.Manage_Stock.Is_Null then
-         Into.Write_Entity ("manage_stock", Value.Manage_Stock);
-      end if;
-      if not Value.Harmonized_System_Code.Is_Null then
-         Into.Write_Entity ("harmonized_system_code", Value.Harmonized_System_Code);
-      end if;
-      if not Value.Country_Of_Origin.Is_Null then
-         Into.Write_Entity ("country_of_origin", Value.Country_Of_Origin);
-      end if;
-      Serialize (Into, "files", Value.Files);
-      if not Value.Search_Keywords.Is_Null then
-         Into.Write_Entity ("search_keywords", Value.Search_Keywords);
-      end if;
-      if not Value.Store_Id.Is_Null then
-         Into.Write_Entity ("store_id", Value.Store_Id);
-      end if;
-      if not Value.Brand_Name.Is_Null then
-         Into.Write_Entity ("brand_name", Value.Brand_Name);
-      end if;
-      if not Value.Is_Virtual.Is_Null then
-         Into.Write_Entity ("is_virtual", Value.Is_Virtual);
-      end if;
+      Serialize (Into, "shipping_details", Value.Shipping_Details);
       if not Value.Is_Free_Shipping.Is_Null then
          Into.Write_Entity ("is_free_shipping", Value.Is_Free_Shipping);
       end if;
-      if not Value.In_Stock.Is_Null then
-         Into.Write_Entity ("in_stock", Value.In_Stock);
-      end if;
       if not Value.Delivery_Code.Is_Null then
          Into.Write_Entity ("delivery_code", Value.Delivery_Code);
-      end if;
-      if not Value.Product_Reference.Is_Null then
-         Into.Write_Entity ("product_reference", Value.Product_Reference);
       end if;
       if not Value.Delivery_Type.Is_Null then
          Into.Write_Entity ("delivery_type", Value.Delivery_Type);
@@ -28351,27 +28352,40 @@ package body .Models is
       if not Value.Delivery_Time.Is_Null then
          Into.Write_Entity ("delivery_time", Value.Delivery_Time);
       end if;
-      Serialize (Into, "size_chart", Value.Size_Chart);
-      Serialize (Into, "certifications", Value.Certifications);
       if not Value.Delivery_Option_Ids.Is_Null then
          Into.Write_Entity ("delivery_option_ids", Value.Delivery_Option_Ids);
       end if;
-      Serialize (Into, "manufacturer_info", Value.Manufacturer_Info);
-      if not Value.When_Made.Is_Null then
-         Into.Write_Entity ("when_made", Value.When_Made);
+      Serialize (Into, "package_details", Value.Package_Details);
+      Serialize (Into, "logistic_info", Value.Logistic_Info);
+      if not Value.Listing_Duration.Is_Null then
+         Into.Write_Entity ("listing_duration", Value.Listing_Duration);
       end if;
-      if not Value.Is_Supply.Is_Null then
-         Into.Write_Entity ("is_supply", Value.Is_Supply);
+      if not Value.Listing_Type.Is_Null then
+         Into.Write_Entity ("listing_type", Value.Listing_Type);
       end if;
-      Serialize (Into, "materials", Value.Materials);
-      if not Value.Auto_Renew.Is_Null then
-         Into.Write_Entity ("auto_renew", Value.Auto_Renew);
+      if not Value.Return_Accepted.Is_Null then
+         Into.Write_Entity ("return_accepted", Value.Return_Accepted);
       end if;
-      if not Value.Allow_Display_Condition.Is_Null then
-         Into.Write_Entity ("allow_display_condition", Value.Allow_Display_Condition);
+      Serialize (Into, "seller_profiles", Value.Seller_Profiles);
+      if not Value.Auction_Confidentiality_Level.Is_Null then
+         Into.Write_Entity ("auction_confidentiality_level", Value.Auction_Confidentiality_Level);
       end if;
-      Serialize (Into, "min_order_quantity", Value.Min_Order_Quantity);
-      Serialize (Into, "max_order_quantity", Value.Max_Order_Quantity);
+      Serialize (Into, "best_offer", Value.Best_Offer);
+      if not Value.Production_Partner_Ids.Is_Null then
+         Into.Write_Entity ("production_partner_ids", Value.Production_Partner_Ids);
+      end if;
+      if not Value.Marketplace_Item_Properties.Is_Null then
+         Into.Write_Entity ("marketplace_item_properties", Value.Marketplace_Item_Properties);
+      end if;
+      if not Value.Clear_Cache.Is_Null then
+         Into.Write_Entity ("clear_cache", Value.Clear_Cache);
+      end if;
+      if not Value.Viewed_Count.Is_Null then
+         Into.Write_Entity ("viewed_count", Value.Viewed_Count);
+      end if;
+      if not Value.Ordered_Count.Is_Null then
+         Into.Write_Entity ("ordered_count", Value.Ordered_Count);
+      end if;
       Into.End_Entity (Name);
    end Serialize;
 
@@ -28394,116 +28408,116 @@ package body .Models is
       Swagger.Streams.Deserialize (From, Name, Object);
       Swagger.Streams.Deserialize (Object, "name", Value.Name);
       Swagger.Streams.Deserialize (Object, "model", Value.Model);
-      Swagger.Streams.Deserialize (Object, "sku", Value.Sku);
       Swagger.Streams.Deserialize (Object, "description", Value.Description);
       Swagger.Streams.Deserialize (Object, "price", Value.Price);
-      Swagger.Streams.Deserialize (Object, "old_price", Value.Old_Price);
-      Swagger.Streams.Deserialize (Object, "special_price", Value.Special_Price);
-      Swagger.Streams.Deserialize (Object, "cost_price", Value.Cost_Price);
-      Swagger.Streams.Deserialize (Object, "fixed_cost_shipping_price", Value.Fixed_Cost_Shipping_Price);
-      Swagger.Streams.Deserialize (Object, "sprice_create", Value.Sprice_Create);
-      Swagger.Streams.Deserialize (Object, "sprice_modified", Value.Sprice_Modified);
-      Swagger.Streams.Deserialize (Object, "sprice_expire", Value.Sprice_Expire);
-      Deserialize (Object, "tier_prices", Value.Tier_Prices);
-      Deserialize (Object, "group_prices", Value.Group_Prices);
+      Swagger.Streams.Deserialize (Object, "sku", Value.Sku);
+      Swagger.Streams.Deserialize (Object, "short_description", Value.Short_Description);
+      Swagger.Streams.Deserialize (Object, "type", Value.P_Type);
+      Swagger.Streams.Deserialize (Object, "status", Value.Status);
+      Swagger.Streams.Deserialize (Object, "visible", Value.Visible);
+      Swagger.Streams.Deserialize (Object, "category_id", Value.Category_Id);
+      Swagger.Streams.Deserialize (Object, "categories_ids", Value.Categories_Ids);
+      Swagger.Streams.Deserialize (Object, "product_class", Value.Product_Class);
+      Swagger.Streams.Deserialize (Object, "product_type", Value.Product_Type);
+      Swagger.Streams.Deserialize (Object, "is_virtual", Value.Is_Virtual);
+      Swagger.Streams.Deserialize (Object, "downloadable", Value.Downloadable);
+      Swagger.Streams.Deserialize (Object, "is_supply", Value.Is_Supply);
       Swagger.Streams.Deserialize (Object, "available_for_view", Value.Available_For_View);
       Swagger.Streams.Deserialize (Object, "available_for_sale", Value.Available_For_Sale);
+      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
+      Swagger.Streams.Deserialize (Object, "stores_ids", Value.Stores_Ids);
+      Swagger.Streams.Deserialize (Object, "lang_id", Value.Lang_Id);
+      Swagger.Streams.Deserialize (Object, "old_price", Value.Old_Price);
+      Swagger.Streams.Deserialize (Object, "special_price", Value.Special_Price);
+      Swagger.Streams.Deserialize (Object, "wholesale_price", Value.Wholesale_Price);
+      Swagger.Streams.Deserialize (Object, "cost_price", Value.Cost_Price);
+      Swagger.Streams.Deserialize (Object, "fixed_cost_shipping_price", Value.Fixed_Cost_Shipping_Price);
+      Deserialize (Object, "tier_prices", Value.Tier_Prices);
+      Deserialize (Object, "group_prices", Value.Group_Prices);
+      Swagger.Streams.Deserialize (Object, "buyitnow_price", Value.Buyitnow_Price);
+      Swagger.Streams.Deserialize (Object, "reserve_price", Value.Reserve_Price);
+      Swagger.Streams.Deserialize (Object, "quantity", Value.Quantity);
+      Swagger.Streams.Deserialize (Object, "in_stock", Value.In_Stock);
+      Swagger.Streams.Deserialize (Object, "manage_stock", Value.Manage_Stock);
+      Swagger.Streams.Deserialize (Object, "warehouse_id", Value.Warehouse_Id);
+      Swagger.Streams.Deserialize (Object, "backorder_status", Value.Backorder_Status);
+      Swagger.Streams.Deserialize (Object, "min_order_quantity", Value.Min_Order_Quantity);
+      Swagger.Streams.Deserialize (Object, "max_order_quantity", Value.Max_Order_Quantity);
       Swagger.Streams.Deserialize (Object, "weight", Value.Weight);
+      Swagger.Streams.Deserialize (Object, "weight_unit", Value.Weight_Unit);
       Swagger.Streams.Deserialize (Object, "width", Value.Width);
       Swagger.Streams.Deserialize (Object, "height", Value.Height);
       Swagger.Streams.Deserialize (Object, "length", Value.Length);
-      Swagger.Streams.Deserialize (Object, "weight_unit", Value.Weight_Unit);
       Swagger.Streams.Deserialize (Object, "dimensions_unit", Value.Dimensions_Unit);
-      Swagger.Streams.Deserialize (Object, "short_description", Value.Short_Description);
-      Swagger.Streams.Deserialize (Object, "warehouse_id", Value.Warehouse_Id);
-      Swagger.Streams.Deserialize (Object, "backorder_status", Value.Backorder_Status);
-      Swagger.Streams.Deserialize (Object, "quantity", Value.Quantity);
-      Swagger.Streams.Deserialize (Object, "downloadable", Value.Downloadable);
-      Swagger.Streams.Deserialize (Object, "wholesale_price", Value.Wholesale_Price);
-      Swagger.Streams.Deserialize (Object, "created_at", Value.Created_At);
-      Swagger.Streams.Deserialize (Object, "manufacturer", Value.Manufacturer);
-      Swagger.Streams.Deserialize (Object, "manufacturer_id", Value.Manufacturer_Id);
-      Swagger.Streams.Deserialize (Object, "categories_ids", Value.Categories_Ids);
-      Swagger.Streams.Deserialize (Object, "related_products_ids", Value.Related_Products_Ids);
-      Swagger.Streams.Deserialize (Object, "up_sell_products_ids", Value.Up_Sell_Products_Ids);
-      Swagger.Streams.Deserialize (Object, "cross_sell_products_ids", Value.Cross_Sell_Products_Ids);
-      Swagger.Streams.Deserialize (Object, "tax_class_id", Value.Tax_Class_Id);
-      Swagger.Streams.Deserialize (Object, "type", Value.P_Type);
-      Swagger.Streams.Deserialize (Object, "meta_title", Value.Meta_Title);
-      Swagger.Streams.Deserialize (Object, "meta_keywords", Value.Meta_Keywords);
-      Swagger.Streams.Deserialize (Object, "meta_description", Value.Meta_Description);
-      Swagger.Streams.Deserialize (Object, "url", Value.Url);
-      Swagger.Streams.Deserialize (Object, "lang_id", Value.Lang_Id);
-      Swagger.Streams.Deserialize (Object, "stores_ids", Value.Stores_Ids);
-      Swagger.Streams.Deserialize (Object, "category_id", Value.Category_Id);
-      Swagger.Streams.Deserialize (Object, "viewed_count", Value.Viewed_Count);
-      Swagger.Streams.Deserialize (Object, "ordered_count", Value.Ordered_Count);
-      Swagger.Streams.Deserialize (Object, "attribute_set_name", Value.Attribute_Set_Name);
-      Swagger.Streams.Deserialize (Object, "attribute_name", Value.Attribute_Name);
-      Swagger.Streams.Deserialize (Object, "shipping_template_id", Value.Shipping_Template_Id);
-      Swagger.Streams.Deserialize (Object, "production_partner_ids", Value.Production_Partner_Ids);
-      Swagger.Streams.Deserialize (Object, "condition", Value.Condition);
-      Swagger.Streams.Deserialize (Object, "listing_duration", Value.Listing_Duration);
-      Swagger.Streams.Deserialize (Object, "listing_type", Value.Listing_Type);
-      Swagger.Streams.Deserialize (Object, "payment_methods", Value.Payment_Methods);
-      Swagger.Streams.Deserialize (Object, "return_accepted", Value.Return_Accepted);
-      Deserialize (Object, "shipping_details", Value.Shipping_Details);
-      Swagger.Streams.Deserialize (Object, "paypal_email", Value.Paypal_Email);
-      Deserialize (Object, "seller_profiles", Value.Seller_Profiles);
-      Deserialize (Object, "package_details", Value.Package_Details);
-      Deserialize (Object, "best_offer", Value.Best_Offer);
-      Deserialize (Object, "sales_tax", Value.Sales_Tax);
       Swagger.Streams.Deserialize (Object, "barcode", Value.Barcode);
       Swagger.Streams.Deserialize (Object, "upc", Value.Upc);
       Swagger.Streams.Deserialize (Object, "ean", Value.Ean);
       Swagger.Streams.Deserialize (Object, "isbn", Value.Isbn);
-      Deserialize (Object, "specifics", Value.Specifics);
+      Swagger.Streams.Deserialize (Object, "gtin", Value.Gtin);
+      Swagger.Streams.Deserialize (Object, "mpn", Value.Mpn);
+      Swagger.Streams.Deserialize (Object, "asin", Value.Asin);
+      Swagger.Streams.Deserialize (Object, "product_reference", Value.Product_Reference);
+      Swagger.Streams.Deserialize (Object, "harmonized_system_code", Value.Harmonized_System_Code);
+      Swagger.Streams.Deserialize (Object, "country_of_origin", Value.Country_Of_Origin);
+      Swagger.Streams.Deserialize (Object, "manufacturer", Value.Manufacturer);
+      Swagger.Streams.Deserialize (Object, "manufacturer_id", Value.Manufacturer_Id);
+      Deserialize (Object, "manufacturer_info", Value.Manufacturer_Info);
+      Swagger.Streams.Deserialize (Object, "brand_name", Value.Brand_Name);
       Swagger.Streams.Deserialize (Object, "image_url", Value.Image_Url);
       Swagger.Streams.Deserialize (Object, "image_name", Value.Image_Name);
       Swagger.Streams.Deserialize (Object, "additional_image_urls", Value.Additional_Image_Urls);
-      Swagger.Streams.Deserialize (Object, "reserve_price", Value.Reserve_Price);
-      Swagger.Streams.Deserialize (Object, "buyitnow_price", Value.Buyitnow_Price);
-      Swagger.Streams.Deserialize (Object, "condition_description", Value.Condition_Description);
-      Swagger.Streams.Deserialize (Object, "auction_confidentiality_level", Value.Auction_Confidentiality_Level);
-      Deserialize (Object, "logistic_info", Value.Logistic_Info);
-      Swagger.Streams.Deserialize (Object, "avail_from", Value.Avail_From);
-      Swagger.Streams.Deserialize (Object, "tags", Value.Tags);
-      Swagger.Streams.Deserialize (Object, "clear_cache", Value.Clear_Cache);
-      Swagger.Streams.Deserialize (Object, "asin", Value.Asin);
-      Swagger.Streams.Deserialize (Object, "gtin", Value.Gtin);
-      Swagger.Streams.Deserialize (Object, "mpn", Value.Mpn);
-      Swagger.Streams.Deserialize (Object, "taxable", Value.Taxable);
-      Swagger.Streams.Deserialize (Object, "visible", Value.Visible);
-      Swagger.Streams.Deserialize (Object, "status", Value.Status);
-      Swagger.Streams.Deserialize (Object, "seo_url", Value.Seo_Url);
-      Swagger.Streams.Deserialize (Object, "product_class", Value.Product_Class);
-      Swagger.Streams.Deserialize (Object, "product_type", Value.Product_Type);
-      Swagger.Streams.Deserialize (Object, "marketplace_item_properties", Value.Marketplace_Item_Properties);
-      Swagger.Streams.Deserialize (Object, "manage_stock", Value.Manage_Stock);
-      Swagger.Streams.Deserialize (Object, "harmonized_system_code", Value.Harmonized_System_Code);
-      Swagger.Streams.Deserialize (Object, "country_of_origin", Value.Country_Of_Origin);
       Deserialize (Object, "files", Value.Files);
+      Deserialize (Object, "size_chart", Value.Size_Chart);
+      Swagger.Streams.Deserialize (Object, "related_products_ids", Value.Related_Products_Ids);
+      Swagger.Streams.Deserialize (Object, "up_sell_products_ids", Value.Up_Sell_Products_Ids);
+      Swagger.Streams.Deserialize (Object, "cross_sell_products_ids", Value.Cross_Sell_Products_Ids);
+      Swagger.Streams.Deserialize (Object, "attribute_set_name", Value.Attribute_Set_Name);
+      Swagger.Streams.Deserialize (Object, "attribute_name", Value.Attribute_Name);
       Swagger.Streams.Deserialize (Object, "search_keywords", Value.Search_Keywords);
-      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
-      Swagger.Streams.Deserialize (Object, "brand_name", Value.Brand_Name);
-      Swagger.Streams.Deserialize (Object, "is_virtual", Value.Is_Virtual);
+      Swagger.Streams.Deserialize (Object, "tags", Value.Tags);
+      Swagger.Streams.Deserialize (Object, "materials", Value.Materials);
+      Deserialize (Object, "certifications", Value.Certifications);
+      Deserialize (Object, "specifics", Value.Specifics);
+      Swagger.Streams.Deserialize (Object, "avail_from", Value.Avail_From);
+      Swagger.Streams.Deserialize (Object, "sprice_create", Value.Sprice_Create);
+      Swagger.Streams.Deserialize (Object, "sprice_modified", Value.Sprice_Modified);
+      Swagger.Streams.Deserialize (Object, "sprice_expire", Value.Sprice_Expire);
+      Swagger.Streams.Deserialize (Object, "created_at", Value.Created_At);
+      Swagger.Streams.Deserialize (Object, "auto_renew", Value.Auto_Renew);
+      Swagger.Streams.Deserialize (Object, "when_made", Value.When_Made);
+      Swagger.Streams.Deserialize (Object, "meta_title", Value.Meta_Title);
+      Swagger.Streams.Deserialize (Object, "meta_keywords", Value.Meta_Keywords);
+      Swagger.Streams.Deserialize (Object, "meta_description", Value.Meta_Description);
+      Swagger.Streams.Deserialize (Object, "url", Value.Url);
+      Swagger.Streams.Deserialize (Object, "seo_url", Value.Seo_Url);
+      Swagger.Streams.Deserialize (Object, "tax_class_id", Value.Tax_Class_Id);
+      Swagger.Streams.Deserialize (Object, "taxable", Value.Taxable);
+      Deserialize (Object, "sales_tax", Value.Sales_Tax);
+      Swagger.Streams.Deserialize (Object, "condition", Value.Condition);
+      Swagger.Streams.Deserialize (Object, "condition_description", Value.Condition_Description);
+      Swagger.Streams.Deserialize (Object, "allow_display_condition", Value.Allow_Display_Condition);
+      Swagger.Streams.Deserialize (Object, "payment_methods", Value.Payment_Methods);
+      Swagger.Streams.Deserialize (Object, "paypal_email", Value.Paypal_Email);
+      Swagger.Streams.Deserialize (Object, "shipping_template_id", Value.Shipping_Template_Id);
+      Deserialize (Object, "shipping_details", Value.Shipping_Details);
       Swagger.Streams.Deserialize (Object, "is_free_shipping", Value.Is_Free_Shipping);
-      Swagger.Streams.Deserialize (Object, "in_stock", Value.In_Stock);
       Swagger.Streams.Deserialize (Object, "delivery_code", Value.Delivery_Code);
-      Swagger.Streams.Deserialize (Object, "product_reference", Value.Product_Reference);
       Swagger.Streams.Deserialize (Object, "delivery_type", Value.Delivery_Type);
       Swagger.Streams.Deserialize (Object, "delivery_time", Value.Delivery_Time);
-      Deserialize (Object, "size_chart", Value.Size_Chart);
-      Deserialize (Object, "certifications", Value.Certifications);
       Swagger.Streams.Deserialize (Object, "delivery_option_ids", Value.Delivery_Option_Ids);
-      Deserialize (Object, "manufacturer_info", Value.Manufacturer_Info);
-      Swagger.Streams.Deserialize (Object, "when_made", Value.When_Made);
-      Swagger.Streams.Deserialize (Object, "is_supply", Value.Is_Supply);
-      Swagger.Streams.Deserialize (Object, "materials", Value.Materials);
-      Swagger.Streams.Deserialize (Object, "auto_renew", Value.Auto_Renew);
-      Swagger.Streams.Deserialize (Object, "allow_display_condition", Value.Allow_Display_Condition);
-      Swagger.Streams.Deserialize (Object, "min_order_quantity", Value.Min_Order_Quantity);
-      Swagger.Streams.Deserialize (Object, "max_order_quantity", Value.Max_Order_Quantity);
+      Deserialize (Object, "package_details", Value.Package_Details);
+      Deserialize (Object, "logistic_info", Value.Logistic_Info);
+      Swagger.Streams.Deserialize (Object, "listing_duration", Value.Listing_Duration);
+      Swagger.Streams.Deserialize (Object, "listing_type", Value.Listing_Type);
+      Swagger.Streams.Deserialize (Object, "return_accepted", Value.Return_Accepted);
+      Deserialize (Object, "seller_profiles", Value.Seller_Profiles);
+      Swagger.Streams.Deserialize (Object, "auction_confidentiality_level", Value.Auction_Confidentiality_Level);
+      Deserialize (Object, "best_offer", Value.Best_Offer);
+      Swagger.Streams.Deserialize (Object, "production_partner_ids", Value.Production_Partner_Ids);
+      Swagger.Streams.Deserialize (Object, "marketplace_item_properties", Value.Marketplace_Item_Properties);
+      Swagger.Streams.Deserialize (Object, "clear_cache", Value.Clear_Cache);
+      Swagger.Streams.Deserialize (Object, "viewed_count", Value.Viewed_Count);
+      Swagger.Streams.Deserialize (Object, "ordered_count", Value.Ordered_Count);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;
