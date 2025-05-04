@@ -4847,6 +4847,8 @@ package .Models is
        Bol_Api_Key : Swagger.Nullable_UString;
        Bol_Api_Secret : Swagger.Nullable_UString;
        Bol_Retailer_Id : Swagger.Nullable_Integer;
+       Bigcartel_User_Name : Swagger.UString;
+       Bigcartel_Password : Swagger.UString;
        Demandware_Client_Id : Swagger.Nullable_UString;
        Demandware_Api_Password : Swagger.Nullable_UString;
        Demandware_User_Name : Swagger.Nullable_UString;
@@ -8207,39 +8209,6 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : in out OrderShipmentTrackingAdd200Response_Type_Vectors.Vector);
-
-
-
-   type OrderShipmentUpdate_Type is
-     record
-       Shipment_Id : Swagger.UString;
-       Order_Id : Swagger.Nullable_UString;
-       Store_Id : Swagger.Nullable_UString;
-       Shipment_Provider : Swagger.Nullable_UString;
-       Tracking_Numbers : .Models.OrderShipmentAddTrackingNumbersInner_Type_Vectors.Vector;
-       Tracking_Link : Swagger.Nullable_UString;
-       Is_Shipped : Swagger.Nullable_Boolean;
-       Delivered_At : Swagger.Nullable_UString;
-       Replace : Swagger.Nullable_Boolean;
-     end record;
-
-
-   package OrderShipmentUpdate_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.OrderShipmentUpdate_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.OrderShipmentUpdate_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in OrderShipmentUpdate_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.OrderShipmentUpdate_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out OrderShipmentUpdate_Type_Vectors.Vector);
 
 
 
@@ -12993,6 +12962,7 @@ package .Models is
        Adjust_Stock : Swagger.Nullable_Boolean;
        Enable_Cache : Swagger.Nullable_Boolean;
        Check_Process_Status : Swagger.Nullable_Boolean;
+       Tracking_Provider : Swagger.Nullable_UString;
        Use_Latest_Api_Version : Swagger.Nullable_Boolean;
      end record;
 
@@ -13013,6 +12983,42 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : in out OrderShipmentAdd_Type_Vectors.Vector);
+
+
+
+   type OrderShipmentUpdate_Type is
+     record
+       Shipment_Id : Swagger.UString;
+       Order_Id : Swagger.Nullable_UString;
+       Store_Id : Swagger.Nullable_UString;
+       Shipment_Provider : Swagger.Nullable_UString;
+       Tracking_Numbers : .Models.OrderShipmentAddTrackingNumbersInner_Type_Vectors.Vector;
+       Tracking_Link : Swagger.Nullable_UString;
+       Is_Shipped : Swagger.Nullable_Boolean;
+       Delivered_At : Swagger.Nullable_UString;
+       Replace : Swagger.Nullable_Boolean;
+       Send_Notifications : Swagger.Nullable_Boolean;
+       Tracking_Provider : Swagger.Nullable_UString;
+       Items : .Models.OrderShipmentAddItemsInner_Type_Vectors.Vector;
+     end record;
+
+
+   package OrderShipmentUpdate_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.OrderShipmentUpdate_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.OrderShipmentUpdate_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in OrderShipmentUpdate_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.OrderShipmentUpdate_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out OrderShipmentUpdate_Type_Vectors.Vector);
 
 
 

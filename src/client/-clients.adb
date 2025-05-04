@@ -142,6 +142,8 @@ package body .Clients is
        Shopware_Access_Key : in Swagger.Nullable_UString;
        Shopware_Api_Key : in Swagger.Nullable_UString;
        Shopware_Api_Secret : in Swagger.Nullable_UString;
+       Bigcartel_User_Name : in Swagger.Nullable_UString;
+       Bigcartel_Password : in Swagger.Nullable_UString;
        Volusion_Login : in Swagger.Nullable_UString;
        Volusion_Password : in Swagger.Nullable_UString;
        Walmart_Client_Id : in Swagger.Nullable_UString;
@@ -291,6 +293,8 @@ package body .Clients is
       URI.Add_Param ("shopware_access_key", Shopware_Access_Key);
       URI.Add_Param ("shopware_api_key", Shopware_Api_Key);
       URI.Add_Param ("shopware_api_secret", Shopware_Api_Secret);
+      URI.Add_Param ("bigcartel_user_name", Bigcartel_User_Name);
+      URI.Add_Param ("bigcartel_password", Bigcartel_Password);
       URI.Add_Param ("volusion_login", Volusion_Login);
       URI.Add_Param ("volusion_password", Volusion_Password);
       URI.Add_Param ("walmart_client_id", Walmart_Client_Id);

@@ -9645,6 +9645,8 @@ package body .Models is
       if not Value.Bol_Retailer_Id.Is_Null then
          Into.Write_Entity ("bol_retailer_id", Value.Bol_Retailer_Id);
       end if;
+      Into.Write_Entity ("bigcartel_user_name", Value.Bigcartel_User_Name);
+      Into.Write_Entity ("bigcartel_password", Value.Bigcartel_Password);
       if not Value.Demandware_Client_Id.Is_Null then
          Into.Write_Entity ("demandware_client_id", Value.Demandware_Client_Id);
       end if;
@@ -10038,6 +10040,8 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "bol_api_key", Value.Bol_Api_Key);
       Swagger.Streams.Deserialize (Object, "bol_api_secret", Value.Bol_Api_Secret);
       Swagger.Streams.Deserialize (Object, "bol_retailer_id", Value.Bol_Retailer_Id);
+      Swagger.Streams.Deserialize (Object, "bigcartel_user_name", Value.Bigcartel_User_Name);
+      Swagger.Streams.Deserialize (Object, "bigcartel_password", Value.Bigcartel_Password);
       Swagger.Streams.Deserialize (Object, "demandware_client_id", Value.Demandware_Client_Id);
       Swagger.Streams.Deserialize (Object, "demandware_api_password", Value.Demandware_Api_Password);
       Swagger.Streams.Deserialize (Object, "demandware_user_name", Value.Demandware_User_Name);
@@ -16850,79 +16854,6 @@ package body .Models is
                           Value : in out OrderShipmentTrackingAdd200Response_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
       Item : .Models.OrderShipmentTrackingAdd200Response_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.OrderShipmentUpdate_Type) is
-   begin
-      Into.Start_Entity (Name);
-      Into.Write_Entity ("shipment_id", Value.Shipment_Id);
-      if not Value.Order_Id.Is_Null then
-         Into.Write_Entity ("order_id", Value.Order_Id);
-      end if;
-      if not Value.Store_Id.Is_Null then
-         Into.Write_Entity ("store_id", Value.Store_Id);
-      end if;
-      if not Value.Shipment_Provider.Is_Null then
-         Into.Write_Entity ("shipment_provider", Value.Shipment_Provider);
-      end if;
-      Serialize (Into, "tracking_numbers", Value.Tracking_Numbers);
-      if not Value.Tracking_Link.Is_Null then
-         Into.Write_Entity ("tracking_link", Value.Tracking_Link);
-      end if;
-      if not Value.Is_Shipped.Is_Null then
-         Into.Write_Entity ("is_shipped", Value.Is_Shipped);
-      end if;
-      if not Value.Delivered_At.Is_Null then
-         Into.Write_Entity ("delivered_at", Value.Delivered_At);
-      end if;
-      if not Value.Replace.Is_Null then
-         Into.Write_Entity ("replace", Value.Replace);
-      end if;
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in OrderShipmentUpdate_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.OrderShipmentUpdate_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "shipment_id", Value.Shipment_Id);
-      Swagger.Streams.Deserialize (Object, "order_id", Value.Order_Id);
-      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
-      Swagger.Streams.Deserialize (Object, "shipment_provider", Value.Shipment_Provider);
-      Deserialize (Object, "tracking_numbers", Value.Tracking_Numbers);
-      Swagger.Streams.Deserialize (Object, "tracking_link", Value.Tracking_Link);
-      Swagger.Streams.Deserialize (Object, "is_shipped", Value.Is_Shipped);
-      Swagger.Streams.Deserialize (Object, "delivered_at", Value.Delivered_At);
-      Swagger.Streams.Deserialize (Object, "replace", Value.Replace);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out OrderShipmentUpdate_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.OrderShipmentUpdate_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);
@@ -27025,6 +26956,9 @@ package body .Models is
       if not Value.Check_Process_Status.Is_Null then
          Into.Write_Entity ("check_process_status", Value.Check_Process_Status);
       end if;
+      if not Value.Tracking_Provider.Is_Null then
+         Into.Write_Entity ("tracking_provider", Value.Tracking_Provider);
+      end if;
       if not Value.Use_Latest_Api_Version.Is_Null then
          Into.Write_Entity ("use_latest_api_version", Value.Use_Latest_Api_Version);
       end if;
@@ -27061,6 +26995,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "adjust_stock", Value.Adjust_Stock);
       Swagger.Streams.Deserialize (Object, "enable_cache", Value.Enable_Cache);
       Swagger.Streams.Deserialize (Object, "check_process_status", Value.Check_Process_Status);
+      Swagger.Streams.Deserialize (Object, "tracking_provider", Value.Tracking_Provider);
       Swagger.Streams.Deserialize (Object, "use_latest_api_version", Value.Use_Latest_Api_Version);
    end Deserialize;
 
@@ -27069,6 +27004,89 @@ package body .Models is
                           Value : in out OrderShipmentAdd_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
       Item : .Models.OrderShipmentAdd_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.OrderShipmentUpdate_Type) is
+   begin
+      Into.Start_Entity (Name);
+      Into.Write_Entity ("shipment_id", Value.Shipment_Id);
+      if not Value.Order_Id.Is_Null then
+         Into.Write_Entity ("order_id", Value.Order_Id);
+      end if;
+      if not Value.Store_Id.Is_Null then
+         Into.Write_Entity ("store_id", Value.Store_Id);
+      end if;
+      if not Value.Shipment_Provider.Is_Null then
+         Into.Write_Entity ("shipment_provider", Value.Shipment_Provider);
+      end if;
+      Serialize (Into, "tracking_numbers", Value.Tracking_Numbers);
+      if not Value.Tracking_Link.Is_Null then
+         Into.Write_Entity ("tracking_link", Value.Tracking_Link);
+      end if;
+      if not Value.Is_Shipped.Is_Null then
+         Into.Write_Entity ("is_shipped", Value.Is_Shipped);
+      end if;
+      if not Value.Delivered_At.Is_Null then
+         Into.Write_Entity ("delivered_at", Value.Delivered_At);
+      end if;
+      if not Value.Replace.Is_Null then
+         Into.Write_Entity ("replace", Value.Replace);
+      end if;
+      if not Value.Send_Notifications.Is_Null then
+         Into.Write_Entity ("send_notifications", Value.Send_Notifications);
+      end if;
+      if not Value.Tracking_Provider.Is_Null then
+         Into.Write_Entity ("tracking_provider", Value.Tracking_Provider);
+      end if;
+      Serialize (Into, "items", Value.Items);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in OrderShipmentUpdate_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.OrderShipmentUpdate_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "shipment_id", Value.Shipment_Id);
+      Swagger.Streams.Deserialize (Object, "order_id", Value.Order_Id);
+      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
+      Swagger.Streams.Deserialize (Object, "shipment_provider", Value.Shipment_Provider);
+      Deserialize (Object, "tracking_numbers", Value.Tracking_Numbers);
+      Swagger.Streams.Deserialize (Object, "tracking_link", Value.Tracking_Link);
+      Swagger.Streams.Deserialize (Object, "is_shipped", Value.Is_Shipped);
+      Swagger.Streams.Deserialize (Object, "delivered_at", Value.Delivered_At);
+      Swagger.Streams.Deserialize (Object, "replace", Value.Replace);
+      Swagger.Streams.Deserialize (Object, "send_notifications", Value.Send_Notifications);
+      Swagger.Streams.Deserialize (Object, "tracking_provider", Value.Tracking_Provider);
+      Deserialize (Object, "items", Value.Items);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out OrderShipmentUpdate_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.OrderShipmentUpdate_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);

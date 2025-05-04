@@ -109,6 +109,8 @@ package .Clients is
        Shopware_Access_Key : in Swagger.Nullable_UString;
        Shopware_Api_Key : in Swagger.Nullable_UString;
        Shopware_Api_Secret : in Swagger.Nullable_UString;
+       Bigcartel_User_Name : in Swagger.Nullable_UString;
+       Bigcartel_Password : in Swagger.Nullable_UString;
        Volusion_Login : in Swagger.Nullable_UString;
        Volusion_Password : in Swagger.Nullable_UString;
        Walmart_Client_Id : in Swagger.Nullable_UString;
