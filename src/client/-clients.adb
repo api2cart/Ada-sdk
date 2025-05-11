@@ -4843,6 +4843,7 @@ package body .Clients is
    --  Get subscribers list
    procedure Subscriber_List
       (Client : in out Client_Type;
+       Ids : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
        Page_Cursor : in Swagger.Nullable_UString;
@@ -4863,6 +4864,7 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
+      URI.Add_Param ("ids", Ids);
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
       URI.Add_Param ("page_cursor", Page_Cursor);

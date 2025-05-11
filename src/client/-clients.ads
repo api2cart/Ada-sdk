@@ -2077,6 +2077,7 @@ package .Clients is
    --  Get subscribers list
    procedure Subscriber_List
       (Client : in out Client_Type;
+       Ids : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
        Page_Cursor : in Swagger.Nullable_UString;
