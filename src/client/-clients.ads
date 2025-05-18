@@ -1396,6 +1396,7 @@ package .Clients is
        Send_Notifications : in Swagger.Nullable_Boolean;
        Create_Invoice : in Swagger.Nullable_Boolean;
        Origin : in Swagger.Nullable_UString;
+       Tags : in Swagger.Nullable_UString;
        Result : out .Models.AccountConfigUpdate200Response_Type);
 
    --  product.add

@@ -3211,6 +3211,7 @@ package body .Clients is
        Send_Notifications : in Swagger.Nullable_Boolean;
        Create_Invoice : in Swagger.Nullable_Boolean;
        Origin : in Swagger.Nullable_UString;
+       Tags : in Swagger.Nullable_UString;
        Result : out .Models.AccountConfigUpdate200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -3234,6 +3235,7 @@ package body .Clients is
       URI.Add_Param ("send_notifications", Send_Notifications);
       URI.Add_Param ("create_invoice", Create_Invoice);
       URI.Add_Param ("origin", Origin);
+      URI.Add_Param ("tags", Tags);
       URI.Set_Path ("/order.update.json");
       Client.Call (Swagger.Clients.PUT, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
