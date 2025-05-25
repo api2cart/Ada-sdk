@@ -135,6 +135,12 @@ package body .Clients is
        Shopify_Api_Key : in Swagger.Nullable_UString;
        Shopify_Api_Password : in Swagger.Nullable_UString;
        Shopify_Shared_Secret : in Swagger.Nullable_UString;
+       Shopee_Partner_Id : in Swagger.Nullable_UString;
+       Shopee_Partner_Key : in Swagger.Nullable_UString;
+       Shopee_Shop_Id : in Swagger.Nullable_UString;
+       Shopee_Refresh_Token : in Swagger.Nullable_UString;
+       Shopee_Region : in Swagger.Nullable_UString;
+       Shopee_Environment : in Swagger.Nullable_UString;
        Shoplazza_Access_Token : in Swagger.Nullable_UString;
        Shoplazza_Shared_Secret : in Swagger.Nullable_UString;
        Miva_Access_Token : in Swagger.Nullable_UString;
@@ -215,6 +221,10 @@ package body .Clients is
        Salla_Client_Secret : in Swagger.Nullable_UString;
        Salla_Refresh_Token : in Swagger.Nullable_UString;
        Salla_Access_Token : in Swagger.Nullable_UString;
+       Temu_App_Key : in Swagger.Nullable_UString;
+       Temu_App_Secret : in Swagger.Nullable_UString;
+       Temu_Access_Token : in Swagger.Nullable_UString;
+       Temu_Region : in Swagger.Nullable_UString;
        Result : out .Models.AccountConfigUpdate200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -286,6 +296,12 @@ package body .Clients is
       URI.Add_Param ("shopify_api_key", Shopify_Api_Key);
       URI.Add_Param ("shopify_api_password", Shopify_Api_Password);
       URI.Add_Param ("shopify_shared_secret", Shopify_Shared_Secret);
+      URI.Add_Param ("shopee_partner_id", Shopee_Partner_Id);
+      URI.Add_Param ("shopee_partner_key", Shopee_Partner_Key);
+      URI.Add_Param ("shopee_shop_id", Shopee_Shop_Id);
+      URI.Add_Param ("shopee_refresh_token", Shopee_Refresh_Token);
+      URI.Add_Param ("shopee_region", Shopee_Region);
+      URI.Add_Param ("shopee_environment", Shopee_Environment);
       URI.Add_Param ("shoplazza_access_token", Shoplazza_Access_Token);
       URI.Add_Param ("shoplazza_shared_secret", Shoplazza_Shared_Secret);
       URI.Add_Param ("miva_access_token", Miva_Access_Token);
@@ -366,6 +382,10 @@ package body .Clients is
       URI.Add_Param ("salla_client_secret", Salla_Client_Secret);
       URI.Add_Param ("salla_refresh_token", Salla_Refresh_Token);
       URI.Add_Param ("salla_access_token", Salla_Access_Token);
+      URI.Add_Param ("temu_app_key", Temu_App_Key);
+      URI.Add_Param ("temu_app_secret", Temu_App_Secret);
+      URI.Add_Param ("temu_access_token", Temu_Access_Token);
+      URI.Add_Param ("temu_region", Temu_Region);
       URI.Set_Path ("/account.config.update.json");
       Client.Call (Swagger.Clients.PUT, URI, Reply);
       .Models.Deserialize (Reply, "", Result);

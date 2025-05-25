@@ -102,6 +102,12 @@ package .Clients is
        Shopify_Api_Key : in Swagger.Nullable_UString;
        Shopify_Api_Password : in Swagger.Nullable_UString;
        Shopify_Shared_Secret : in Swagger.Nullable_UString;
+       Shopee_Partner_Id : in Swagger.Nullable_UString;
+       Shopee_Partner_Key : in Swagger.Nullable_UString;
+       Shopee_Shop_Id : in Swagger.Nullable_UString;
+       Shopee_Refresh_Token : in Swagger.Nullable_UString;
+       Shopee_Region : in Swagger.Nullable_UString;
+       Shopee_Environment : in Swagger.Nullable_UString;
        Shoplazza_Access_Token : in Swagger.Nullable_UString;
        Shoplazza_Shared_Secret : in Swagger.Nullable_UString;
        Miva_Access_Token : in Swagger.Nullable_UString;
@@ -182,6 +188,10 @@ package .Clients is
        Salla_Client_Secret : in Swagger.Nullable_UString;
        Salla_Refresh_Token : in Swagger.Nullable_UString;
        Salla_Access_Token : in Swagger.Nullable_UString;
+       Temu_App_Key : in Swagger.Nullable_UString;
+       Temu_App_Secret : in Swagger.Nullable_UString;
+       Temu_Access_Token : in Swagger.Nullable_UString;
+       Temu_Region : in Swagger.Nullable_UString;
        Result : out .Models.AccountConfigUpdate200Response_Type);
 
    --  account.failed_webhooks

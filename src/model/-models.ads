@@ -4921,6 +4921,12 @@ package .Models is
        Shopify_Api_Key : Swagger.Nullable_UString;
        Shopify_Api_Password : Swagger.Nullable_UString;
        Shopify_Shared_Secret : Swagger.Nullable_UString;
+       Shopee_Partner_Id : Swagger.Nullable_UString;
+       Shopee_Partner_Key : Swagger.Nullable_UString;
+       Shopee_Shop_Id : Swagger.Nullable_UString;
+       Shopee_Refresh_Token : Swagger.Nullable_UString;
+       Shopee_Region : Swagger.Nullable_UString;
+       Shopee_Environment : Swagger.Nullable_UString;
        Shoplazza_Access_Token : Swagger.Nullable_UString;
        Shoplazza_Shared_Secret : Swagger.Nullable_UString;
        Shopware_Access_Key : Swagger.Nullable_UString;
@@ -4992,6 +4998,10 @@ package .Models is
        Salla_Client_Secret : Swagger.Nullable_UString;
        Salla_Refresh_Token : Swagger.Nullable_UString;
        Salla_Access_Token : Swagger.Nullable_UString;
+       Temu_App_Key : Swagger.Nullable_UString;
+       Temu_App_Secret : Swagger.Nullable_UString;
+       Temu_Access_Token : Swagger.UString;
+       Temu_Region : Swagger.Nullable_UString;
      end record;
 
 

@@ -9834,6 +9834,24 @@ package body .Models is
       if not Value.Shopify_Shared_Secret.Is_Null then
          Into.Write_Entity ("shopify_shared_secret", Value.Shopify_Shared_Secret);
       end if;
+      if not Value.Shopee_Partner_Id.Is_Null then
+         Into.Write_Entity ("shopee_partner_id", Value.Shopee_Partner_Id);
+      end if;
+      if not Value.Shopee_Partner_Key.Is_Null then
+         Into.Write_Entity ("shopee_partner_key", Value.Shopee_Partner_Key);
+      end if;
+      if not Value.Shopee_Shop_Id.Is_Null then
+         Into.Write_Entity ("shopee_shop_id", Value.Shopee_Shop_Id);
+      end if;
+      if not Value.Shopee_Refresh_Token.Is_Null then
+         Into.Write_Entity ("shopee_refresh_token", Value.Shopee_Refresh_Token);
+      end if;
+      if not Value.Shopee_Region.Is_Null then
+         Into.Write_Entity ("shopee_region", Value.Shopee_Region);
+      end if;
+      if not Value.Shopee_Environment.Is_Null then
+         Into.Write_Entity ("shopee_environment", Value.Shopee_Environment);
+      end if;
       if not Value.Shoplazza_Access_Token.Is_Null then
          Into.Write_Entity ("shoplazza_access_token", Value.Shoplazza_Access_Token);
       end if;
@@ -10041,6 +10059,16 @@ package body .Models is
       if not Value.Salla_Access_Token.Is_Null then
          Into.Write_Entity ("salla_access_token", Value.Salla_Access_Token);
       end if;
+      if not Value.Temu_App_Key.Is_Null then
+         Into.Write_Entity ("temu_app_key", Value.Temu_App_Key);
+      end if;
+      if not Value.Temu_App_Secret.Is_Null then
+         Into.Write_Entity ("temu_app_secret", Value.Temu_App_Secret);
+      end if;
+      Into.Write_Entity ("temu_access_token", Value.Temu_Access_Token);
+      if not Value.Temu_Region.Is_Null then
+         Into.Write_Entity ("temu_region", Value.Temu_Region);
+      end if;
       Into.End_Entity (Name);
    end Serialize;
 
@@ -10141,6 +10169,12 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "shopify_api_key", Value.Shopify_Api_Key);
       Swagger.Streams.Deserialize (Object, "shopify_api_password", Value.Shopify_Api_Password);
       Swagger.Streams.Deserialize (Object, "shopify_shared_secret", Value.Shopify_Shared_Secret);
+      Swagger.Streams.Deserialize (Object, "shopee_partner_id", Value.Shopee_Partner_Id);
+      Swagger.Streams.Deserialize (Object, "shopee_partner_key", Value.Shopee_Partner_Key);
+      Swagger.Streams.Deserialize (Object, "shopee_shop_id", Value.Shopee_Shop_Id);
+      Swagger.Streams.Deserialize (Object, "shopee_refresh_token", Value.Shopee_Refresh_Token);
+      Swagger.Streams.Deserialize (Object, "shopee_region", Value.Shopee_Region);
+      Swagger.Streams.Deserialize (Object, "shopee_environment", Value.Shopee_Environment);
       Swagger.Streams.Deserialize (Object, "shoplazza_access_token", Value.Shoplazza_Access_Token);
       Swagger.Streams.Deserialize (Object, "shoplazza_shared_secret", Value.Shoplazza_Shared_Secret);
       Swagger.Streams.Deserialize (Object, "shopware_access_key", Value.Shopware_Access_Key);
@@ -10212,6 +10246,10 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "salla_client_secret", Value.Salla_Client_Secret);
       Swagger.Streams.Deserialize (Object, "salla_refresh_token", Value.Salla_Refresh_Token);
       Swagger.Streams.Deserialize (Object, "salla_access_token", Value.Salla_Access_Token);
+      Swagger.Streams.Deserialize (Object, "temu_app_key", Value.Temu_App_Key);
+      Swagger.Streams.Deserialize (Object, "temu_app_secret", Value.Temu_App_Secret);
+      Swagger.Streams.Deserialize (Object, "temu_access_token", Value.Temu_Access_Token);
+      Swagger.Streams.Deserialize (Object, "temu_region", Value.Temu_Region);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;
