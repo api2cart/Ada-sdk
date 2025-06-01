@@ -5001,7 +5001,7 @@ package .Models is
        Temu_App_Key : Swagger.Nullable_UString;
        Temu_App_Secret : Swagger.Nullable_UString;
        Temu_Access_Token : Swagger.UString;
-       Temu_Region : Swagger.Nullable_UString;
+       Temu_Region : Swagger.UString;
      end record;
 
 

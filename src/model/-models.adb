@@ -10066,9 +10066,7 @@ package body .Models is
          Into.Write_Entity ("temu_app_secret", Value.Temu_App_Secret);
       end if;
       Into.Write_Entity ("temu_access_token", Value.Temu_Access_Token);
-      if not Value.Temu_Region.Is_Null then
-         Into.Write_Entity ("temu_region", Value.Temu_Region);
-      end if;
+      Into.Write_Entity ("temu_region", Value.Temu_Region);
       Into.End_Entity (Name);
    end Serialize;
 
