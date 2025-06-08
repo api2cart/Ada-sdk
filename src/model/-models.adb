@@ -9469,6 +9469,9 @@ package body .Models is
       if not Value.Store_Id.Is_Null then
          Into.Write_Entity ("store_id", Value.Store_Id);
       end if;
+      if not Value.Lang_Id.Is_Null then
+         Into.Write_Entity ("lang_id", Value.Lang_Id);
+      end if;
       if not Value.Active.Is_Null then
          Into.Write_Entity ("active", Value.Active);
       end if;
@@ -9519,6 +9522,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "id", Value.Id);
       Swagger.Streams.Deserialize (Object, "label", Value.Label);
       Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
+      Swagger.Streams.Deserialize (Object, "lang_id", Value.Lang_Id);
       Swagger.Streams.Deserialize (Object, "active", Value.Active);
       Swagger.Streams.Deserialize (Object, "callback", Value.Callback);
       Swagger.Streams.Deserialize (Object, "fields", Value.Fields);

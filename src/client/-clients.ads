@@ -2151,6 +2151,7 @@ package .Clients is
        Label : in Swagger.Nullable_UString;
        Fields : in Swagger.Nullable_UString;
        Active : in Swagger.Nullable_Boolean;
+       Lang_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Result : out .Models.BasketLiveShippingServiceCreate200Response_Type);
 
@@ -2189,6 +2190,7 @@ package .Clients is
        Label : in Swagger.Nullable_UString;
        Fields : in Swagger.Nullable_UString;
        Active : in Swagger.Nullable_Boolean;
+       Lang_Id : in Swagger.Nullable_UString;
        Result : out .Models.ProductImageUpdate200Response_Type);
 
 end .Clients;

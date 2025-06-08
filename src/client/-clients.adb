@@ -5001,6 +5001,7 @@ package body .Clients is
        Label : in Swagger.Nullable_UString;
        Fields : in Swagger.Nullable_UString;
        Active : in Swagger.Nullable_Boolean;
+       Lang_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Result : out .Models.BasketLiveShippingServiceCreate200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
@@ -5015,6 +5016,7 @@ package body .Clients is
       URI.Add_Param ("label", Label);
       URI.Add_Param ("fields", Fields);
       URI.Add_Param ("active", Active);
+      URI.Add_Param ("lang_id", Lang_Id);
       URI.Add_Param ("store_id", Store_Id);
       URI.Set_Path ("/webhook.create.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
@@ -5094,6 +5096,7 @@ package body .Clients is
        Label : in Swagger.Nullable_UString;
        Fields : in Swagger.Nullable_UString;
        Active : in Swagger.Nullable_Boolean;
+       Lang_Id : in Swagger.Nullable_UString;
        Result : out .Models.ProductImageUpdate200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -5106,6 +5109,7 @@ package body .Clients is
       URI.Add_Param ("label", Label);
       URI.Add_Param ("fields", Fields);
       URI.Add_Param ("active", Active);
+      URI.Add_Param ("lang_id", Lang_Id);
       URI.Set_Path ("/webhook.update.json");
       Client.Call (Swagger.Clients.PUT, URI, Reply);
       .Models.Deserialize (Reply, "", Result);

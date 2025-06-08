@@ -4781,6 +4781,7 @@ package .Models is
        Id : Swagger.Nullable_Integer;
        Label : Swagger.Nullable_UString;
        Store_Id : Swagger.Nullable_UString;
+       Lang_Id : Swagger.Nullable_UString;
        Active : Swagger.Nullable_Boolean;
        Callback : Swagger.Nullable_UString;
        Fields : Swagger.Nullable_UString;
