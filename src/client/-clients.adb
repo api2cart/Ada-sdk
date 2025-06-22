@@ -5000,6 +5000,7 @@ package body .Clients is
        Callback : in Swagger.Nullable_UString;
        Label : in Swagger.Nullable_UString;
        Fields : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
        Active : in Swagger.Nullable_Boolean;
        Lang_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
@@ -5015,6 +5016,7 @@ package body .Clients is
       URI.Add_Param ("callback", Callback);
       URI.Add_Param ("label", Label);
       URI.Add_Param ("fields", Fields);
+      URI.Add_Param ("response_fields", Response_Fields);
       URI.Add_Param ("active", Active);
       URI.Add_Param ("lang_id", Lang_Id);
       URI.Add_Param ("store_id", Store_Id);
@@ -5095,6 +5097,7 @@ package body .Clients is
        Callback : in Swagger.Nullable_UString;
        Label : in Swagger.Nullable_UString;
        Fields : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
        Active : in Swagger.Nullable_Boolean;
        Lang_Id : in Swagger.Nullable_UString;
        Result : out .Models.ProductImageUpdate200Response_Type) is
@@ -5108,6 +5111,7 @@ package body .Clients is
       URI.Add_Param ("callback", Callback);
       URI.Add_Param ("label", Label);
       URI.Add_Param ("fields", Fields);
+      URI.Add_Param ("response_fields", Response_Fields);
       URI.Add_Param ("active", Active);
       URI.Add_Param ("lang_id", Lang_Id);
       URI.Set_Path ("/webhook.update.json");

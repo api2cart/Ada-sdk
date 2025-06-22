@@ -4785,6 +4785,7 @@ package .Models is
        Active : Swagger.Nullable_Boolean;
        Callback : Swagger.Nullable_UString;
        Fields : Swagger.Nullable_UString;
+       Response_Fields : Swagger.Nullable_UString;
        Created_At : Swagger.Nullable_UString;
        Updated_At : Swagger.Nullable_UString;
        Entity : Swagger.Nullable_UString;
@@ -8636,6 +8637,7 @@ package .Models is
        Avail_For_Sale : Swagger.Nullable_Boolean;
        Allow_Backorders : Swagger.Nullable_Boolean;
        In_Stock : Swagger.Nullable_Boolean;
+       On_Sale : Swagger.Nullable_Boolean;
        Manage_Stock : Swagger.Nullable_Boolean;
        Inventory_Level : Swagger.Number;
        Inventory : .Models.ProductInventory_Type_Vectors.Vector;

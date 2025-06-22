@@ -9481,6 +9481,9 @@ package body .Models is
       if not Value.Fields.Is_Null then
          Into.Write_Entity ("fields", Value.Fields);
       end if;
+      if not Value.Response_Fields.Is_Null then
+         Into.Write_Entity ("response_fields", Value.Response_Fields);
+      end if;
       if not Value.Created_At.Is_Null then
          Into.Write_Entity ("created_at", Value.Created_At);
       end if;
@@ -9526,6 +9529,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "active", Value.Active);
       Swagger.Streams.Deserialize (Object, "callback", Value.Callback);
       Swagger.Streams.Deserialize (Object, "fields", Value.Fields);
+      Swagger.Streams.Deserialize (Object, "response_fields", Value.Response_Fields);
       Swagger.Streams.Deserialize (Object, "created_at", Value.Created_At);
       Swagger.Streams.Deserialize (Object, "updated_at", Value.Updated_At);
       Swagger.Streams.Deserialize (Object, "entity", Value.Entity);
@@ -17834,6 +17838,9 @@ package body .Models is
       if not Value.In_Stock.Is_Null then
          Into.Write_Entity ("in_stock", Value.In_Stock);
       end if;
+      if not Value.On_Sale.Is_Null then
+         Into.Write_Entity ("on_sale", Value.On_Sale);
+      end if;
       if not Value.Manage_Stock.Is_Null then
          Into.Write_Entity ("manage_stock", Value.Manage_Stock);
       end if;
@@ -17920,6 +17927,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "avail_for_sale", Value.Avail_For_Sale);
       Swagger.Streams.Deserialize (Object, "allow_backorders", Value.Allow_Backorders);
       Swagger.Streams.Deserialize (Object, "in_stock", Value.In_Stock);
+      Swagger.Streams.Deserialize (Object, "on_sale", Value.On_Sale);
       Swagger.Streams.Deserialize (Object, "manage_stock", Value.Manage_Stock);
       Swagger.Streams.Deserialize (Object, "inventory_level", Value.Inventory_Level);
       Deserialize (Object, "inventory", Value.Inventory);
