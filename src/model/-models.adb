@@ -1540,6 +1540,9 @@ package body .Models is
       if not Value.Store_Id.Is_Null then
          Into.Write_Entity ("store_id", Value.Store_Id);
       end if;
+      if not Value.Free_Cash_On_Delivery.Is_Null then
+         Into.Write_Entity ("free_cash_on_delivery", Value.Free_Cash_On_Delivery);
+      end if;
       Into.End_Entity (Name);
    end Serialize;
 
@@ -1577,6 +1580,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "action_condition_value", Value.Action_Condition_Value);
       Swagger.Streams.Deserialize (Object, "include_tax", Value.Include_Tax);
       Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
+      Swagger.Streams.Deserialize (Object, "free_cash_on_delivery", Value.Free_Cash_On_Delivery);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;
@@ -26485,6 +26489,9 @@ package body .Models is
          Into.Write_Entity ("order_item_variant_id", Value.Order_Item_Variant_Id);
       end if;
       Serialize (Into, "order_item_tax", Value.Order_Item_Tax);
+      if not Value.Order_Item_Tax_Class.Is_Null then
+         Into.Write_Entity ("order_item_tax_class", Value.Order_Item_Tax_Class);
+      end if;
       if not Value.Order_Item_Price_Includes_Tax.Is_Null then
          Into.Write_Entity ("order_item_price_includes_tax", Value.Order_Item_Price_Includes_Tax);
       end if;
@@ -26530,6 +26537,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "order_item_weight", Value.Order_Item_Weight);
       Swagger.Streams.Deserialize (Object, "order_item_variant_id", Value.Order_Item_Variant_Id);
       Swagger.Streams.Deserialize (Object, "order_item_tax", Value.Order_Item_Tax);
+      Swagger.Streams.Deserialize (Object, "order_item_tax_class", Value.Order_Item_Tax_Class);
       Swagger.Streams.Deserialize (Object, "order_item_price_includes_tax", Value.Order_Item_Price_Includes_Tax);
       Swagger.Streams.Deserialize (Object, "order_item_parent", Value.Order_Item_Parent);
       Swagger.Streams.Deserialize (Object, "order_item_parent_option_name", Value.Order_Item_Parent_Option_Name);
@@ -27740,6 +27748,7 @@ package body .Models is
          Into.Write_Entity ("used_for_variations", Value.Used_For_Variations);
       end if;
       Into.Write_Entity ("scale_id", Value.Scale_Id);
+      Into.Write_Entity ("input_value", Value.Input_Value);
       Serialize (Into, "food_details", Value.Food_Details);
       Serialize (Into, "group_products_details", Value.Group_Products_Details);
       Serialize (Into, "booking_details", Value.Booking_Details);
@@ -27768,6 +27777,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "values", Value.Values);
       Swagger.Streams.Deserialize (Object, "used_for_variations", Value.Used_For_Variations);
       Swagger.Streams.Deserialize (Object, "scale_id", Value.Scale_Id);
+      Swagger.Streams.Deserialize (Object, "input_value", Value.Input_Value);
       Deserialize (Object, "food_details", Value.Food_Details);
       Deserialize (Object, "group_products_details", Value.Group_Products_Details);
       Deserialize (Object, "booking_details", Value.Booking_Details);
@@ -28492,6 +28502,9 @@ package body .Models is
       if not Value.Listing_Type.Is_Null then
          Into.Write_Entity ("listing_type", Value.Listing_Type);
       end if;
+      if not Value.Category_Type.Is_Null then
+         Into.Write_Entity ("category_type", Value.Category_Type);
+      end if;
       if not Value.Return_Accepted.Is_Null then
          Into.Write_Entity ("return_accepted", Value.Return_Accepted);
       end if;
@@ -28645,6 +28658,7 @@ package body .Models is
       Deserialize (Object, "logistic_info", Value.Logistic_Info);
       Swagger.Streams.Deserialize (Object, "listing_duration", Value.Listing_Duration);
       Swagger.Streams.Deserialize (Object, "listing_type", Value.Listing_Type);
+      Swagger.Streams.Deserialize (Object, "category_type", Value.Category_Type);
       Swagger.Streams.Deserialize (Object, "return_accepted", Value.Return_Accepted);
       Deserialize (Object, "seller_profiles", Value.Seller_Profiles);
       Swagger.Streams.Deserialize (Object, "auction_confidentiality_level", Value.Auction_Confidentiality_Level);

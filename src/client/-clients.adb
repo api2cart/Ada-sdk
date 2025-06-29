@@ -3082,7 +3082,7 @@ package body .Clients is
    end Order_Shipment_Info;
 
    --  order.shipment.list
-   --  Get list of shipments by orders.
+   --  Get list of shipments per order.
    procedure Order_Shipment_List
       (Client : in out Client_Type;
        Order_Id : in Swagger.UString;
@@ -3595,6 +3595,7 @@ package body .Clients is
        Product_Attributes : in Swagger.UString_Vectors.Vector;
        Status : in Swagger.Nullable_UString;
        P_Type : in Swagger.Nullable_UString;
+       Visible : in Swagger.Nullable_UString;
        Find_Value : in Swagger.Nullable_UString;
        Find_Where : in Swagger.Nullable_UString;
        Report_Request_Id : in Swagger.Nullable_UString;
@@ -3624,6 +3625,7 @@ package body .Clients is
       URI.Add_Param ("product_attributes", Product_Attributes);
       URI.Add_Param ("status", Status);
       URI.Add_Param ("type", P_Type);
+      URI.Add_Param ("visible", Visible);
       URI.Add_Param ("find_value", Find_Value);
       URI.Add_Param ("find_where", Find_Where);
       URI.Add_Param ("report_request_id", Report_Request_Id);
@@ -3918,6 +3920,7 @@ package body .Clients is
        Product_Attributes : in Swagger.UString_Vectors.Vector;
        Status : in Swagger.Nullable_UString;
        P_Type : in Swagger.Nullable_UString;
+       Visible : in Swagger.Nullable_UString;
        Find_Value : in Swagger.Nullable_UString;
        Find_Where : in Swagger.Nullable_UString;
        Return_Global : in Swagger.Nullable_Boolean;
@@ -3958,6 +3961,7 @@ package body .Clients is
       URI.Add_Param ("product_attributes", Product_Attributes);
       URI.Add_Param ("status", Status);
       URI.Add_Param ("type", P_Type);
+      URI.Add_Param ("visible", Visible);
       URI.Add_Param ("find_value", Find_Value);
       URI.Add_Param ("find_where", Find_Where);
       URI.Add_Param ("return_global", Return_Global);

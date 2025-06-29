@@ -1333,7 +1333,7 @@ package .Clients is
        Result : out .Models.OrderShipmentInfo200Response_Type);
 
    --  order.shipment.list
-   --  Get list of shipments by orders.
+   --  Get list of shipments per order.
    procedure Order_Shipment_List
       (Client : in out Client_Type;
        Order_Id : in Swagger.UString;
@@ -1567,6 +1567,7 @@ package .Clients is
        Product_Attributes : in Swagger.UString_Vectors.Vector;
        Status : in Swagger.Nullable_UString;
        P_Type : in Swagger.Nullable_UString;
+       Visible : in Swagger.Nullable_UString;
        Find_Value : in Swagger.Nullable_UString;
        Find_Where : in Swagger.Nullable_UString;
        Report_Request_Id : in Swagger.Nullable_UString;
@@ -1708,6 +1709,7 @@ package .Clients is
        Product_Attributes : in Swagger.UString_Vectors.Vector;
        Status : in Swagger.Nullable_UString;
        P_Type : in Swagger.Nullable_UString;
+       Visible : in Swagger.Nullable_UString;
        Find_Value : in Swagger.Nullable_UString;
        Find_Where : in Swagger.Nullable_UString;
        Return_Global : in Swagger.Nullable_Boolean;

@@ -806,6 +806,7 @@ package .Models is
        Action_Condition_Value : Swagger.Nullable_UString;
        Include_Tax : Swagger.Nullable_Boolean;
        Store_Id : Swagger.Nullable_UString;
+       Free_Cash_On_Delivery : Swagger.Nullable_Boolean;
      end record;
 
 
@@ -12771,6 +12772,7 @@ package .Models is
        Order_Item_Weight : Swagger.Number;
        Order_Item_Variant_Id : Swagger.Nullable_UString;
        Order_Item_Tax : Swagger.Number;
+       Order_Item_Tax_Class : Swagger.Nullable_UString;
        Order_Item_Price_Includes_Tax : Swagger.Nullable_Boolean;
        Order_Item_Parent : Swagger.Nullable_Integer;
        Order_Item_Parent_Option_Name : Swagger.Nullable_UString;
@@ -13288,6 +13290,7 @@ package .Models is
        Values : Swagger.UString_Vectors.Vector;
        Used_For_Variations : Swagger.Nullable_Boolean;
        Scale_Id : Swagger.Nullable_Integer;
+       Input_Value : Swagger.Nullable_UString;
        Food_Details : .Models.ProductAddSpecificsInnerFoodDetails_Type;
        Group_Products_Details : .Models.ProductAddSpecificsInnerGroupProductsDetailsInner_Type_Vectors.Vector;
        Booking_Details : .Models.ProductAddSpecificsInnerBookingDetails_Type;
@@ -13587,6 +13590,7 @@ package .Models is
        Logistic_Info : .Models.ProductAddLogisticInfoInner_Type_Vectors.Vector;
        Listing_Duration : Swagger.Nullable_UString;
        Listing_Type : Swagger.Nullable_UString;
+       Category_Type : Swagger.Nullable_UString;
        Return_Accepted : Swagger.Nullable_Boolean;
        Seller_Profiles : .Models.ProductAddSellerProfiles_Type;
        Auction_Confidentiality_Level : Swagger.Nullable_UString;
