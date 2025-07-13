@@ -14729,6 +14729,9 @@ package body .Models is
       if not Value.Status.Is_Null then
          Into.Write_Entity ("status", Value.Status);
       end if;
+      if not Value.Is_Guest.Is_Null then
+         Into.Write_Entity ("is_guest", Value.Is_Guest);
+      end if;
       if not Value.News_Letter_Subscription.Is_Null then
          Into.Write_Entity ("news_letter_subscription", Value.News_Letter_Subscription);
       end if;
@@ -14797,6 +14800,7 @@ package body .Models is
       Deserialize (Object, "last_login", Value.Last_Login);
       Deserialize (Object, "birth_day", Value.Birth_Day);
       Swagger.Streams.Deserialize (Object, "status", Value.Status);
+      Swagger.Streams.Deserialize (Object, "is_guest", Value.Is_Guest);
       Swagger.Streams.Deserialize (Object, "news_letter_subscription", Value.News_Letter_Subscription);
       Deserialize (Object, "consents", Value.Consents);
       Swagger.Streams.Deserialize (Object, "gender", Value.Gender);

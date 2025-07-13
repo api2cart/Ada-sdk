@@ -7185,6 +7185,7 @@ package .Models is
        Last_Login : .Models.A2CDateTime_Type;
        Birth_Day : .Models.A2CDateTime_Type;
        Status : Swagger.Nullable_UString;
+       Is_Guest : Swagger.Nullable_Boolean;
        News_Letter_Subscription : Swagger.Nullable_Boolean;
        Consents : .Models.CustomerConsent_Type_Vectors.Vector;
        Gender : Swagger.Nullable_UString;

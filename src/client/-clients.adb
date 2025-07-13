@@ -2271,6 +2271,7 @@ package body .Clients is
        Group_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Avail : in Swagger.Nullable_Boolean;
+       Include_Guests : in Swagger.Nullable_Boolean;
        Find_Value : in Swagger.Nullable_UString;
        Find_Where : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
@@ -2290,6 +2291,7 @@ package body .Clients is
       URI.Add_Param ("group_id", Group_Id);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("avail", Avail);
+      URI.Add_Param ("include_guests", Include_Guests);
       URI.Add_Param ("find_value", Find_Value);
       URI.Add_Param ("find_where", Find_Where);
       URI.Add_Param ("created_from", Created_From);
@@ -2327,6 +2329,7 @@ package body .Clients is
        Find_Where : in Swagger.Nullable_UString;
        Find_Params : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Include_Guests : in Swagger.Nullable_Boolean;
        Result : out .Models.CustomerFind200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -2338,6 +2341,7 @@ package body .Clients is
       URI.Add_Param ("find_where", Find_Where);
       URI.Add_Param ("find_params", Find_Params);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("include_guests", Include_Guests);
       URI.Set_Path ("/customer.find.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -2440,6 +2444,7 @@ package body .Clients is
        Group_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Avail : in Swagger.Nullable_Boolean;
+       Include_Guests : in Swagger.Nullable_Boolean;
        Find_Value : in Swagger.Nullable_UString;
        Find_Where : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
@@ -2467,6 +2472,7 @@ package body .Clients is
       URI.Add_Param ("group_id", Group_Id);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("avail", Avail);
+      URI.Add_Param ("include_guests", Include_Guests);
       URI.Add_Param ("find_value", Find_Value);
       URI.Add_Param ("find_where", Find_Where);
       URI.Add_Param ("created_from", Created_From);

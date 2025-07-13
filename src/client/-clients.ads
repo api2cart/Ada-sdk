@@ -990,6 +990,7 @@ package .Clients is
        Group_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Avail : in Swagger.Nullable_Boolean;
+       Include_Guests : in Swagger.Nullable_Boolean;
        Find_Value : in Swagger.Nullable_UString;
        Find_Where : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
@@ -1013,6 +1014,7 @@ package .Clients is
        Find_Where : in Swagger.Nullable_UString;
        Find_Params : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Include_Guests : in Swagger.Nullable_Boolean;
        Result : out .Models.CustomerFind200Response_Type);
 
    --  customer.group.add
@@ -1064,6 +1066,7 @@ package .Clients is
        Group_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Avail : in Swagger.Nullable_Boolean;
+       Include_Guests : in Swagger.Nullable_Boolean;
        Find_Value : in Swagger.Nullable_UString;
        Find_Where : in Swagger.Nullable_UString;
        Created_From : in Swagger.Nullable_UString;
