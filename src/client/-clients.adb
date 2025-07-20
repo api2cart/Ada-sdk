@@ -150,6 +150,10 @@ package body .Clients is
        Shopware_Api_Secret : in Swagger.Nullable_UString;
        Bigcartel_User_Name : in Swagger.Nullable_UString;
        Bigcartel_Password : in Swagger.Nullable_UString;
+       Bricklink_Consumer_Key : in Swagger.Nullable_UString;
+       Bricklink_Consumer_Secret : in Swagger.Nullable_UString;
+       Bricklink_Token : in Swagger.Nullable_UString;
+       Bricklink_Token_Secret : in Swagger.Nullable_UString;
        Volusion_Login : in Swagger.Nullable_UString;
        Volusion_Password : in Swagger.Nullable_UString;
        Walmart_Client_Id : in Swagger.Nullable_UString;
@@ -311,6 +315,10 @@ package body .Clients is
       URI.Add_Param ("shopware_api_secret", Shopware_Api_Secret);
       URI.Add_Param ("bigcartel_user_name", Bigcartel_User_Name);
       URI.Add_Param ("bigcartel_password", Bigcartel_Password);
+      URI.Add_Param ("bricklink_consumer_key", Bricklink_Consumer_Key);
+      URI.Add_Param ("bricklink_consumer_secret", Bricklink_Consumer_Secret);
+      URI.Add_Param ("bricklink_token", Bricklink_Token);
+      URI.Add_Param ("bricklink_token_secret", Bricklink_Token_Secret);
       URI.Add_Param ("volusion_login", Volusion_Login);
       URI.Add_Param ("volusion_password", Volusion_Password);
       URI.Add_Param ("walmart_client_id", Walmart_Client_Id);
@@ -1083,22 +1091,6 @@ package body .Clients is
       .Models.Deserialize (Reply, "", Result);
    end Bridge_Update;
 
-   --  cart.bridge
-   --  Get bridge key and store key
-   procedure Cart_Bridge
-      (Client : in out Client_Type;
-       Result : out .Models.CartBridge200Response_Type) is
-      URI   : Swagger.Clients.URI_Type;
-      Reply : Swagger.Value_Type;
-   begin
-      Client.Set_Accept (Media_List_1);
-
-
-      URI.Set_Path ("/cart.bridge.json");
-      Client.Call (Swagger.Clients.GET, URI, Reply);
-      .Models.Deserialize (Reply, "", Result);
-   end Cart_Bridge;
-
    --  cart.catalog_price_rules.count
    --  Get count of cart catalog price rules discounts.
    procedure Cart_Catalog_Price_Rules_Count
@@ -1144,63 +1136,6 @@ package body .Clients is
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
    end Cart_Catalog_Price_Rules_List;
-
-   --  cart.clear_cache
-   --  Clear cache on store.
-   procedure Cart_Clear_Cache
-      (Client : in out Client_Type;
-       Cache_Type : in Swagger.UString;
-       Result : out .Models.CartClearCache200Response_Type) is
-      URI   : Swagger.Clients.URI_Type;
-      Reply : Swagger.Value_Type;
-   begin
-      Client.Set_Accept (Media_List_1);
-
-
-      URI.Add_Param ("cache_type", Cache_Type);
-      URI.Set_Path ("/cart.clear_cache.json");
-      Client.Call (Swagger.Clients.POST, URI, Reply);
-      .Models.Deserialize (Reply, "", Result);
-   end Cart_Clear_Cache;
-
-   --  cart.config
-   --  Get list of cart configs
-   procedure Cart_Config
-      (Client : in out Client_Type;
-       Params : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
-       Result : out .Models.CartConfig200Response_Type) is
-      URI   : Swagger.Clients.URI_Type;
-      Reply : Swagger.Value_Type;
-   begin
-      Client.Set_Accept (Media_List_1);
-
-
-      URI.Add_Param ("params", Params);
-      URI.Add_Param ("exclude", Exclude);
-      URI.Set_Path ("/cart.config.json");
-      Client.Call (Swagger.Clients.GET, URI, Reply);
-      .Models.Deserialize (Reply, "", Result);
-   end Cart_Config;
-
-   --  cart.config.update
-   --  Use this API method to update custom data in client database.
-   procedure Cart_Config_Update
-      (Client : in out Client_Type;
-       Cart_Config_Update_Type : in .Models.CartConfigUpdate_Type;
-       Result : out .Models.CartConfigUpdate200Response_Type) is
-      URI   : Swagger.Clients.URI_Type;
-      Req   : Swagger.Clients.Request_Type;
-      Reply : Swagger.Value_Type;
-   begin
-      Client.Set_Accept (Media_List_1);
-      Client.Initialize (Req, Media_List_1);
-      .Models.Serialize (Req.Stream, "", Cart_Config_Update_Type);
-
-      URI.Set_Path ("/cart.config.update.json");
-      Client.Call (Swagger.Clients.PUT, URI, Req, Reply);
-      .Models.Deserialize (Reply, "", Result);
-   end Cart_Config_Update;
 
    --  cart.coupon.add
    --  Use this method to create a coupon with specified conditions.
@@ -1347,25 +1282,6 @@ package body .Clients is
       .Models.Deserialize (Reply, "", Result);
    end Cart_Coupon_List;
 
-   --  cart.create
-   --  Add store to the account
-   procedure Cart_Create
-      (Client : in out Client_Type;
-       Cart_Create_Type : in .Models.CartCreate_Type;
-       Result : out .Models.AccountCartAdd200Response_Type) is
-      URI   : Swagger.Clients.URI_Type;
-      Req   : Swagger.Clients.Request_Type;
-      Reply : Swagger.Value_Type;
-   begin
-      Client.Set_Accept (Media_List_1);
-      Client.Initialize (Req, Media_List_1);
-      .Models.Serialize (Req.Stream, "", Cart_Create_Type);
-
-      URI.Set_Path ("/cart.create.json");
-      Client.Call (Swagger.Clients.POST, URI, Req, Reply);
-      .Models.Deserialize (Reply, "", Result);
-   end Cart_Create;
-
    --  cart.delete
    --  Remove store from API2Cart
    procedure Cart_Delete
@@ -1383,24 +1299,6 @@ package body .Clients is
       Client.Call (Swagger.Clients.DELETE, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
    end Cart_Delete;
-
-   --  cart.disconnect
-   --  Disconnect with the store and clear store session data.
-   procedure Cart_Disconnect
-      (Client : in out Client_Type;
-       Delete_Bridge : in Swagger.Nullable_Boolean;
-       Result : out .Models.CartDisconnect200Response_Type) is
-      URI   : Swagger.Clients.URI_Type;
-      Reply : Swagger.Value_Type;
-   begin
-      Client.Set_Accept (Media_List_1);
-
-
-      URI.Add_Param ("delete_bridge", Delete_Bridge);
-      URI.Set_Path ("/cart.disconnect.json");
-      Client.Call (Swagger.Clients.GET, URI, Reply);
-      .Models.Deserialize (Reply, "", Result);
-   end Cart_Disconnect;
 
    --  cart.giftcard.add
    --  Use this method to create a gift card for a specified amount.
@@ -1519,22 +1417,6 @@ package body .Clients is
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
    end Cart_Info;
-
-   --  cart.list
-   --  Get list of supported carts
-   procedure Cart_List
-      (Client : in out Client_Type;
-       Result : out .Models.CartList200Response_Type) is
-      URI   : Swagger.Clients.URI_Type;
-      Reply : Swagger.Value_Type;
-   begin
-      Client.Set_Accept (Media_List_1);
-
-
-      URI.Set_Path ("/cart.list.json");
-      Client.Call (Swagger.Clients.GET, URI, Reply);
-      .Models.Deserialize (Reply, "", Result);
-   end Cart_List;
 
    --  cart.meta_data.list
    --  Using this method, you can get a list of metadata for various entities (products, options, customers, orders). Usually this is data created by third-party plugins.
@@ -1876,7 +1758,7 @@ package body .Clients is
        Category_Id : in Swagger.UString;
        Product_Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
-       Result : out .Models.CartConfigUpdate200Response_Type) is
+       Result : out .Models.CategoryAssign200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -2130,7 +2012,7 @@ package body .Clients is
        Category_Id : in Swagger.UString;
        Product_Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
-       Result : out .Models.CartConfigUpdate200Response_Type) is
+       Result : out .Models.CategoryAssign200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -2716,46 +2598,6 @@ package body .Clients is
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
    end Order_Financial_Status_List;
-
-   --  order.find
-   --  This method is deprecated and won't be supported in the future. Please use "order.list" instead.
-   procedure Order_Find
-      (Client : in out Client_Type;
-       Start : in Swagger.Nullable_Integer;
-       Count : in Swagger.Nullable_Integer;
-       Customer_Id : in Swagger.Nullable_UString;
-       Customer_Email : in Swagger.Nullable_UString;
-       Order_Status : in Swagger.Nullable_UString;
-       Financial_Status : in Swagger.Nullable_UString;
-       Created_To : in Swagger.Nullable_UString;
-       Created_From : in Swagger.Nullable_UString;
-       Modified_To : in Swagger.Nullable_UString;
-       Modified_From : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
-       Result : out .Models.OrderFind200Response_Type) is
-      URI   : Swagger.Clients.URI_Type;
-      Reply : Swagger.Value_Type;
-   begin
-      Client.Set_Accept (Media_List_1);
-
-
-      URI.Add_Param ("start", Start);
-      URI.Add_Param ("count", Count);
-      URI.Add_Param ("customer_id", Customer_Id);
-      URI.Add_Param ("customer_email", Customer_Email);
-      URI.Add_Param ("order_status", Order_Status);
-      URI.Add_Param ("financial_status", Financial_Status);
-      URI.Add_Param ("created_to", Created_To);
-      URI.Add_Param ("created_from", Created_From);
-      URI.Add_Param ("modified_to", Modified_To);
-      URI.Add_Param ("modified_from", Modified_From);
-      URI.Add_Param ("params", Params);
-      URI.Add_Param ("exclude", Exclude);
-      URI.Set_Path ("/order.find.json");
-      Client.Call (Swagger.Clients.GET, URI, Reply);
-      .Models.Deserialize (Reply, "", Result);
-   end Order_Find;
 
    --  order.fulfillment_status.list
    --  Retrieve list of fulfillment statuses
@@ -3744,22 +3586,6 @@ package body .Clients is
       .Models.Deserialize (Reply, "", Result);
    end Product_Delete_Batch;
 
-   --  product.fields
-   --  Retrieve all available fields for product item in store.
-   procedure Product_Fields
-      (Client : in out Client_Type;
-       Result : out .Models.CartConfigUpdate200Response_Type) is
-      URI   : Swagger.Clients.URI_Type;
-      Reply : Swagger.Value_Type;
-   begin
-      Client.Set_Accept (Media_List_1);
-
-
-      URI.Set_Path ("/product.fields.json");
-      Client.Call (Swagger.Clients.GET, URI, Reply);
-      .Models.Deserialize (Reply, "", Result);
-   end Product_Fields;
-
    --  product.find
    --  Search product in store catalog. "Apple" is specified here by default.
    procedure Product_Find
@@ -4427,36 +4253,6 @@ package body .Clients is
       .Models.Deserialize (Reply, "", Result);
    end Product_Variant_Add_Batch;
 
-   --  product.variant.count
-   --  Get count variants.
-   procedure Product_Variant_Count
-      (Client : in out Client_Type;
-       Product_Id : in Swagger.UString;
-       Category_Id : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
-       Created_From : in Swagger.Nullable_UString;
-       Created_To : in Swagger.Nullable_UString;
-       Modified_From : in Swagger.Nullable_UString;
-       Modified_To : in Swagger.Nullable_UString;
-       Result : out .Models.ProductVariantCount200Response_Type) is
-      URI   : Swagger.Clients.URI_Type;
-      Reply : Swagger.Value_Type;
-   begin
-      Client.Set_Accept (Media_List_1);
-
-
-      URI.Add_Param ("product_id", Product_Id);
-      URI.Add_Param ("category_id", Category_Id);
-      URI.Add_Param ("store_id", Store_Id);
-      URI.Add_Param ("created_from", Created_From);
-      URI.Add_Param ("created_to", Created_To);
-      URI.Add_Param ("modified_from", Modified_From);
-      URI.Add_Param ("modified_to", Modified_To);
-      URI.Set_Path ("/product.variant.count.json");
-      Client.Call (Swagger.Clients.GET, URI, Reply);
-      .Models.Deserialize (Reply, "", Result);
-   end Product_Variant_Count;
-
    --  product.variant.delete
    --  Delete variant.
    procedure Product_Variant_Delete
@@ -4540,68 +4336,6 @@ package body .Clients is
       Client.Call (Swagger.Clients.DELETE, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
    end Product_Variant_Image_Delete;
-
-   --  product.variant.info
-   --  Get variant info. This method is deprecated, and its development is stopped. Please use "product.child_item.info" instead.
-   procedure Product_Variant_Info
-      (Client : in out Client_Type;
-       Id : in Swagger.UString;
-       Store_Id : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
-       Result : out .Models.ProductInfo200Response_Type) is
-      URI   : Swagger.Clients.URI_Type;
-      Reply : Swagger.Value_Type;
-   begin
-      Client.Set_Accept (Media_List_1);
-
-
-      URI.Add_Param ("id", Id);
-      URI.Add_Param ("store_id", Store_Id);
-      URI.Add_Param ("params", Params);
-      URI.Add_Param ("exclude", Exclude);
-      URI.Set_Path ("/product.variant.info.json");
-      Client.Call (Swagger.Clients.GET, URI, Reply);
-      .Models.Deserialize (Reply, "", Result);
-   end Product_Variant_Info;
-
-   --  product.variant.list
-   --  Get a list of variants. This method is deprecated, and its development is stopped. Please use "product.child_item.list" instead.
-   procedure Product_Variant_List
-      (Client : in out Client_Type;
-       Start : in Swagger.Nullable_Integer;
-       Count : in Swagger.Nullable_Integer;
-       Product_Id : in Swagger.Nullable_UString;
-       Category_Id : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
-       Created_From : in Swagger.Nullable_UString;
-       Created_To : in Swagger.Nullable_UString;
-       Modified_From : in Swagger.Nullable_UString;
-       Modified_To : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
-       Result : out .Models.ProductVariantList200Response_Type) is
-      URI   : Swagger.Clients.URI_Type;
-      Reply : Swagger.Value_Type;
-   begin
-      Client.Set_Accept (Media_List_1);
-
-
-      URI.Add_Param ("start", Start);
-      URI.Add_Param ("count", Count);
-      URI.Add_Param ("product_id", Product_Id);
-      URI.Add_Param ("category_id", Category_Id);
-      URI.Add_Param ("store_id", Store_Id);
-      URI.Add_Param ("created_from", Created_From);
-      URI.Add_Param ("created_to", Created_To);
-      URI.Add_Param ("modified_from", Modified_From);
-      URI.Add_Param ("modified_to", Modified_To);
-      URI.Add_Param ("params", Params);
-      URI.Add_Param ("exclude", Exclude);
-      URI.Set_Path ("/product.variant.list.json");
-      Client.Call (Swagger.Clients.GET, URI, Reply);
-      .Models.Deserialize (Reply, "", Result);
-   end Product_Variant_List;
 
    --  product.variant.price.add
    --  Add some prices to the product variant.

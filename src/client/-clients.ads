@@ -117,6 +117,10 @@ package .Clients is
        Shopware_Api_Secret : in Swagger.Nullable_UString;
        Bigcartel_User_Name : in Swagger.Nullable_UString;
        Bigcartel_Password : in Swagger.Nullable_UString;
+       Bricklink_Consumer_Key : in Swagger.Nullable_UString;
+       Bricklink_Consumer_Secret : in Swagger.Nullable_UString;
+       Bricklink_Token : in Swagger.Nullable_UString;
+       Bricklink_Token_Secret : in Swagger.Nullable_UString;
        Volusion_Login : in Swagger.Nullable_UString;
        Volusion_Password : in Swagger.Nullable_UString;
        Walmart_Client_Id : in Swagger.Nullable_UString;
@@ -484,12 +488,6 @@ package .Clients is
       (Client : in out Client_Type;
        Result : out .Models.AttributeUpdate200Response_Type);
 
-   --  cart.bridge
-   --  Get bridge key and store key
-   procedure Cart_Bridge
-      (Client : in out Client_Type;
-       Result : out .Models.CartBridge200Response_Type);
-
    --  cart.catalog_price_rules.count
    --  Get count of cart catalog price rules discounts.
    procedure Cart_Catalog_Price_Rules_Count
@@ -508,28 +506,6 @@ package .Clients is
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseCartCatalogPriceRulesList_Type);
-
-   --  cart.clear_cache
-   --  Clear cache on store.
-   procedure Cart_Clear_Cache
-      (Client : in out Client_Type;
-       Cache_Type : in Swagger.UString;
-       Result : out .Models.CartClearCache200Response_Type);
-
-   --  cart.config
-   --  Get list of cart configs
-   procedure Cart_Config
-      (Client : in out Client_Type;
-       Params : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
-       Result : out .Models.CartConfig200Response_Type);
-
-   --  cart.config.update
-   --  Use this API method to update custom data in client database.
-   procedure Cart_Config_Update
-      (Client : in out Client_Type;
-       Cart_Config_Update_Type : in .Models.CartConfigUpdate_Type;
-       Result : out .Models.CartConfigUpdate200Response_Type);
 
    --  cart.coupon.add
    --  Use this method to create a coupon with specified conditions.
@@ -593,26 +569,12 @@ package .Clients is
        Exclude : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseCartCouponList_Type);
 
-   --  cart.create
-   --  Add store to the account
-   procedure Cart_Create
-      (Client : in out Client_Type;
-       Cart_Create_Type : in .Models.CartCreate_Type;
-       Result : out .Models.AccountCartAdd200Response_Type);
-
    --  cart.delete
    --  Remove store from API2Cart
    procedure Cart_Delete
       (Client : in out Client_Type;
        Delete_Bridge : in Swagger.Nullable_Boolean;
        Result : out .Models.CartDelete200Response_Type);
-
-   --  cart.disconnect
-   --  Disconnect with the store and clear store session data.
-   procedure Cart_Disconnect
-      (Client : in out Client_Type;
-       Delete_Bridge : in Swagger.Nullable_Boolean;
-       Result : out .Models.CartDisconnect200Response_Type);
 
    --  cart.giftcard.add
    --  Use this method to create a gift card for a specified amount.
@@ -662,12 +624,6 @@ package .Clients is
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
        Result : out .Models.CartInfo200Response_Type);
-
-   --  cart.list
-   --  Get list of supported carts
-   procedure Cart_List
-      (Client : in out Client_Type;
-       Result : out .Models.CartList200Response_Type);
 
    --  cart.meta_data.list
    --  Using this method, you can get a list of metadata for various entities (products, options, customers, orders). Usually this is data created by third-party plugins.
@@ -818,7 +774,7 @@ package .Clients is
        Category_Id : in Swagger.UString;
        Product_Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
-       Result : out .Models.CartConfigUpdate200Response_Type);
+       Result : out .Models.CategoryAssign200Response_Type);
 
    --  category.count
    --  Count categories in store.
@@ -929,7 +885,7 @@ package .Clients is
        Category_Id : in Swagger.UString;
        Product_Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
-       Result : out .Models.CartConfigUpdate200Response_Type);
+       Result : out .Models.CategoryAssign200Response_Type);
 
    --  category.update
    --  Update category in store
@@ -1178,24 +1134,6 @@ package .Clients is
    procedure Order_Financial_Status_List
       (Client : in out Client_Type;
        Result : out .Models.OrderFinancialStatusList200Response_Type);
-
-   --  order.find
-   --  This method is deprecated and won't be supported in the future. Please use "order.list" instead.
-   procedure Order_Find
-      (Client : in out Client_Type;
-       Start : in Swagger.Nullable_Integer;
-       Count : in Swagger.Nullable_Integer;
-       Customer_Id : in Swagger.Nullable_UString;
-       Customer_Email : in Swagger.Nullable_UString;
-       Order_Status : in Swagger.Nullable_UString;
-       Financial_Status : in Swagger.Nullable_UString;
-       Created_To : in Swagger.Nullable_UString;
-       Created_From : in Swagger.Nullable_UString;
-       Modified_To : in Swagger.Nullable_UString;
-       Modified_From : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
-       Result : out .Models.OrderFind200Response_Type);
 
    --  order.fulfillment_status.list
    --  Retrieve list of fulfillment statuses
@@ -1621,12 +1559,6 @@ package .Clients is
        Product_Delete_Batch_Type : in .Models.ProductDeleteBatch_Type;
        Result : out .Models.CategoryAddBatch200Response_Type);
 
-   --  product.fields
-   --  Retrieve all available fields for product item in store.
-   procedure Product_Fields
-      (Client : in out Client_Type;
-       Result : out .Models.CartConfigUpdate200Response_Type);
-
    --  product.find
    --  Search product in store catalog. "Apple" is specified here by default.
    procedure Product_Find
@@ -1906,19 +1838,6 @@ package .Clients is
        Product_Variant_Add_Batch_Type : in .Models.ProductVariantAddBatch_Type;
        Result : out .Models.CategoryAddBatch200Response_Type);
 
-   --  product.variant.count
-   --  Get count variants.
-   procedure Product_Variant_Count
-      (Client : in out Client_Type;
-       Product_Id : in Swagger.UString;
-       Category_Id : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
-       Created_From : in Swagger.Nullable_UString;
-       Created_To : in Swagger.Nullable_UString;
-       Modified_From : in Swagger.Nullable_UString;
-       Modified_To : in Swagger.Nullable_UString;
-       Result : out .Models.ProductVariantCount200Response_Type);
-
    --  product.variant.delete
    --  Delete variant.
    procedure Product_Variant_Delete
@@ -1951,33 +1870,6 @@ package .Clients is
        Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
        Result : out .Models.AttributeDelete200Response_Type);
-
-   --  product.variant.info
-   --  Get variant info. This method is deprecated, and its development is stopped. Please use "product.child_item.info" instead.
-   procedure Product_Variant_Info
-      (Client : in out Client_Type;
-       Id : in Swagger.UString;
-       Store_Id : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
-       Result : out .Models.ProductInfo200Response_Type);
-
-   --  product.variant.list
-   --  Get a list of variants. This method is deprecated, and its development is stopped. Please use "product.child_item.list" instead.
-   procedure Product_Variant_List
-      (Client : in out Client_Type;
-       Start : in Swagger.Nullable_Integer;
-       Count : in Swagger.Nullable_Integer;
-       Product_Id : in Swagger.Nullable_UString;
-       Category_Id : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
-       Created_From : in Swagger.Nullable_UString;
-       Created_To : in Swagger.Nullable_UString;
-       Modified_From : in Swagger.Nullable_UString;
-       Modified_To : in Swagger.Nullable_UString;
-       Params : in Swagger.Nullable_UString;
-       Exclude : in Swagger.Nullable_UString;
-       Result : out .Models.ProductVariantList200Response_Type);
 
    --  product.variant.price.add
    --  Add some prices to the product variant.
