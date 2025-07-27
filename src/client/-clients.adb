@@ -3765,6 +3765,7 @@ package body .Clients is
        Disable_Cache : in Swagger.Nullable_Boolean;
        Disable_Report_Cache : in Swagger.Nullable_Boolean;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
+       Product_Type : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseProductList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -3806,6 +3807,7 @@ package body .Clients is
       URI.Add_Param ("disable_cache", Disable_Cache);
       URI.Add_Param ("disable_report_cache", Disable_Report_Cache);
       URI.Add_Param ("use_latest_api_version", Use_Latest_Api_Version);
+      URI.Add_Param ("product_type", Product_Type);
       URI.Set_Path ("/product.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);

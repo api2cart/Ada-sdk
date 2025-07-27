@@ -15889,6 +15889,7 @@ package body .Models is
       Serialize (Into, "inventory_level", Value.Inventory_Level);
       Serialize (Into, "inventory", Value.Inventory);
       Serialize (Into, "min_quantity", Value.Min_Quantity);
+      Serialize (Into, "low_stock_threshold", Value.Low_Stock_Threshold);
       Serialize (Into, "default_qty_in_pack", Value.Default_Qty_In_Pack);
       Into.Write_Entity ("is_qty_in_pack_fixed", Value.Is_Qty_In_Pack_Fixed);
       Into.Write_Entity ("weight_unit", Value.Weight_Unit);
@@ -15956,6 +15957,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "inventory_level", Value.Inventory_Level);
       Deserialize (Object, "inventory", Value.Inventory);
       Swagger.Streams.Deserialize (Object, "min_quantity", Value.Min_Quantity);
+      Swagger.Streams.Deserialize (Object, "low_stock_threshold", Value.Low_Stock_Threshold);
       Swagger.Streams.Deserialize (Object, "default_qty_in_pack", Value.Default_Qty_In_Pack);
       Swagger.Streams.Deserialize (Object, "is_qty_in_pack_fixed", Value.Is_Qty_In_Pack_Fixed);
       Swagger.Streams.Deserialize (Object, "weight_unit", Value.Weight_Unit);
@@ -18297,6 +18299,7 @@ package body .Models is
       if not Value.Backorder_Status.Is_Null then
          Into.Write_Entity ("backorder_status", Value.Backorder_Status);
       end if;
+      Serialize (Into, "low_stock_threshold", Value.Low_Stock_Threshold);
       if not Value.Available_For_Sale.Is_Null then
          Into.Write_Entity ("available_for_sale", Value.Available_For_Sale);
       end if;
@@ -18422,6 +18425,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "visible", Value.Visible);
       Swagger.Streams.Deserialize (Object, "status", Value.Status);
       Swagger.Streams.Deserialize (Object, "backorder_status", Value.Backorder_Status);
+      Swagger.Streams.Deserialize (Object, "low_stock_threshold", Value.Low_Stock_Threshold);
       Swagger.Streams.Deserialize (Object, "available_for_sale", Value.Available_For_Sale);
       Swagger.Streams.Deserialize (Object, "avail", Value.Avail);
       Swagger.Streams.Deserialize (Object, "is_default", Value.Is_Default);
@@ -24533,6 +24537,7 @@ package body .Models is
       if not Value.Manage_Stock.Is_Null then
          Into.Write_Entity ("manage_stock", Value.Manage_Stock);
       end if;
+      Serialize (Into, "low_stock_threshold", Value.Low_Stock_Threshold);
       Serialize (Into, "weight", Value.Weight);
       Serialize (Into, "width", Value.Width);
       Serialize (Into, "height", Value.Height);
@@ -24647,6 +24652,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "in_stock", Value.In_Stock);
       Swagger.Streams.Deserialize (Object, "backorder_status", Value.Backorder_Status);
       Swagger.Streams.Deserialize (Object, "manage_stock", Value.Manage_Stock);
+      Swagger.Streams.Deserialize (Object, "low_stock_threshold", Value.Low_Stock_Threshold);
       Swagger.Streams.Deserialize (Object, "weight", Value.Weight);
       Swagger.Streams.Deserialize (Object, "width", Value.Width);
       Swagger.Streams.Deserialize (Object, "height", Value.Height);
@@ -24998,6 +25004,7 @@ package body .Models is
       end if;
       Serialize (Into, "increase_quantity", Value.Increase_Quantity);
       Serialize (Into, "reduce_quantity", Value.Reduce_Quantity);
+      Serialize (Into, "low_stock_threshold", Value.Low_Stock_Threshold);
       if not Value.Warehouse_Id.Is_Null then
          Into.Write_Entity ("warehouse_id", Value.Warehouse_Id);
       end if;
@@ -25181,6 +25188,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "backorder_status", Value.Backorder_Status);
       Swagger.Streams.Deserialize (Object, "increase_quantity", Value.Increase_Quantity);
       Swagger.Streams.Deserialize (Object, "reduce_quantity", Value.Reduce_Quantity);
+      Swagger.Streams.Deserialize (Object, "low_stock_threshold", Value.Low_Stock_Threshold);
       Swagger.Streams.Deserialize (Object, "warehouse_id", Value.Warehouse_Id);
       Swagger.Streams.Deserialize (Object, "weight", Value.Weight);
       Swagger.Streams.Deserialize (Object, "weight_unit", Value.Weight_Unit);
@@ -25329,6 +25337,7 @@ package body .Models is
       end if;
       Serialize (Into, "min_order_quantity", Value.Min_Order_Quantity);
       Serialize (Into, "max_order_quantity", Value.Max_Order_Quantity);
+      Serialize (Into, "low_stock_threshold", Value.Low_Stock_Threshold);
       Serialize (Into, "weight", Value.Weight);
       if not Value.Weight_Unit.Is_Null then
          Into.Write_Entity ("weight_unit", Value.Weight_Unit);
@@ -25585,6 +25594,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "backorder_status", Value.Backorder_Status);
       Swagger.Streams.Deserialize (Object, "min_order_quantity", Value.Min_Order_Quantity);
       Swagger.Streams.Deserialize (Object, "max_order_quantity", Value.Max_Order_Quantity);
+      Swagger.Streams.Deserialize (Object, "low_stock_threshold", Value.Low_Stock_Threshold);
       Swagger.Streams.Deserialize (Object, "weight", Value.Weight);
       Swagger.Streams.Deserialize (Object, "weight_unit", Value.Weight_Unit);
       Swagger.Streams.Deserialize (Object, "width", Value.Width);

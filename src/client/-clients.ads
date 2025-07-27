@@ -1657,6 +1657,7 @@ package .Clients is
        Disable_Cache : in Swagger.Nullable_Boolean;
        Disable_Report_Cache : in Swagger.Nullable_Boolean;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
+       Product_Type : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseProductList_Type);
 
    --  product.manufacturer.add

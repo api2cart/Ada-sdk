@@ -8188,6 +8188,7 @@ package .Models is
        Inventory_Level : Swagger.Number;
        Inventory : .Models.ProductInventory_Type_Vectors.Vector;
        Min_Quantity : Swagger.Number;
+       Low_Stock_Threshold : Swagger.Number;
        Default_Qty_In_Pack : Swagger.Number;
        Is_Qty_In_Pack_Fixed : Swagger.Nullable_Boolean;
        Weight_Unit : Swagger.Nullable_UString;
@@ -9329,6 +9330,7 @@ package .Models is
        Visible : Swagger.Nullable_UString;
        Status : Swagger.Nullable_UString;
        Backorder_Status : Swagger.Nullable_UString;
+       Low_Stock_Threshold : Swagger.Number;
        Available_For_Sale : Swagger.Nullable_Boolean;
        Avail : Swagger.Nullable_Boolean;
        Is_Default : Swagger.Nullable_Boolean;
@@ -12622,6 +12624,7 @@ package .Models is
        In_Stock : Swagger.Nullable_Boolean;
        Backorder_Status : Swagger.Nullable_UString;
        Manage_Stock : Swagger.Nullable_Boolean;
+       Low_Stock_Threshold : Swagger.Number;
        Weight : Swagger.Number;
        Width : Swagger.Number;
        Height : Swagger.Number;
@@ -12821,6 +12824,7 @@ package .Models is
        Backorder_Status : Swagger.Nullable_UString;
        Increase_Quantity : Swagger.Number;
        Reduce_Quantity : Swagger.Number;
+       Low_Stock_Threshold : Swagger.Number;
        Warehouse_Id : Swagger.Nullable_UString;
        Weight : Swagger.Number;
        Weight_Unit : Swagger.Nullable_UString;
@@ -12930,6 +12934,7 @@ package .Models is
        Backorder_Status : Swagger.Nullable_UString;
        Min_Order_Quantity : Swagger.Number;
        Max_Order_Quantity : Swagger.Number;
+       Low_Stock_Threshold : Swagger.Number;
        Weight : Swagger.Number;
        Weight_Unit : Swagger.Nullable_UString;
        Width : Swagger.Number;
