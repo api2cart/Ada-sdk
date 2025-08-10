@@ -8877,12 +8877,24 @@ package body .Models is
       if not Value.Bol_Retailer_Id.Is_Null then
          Into.Write_Entity ("bol_retailer_id", Value.Bol_Retailer_Id);
       end if;
-      Into.Write_Entity ("bigcartel_user_name", Value.Bigcartel_User_Name);
-      Into.Write_Entity ("bigcartel_password", Value.Bigcartel_Password);
-      Into.Write_Entity ("bricklink_consumer_key", Value.Bricklink_Consumer_Key);
-      Into.Write_Entity ("bricklink_consumer_secret", Value.Bricklink_Consumer_Secret);
-      Into.Write_Entity ("bricklink_token", Value.Bricklink_Token);
-      Into.Write_Entity ("bricklink_token_secret", Value.Bricklink_Token_Secret);
+      if not Value.Bigcartel_User_Name.Is_Null then
+         Into.Write_Entity ("bigcartel_user_name", Value.Bigcartel_User_Name);
+      end if;
+      if not Value.Bigcartel_Password.Is_Null then
+         Into.Write_Entity ("bigcartel_password", Value.Bigcartel_Password);
+      end if;
+      if not Value.Bricklink_Consumer_Key.Is_Null then
+         Into.Write_Entity ("bricklink_consumer_key", Value.Bricklink_Consumer_Key);
+      end if;
+      if not Value.Bricklink_Consumer_Secret.Is_Null then
+         Into.Write_Entity ("bricklink_consumer_secret", Value.Bricklink_Consumer_Secret);
+      end if;
+      if not Value.Bricklink_Token.Is_Null then
+         Into.Write_Entity ("bricklink_token", Value.Bricklink_Token);
+      end if;
+      if not Value.Bricklink_Token_Secret.Is_Null then
+         Into.Write_Entity ("bricklink_token_secret", Value.Bricklink_Token_Secret);
+      end if;
       if not Value.Demandware_Client_Id.Is_Null then
          Into.Write_Entity ("demandware_client_id", Value.Demandware_Client_Id);
       end if;
@@ -9133,8 +9145,12 @@ package body .Models is
       if not Value.Prestashop_Webservice_Key.Is_Null then
          Into.Write_Entity ("prestashop_webservice_key", Value.Prestashop_Webservice_Key);
       end if;
-      Into.Write_Entity ("wix_app_id", Value.Wix_App_Id);
-      Into.Write_Entity ("wix_app_secret_key", Value.Wix_App_Secret_Key);
+      if not Value.Wix_App_Id.Is_Null then
+         Into.Write_Entity ("wix_app_id", Value.Wix_App_Id);
+      end if;
+      if not Value.Wix_App_Secret_Key.Is_Null then
+         Into.Write_Entity ("wix_app_secret_key", Value.Wix_App_Secret_Key);
+      end if;
       if not Value.Wix_Instance_Id.Is_Null then
          Into.Write_Entity ("wix_instance_id", Value.Wix_Instance_Id);
       end if;
@@ -9246,8 +9262,12 @@ package body .Models is
       if not Value.Temu_App_Secret.Is_Null then
          Into.Write_Entity ("temu_app_secret", Value.Temu_App_Secret);
       end if;
-      Into.Write_Entity ("temu_access_token", Value.Temu_Access_Token);
-      Into.Write_Entity ("temu_region", Value.Temu_Region);
+      if not Value.Temu_Access_Token.Is_Null then
+         Into.Write_Entity ("temu_access_token", Value.Temu_Access_Token);
+      end if;
+      if not Value.Temu_Region.Is_Null then
+         Into.Write_Entity ("temu_region", Value.Temu_Region);
+      end if;
       Into.End_Entity (Name);
    end Serialize;
 
@@ -11485,6 +11505,7 @@ package body .Models is
       Into.Write_Entity ("name", Value.Name);
       Into.Write_Entity ("url", Value.Url);
       Into.Write_Entity ("version", Value.Version);
+      Into.Write_Entity ("bridge_version", Value.Bridge_Version);
       Into.Write_Entity ("db_prefix", Value.Db_Prefix);
       Serialize (Into, "stores_info", Value.Stores_Info);
       Serialize (Into, "warehouses", Value.Warehouses);
@@ -11514,6 +11535,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "name", Value.Name);
       Swagger.Streams.Deserialize (Object, "url", Value.Url);
       Swagger.Streams.Deserialize (Object, "version", Value.Version);
+      Swagger.Streams.Deserialize (Object, "bridge_version", Value.Bridge_Version);
       Swagger.Streams.Deserialize (Object, "db_prefix", Value.Db_Prefix);
       Deserialize (Object, "stores_info", Value.Stores_Info);
       Deserialize (Object, "warehouses", Value.Warehouses);
@@ -16418,10 +16440,10 @@ package body .Models is
       Into.Write_Entity ("weight_unit", Value.Weight_Unit);
       Into.Write_Entity ("sort_order", Value.Sort_Order);
       Into.Write_Entity ("in_stock", Value.In_Stock);
-      Into.Write_Entity ("on_sale", Value.On_Sale);
       Into.Write_Entity ("backorders", Value.Backorders);
       Into.Write_Entity ("manage_stock", Value.Manage_Stock);
       Into.Write_Entity ("is_stock_managed", Value.Is_Stock_Managed);
+      Into.Write_Entity ("on_sale", Value.On_Sale);
       Serialize (Into, "create_at", Value.Create_At);
       Serialize (Into, "modified_at", Value.Modified_At);
       Into.Write_Entity ("tax_class_id", Value.Tax_Class_Id);
@@ -16495,10 +16517,10 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "weight_unit", Value.Weight_Unit);
       Swagger.Streams.Deserialize (Object, "sort_order", Value.Sort_Order);
       Swagger.Streams.Deserialize (Object, "in_stock", Value.In_Stock);
-      Swagger.Streams.Deserialize (Object, "on_sale", Value.On_Sale);
       Swagger.Streams.Deserialize (Object, "backorders", Value.Backorders);
       Swagger.Streams.Deserialize (Object, "manage_stock", Value.Manage_Stock);
       Swagger.Streams.Deserialize (Object, "is_stock_managed", Value.Is_Stock_Managed);
+      Swagger.Streams.Deserialize (Object, "on_sale", Value.On_Sale);
       Deserialize (Object, "create_at", Value.Create_At);
       Deserialize (Object, "modified_at", Value.Modified_At);
       Swagger.Streams.Deserialize (Object, "tax_class_id", Value.Tax_Class_Id);
@@ -24495,6 +24517,9 @@ package body .Models is
       if not Value.Available_For_Sale.Is_Null then
          Into.Write_Entity ("available_for_sale", Value.Available_For_Sale);
       end if;
+      if not Value.Status.Is_Null then
+         Into.Write_Entity ("status", Value.Status);
+      end if;
       if not Value.Is_Virtual.Is_Null then
          Into.Write_Entity ("is_virtual", Value.Is_Virtual);
       end if;
@@ -24566,6 +24591,9 @@ package body .Models is
       if not Value.Isbn.Is_Null then
          Into.Write_Entity ("isbn", Value.Isbn);
       end if;
+      if not Value.Seo_Url.Is_Null then
+         Into.Write_Entity ("seo_url", Value.Seo_Url);
+      end if;
       if not Value.Manufacturer.Is_Null then
          Into.Write_Entity ("manufacturer", Value.Manufacturer);
       end if;
@@ -24634,6 +24662,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "short_description", Value.Short_Description);
       Swagger.Streams.Deserialize (Object, "available_for_view", Value.Available_For_View);
       Swagger.Streams.Deserialize (Object, "available_for_sale", Value.Available_For_Sale);
+      Swagger.Streams.Deserialize (Object, "status", Value.Status);
       Swagger.Streams.Deserialize (Object, "is_virtual", Value.Is_Virtual);
       Swagger.Streams.Deserialize (Object, "is_default", Value.Is_Default);
       Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
@@ -24665,6 +24694,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "ean", Value.Ean);
       Swagger.Streams.Deserialize (Object, "mpn", Value.Mpn);
       Swagger.Streams.Deserialize (Object, "isbn", Value.Isbn);
+      Swagger.Streams.Deserialize (Object, "seo_url", Value.Seo_Url);
       Swagger.Streams.Deserialize (Object, "manufacturer", Value.Manufacturer);
       Swagger.Streams.Deserialize (Object, "created_at", Value.Created_At);
       Swagger.Streams.Deserialize (Object, "meta_title", Value.Meta_Title);
@@ -25131,6 +25161,10 @@ package body .Models is
          Into.Write_Entity ("shop_section_id", Value.Shop_Section_Id);
       end if;
       Serialize (Into, "personalization_details", Value.Personalization_Details);
+      if not Value.Marketplace_Item_Properties.Is_Null then
+         Into.Write_Entity ("marketplace_item_properties", Value.Marketplace_Item_Properties);
+      end if;
+      Serialize (Into, "min_order_quantity", Value.Min_Order_Quantity);
       Into.End_Entity (Name);
    end Serialize;
 
@@ -25237,6 +25271,8 @@ package body .Models is
       Deserialize (Object, "specifics", Value.Specifics);
       Swagger.Streams.Deserialize (Object, "shop_section_id", Value.Shop_Section_Id);
       Deserialize (Object, "personalization_details", Value.Personalization_Details);
+      Swagger.Streams.Deserialize (Object, "marketplace_item_properties", Value.Marketplace_Item_Properties);
+      Swagger.Streams.Deserialize (Object, "min_order_quantity", Value.Min_Order_Quantity);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;

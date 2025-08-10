@@ -4694,12 +4694,12 @@ package .Models is
        Bol_Api_Key : Swagger.Nullable_UString;
        Bol_Api_Secret : Swagger.Nullable_UString;
        Bol_Retailer_Id : Swagger.Nullable_Integer;
-       Bigcartel_User_Name : Swagger.UString;
-       Bigcartel_Password : Swagger.UString;
-       Bricklink_Consumer_Key : Swagger.UString;
-       Bricklink_Consumer_Secret : Swagger.UString;
-       Bricklink_Token : Swagger.UString;
-       Bricklink_Token_Secret : Swagger.UString;
+       Bigcartel_User_Name : Swagger.Nullable_UString;
+       Bigcartel_Password : Swagger.Nullable_UString;
+       Bricklink_Consumer_Key : Swagger.Nullable_UString;
+       Bricklink_Consumer_Secret : Swagger.Nullable_UString;
+       Bricklink_Token : Swagger.Nullable_UString;
+       Bricklink_Token_Secret : Swagger.Nullable_UString;
        Demandware_Client_Id : Swagger.Nullable_UString;
        Demandware_Api_Password : Swagger.Nullable_UString;
        Demandware_User_Name : Swagger.Nullable_UString;
@@ -4784,8 +4784,8 @@ package .Models is
        Magento_Access_Token : Swagger.Nullable_UString;
        Magento_Token_Secret : Swagger.Nullable_UString;
        Prestashop_Webservice_Key : Swagger.Nullable_UString;
-       Wix_App_Id : Swagger.UString;
-       Wix_App_Secret_Key : Swagger.UString;
+       Wix_App_Id : Swagger.Nullable_UString;
+       Wix_App_Secret_Key : Swagger.Nullable_UString;
        Wix_Instance_Id : Swagger.Nullable_UString;
        Wix_Refresh_Token : Swagger.Nullable_UString;
        Mercado_Libre_App_Id : Swagger.Nullable_UString;
@@ -4823,8 +4823,8 @@ package .Models is
        Salla_Access_Token : Swagger.Nullable_UString;
        Temu_App_Key : Swagger.Nullable_UString;
        Temu_App_Secret : Swagger.Nullable_UString;
-       Temu_Access_Token : Swagger.UString;
-       Temu_Region : Swagger.UString;
+       Temu_Access_Token : Swagger.Nullable_UString;
+       Temu_Region : Swagger.Nullable_UString;
      end record;
 
 
@@ -5923,6 +5923,7 @@ package .Models is
        Name : Swagger.Nullable_UString;
        Url : Swagger.Nullable_UString;
        Version : Swagger.Nullable_UString;
+       Bridge_Version : Swagger.Nullable_UString;
        Db_Prefix : Swagger.Nullable_UString;
        Stores_Info : .Models.CartStoreInfo_Type_Vectors.Vector;
        Warehouses : .Models.CartWarehouse_Type_Vectors.Vector;
@@ -8470,10 +8471,10 @@ package .Models is
        Weight_Unit : Swagger.Nullable_UString;
        Sort_Order : Swagger.Nullable_Integer;
        In_Stock : Swagger.Nullable_Boolean;
-       On_Sale : Swagger.Nullable_Boolean;
        Backorders : Swagger.Nullable_UString;
        Manage_Stock : Swagger.Nullable_UString;
        Is_Stock_Managed : Swagger.Nullable_Boolean;
+       On_Sale : Swagger.Nullable_Boolean;
        Create_At : .Models.A2CDateTime_Type;
        Modified_At : .Models.A2CDateTime_Type;
        Tax_Class_Id : Swagger.Nullable_UString;
@@ -12606,6 +12607,7 @@ package .Models is
        Short_Description : Swagger.Nullable_UString;
        Available_For_View : Swagger.Nullable_Boolean;
        Available_For_Sale : Swagger.Nullable_Boolean;
+       Status : Swagger.Nullable_UString;
        Is_Virtual : Swagger.Nullable_Boolean;
        Is_Default : Swagger.Nullable_Boolean;
        Store_Id : Swagger.Nullable_UString;
@@ -12637,6 +12639,7 @@ package .Models is
        Ean : Swagger.Nullable_UString;
        Mpn : Swagger.Nullable_UString;
        Isbn : Swagger.Nullable_UString;
+       Seo_Url : Swagger.Nullable_UString;
        Manufacturer : Swagger.Nullable_UString;
        Created_At : Swagger.Nullable_UString;
        Meta_Title : Swagger.Nullable_UString;
@@ -12873,6 +12876,8 @@ package .Models is
        Specifics : .Models.ProductAddSpecificsInner_Type_Vectors.Vector;
        Shop_Section_Id : Swagger.Nullable_Integer;
        Personalization_Details : .Models.ProductAddPersonalizationDetails_Type;
+       Marketplace_Item_Properties : Swagger.Nullable_UString;
+       Min_Order_Quantity : Swagger.Number;
      end record;
 
 
