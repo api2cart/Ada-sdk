@@ -674,6 +674,7 @@ package .Models is
        Include_Tax : Swagger.Nullable_Boolean;
        Store_Id : Swagger.Nullable_UString;
        Free_Cash_On_Delivery : Swagger.Nullable_Boolean;
+       Customer_Id : Swagger.Nullable_UString;
      end record;
 
 
@@ -12954,6 +12955,7 @@ package .Models is
        Mpn : Swagger.Nullable_UString;
        Asin : Swagger.Nullable_UString;
        Product_Reference : Swagger.Nullable_UString;
+       External_Product_Link : Swagger.Nullable_UString;
        Harmonized_System_Code : Swagger.Nullable_UString;
        Country_Of_Origin : Swagger.Nullable_UString;
        Manufacturer : Swagger.Nullable_UString;

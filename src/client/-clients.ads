@@ -560,6 +560,7 @@ package .Clients is
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Avail : in Swagger.Nullable_Boolean;
+       Status : in Swagger.Nullable_UString;
        Date_Start_From : in Swagger.Nullable_UString;
        Date_Start_To : in Swagger.Nullable_UString;
        Date_End_From : in Swagger.Nullable_UString;

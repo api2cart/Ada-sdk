@@ -1249,6 +1249,7 @@ package body .Clients is
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Avail : in Swagger.Nullable_Boolean;
+       Status : in Swagger.Nullable_UString;
        Date_Start_From : in Swagger.Nullable_UString;
        Date_Start_To : in Swagger.Nullable_UString;
        Date_End_From : in Swagger.Nullable_UString;
@@ -1270,6 +1271,7 @@ package body .Clients is
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("lang_id", Lang_Id);
       URI.Add_Param ("avail", Avail);
+      URI.Add_Param ("status", Status);
       URI.Add_Param ("date_start_from", Date_Start_From);
       URI.Add_Param ("date_start_to", Date_Start_To);
       URI.Add_Param ("date_end_from", Date_End_From);

@@ -1230,6 +1230,9 @@ package body .Models is
       if not Value.Free_Cash_On_Delivery.Is_Null then
          Into.Write_Entity ("free_cash_on_delivery", Value.Free_Cash_On_Delivery);
       end if;
+      if not Value.Customer_Id.Is_Null then
+         Into.Write_Entity ("customer_id", Value.Customer_Id);
+      end if;
       Into.End_Entity (Name);
    end Serialize;
 
@@ -1268,6 +1271,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "include_tax", Value.Include_Tax);
       Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Swagger.Streams.Deserialize (Object, "free_cash_on_delivery", Value.Free_Cash_On_Delivery);
+      Swagger.Streams.Deserialize (Object, "customer_id", Value.Customer_Id);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;
@@ -25408,6 +25412,9 @@ package body .Models is
       if not Value.Product_Reference.Is_Null then
          Into.Write_Entity ("product_reference", Value.Product_Reference);
       end if;
+      if not Value.External_Product_Link.Is_Null then
+         Into.Write_Entity ("external_product_link", Value.External_Product_Link);
+      end if;
       if not Value.Harmonized_System_Code.Is_Null then
          Into.Write_Entity ("harmonized_system_code", Value.Harmonized_System_Code);
       end if;
@@ -25645,6 +25652,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "mpn", Value.Mpn);
       Swagger.Streams.Deserialize (Object, "asin", Value.Asin);
       Swagger.Streams.Deserialize (Object, "product_reference", Value.Product_Reference);
+      Swagger.Streams.Deserialize (Object, "external_product_link", Value.External_Product_Link);
       Swagger.Streams.Deserialize (Object, "harmonized_system_code", Value.Harmonized_System_Code);
       Swagger.Streams.Deserialize (Object, "country_of_origin", Value.Country_Of_Origin);
       Swagger.Streams.Deserialize (Object, "manufacturer", Value.Manufacturer);
