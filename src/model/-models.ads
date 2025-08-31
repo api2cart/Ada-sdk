@@ -12877,6 +12877,7 @@ package .Models is
        Specifics : .Models.ProductAddSpecificsInner_Type_Vectors.Vector;
        Shop_Section_Id : Swagger.Nullable_Integer;
        Personalization_Details : .Models.ProductAddPersonalizationDetails_Type;
+       External_Product_Link : Swagger.Nullable_UString;
        Marketplace_Item_Properties : Swagger.Nullable_UString;
        Min_Order_Quantity : Swagger.Number;
      end record;

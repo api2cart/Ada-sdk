@@ -25165,6 +25165,9 @@ package body .Models is
          Into.Write_Entity ("shop_section_id", Value.Shop_Section_Id);
       end if;
       Serialize (Into, "personalization_details", Value.Personalization_Details);
+      if not Value.External_Product_Link.Is_Null then
+         Into.Write_Entity ("external_product_link", Value.External_Product_Link);
+      end if;
       if not Value.Marketplace_Item_Properties.Is_Null then
          Into.Write_Entity ("marketplace_item_properties", Value.Marketplace_Item_Properties);
       end if;
@@ -25275,6 +25278,7 @@ package body .Models is
       Deserialize (Object, "specifics", Value.Specifics);
       Swagger.Streams.Deserialize (Object, "shop_section_id", Value.Shop_Section_Id);
       Deserialize (Object, "personalization_details", Value.Personalization_Details);
+      Swagger.Streams.Deserialize (Object, "external_product_link", Value.External_Product_Link);
       Swagger.Streams.Deserialize (Object, "marketplace_item_properties", Value.Marketplace_Item_Properties);
       Swagger.Streams.Deserialize (Object, "min_order_quantity", Value.Min_Order_Quantity);
    end Deserialize;
