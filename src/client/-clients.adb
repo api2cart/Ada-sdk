@@ -2529,6 +2529,25 @@ package body .Clients is
       .Models.Deserialize (Reply, "", Result);
    end Order_Add;
 
+   --  order.calculate
+   --  <p>Calculates the total cost of an order for a given customer and a set of products, as well as the available shipping methods based on the specified address. The calculation takes into account store product prices, discounts, taxes, shipping costs, and other store settings. The result includes a detailed breakdown of the final order cost by its components.</p> <p>Note that the final totals, taxes, and other amounts must include the corresponding values for the selected shipping method.</p><p>The result of this method can be used when creating an order using the <strong>order.add</strong> method.</p>
+   procedure Order_Calculate
+      (Client : in out Client_Type;
+       Order_Calculate_Type : in .Models.OrderCalculate_Type;
+       Result : out .Models.OrderCalculate200Response_Type) is
+      URI   : Swagger.Clients.URI_Type;
+      Req   : Swagger.Clients.Request_Type;
+      Reply : Swagger.Value_Type;
+   begin
+      Client.Set_Accept (Media_List_1);
+      Client.Initialize (Req, Media_List_1);
+      .Models.Serialize (Req.Stream, "", Order_Calculate_Type);
+
+      URI.Set_Path ("/order.calculate.json");
+      Client.Call (Swagger.Clients.POST, URI, Req, Reply);
+      .Models.Deserialize (Reply, "", Result);
+   end Order_Calculate;
+
    --  order.count
    --  Count orders in store
    procedure Order_Count
@@ -3822,6 +3841,12 @@ package body .Clients is
        Product_Id : in Swagger.UString;
        Manufacturer : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
+       Meta_Title : in Swagger.Nullable_UString;
+       Meta_Keywords : in Swagger.Nullable_UString;
+       Meta_Description : in Swagger.Nullable_UString;
+       Search_Keywords : in Swagger.Nullable_UString;
+       Image_Url : in Swagger.Nullable_UString;
+       Seo_Url : in Swagger.Nullable_UString;
        Result : out .Models.ProductManufacturerAdd200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -3832,6 +3857,12 @@ package body .Clients is
       URI.Add_Param ("product_id", Product_Id);
       URI.Add_Param ("manufacturer", Manufacturer);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("meta_title", Meta_Title);
+      URI.Add_Param ("meta_keywords", Meta_Keywords);
+      URI.Add_Param ("meta_description", Meta_Description);
+      URI.Add_Param ("search_keywords", Search_Keywords);
+      URI.Add_Param ("image_url", Image_Url);
+      URI.Add_Param ("seo_url", Seo_Url);
       URI.Set_Path ("/product.manufacturer.add.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -4116,7 +4147,13 @@ package body .Clients is
        Page_Cursor : in Swagger.Nullable_UString;
        Ids : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Lang_Id : in Swagger.Nullable_UString;
        Status : in Swagger.Nullable_UString;
+       Created_From : in Swagger.Nullable_UString;
+       Created_To : in Swagger.Nullable_UString;
+       Customer_Id : in Swagger.Nullable_UString;
+       Sort_By : in Swagger.Nullable_UString;
+       Sort_Direction : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
@@ -4133,7 +4170,13 @@ package body .Clients is
       URI.Add_Param ("product_id", Product_Id);
       URI.Add_Param ("ids", Ids);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("lang_id", Lang_Id);
       URI.Add_Param ("status", Status);
+      URI.Add_Param ("created_from", Created_From);
+      URI.Add_Param ("created_to", Created_To);
+      URI.Add_Param ("customer_id", Customer_Id);
+      URI.Add_Param ("sort_by", Sort_By);
+      URI.Add_Param ("sort_direction", Sort_Direction);
       URI.Add_Param ("response_fields", Response_Fields);
       URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);

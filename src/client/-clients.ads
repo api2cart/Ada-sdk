@@ -1104,6 +1104,13 @@ package .Clients is
        Order_Add_Type : in .Models.OrderAdd_Type;
        Result : out .Models.OrderAdd200Response_Type);
 
+   --  order.calculate
+   --  <p>Calculates the total cost of an order for a given customer and a set of products, as well as the available shipping methods based on the specified address. The calculation takes into account store product prices, discounts, taxes, shipping costs, and other store settings. The result includes a detailed breakdown of the final order cost by its components.</p> <p>Note that the final totals, taxes, and other amounts must include the corresponding values for the selected shipping method.</p><p>The result of this method can be used when creating an order using the <strong>order.add</strong> method.</p>
+   procedure Order_Calculate
+      (Client : in out Client_Type;
+       Order_Calculate_Type : in .Models.OrderCalculate_Type;
+       Result : out .Models.OrderCalculate200Response_Type);
+
    --  order.count
    --  Count orders in store
    procedure Order_Count
@@ -1668,6 +1675,12 @@ package .Clients is
        Product_Id : in Swagger.UString;
        Manufacturer : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
+       Meta_Title : in Swagger.Nullable_UString;
+       Meta_Keywords : in Swagger.Nullable_UString;
+       Meta_Description : in Swagger.Nullable_UString;
+       Search_Keywords : in Swagger.Nullable_UString;
+       Image_Url : in Swagger.Nullable_UString;
+       Seo_Url : in Swagger.Nullable_UString;
        Result : out .Models.ProductManufacturerAdd200Response_Type);
 
    --  product.option.add
@@ -1791,7 +1804,13 @@ package .Clients is
        Page_Cursor : in Swagger.Nullable_UString;
        Ids : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Lang_Id : in Swagger.Nullable_UString;
        Status : in Swagger.Nullable_UString;
+       Created_From : in Swagger.Nullable_UString;
+       Created_To : in Swagger.Nullable_UString;
+       Customer_Id : in Swagger.Nullable_UString;
+       Sort_By : in Swagger.Nullable_UString;
+       Sort_Direction : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
