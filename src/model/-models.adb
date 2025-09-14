@@ -17673,6 +17673,9 @@ package body .Models is
       if not Value.Condition.Is_Null then
          Into.Write_Entity ("condition", Value.Condition);
       end if;
+      if not Value.Condition_Description.Is_Null then
+         Into.Write_Entity ("condition_description", Value.Condition_Description);
+      end if;
       if not Value.Visible.Is_Null then
          Into.Write_Entity ("visible", Value.Visible);
       end if;
@@ -17812,6 +17815,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "status", Value.Status);
       Swagger.Streams.Deserialize (Object, "type", Value.P_Type);
       Swagger.Streams.Deserialize (Object, "condition", Value.Condition);
+      Swagger.Streams.Deserialize (Object, "condition_description", Value.Condition_Description);
       Swagger.Streams.Deserialize (Object, "visible", Value.Visible);
       Swagger.Streams.Deserialize (Object, "available_for_view", Value.Available_For_View);
       Swagger.Streams.Deserialize (Object, "available_for_sale", Value.Available_For_Sale);
@@ -25537,6 +25541,9 @@ package body .Models is
       if not Value.Product_Class.Is_Null then
          Into.Write_Entity ("product_class", Value.Product_Class);
       end if;
+      if not Value.Brand_Name.Is_Null then
+         Into.Write_Entity ("brand_name", Value.Brand_Name);
+      end if;
       if not Value.Available_For_View.Is_Null then
          Into.Write_Entity ("available_for_view", Value.Available_For_View);
       end if;
@@ -25740,6 +25747,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "avail", Value.Avail);
       Swagger.Streams.Deserialize (Object, "avail_from", Value.Avail_From);
       Swagger.Streams.Deserialize (Object, "product_class", Value.Product_Class);
+      Swagger.Streams.Deserialize (Object, "brand_name", Value.Brand_Name);
       Swagger.Streams.Deserialize (Object, "available_for_view", Value.Available_For_View);
       Swagger.Streams.Deserialize (Object, "stores_ids", Value.Stores_Ids);
       Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);

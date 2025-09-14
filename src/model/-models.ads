@@ -9101,6 +9101,7 @@ package .Models is
        Status : Swagger.Nullable_UString;
        P_Type : Swagger.Nullable_UString;
        Condition : Swagger.Nullable_UString;
+       Condition_Description : Swagger.Nullable_UString;
        Visible : Swagger.Nullable_UString;
        Available_For_View : Swagger.Nullable_Boolean;
        Available_For_Sale : Swagger.Nullable_Boolean;
@@ -13095,6 +13096,7 @@ package .Models is
        Avail : Swagger.Nullable_Boolean;
        Avail_From : Swagger.Nullable_UString;
        Product_Class : Swagger.Nullable_UString;
+       Brand_Name : Swagger.Nullable_UString;
        Available_For_View : Swagger.Nullable_Boolean;
        Stores_Ids : Swagger.Nullable_UString;
        Store_Id : Swagger.Nullable_UString;
