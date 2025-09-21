@@ -9325,6 +9325,9 @@ package body .Models is
       if not Value.Shopware_Access_Key.Is_Null then
          Into.Write_Entity ("shopware_access_key", Value.Shopware_Access_Key);
       end if;
+      if not Value.Unas_Api_Key.Is_Null then
+         Into.Write_Entity ("unas_api_key", Value.Unas_Api_Key);
+      end if;
       if not Value.Shopware_Api_Key.Is_Null then
          Into.Write_Entity ("shopware_api_key", Value.Shopware_Api_Key);
       end if;
@@ -9652,6 +9655,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "shoplazza_access_token", Value.Shoplazza_Access_Token);
       Swagger.Streams.Deserialize (Object, "shoplazza_shared_secret", Value.Shoplazza_Shared_Secret);
       Swagger.Streams.Deserialize (Object, "shopware_access_key", Value.Shopware_Access_Key);
+      Swagger.Streams.Deserialize (Object, "unas_api_key", Value.Unas_Api_Key);
       Swagger.Streams.Deserialize (Object, "shopware_api_key", Value.Shopware_Api_Key);
       Swagger.Streams.Deserialize (Object, "shopware_api_secret", Value.Shopware_Api_Secret);
       Swagger.Streams.Deserialize (Object, "miva_access_token", Value.Miva_Access_Token);
@@ -18819,6 +18823,9 @@ package body .Models is
       if not Value.Meta_Keywords.Is_Null then
          Into.Write_Entity ("meta_keywords", Value.Meta_Keywords);
       end if;
+      if not Value.Manufacturer.Is_Null then
+         Into.Write_Entity ("manufacturer", Value.Manufacturer);
+      end if;
       if not Value.Reindex.Is_Null then
          Into.Write_Entity ("reindex", Value.Reindex);
       end if;
@@ -18897,6 +18904,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "meta_title", Value.Meta_Title);
       Swagger.Streams.Deserialize (Object, "meta_description", Value.Meta_Description);
       Swagger.Streams.Deserialize (Object, "meta_keywords", Value.Meta_Keywords);
+      Swagger.Streams.Deserialize (Object, "manufacturer", Value.Manufacturer);
       Swagger.Streams.Deserialize (Object, "reindex", Value.Reindex);
       Swagger.Streams.Deserialize (Object, "clear_cache", Value.Clear_Cache);
    end Deserialize;

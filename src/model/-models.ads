@@ -4900,6 +4900,7 @@ package .Models is
        Shoplazza_Access_Token : Swagger.Nullable_UString;
        Shoplazza_Shared_Secret : Swagger.Nullable_UString;
        Shopware_Access_Key : Swagger.Nullable_UString;
+       Unas_Api_Key : Swagger.Nullable_UString;
        Shopware_Api_Key : Swagger.Nullable_UString;
        Shopware_Api_Secret : Swagger.Nullable_UString;
        Miva_Access_Token : Swagger.Nullable_UString;
@@ -9587,6 +9588,7 @@ package .Models is
        Meta_Title : Swagger.Nullable_UString;
        Meta_Description : Swagger.Nullable_UString;
        Meta_Keywords : Swagger.Nullable_UString;
+       Manufacturer : Swagger.Nullable_UString;
        Reindex : Swagger.Nullable_Boolean;
        Clear_Cache : Swagger.Nullable_Boolean;
      end record;
