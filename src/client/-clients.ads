@@ -113,6 +113,7 @@ package .Clients is
        Miva_Access_Token : in Swagger.Nullable_UString;
        Miva_Signature : in Swagger.Nullable_UString;
        Shopware_Access_Key : in Swagger.Nullable_UString;
+       Unas_Api_Key : in Swagger.Nullable_UString;
        Shopware_Api_Key : in Swagger.Nullable_UString;
        Shopware_Api_Secret : in Swagger.Nullable_UString;
        Bigcartel_User_Name : in Swagger.Nullable_UString;
