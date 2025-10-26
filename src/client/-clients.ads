@@ -1163,6 +1163,7 @@ package .Clients is
        Exclude : in Swagger.Nullable_UString;
        Enable_Cache : in Swagger.Nullable_Boolean;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
+       Rounding_Precision : in Swagger.Nullable_Integer;
        Result : out .Models.OrderInfo200Response_Type);
 
    --  order.list
@@ -1207,6 +1208,7 @@ package .Clients is
        Exclude : in Swagger.Nullable_UString;
        Enable_Cache : in Swagger.Nullable_Boolean;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
+       Rounding_Precision : in Swagger.Nullable_Integer;
        Result : out .Models.ModelResponseOrderList_Type);
 
    --  order.preestimate_shipping.list

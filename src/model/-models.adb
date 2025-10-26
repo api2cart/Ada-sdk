@@ -11828,6 +11828,7 @@ package body .Models is
       Into.Write_Entity ("url", Value.Url);
       Into.Write_Entity ("version", Value.Version);
       Into.Write_Entity ("bridge_version", Value.Bridge_Version);
+      Into.Write_Entity ("default_rounding_precision", Value.Default_Rounding_Precision);
       Into.Write_Entity ("db_prefix", Value.Db_Prefix);
       Serialize (Into, "stores_info", Value.Stores_Info);
       Serialize (Into, "warehouses", Value.Warehouses);
@@ -11858,6 +11859,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "url", Value.Url);
       Swagger.Streams.Deserialize (Object, "version", Value.Version);
       Swagger.Streams.Deserialize (Object, "bridge_version", Value.Bridge_Version);
+      Swagger.Streams.Deserialize (Object, "default_rounding_precision", Value.Default_Rounding_Precision);
       Swagger.Streams.Deserialize (Object, "db_prefix", Value.Db_Prefix);
       Deserialize (Object, "stores_info", Value.Stores_Info);
       Deserialize (Object, "warehouses", Value.Warehouses);
@@ -25827,6 +25829,9 @@ package body .Models is
       if not Value.Shipping_Template_Id.Is_Null then
          Into.Write_Entity ("shipping_template_id", Value.Shipping_Template_Id);
       end if;
+      if not Value.Processing_Profile_Id.Is_Null then
+         Into.Write_Entity ("processing_profile_id", Value.Processing_Profile_Id);
+      end if;
       if not Value.When_Made.Is_Null then
          Into.Write_Entity ("when_made", Value.When_Made);
       end if;
@@ -25965,6 +25970,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "country_of_origin", Value.Country_Of_Origin);
       Swagger.Streams.Deserialize (Object, "harmonized_system_code", Value.Harmonized_System_Code);
       Swagger.Streams.Deserialize (Object, "shipping_template_id", Value.Shipping_Template_Id);
+      Swagger.Streams.Deserialize (Object, "processing_profile_id", Value.Processing_Profile_Id);
       Swagger.Streams.Deserialize (Object, "when_made", Value.When_Made);
       Swagger.Streams.Deserialize (Object, "is_supply", Value.Is_Supply);
       Swagger.Streams.Deserialize (Object, "downloadable", Value.Downloadable);
@@ -26230,6 +26236,9 @@ package body .Models is
       if not Value.Shipping_Template_Id.Is_Null then
          Into.Write_Entity ("shipping_template_id", Value.Shipping_Template_Id);
       end if;
+      if not Value.Processing_Profile_Id.Is_Null then
+         Into.Write_Entity ("processing_profile_id", Value.Processing_Profile_Id);
+      end if;
       Serialize (Into, "shipping_details", Value.Shipping_Details);
       if not Value.Is_Free_Shipping.Is_Null then
          Into.Write_Entity ("is_free_shipping", Value.Is_Free_Shipping);
@@ -26402,6 +26411,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "payment_methods", Value.Payment_Methods);
       Swagger.Streams.Deserialize (Object, "paypal_email", Value.Paypal_Email);
       Swagger.Streams.Deserialize (Object, "shipping_template_id", Value.Shipping_Template_Id);
+      Swagger.Streams.Deserialize (Object, "processing_profile_id", Value.Processing_Profile_Id);
       Deserialize (Object, "shipping_details", Value.Shipping_Details);
       Swagger.Streams.Deserialize (Object, "is_free_shipping", Value.Is_Free_Shipping);
       Swagger.Streams.Deserialize (Object, "delivery_code", Value.Delivery_Code);

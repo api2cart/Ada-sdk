@@ -6098,6 +6098,7 @@ package .Models is
        Url : Swagger.Nullable_UString;
        Version : Swagger.Nullable_UString;
        Bridge_Version : Swagger.Nullable_UString;
+       Default_Rounding_Precision : Swagger.Nullable_Integer;
        Db_Prefix : Swagger.Nullable_UString;
        Stores_Info : .Models.CartStoreInfo_Type_Vectors.Vector;
        Warehouses : .Models.CartWarehouse_Type_Vectors.Vector;
@@ -13220,6 +13221,7 @@ package .Models is
        Country_Of_Origin : Swagger.Nullable_UString;
        Harmonized_System_Code : Swagger.Nullable_UString;
        Shipping_Template_Id : Swagger.Nullable_Integer;
+       Processing_Profile_Id : Swagger.Nullable_Integer;
        When_Made : Swagger.Nullable_UString;
        Is_Supply : Swagger.Nullable_Boolean;
        Downloadable : Swagger.Nullable_Boolean;
@@ -13358,6 +13360,7 @@ package .Models is
        Payment_Methods : Swagger.UString_Vectors.Vector;
        Paypal_Email : Swagger.Nullable_UString;
        Shipping_Template_Id : Swagger.Nullable_Integer;
+       Processing_Profile_Id : Swagger.Nullable_Integer;
        Shipping_Details : .Models.ProductAddShippingDetailsInner_Type_Vectors.Vector;
        Is_Free_Shipping : Swagger.Nullable_Boolean;
        Delivery_Code : Swagger.Nullable_UString;

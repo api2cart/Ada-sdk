@@ -2652,6 +2652,7 @@ package body .Clients is
        Exclude : in Swagger.Nullable_UString;
        Enable_Cache : in Swagger.Nullable_Boolean;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
+       Rounding_Precision : in Swagger.Nullable_Integer;
        Result : out .Models.OrderInfo200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -2667,6 +2668,7 @@ package body .Clients is
       URI.Add_Param ("exclude", Exclude);
       URI.Add_Param ("enable_cache", Enable_Cache);
       URI.Add_Param ("use_latest_api_version", Use_Latest_Api_Version);
+      URI.Add_Param ("rounding_precision", Rounding_Precision);
       URI.Set_Path ("/order.info.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -2714,6 +2716,7 @@ package body .Clients is
        Exclude : in Swagger.Nullable_UString;
        Enable_Cache : in Swagger.Nullable_Boolean;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
+       Rounding_Precision : in Swagger.Nullable_Integer;
        Result : out .Models.ModelResponseOrderList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -2759,6 +2762,7 @@ package body .Clients is
       URI.Add_Param ("exclude", Exclude);
       URI.Add_Param ("enable_cache", Enable_Cache);
       URI.Add_Param ("use_latest_api_version", Use_Latest_Api_Version);
+      URI.Add_Param ("rounding_precision", Rounding_Precision);
       URI.Set_Path ("/order.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
