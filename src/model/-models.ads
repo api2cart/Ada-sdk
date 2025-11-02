@@ -12702,6 +12702,7 @@ package .Models is
        Note_Attributes : .Models.OrderAddNoteAttributesInner_Type_Vectors.Vector;
        Clear_Cache : Swagger.Nullable_Boolean;
        Origin : Swagger.Nullable_UString;
+       Fee_Price : Swagger.Number;
        Order_Item : .Models.OrderAddOrderItemInner_Type_Vectors.Vector;
      end record;
 

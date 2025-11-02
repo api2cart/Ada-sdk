@@ -1503,6 +1503,7 @@ package .Clients is
    --  Count products in store.
    procedure Product_Count
       (Client : in out Client_Type;
+       Sku : in Swagger.Nullable_UString;
        Product_Ids : in Swagger.Nullable_UString;
        Since_Id : in Swagger.Nullable_UString;
        Categories_Ids : in Swagger.Nullable_UString;
@@ -1516,6 +1517,7 @@ package .Clients is
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
        Brand_Name : in Swagger.Nullable_UString;
+       Manufacturer_Id : in Swagger.Nullable_UString;
        Product_Attributes : in Swagger.UString_Vectors.Vector;
        Status : in Swagger.Nullable_UString;
        P_Type : in Swagger.Nullable_UString;
@@ -1653,6 +1655,7 @@ package .Clients is
        Sku : in Swagger.Nullable_UString;
        Brand_Name : in Swagger.Nullable_UString;
        Product_Attributes : in Swagger.UString_Vectors.Vector;
+       Manufacturer_Id : in Swagger.Nullable_UString;
        Status : in Swagger.Nullable_UString;
        P_Type : in Swagger.Nullable_UString;
        Visible : in Swagger.Nullable_UString;

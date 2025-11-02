@@ -24623,6 +24623,7 @@ package body .Models is
       if not Value.Origin.Is_Null then
          Into.Write_Entity ("origin", Value.Origin);
       end if;
+      Serialize (Into, "fee_price", Value.Fee_Price);
       Serialize (Into, "order_item", Value.Order_Item);
       Into.End_Entity (Name);
    end Serialize;
@@ -24713,6 +24714,7 @@ package body .Models is
       Deserialize (Object, "note_attributes", Value.Note_Attributes);
       Swagger.Streams.Deserialize (Object, "clear_cache", Value.Clear_Cache);
       Swagger.Streams.Deserialize (Object, "origin", Value.Origin);
+      Swagger.Streams.Deserialize (Object, "fee_price", Value.Fee_Price);
       Deserialize (Object, "order_item", Value.Order_Item);
    end Deserialize;
 

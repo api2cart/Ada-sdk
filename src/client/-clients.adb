@@ -3454,6 +3454,7 @@ package body .Clients is
    --  Count products in store.
    procedure Product_Count
       (Client : in out Client_Type;
+       Sku : in Swagger.Nullable_UString;
        Product_Ids : in Swagger.Nullable_UString;
        Since_Id : in Swagger.Nullable_UString;
        Categories_Ids : in Swagger.Nullable_UString;
@@ -3467,6 +3468,7 @@ package body .Clients is
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
        Brand_Name : in Swagger.Nullable_UString;
+       Manufacturer_Id : in Swagger.Nullable_UString;
        Product_Attributes : in Swagger.UString_Vectors.Vector;
        Status : in Swagger.Nullable_UString;
        P_Type : in Swagger.Nullable_UString;
@@ -3484,6 +3486,7 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
+      URI.Add_Param ("sku", Sku);
       URI.Add_Param ("product_ids", Product_Ids);
       URI.Add_Param ("since_id", Since_Id);
       URI.Add_Param ("categories_ids", Categories_Ids);
@@ -3497,6 +3500,7 @@ package body .Clients is
       URI.Add_Param ("modified_from", Modified_From);
       URI.Add_Param ("modified_to", Modified_To);
       URI.Add_Param ("brand_name", Brand_Name);
+      URI.Add_Param ("manufacturer_id", Manufacturer_Id);
       URI.Add_Param ("product_attributes", Product_Attributes);
       URI.Add_Param ("status", Status);
       URI.Add_Param ("type", P_Type);
@@ -3777,6 +3781,7 @@ package body .Clients is
        Sku : in Swagger.Nullable_UString;
        Brand_Name : in Swagger.Nullable_UString;
        Product_Attributes : in Swagger.UString_Vectors.Vector;
+       Manufacturer_Id : in Swagger.Nullable_UString;
        Status : in Swagger.Nullable_UString;
        P_Type : in Swagger.Nullable_UString;
        Visible : in Swagger.Nullable_UString;
@@ -3819,6 +3824,7 @@ package body .Clients is
       URI.Add_Param ("sku", Sku);
       URI.Add_Param ("brand_name", Brand_Name);
       URI.Add_Param ("product_attributes", Product_Attributes);
+      URI.Add_Param ("manufacturer_id", Manufacturer_Id);
       URI.Add_Param ("status", Status);
       URI.Add_Param ("type", P_Type);
       URI.Add_Param ("visible", Visible);
