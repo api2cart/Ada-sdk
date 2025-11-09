@@ -56,6 +56,10 @@ package .Clients is
        Amazon_Seller_Id : in Swagger.Nullable_UString;
        Aspdotnetstorefront_Api_User : in Swagger.Nullable_UString;
        Aspdotnetstorefront_Api_Pass : in Swagger.Nullable_UString;
+       Americommerce_App_Id : in Swagger.Nullable_UString;
+       Americommerce_App_Secret : in Swagger.Nullable_UString;
+       Americommerce_Access_Token : in Swagger.Nullable_UString;
+       Americommerce_Refresh_Token : in Swagger.Nullable_UString;
        Bigcommerceapi_Admin_Account : in Swagger.Nullable_UString;
        Bigcommerceapi_Api_Path : in Swagger.Nullable_UString;
        Bigcommerceapi_Api_Key : in Swagger.Nullable_UString;

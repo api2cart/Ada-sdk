@@ -5597,6 +5597,9 @@ package body .Models is
          Into.Write_Entity ("group_id", Value.Group_Id);
       end if;
       Serialize (Into, "price", Value.Price);
+      if not Value.Qty.Is_Null then
+         Into.Write_Entity ("qty", Value.Qty);
+      end if;
       Into.End_Entity (Name);
    end Serialize;
 
@@ -5619,6 +5622,7 @@ package body .Models is
       Swagger.Streams.Deserialize (From, Name, Object);
       Swagger.Streams.Deserialize (Object, "group_id", Value.Group_Id);
       Swagger.Streams.Deserialize (Object, "price", Value.Price);
+      Swagger.Streams.Deserialize (Object, "qty", Value.Qty);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;
@@ -7433,6 +7437,9 @@ package body .Models is
          Into.Write_Entity ("group_id", Value.Group_Id);
       end if;
       Serialize (Into, "price", Value.Price);
+      if not Value.Qty.Is_Null then
+         Into.Write_Entity ("qty", Value.Qty);
+      end if;
       Into.End_Entity (Name);
    end Serialize;
 
@@ -7456,6 +7463,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "id", Value.Id);
       Swagger.Streams.Deserialize (Object, "group_id", Value.Group_Id);
       Swagger.Streams.Deserialize (Object, "price", Value.Price);
+      Swagger.Streams.Deserialize (Object, "qty", Value.Qty);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;
@@ -9168,6 +9176,18 @@ package body .Models is
       if not Value.Aspdotnetstorefront_Api_Pass.Is_Null then
          Into.Write_Entity ("aspdotnetstorefront_api_pass", Value.Aspdotnetstorefront_Api_Pass);
       end if;
+      if not Value.Americommerce_App_Id.Is_Null then
+         Into.Write_Entity ("americommerce_app_id", Value.Americommerce_App_Id);
+      end if;
+      if not Value.Americommerce_App_Secret.Is_Null then
+         Into.Write_Entity ("americommerce_app_secret", Value.Americommerce_App_Secret);
+      end if;
+      if not Value.Americommerce_Access_Token.Is_Null then
+         Into.Write_Entity ("americommerce_access_token", Value.Americommerce_Access_Token);
+      end if;
+      if not Value.Americommerce_Refresh_Token.Is_Null then
+         Into.Write_Entity ("americommerce_refresh_token", Value.Americommerce_Refresh_Token);
+      end if;
       if not Value.Bigcommerceapi_Admin_Account.Is_Null then
          Into.Write_Entity ("bigcommerceapi_admin_account", Value.Bigcommerceapi_Admin_Account);
       end if;
@@ -9634,6 +9654,10 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "amazon_seller_id", Value.Amazon_Seller_Id);
       Swagger.Streams.Deserialize (Object, "aspdotnetstorefront_api_user", Value.Aspdotnetstorefront_Api_User);
       Swagger.Streams.Deserialize (Object, "aspdotnetstorefront_api_pass", Value.Aspdotnetstorefront_Api_Pass);
+      Swagger.Streams.Deserialize (Object, "americommerce_app_id", Value.Americommerce_App_Id);
+      Swagger.Streams.Deserialize (Object, "americommerce_app_secret", Value.Americommerce_App_Secret);
+      Swagger.Streams.Deserialize (Object, "americommerce_access_token", Value.Americommerce_Access_Token);
+      Swagger.Streams.Deserialize (Object, "americommerce_refresh_token", Value.Americommerce_Refresh_Token);
       Swagger.Streams.Deserialize (Object, "bigcommerceapi_admin_account", Value.Bigcommerceapi_Admin_Account);
       Swagger.Streams.Deserialize (Object, "bigcommerceapi_api_path", Value.Bigcommerceapi_Api_Path);
       Swagger.Streams.Deserialize (Object, "bigcommerceapi_api_key", Value.Bigcommerceapi_Api_Key);

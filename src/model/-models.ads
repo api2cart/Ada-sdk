@@ -2970,6 +2970,7 @@ package .Models is
      record
        Group_Id : Swagger.Nullable_UString;
        Price : Swagger.Number;
+       Qty : Swagger.Nullable_Integer;
      end record;
 
 
@@ -3945,6 +3946,7 @@ package .Models is
        Id : Swagger.Nullable_Integer;
        Group_Id : Swagger.Nullable_UString;
        Price : Swagger.Number;
+       Qty : Swagger.Nullable_Integer;
      end record;
 
 
@@ -4858,6 +4860,10 @@ package .Models is
        Amazon_Seller_Id : Swagger.Nullable_UString;
        Aspdotnetstorefront_Api_User : Swagger.Nullable_UString;
        Aspdotnetstorefront_Api_Pass : Swagger.Nullable_UString;
+       Americommerce_App_Id : Swagger.Nullable_UString;
+       Americommerce_App_Secret : Swagger.Nullable_UString;
+       Americommerce_Access_Token : Swagger.Nullable_UString;
+       Americommerce_Refresh_Token : Swagger.Nullable_UString;
        Bigcommerceapi_Admin_Account : Swagger.Nullable_UString;
        Bigcommerceapi_Api_Path : Swagger.Nullable_UString;
        Bigcommerceapi_Api_Key : Swagger.Nullable_UString;

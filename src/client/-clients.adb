@@ -89,6 +89,10 @@ package body .Clients is
        Amazon_Seller_Id : in Swagger.Nullable_UString;
        Aspdotnetstorefront_Api_User : in Swagger.Nullable_UString;
        Aspdotnetstorefront_Api_Pass : in Swagger.Nullable_UString;
+       Americommerce_App_Id : in Swagger.Nullable_UString;
+       Americommerce_App_Secret : in Swagger.Nullable_UString;
+       Americommerce_Access_Token : in Swagger.Nullable_UString;
+       Americommerce_Refresh_Token : in Swagger.Nullable_UString;
        Bigcommerceapi_Admin_Account : in Swagger.Nullable_UString;
        Bigcommerceapi_Api_Path : in Swagger.Nullable_UString;
        Bigcommerceapi_Api_Key : in Swagger.Nullable_UString;
@@ -255,6 +259,10 @@ package body .Clients is
       URI.Add_Param ("amazon_seller_id", Amazon_Seller_Id);
       URI.Add_Param ("aspdotnetstorefront_api_user", Aspdotnetstorefront_Api_User);
       URI.Add_Param ("aspdotnetstorefront_api_pass", Aspdotnetstorefront_Api_Pass);
+      URI.Add_Param ("americommerce_app_id", Americommerce_App_Id);
+      URI.Add_Param ("americommerce_app_secret", Americommerce_App_Secret);
+      URI.Add_Param ("americommerce_access_token", Americommerce_Access_Token);
+      URI.Add_Param ("americommerce_refresh_token", Americommerce_Refresh_Token);
       URI.Add_Param ("bigcommerceapi_admin_account", Bigcommerceapi_Admin_Account);
       URI.Add_Param ("bigcommerceapi_api_path", Bigcommerceapi_Api_Path);
       URI.Add_Param ("bigcommerceapi_api_key", Bigcommerceapi_Api_Key);
