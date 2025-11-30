@@ -201,6 +201,11 @@ package .Clients is
        Temu_App_Secret : in Swagger.Nullable_UString;
        Temu_Access_Token : in Swagger.Nullable_UString;
        Temu_Region : in Swagger.Nullable_UString;
+       Scapi_Client_Id : in Swagger.Nullable_UString;
+       Scapi_Client_Secret : in Swagger.Nullable_UString;
+       Scapi_Organization_Id : in Swagger.Nullable_UString;
+       Scapi_Short_Code : in Swagger.Nullable_UString;
+       Scapi_Scopes : in Swagger.Nullable_UString;
        Result : out .Models.AccountConfigUpdate200Response_Type);
 
    --  account.failed_webhooks

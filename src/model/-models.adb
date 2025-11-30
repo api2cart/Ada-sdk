@@ -9609,6 +9609,21 @@ package body .Models is
       if not Value.Temu_Region.Is_Null then
          Into.Write_Entity ("temu_region", Value.Temu_Region);
       end if;
+      if not Value.Scapi_Client_Id.Is_Null then
+         Into.Write_Entity ("scapi_client_id", Value.Scapi_Client_Id);
+      end if;
+      if not Value.Scapi_Client_Secret.Is_Null then
+         Into.Write_Entity ("scapi_client_secret", Value.Scapi_Client_Secret);
+      end if;
+      if not Value.Scapi_Organization_Id.Is_Null then
+         Into.Write_Entity ("scapi_organization_id", Value.Scapi_Organization_Id);
+      end if;
+      if not Value.Scapi_Short_Code.Is_Null then
+         Into.Write_Entity ("scapi_short_code", Value.Scapi_Short_Code);
+      end if;
+      if not Value.Scapi_Scopes.Is_Null then
+         Into.Write_Entity ("scapi_scopes", Value.Scapi_Scopes);
+      end if;
       Into.End_Entity (Name);
    end Serialize;
 
@@ -9799,6 +9814,11 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "temu_app_secret", Value.Temu_App_Secret);
       Swagger.Streams.Deserialize (Object, "temu_access_token", Value.Temu_Access_Token);
       Swagger.Streams.Deserialize (Object, "temu_region", Value.Temu_Region);
+      Swagger.Streams.Deserialize (Object, "scapi_client_id", Value.Scapi_Client_Id);
+      Swagger.Streams.Deserialize (Object, "scapi_client_secret", Value.Scapi_Client_Secret);
+      Swagger.Streams.Deserialize (Object, "scapi_organization_id", Value.Scapi_Organization_Id);
+      Swagger.Streams.Deserialize (Object, "scapi_short_code", Value.Scapi_Short_Code);
+      Swagger.Streams.Deserialize (Object, "scapi_scopes", Value.Scapi_Scopes);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;
@@ -24518,6 +24538,9 @@ package body .Models is
       if not Value.Customer_Fax.Is_Null then
          Into.Write_Entity ("customer_fax", Value.Customer_Fax);
       end if;
+      if not Value.Is_Guest.Is_Null then
+         Into.Write_Entity ("is_guest", Value.Is_Guest);
+      end if;
       if not Value.Order_Payment_Method.Is_Null then
          Into.Write_Entity ("order_payment_method", Value.Order_Payment_Method);
       end if;
@@ -24683,6 +24706,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "customer_country", Value.Customer_Country);
       Swagger.Streams.Deserialize (Object, "customer_birthday", Value.Customer_Birthday);
       Swagger.Streams.Deserialize (Object, "customer_fax", Value.Customer_Fax);
+      Swagger.Streams.Deserialize (Object, "is_guest", Value.Is_Guest);
       Swagger.Streams.Deserialize (Object, "order_payment_method", Value.Order_Payment_Method);
       Swagger.Streams.Deserialize (Object, "transaction_id", Value.Transaction_Id);
       Swagger.Streams.Deserialize (Object, "currency", Value.Currency);

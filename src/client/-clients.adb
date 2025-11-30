@@ -234,6 +234,11 @@ package body .Clients is
        Temu_App_Secret : in Swagger.Nullable_UString;
        Temu_Access_Token : in Swagger.Nullable_UString;
        Temu_Region : in Swagger.Nullable_UString;
+       Scapi_Client_Id : in Swagger.Nullable_UString;
+       Scapi_Client_Secret : in Swagger.Nullable_UString;
+       Scapi_Organization_Id : in Swagger.Nullable_UString;
+       Scapi_Short_Code : in Swagger.Nullable_UString;
+       Scapi_Scopes : in Swagger.Nullable_UString;
        Result : out .Models.AccountConfigUpdate200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -404,6 +409,11 @@ package body .Clients is
       URI.Add_Param ("temu_app_secret", Temu_App_Secret);
       URI.Add_Param ("temu_access_token", Temu_Access_Token);
       URI.Add_Param ("temu_region", Temu_Region);
+      URI.Add_Param ("scapi_client_id", Scapi_Client_Id);
+      URI.Add_Param ("scapi_client_secret", Scapi_Client_Secret);
+      URI.Add_Param ("scapi_organization_id", Scapi_Organization_Id);
+      URI.Add_Param ("scapi_short_code", Scapi_Short_Code);
+      URI.Add_Param ("scapi_scopes", Scapi_Scopes);
       URI.Set_Path ("/account.config.update.json");
       Client.Call (Swagger.Clients.PUT, URI, Reply);
       .Models.Deserialize (Reply, "", Result);

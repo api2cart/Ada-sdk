@@ -5005,6 +5005,11 @@ package .Models is
        Temu_App_Secret : Swagger.Nullable_UString;
        Temu_Access_Token : Swagger.Nullable_UString;
        Temu_Region : Swagger.Nullable_UString;
+       Scapi_Client_Id : Swagger.Nullable_UString;
+       Scapi_Client_Secret : Swagger.Nullable_UString;
+       Scapi_Organization_Id : Swagger.Nullable_UString;
+       Scapi_Short_Code : Swagger.Nullable_UString;
+       Scapi_Scopes : Swagger.Nullable_UString;
      end record;
 
 
@@ -12653,6 +12658,7 @@ package .Models is
        Customer_Country : Swagger.Nullable_UString;
        Customer_Birthday : Swagger.Nullable_UString;
        Customer_Fax : Swagger.Nullable_UString;
+       Is_Guest : Swagger.Nullable_Boolean;
        Order_Payment_Method : Swagger.Nullable_UString;
        Transaction_Id : Swagger.Nullable_UString;
        Currency : Swagger.Nullable_UString;
