@@ -9741,6 +9741,7 @@ package .Models is
        Manufacturer : Swagger.Nullable_UString;
        Reindex : Swagger.Nullable_Boolean;
        Clear_Cache : Swagger.Nullable_Boolean;
+       Processing_Profile_Id : Swagger.Nullable_Integer;
      end record;
 
 
@@ -13025,6 +13026,7 @@ package .Models is
        Is_Free_Shipping : Swagger.Nullable_Boolean;
        Country_Of_Origin : Swagger.Nullable_UString;
        Harmonized_System_Code : Swagger.Nullable_UString;
+       Processing_Profile_Id : Swagger.Nullable_Integer;
        Marketplace_Item_Properties : Swagger.Nullable_UString;
        Clear_Cache : Swagger.Nullable_Boolean;
      end record;

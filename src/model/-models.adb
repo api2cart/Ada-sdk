@@ -19156,6 +19156,9 @@ package body .Models is
       if not Value.Clear_Cache.Is_Null then
          Into.Write_Entity ("clear_cache", Value.Clear_Cache);
       end if;
+      if not Value.Processing_Profile_Id.Is_Null then
+         Into.Write_Entity ("processing_profile_id", Value.Processing_Profile_Id);
+      end if;
       Into.End_Entity (Name);
    end Serialize;
 
@@ -19231,6 +19234,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "manufacturer", Value.Manufacturer);
       Swagger.Streams.Deserialize (Object, "reindex", Value.Reindex);
       Swagger.Streams.Deserialize (Object, "clear_cache", Value.Clear_Cache);
+      Swagger.Streams.Deserialize (Object, "processing_profile_id", Value.Processing_Profile_Id);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;
@@ -25383,6 +25387,9 @@ package body .Models is
       if not Value.Harmonized_System_Code.Is_Null then
          Into.Write_Entity ("harmonized_system_code", Value.Harmonized_System_Code);
       end if;
+      if not Value.Processing_Profile_Id.Is_Null then
+         Into.Write_Entity ("processing_profile_id", Value.Processing_Profile_Id);
+      end if;
       if not Value.Marketplace_Item_Properties.Is_Null then
          Into.Write_Entity ("marketplace_item_properties", Value.Marketplace_Item_Properties);
       end if;
@@ -25462,6 +25469,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "is_free_shipping", Value.Is_Free_Shipping);
       Swagger.Streams.Deserialize (Object, "country_of_origin", Value.Country_Of_Origin);
       Swagger.Streams.Deserialize (Object, "harmonized_system_code", Value.Harmonized_System_Code);
+      Swagger.Streams.Deserialize (Object, "processing_profile_id", Value.Processing_Profile_Id);
       Swagger.Streams.Deserialize (Object, "marketplace_item_properties", Value.Marketplace_Item_Properties);
       Swagger.Streams.Deserialize (Object, "clear_cache", Value.Clear_Cache);
    end Deserialize;
