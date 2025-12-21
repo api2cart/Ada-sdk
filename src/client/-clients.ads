@@ -103,6 +103,7 @@ package .Clients is
        Shopline_App_Secret : in Swagger.Nullable_UString;
        Shopline_Shared_Secret : in Swagger.Nullable_UString;
        Shopify_Access_Token : in Swagger.Nullable_UString;
+       Shopify_Client_Id : in Swagger.Nullable_UString;
        Shopify_Api_Key : in Swagger.Nullable_UString;
        Shopify_Api_Password : in Swagger.Nullable_UString;
        Shopify_Shared_Secret : in Swagger.Nullable_UString;

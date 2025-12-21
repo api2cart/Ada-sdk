@@ -136,6 +136,7 @@ package body .Clients is
        Shopline_App_Secret : in Swagger.Nullable_UString;
        Shopline_Shared_Secret : in Swagger.Nullable_UString;
        Shopify_Access_Token : in Swagger.Nullable_UString;
+       Shopify_Client_Id : in Swagger.Nullable_UString;
        Shopify_Api_Key : in Swagger.Nullable_UString;
        Shopify_Api_Password : in Swagger.Nullable_UString;
        Shopify_Shared_Secret : in Swagger.Nullable_UString;
@@ -311,6 +312,7 @@ package body .Clients is
       URI.Add_Param ("shopline_app_secret", Shopline_App_Secret);
       URI.Add_Param ("shopline_shared_secret", Shopline_Shared_Secret);
       URI.Add_Param ("shopify_access_token", Shopify_Access_Token);
+      URI.Add_Param ("shopify_client_id", Shopify_Client_Id);
       URI.Add_Param ("shopify_api_key", Shopify_Api_Key);
       URI.Add_Param ("shopify_api_password", Shopify_Api_Password);
       URI.Add_Param ("shopify_shared_secret", Shopify_Shared_Secret);

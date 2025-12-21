@@ -4920,6 +4920,7 @@ package .Models is
        Shopline_App_Secret : Swagger.Nullable_UString;
        Shopline_Shared_Secret : Swagger.Nullable_UString;
        Shopify_Access_Token : Swagger.Nullable_UString;
+       Shopify_Client_Id : Swagger.Nullable_UString;
        Shopify_Api_Key : Swagger.Nullable_UString;
        Shopify_Api_Password : Swagger.Nullable_UString;
        Shopify_Shared_Secret : Swagger.Nullable_UString;

@@ -9356,6 +9356,9 @@ package body .Models is
       if not Value.Shopify_Access_Token.Is_Null then
          Into.Write_Entity ("shopify_access_token", Value.Shopify_Access_Token);
       end if;
+      if not Value.Shopify_Client_Id.Is_Null then
+         Into.Write_Entity ("shopify_client_id", Value.Shopify_Client_Id);
+      end if;
       if not Value.Shopify_Api_Key.Is_Null then
          Into.Write_Entity ("shopify_api_key", Value.Shopify_Api_Key);
       end if;
@@ -9729,6 +9732,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "shopline_app_secret", Value.Shopline_App_Secret);
       Swagger.Streams.Deserialize (Object, "shopline_shared_secret", Value.Shopline_Shared_Secret);
       Swagger.Streams.Deserialize (Object, "shopify_access_token", Value.Shopify_Access_Token);
+      Swagger.Streams.Deserialize (Object, "shopify_client_id", Value.Shopify_Client_Id);
       Swagger.Streams.Deserialize (Object, "shopify_api_key", Value.Shopify_Api_Key);
       Swagger.Streams.Deserialize (Object, "shopify_api_password", Value.Shopify_Api_Password);
       Swagger.Streams.Deserialize (Object, "shopify_shared_secret", Value.Shopify_Shared_Secret);
