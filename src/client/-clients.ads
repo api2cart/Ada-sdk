@@ -1174,6 +1174,7 @@ package .Clients is
        Enable_Cache : in Swagger.Nullable_Boolean;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Rounding_Precision : in Swagger.Nullable_Integer;
+       Allow_User_Defined_Order_Statuses : in Swagger.Nullable_Boolean;
        Result : out .Models.OrderInfo200Response_Type);
 
    --  order.list
@@ -1219,6 +1220,7 @@ package .Clients is
        Enable_Cache : in Swagger.Nullable_Boolean;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Rounding_Precision : in Swagger.Nullable_Integer;
+       Allow_User_Defined_Order_Statuses : in Swagger.Nullable_Boolean;
        Result : out .Models.ModelResponseOrderList_Type);
 
    --  order.preestimate_shipping.list
@@ -1332,6 +1334,7 @@ package .Clients is
       (Client : in out Client_Type;
        Store_Id : in Swagger.Nullable_UString;
        Action : in Swagger.Nullable_UString;
+       Allow_User_Defined_Order_Statuses : in Swagger.Nullable_Boolean;
        Response_Fields : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseOrderStatusList_Type);
 

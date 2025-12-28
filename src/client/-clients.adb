@@ -2673,6 +2673,7 @@ package body .Clients is
        Enable_Cache : in Swagger.Nullable_Boolean;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Rounding_Precision : in Swagger.Nullable_Integer;
+       Allow_User_Defined_Order_Statuses : in Swagger.Nullable_Boolean;
        Result : out .Models.OrderInfo200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -2689,6 +2690,7 @@ package body .Clients is
       URI.Add_Param ("enable_cache", Enable_Cache);
       URI.Add_Param ("use_latest_api_version", Use_Latest_Api_Version);
       URI.Add_Param ("rounding_precision", Rounding_Precision);
+      URI.Add_Param ("allow_user_defined_order_statuses", Allow_User_Defined_Order_Statuses);
       URI.Set_Path ("/order.info.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -2737,6 +2739,7 @@ package body .Clients is
        Enable_Cache : in Swagger.Nullable_Boolean;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Rounding_Precision : in Swagger.Nullable_Integer;
+       Allow_User_Defined_Order_Statuses : in Swagger.Nullable_Boolean;
        Result : out .Models.ModelResponseOrderList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -2783,6 +2786,7 @@ package body .Clients is
       URI.Add_Param ("enable_cache", Enable_Cache);
       URI.Add_Param ("use_latest_api_version", Use_Latest_Api_Version);
       URI.Add_Param ("rounding_precision", Rounding_Precision);
+      URI.Add_Param ("allow_user_defined_order_statuses", Allow_User_Defined_Order_Statuses);
       URI.Set_Path ("/order.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -3060,6 +3064,7 @@ package body .Clients is
       (Client : in out Client_Type;
        Store_Id : in Swagger.Nullable_UString;
        Action : in Swagger.Nullable_UString;
+       Allow_User_Defined_Order_Statuses : in Swagger.Nullable_Boolean;
        Response_Fields : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseOrderStatusList_Type) is
       URI   : Swagger.Clients.URI_Type;
@@ -3070,6 +3075,7 @@ package body .Clients is
 
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("action", Action);
+      URI.Add_Param ("allow_user_defined_order_statuses", Allow_User_Defined_Order_Statuses);
       URI.Add_Param ("response_fields", Response_Fields);
       URI.Set_Path ("/order.status.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
