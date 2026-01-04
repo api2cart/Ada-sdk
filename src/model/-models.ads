@@ -8545,6 +8545,8 @@ package .Models is
        Combination : .Models.ProductChildItemCombination_Type_Vectors.Vector;
        Default_Price : Swagger.Number;
        Cost_Price : Swagger.Number;
+       Unit_Price : Swagger.Number;
+       Measure_Unit : Swagger.Nullable_UString;
        List_Price : Swagger.Number;
        Wholesale_Price : Swagger.Number;
        Advanced_Price : .Models.ProductAdvancedPrice_Type_Vectors.Vector;
@@ -8819,6 +8821,8 @@ package .Models is
        Price : Swagger.Number;
        Advanced_Price : .Models.ProductAdvancedPrice_Type_Vectors.Vector;
        Cost_Price : Swagger.Number;
+       Unit_Price : Swagger.Number;
+       Measure_Unit : Swagger.Nullable_UString;
        Quantity : Swagger.Number;
        Inventory : .Models.ProductInventory_Type_Vectors.Vector;
        Group_Items : .Models.ProductGroupItem_Type_Vectors.Vector;
@@ -9723,6 +9727,8 @@ package .Models is
        Fixed_Cost_Shipping_Price : Swagger.Number;
        Sprice_Create : Swagger.Nullable_UString;
        Sprice_Expire : Swagger.Nullable_UString;
+       Measure_Unit : Swagger.Nullable_UString;
+       Unit_Price : Swagger.Number;
        Weight : Swagger.Number;
        Barcode : Swagger.Nullable_UString;
        Width : Swagger.Number;
@@ -12996,6 +13002,8 @@ package .Models is
        Sprice_Modified : Swagger.Nullable_UString;
        Sprice_Expire : Swagger.Nullable_UString;
        Tier_Prices : .Models.ProductAddTierPricesInner_Type_Vectors.Vector;
+       Measure_Unit : Swagger.Nullable_UString;
+       Unit_Price : Swagger.Number;
        Quantity : Swagger.Number;
        Warehouse_Id : Swagger.Nullable_UString;
        In_Stock : Swagger.Nullable_Boolean;
@@ -13195,6 +13203,8 @@ package .Models is
        Product_Class : Swagger.Nullable_UString;
        Brand_Name : Swagger.Nullable_UString;
        Available_For_View : Swagger.Nullable_Boolean;
+       Measure_Unit : Swagger.Nullable_UString;
+       Unit_Price : Swagger.Number;
        Stores_Ids : Swagger.Nullable_UString;
        Store_Id : Swagger.Nullable_UString;
        Lang_Id : Swagger.Nullable_UString;
@@ -13311,6 +13321,8 @@ package .Models is
        Group_Prices : .Models.ProductAddGroupPricesInner_Type_Vectors.Vector;
        Buyitnow_Price : Swagger.Number;
        Reserve_Price : Swagger.Number;
+       Measure_Unit : Swagger.Nullable_UString;
+       Unit_Price : Swagger.Number;
        Quantity : Swagger.Number;
        In_Stock : Swagger.Nullable_Boolean;
        Manage_Stock : Swagger.Nullable_Boolean;

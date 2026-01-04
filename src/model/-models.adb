@@ -16638,6 +16638,8 @@ package body .Models is
       Serialize (Into, "combination", Value.Combination);
       Serialize (Into, "default_price", Value.Default_Price);
       Serialize (Into, "cost_price", Value.Cost_Price);
+      Serialize (Into, "unit_price", Value.Unit_Price);
+      Into.Write_Entity ("measure_unit", Value.Measure_Unit);
       Serialize (Into, "list_price", Value.List_Price);
       Serialize (Into, "wholesale_price", Value.Wholesale_Price);
       Serialize (Into, "advanced_price", Value.Advanced_Price);
@@ -16706,6 +16708,8 @@ package body .Models is
       Deserialize (Object, "combination", Value.Combination);
       Swagger.Streams.Deserialize (Object, "default_price", Value.Default_Price);
       Swagger.Streams.Deserialize (Object, "cost_price", Value.Cost_Price);
+      Swagger.Streams.Deserialize (Object, "unit_price", Value.Unit_Price);
+      Swagger.Streams.Deserialize (Object, "measure_unit", Value.Measure_Unit);
       Swagger.Streams.Deserialize (Object, "list_price", Value.List_Price);
       Swagger.Streams.Deserialize (Object, "wholesale_price", Value.Wholesale_Price);
       Deserialize (Object, "advanced_price", Value.Advanced_Price);
@@ -17159,6 +17163,8 @@ package body .Models is
       Serialize (Into, "price", Value.Price);
       Serialize (Into, "advanced_price", Value.Advanced_Price);
       Serialize (Into, "cost_price", Value.Cost_Price);
+      Serialize (Into, "unit_price", Value.Unit_Price);
+      Into.Write_Entity ("measure_unit", Value.Measure_Unit);
       Serialize (Into, "quantity", Value.Quantity);
       Serialize (Into, "inventory", Value.Inventory);
       Serialize (Into, "group_items", Value.Group_Items);
@@ -17236,6 +17242,8 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "price", Value.Price);
       Deserialize (Object, "advanced_price", Value.Advanced_Price);
       Swagger.Streams.Deserialize (Object, "cost_price", Value.Cost_Price);
+      Swagger.Streams.Deserialize (Object, "unit_price", Value.Unit_Price);
+      Swagger.Streams.Deserialize (Object, "measure_unit", Value.Measure_Unit);
       Swagger.Streams.Deserialize (Object, "quantity", Value.Quantity);
       Deserialize (Object, "inventory", Value.Inventory);
       Deserialize (Object, "group_items", Value.Group_Items);
@@ -19111,6 +19119,10 @@ package body .Models is
       if not Value.Sprice_Expire.Is_Null then
          Into.Write_Entity ("sprice_expire", Value.Sprice_Expire);
       end if;
+      if not Value.Measure_Unit.Is_Null then
+         Into.Write_Entity ("measure_unit", Value.Measure_Unit);
+      end if;
+      Serialize (Into, "unit_price", Value.Unit_Price);
       Serialize (Into, "weight", Value.Weight);
       if not Value.Barcode.Is_Null then
          Into.Write_Entity ("barcode", Value.Barcode);
@@ -19219,6 +19231,8 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "fixed_cost_shipping_price", Value.Fixed_Cost_Shipping_Price);
       Swagger.Streams.Deserialize (Object, "sprice_create", Value.Sprice_Create);
       Swagger.Streams.Deserialize (Object, "sprice_expire", Value.Sprice_Expire);
+      Swagger.Streams.Deserialize (Object, "measure_unit", Value.Measure_Unit);
+      Swagger.Streams.Deserialize (Object, "unit_price", Value.Unit_Price);
       Swagger.Streams.Deserialize (Object, "weight", Value.Weight);
       Swagger.Streams.Deserialize (Object, "barcode", Value.Barcode);
       Swagger.Streams.Deserialize (Object, "width", Value.Width);
@@ -25312,6 +25326,10 @@ package body .Models is
          Into.Write_Entity ("sprice_expire", Value.Sprice_Expire);
       end if;
       Serialize (Into, "tier_prices", Value.Tier_Prices);
+      if not Value.Measure_Unit.Is_Null then
+         Into.Write_Entity ("measure_unit", Value.Measure_Unit);
+      end if;
+      Serialize (Into, "unit_price", Value.Unit_Price);
       Serialize (Into, "quantity", Value.Quantity);
       if not Value.Warehouse_Id.Is_Null then
          Into.Write_Entity ("warehouse_id", Value.Warehouse_Id);
@@ -25442,6 +25460,8 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "sprice_modified", Value.Sprice_Modified);
       Swagger.Streams.Deserialize (Object, "sprice_expire", Value.Sprice_Expire);
       Deserialize (Object, "tier_prices", Value.Tier_Prices);
+      Swagger.Streams.Deserialize (Object, "measure_unit", Value.Measure_Unit);
+      Swagger.Streams.Deserialize (Object, "unit_price", Value.Unit_Price);
       Swagger.Streams.Deserialize (Object, "quantity", Value.Quantity);
       Swagger.Streams.Deserialize (Object, "warehouse_id", Value.Warehouse_Id);
       Swagger.Streams.Deserialize (Object, "in_stock", Value.In_Stock);
@@ -25785,6 +25805,10 @@ package body .Models is
       if not Value.Available_For_View.Is_Null then
          Into.Write_Entity ("available_for_view", Value.Available_For_View);
       end if;
+      if not Value.Measure_Unit.Is_Null then
+         Into.Write_Entity ("measure_unit", Value.Measure_Unit);
+      end if;
+      Serialize (Into, "unit_price", Value.Unit_Price);
       if not Value.Stores_Ids.Is_Null then
          Into.Write_Entity ("stores_ids", Value.Stores_Ids);
       end if;
@@ -25990,6 +26014,8 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "product_class", Value.Product_Class);
       Swagger.Streams.Deserialize (Object, "brand_name", Value.Brand_Name);
       Swagger.Streams.Deserialize (Object, "available_for_view", Value.Available_For_View);
+      Swagger.Streams.Deserialize (Object, "measure_unit", Value.Measure_Unit);
+      Swagger.Streams.Deserialize (Object, "unit_price", Value.Unit_Price);
       Swagger.Streams.Deserialize (Object, "stores_ids", Value.Stores_Ids);
       Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Swagger.Streams.Deserialize (Object, "lang_id", Value.Lang_Id);
@@ -26137,6 +26163,10 @@ package body .Models is
       Serialize (Into, "group_prices", Value.Group_Prices);
       Serialize (Into, "buyitnow_price", Value.Buyitnow_Price);
       Serialize (Into, "reserve_price", Value.Reserve_Price);
+      if not Value.Measure_Unit.Is_Null then
+         Into.Write_Entity ("measure_unit", Value.Measure_Unit);
+      end if;
+      Serialize (Into, "unit_price", Value.Unit_Price);
       Serialize (Into, "quantity", Value.Quantity);
       if not Value.In_Stock.Is_Null then
          Into.Write_Entity ("in_stock", Value.In_Stock);
@@ -26408,6 +26438,8 @@ package body .Models is
       Deserialize (Object, "group_prices", Value.Group_Prices);
       Swagger.Streams.Deserialize (Object, "buyitnow_price", Value.Buyitnow_Price);
       Swagger.Streams.Deserialize (Object, "reserve_price", Value.Reserve_Price);
+      Swagger.Streams.Deserialize (Object, "measure_unit", Value.Measure_Unit);
+      Swagger.Streams.Deserialize (Object, "unit_price", Value.Unit_Price);
       Swagger.Streams.Deserialize (Object, "quantity", Value.Quantity);
       Swagger.Streams.Deserialize (Object, "in_stock", Value.In_Stock);
       Swagger.Streams.Deserialize (Object, "manage_stock", Value.Manage_Stock);
