@@ -207,6 +207,7 @@ package .Clients is
        Scapi_Organization_Id : in Swagger.Nullable_UString;
        Scapi_Short_Code : in Swagger.Nullable_UString;
        Scapi_Scopes : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AccountConfigUpdate200Response_Type);
 
    --  account.failed_webhooks
@@ -249,6 +250,7 @@ package .Clients is
        Used_In_Product_Listing : in Swagger.Nullable_Boolean;
        Used_For_Sort_By : in Swagger.Nullable_Boolean;
        Apply_To : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AttributeAdd200Response_Type);
 
    --  attribute.assign.group
@@ -258,6 +260,7 @@ package .Clients is
        Id : in Swagger.UString;
        Group_Id : in Swagger.UString;
        Attribute_Set_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AttributeAssignGroup200Response_Type);
 
    --  attribute.assign.set
@@ -267,6 +270,7 @@ package .Clients is
        Id : in Swagger.UString;
        Attribute_Set_Id : in Swagger.UString;
        Group_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AttributeAssignGroup200Response_Type);
 
    --  attribute.attributeset.list
@@ -358,6 +362,7 @@ package .Clients is
       (Client : in out Client_Type;
        Id : in Swagger.UString;
        Group_Id : in Swagger.UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AttributeUnassignGroup200Response_Type);
 
    --  attribute.unassign.set
@@ -366,6 +371,7 @@ package .Clients is
       (Client : in out Client_Type;
        Id : in Swagger.UString;
        Attribute_Set_Id : in Swagger.UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AttributeUnassignGroup200Response_Type);
 
    --  attribute.update
@@ -376,6 +382,7 @@ package .Clients is
        Name : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AttributeUpdate200Response_Type);
 
    --  attribute.value.add
@@ -388,6 +395,7 @@ package .Clients is
        Description : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AttributeAdd200Response_Type);
 
    --  attribute.value.delete
@@ -410,6 +418,7 @@ package .Clients is
        Code : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AttributeUpdate200Response_Type);
 
    --  basket.info
@@ -432,6 +441,7 @@ package .Clients is
        Variant_Id : in Swagger.Nullable_UString;
        Quantity : in Swagger.Number;
        Store_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.BasketItemAdd200Response_Type);
 
    --  basket.live_shipping_service.create
@@ -441,6 +451,7 @@ package .Clients is
        Name : in Swagger.UString;
        Callback : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.BasketLiveShippingServiceCreate200Response_Type);
 
    --  basket.live_shipping_service.delete
@@ -538,6 +549,7 @@ package .Clients is
        Include_Tax : in Swagger.Nullable_Boolean;
        Include_Shipping : in Swagger.Nullable_Boolean;
        Store_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.BasketLiveShippingServiceDelete200Response_Type);
 
    --  cart.coupon.count
@@ -598,6 +610,7 @@ package .Clients is
        Recipient_Email : in Swagger.Nullable_UString;
        Recipient_Name : in Swagger.Nullable_UString;
        Owner_Name : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.CartGiftcardAdd200Response_Type);
 
    --  cart.giftcard.count
@@ -664,6 +677,7 @@ package .Clients is
        Entity : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AttributeAdd200Response_Type);
 
    --  cart.meta_data.unset
@@ -704,6 +718,7 @@ package .Clients is
        Scope : in Swagger.Nullable_UString;
        Events : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.CartScriptAdd200Response_Type);
 
    --  cart.script.delete
@@ -770,6 +785,7 @@ package .Clients is
        Store_Id : in Swagger.Nullable_UString;
        Stores_Ids : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.CategoryAdd200Response_Type);
 
    --  category.add.batch
@@ -786,6 +802,7 @@ package .Clients is
        Category_Id : in Swagger.UString;
        Product_Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.CategoryAssign200Response_Type);
 
    --  category.count
@@ -815,6 +832,13 @@ package .Clients is
        Store_Id : in Swagger.Nullable_UString;
        Result : out .Models.CategoryDelete200Response_Type);
 
+   --  category.delete.batch
+   --  Delete categories from the store.
+   procedure Category_Delete_Batch
+      (Client : in out Client_Type;
+       Category_Delete_Batch_Type : in .Models.CategoryDeleteBatch_Type;
+       Result : out .Models.CategoryAddBatch200Response_Type);
+
    --  category.find
    --  Search category in store. "Laptop" is specified here by default.
    procedure Category_Find
@@ -838,6 +862,7 @@ package .Clients is
        Label : in Swagger.Nullable_UString;
        Mime : in Swagger.Nullable_UString;
        Position : in Swagger.Nullable_Integer;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.CategoryImageAdd200Response_Type);
 
    --  category.image.delete
@@ -897,6 +922,7 @@ package .Clients is
        Category_Id : in Swagger.UString;
        Product_Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.CategoryAssign200Response_Type);
 
    --  category.update
@@ -918,6 +944,7 @@ package .Clients is
        Store_Id : in Swagger.Nullable_UString;
        Stores_Ids : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AccountConfigUpdate200Response_Type);
 
    --  customer.add
@@ -972,6 +999,7 @@ package .Clients is
    procedure Customer_Delete
       (Client : in out Client_Type;
        Id : in Swagger.UString;
+       Store_Id : in Swagger.Nullable_UString;
        Result : out .Models.CustomerDelete200Response_Type);
 
    --  customer.find
@@ -992,6 +1020,7 @@ package .Clients is
        Name : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
        Stores_Ids : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.CustomerGroupAdd200Response_Type);
 
    --  customer.group.list
@@ -1372,6 +1401,7 @@ package .Clients is
        Create_Invoice : in Swagger.Nullable_Boolean;
        Origin : in Swagger.Nullable_UString;
        Tags : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AccountConfigUpdate200Response_Type);
 
    --  product.add
@@ -1421,6 +1451,7 @@ package .Clients is
        Value_Id : in Swagger.Nullable_Integer;
        Lang_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.ProductAttributeValueSet200Response_Type);
 
    --  product.attribute.value.unset
@@ -1433,6 +1464,7 @@ package .Clients is
        Include_Default : in Swagger.Nullable_Boolean;
        Reindex : in Swagger.Nullable_Boolean;
        Clear_Cache : in Swagger.Nullable_Boolean;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.ProductAttributeValueUnset200Response_Type);
 
    --  product.brand.list
@@ -1554,6 +1586,7 @@ package .Clients is
        Symbol_Left : in Swagger.Nullable_UString;
        Symbol_Right : in Swagger.Nullable_UString;
        Default : in Swagger.Nullable_Boolean;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.ProductCurrencyAdd200Response_Type);
 
    --  product.currency.list
@@ -1627,6 +1660,7 @@ package .Clients is
        Label : in Swagger.Nullable_UString;
        Position : in Swagger.Nullable_Integer;
        Hidden : in Swagger.Nullable_Boolean;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.ProductImageUpdate200Response_Type);
 
    --  product.info
@@ -1700,6 +1734,7 @@ package .Clients is
        Search_Keywords : in Swagger.Nullable_UString;
        Image_Url : in Swagger.Nullable_UString;
        Seo_Url : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.ProductManufacturerAdd200Response_Type);
 
    --  product.option.add
@@ -1719,6 +1754,7 @@ package .Clients is
        Sort_Order : in Swagger.Nullable_Integer;
        Option_Values : in Swagger.Nullable_UString;
        Clear_Cache : in Swagger.Nullable_Boolean;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.ProductOptionAssign200Response_Type);
 
    --  product.option.delete
@@ -1755,6 +1791,7 @@ package .Clients is
        Display_Value : in Swagger.Nullable_UString;
        Is_Default : in Swagger.Nullable_Boolean;
        Clear_Cache : in Swagger.Nullable_Boolean;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.ProductOptionValueAdd200Response_Type);
 
    --  product.option.value.assign
@@ -1764,6 +1801,7 @@ package .Clients is
        Product_Option_Id : in Integer;
        Option_Value_Id : in Swagger.UString;
        Clear_Cache : in Swagger.Nullable_Boolean;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.ProductOptionValueAssign200Response_Type);
 
    --  product.option.value.delete
@@ -1788,6 +1826,7 @@ package .Clients is
        Quantity : in Swagger.Number;
        Display_Value : in Swagger.Nullable_UString;
        Clear_Cache : in Swagger.Nullable_Boolean;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AccountConfigUpdate200Response_Type);
 
    --  product.price.add
@@ -1841,6 +1880,7 @@ package .Clients is
       (Client : in out Client_Type;
        Product_Id : in Swagger.UString;
        Store_Id : in Swagger.UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AccountConfigUpdate200Response_Type);
 
    --  product.tax.add
@@ -2091,6 +2131,7 @@ package .Clients is
        Active : in Swagger.Nullable_Boolean;
        Lang_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.BasketLiveShippingServiceCreate200Response_Type);
 
    --  webhook.delete
@@ -2130,6 +2171,7 @@ package .Clients is
        Response_Fields : in Swagger.Nullable_UString;
        Active : in Swagger.Nullable_Boolean;
        Lang_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.ProductImageUpdate200Response_Type);
 
 end .Clients;

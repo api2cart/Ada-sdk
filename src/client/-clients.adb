@@ -240,6 +240,7 @@ package body .Clients is
        Scapi_Organization_Id : in Swagger.Nullable_UString;
        Scapi_Short_Code : in Swagger.Nullable_UString;
        Scapi_Scopes : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AccountConfigUpdate200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -416,6 +417,7 @@ package body .Clients is
       URI.Add_Param ("scapi_organization_id", Scapi_Organization_Id);
       URI.Add_Param ("scapi_short_code", Scapi_Short_Code);
       URI.Add_Param ("scapi_scopes", Scapi_Scopes);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/account.config.update.json");
       Client.Call (Swagger.Clients.PUT, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -484,6 +486,7 @@ package body .Clients is
        Used_In_Product_Listing : in Swagger.Nullable_Boolean;
        Used_For_Sort_By : in Swagger.Nullable_Boolean;
        Apply_To : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AttributeAdd200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -512,6 +515,7 @@ package body .Clients is
       URI.Add_Param ("used_in_product_listing", Used_In_Product_Listing);
       URI.Add_Param ("used_for_sort_by", Used_For_Sort_By);
       URI.Add_Param ("apply_to", Apply_To);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/attribute.add.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -524,6 +528,7 @@ package body .Clients is
        Id : in Swagger.UString;
        Group_Id : in Swagger.UString;
        Attribute_Set_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AttributeAssignGroup200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -534,6 +539,7 @@ package body .Clients is
       URI.Add_Param ("id", Id);
       URI.Add_Param ("group_id", Group_Id);
       URI.Add_Param ("attribute_set_id", Attribute_Set_Id);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/attribute.assign.group.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -546,6 +552,7 @@ package body .Clients is
        Id : in Swagger.UString;
        Attribute_Set_Id : in Swagger.UString;
        Group_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AttributeAssignGroup200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -556,6 +563,7 @@ package body .Clients is
       URI.Add_Param ("id", Id);
       URI.Add_Param ("group_id", Group_Id);
       URI.Add_Param ("attribute_set_id", Attribute_Set_Id);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/attribute.assign.set.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -761,6 +769,7 @@ package body .Clients is
       (Client : in out Client_Type;
        Id : in Swagger.UString;
        Group_Id : in Swagger.UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AttributeUnassignGroup200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -770,6 +779,7 @@ package body .Clients is
 
       URI.Add_Param ("id", Id);
       URI.Add_Param ("group_id", Group_Id);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/attribute.unassign.group.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -781,6 +791,7 @@ package body .Clients is
       (Client : in out Client_Type;
        Id : in Swagger.UString;
        Attribute_Set_Id : in Swagger.UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AttributeUnassignGroup200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -790,6 +801,7 @@ package body .Clients is
 
       URI.Add_Param ("id", Id);
       URI.Add_Param ("attribute_set_id", Attribute_Set_Id);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/attribute.unassign.set.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -803,6 +815,7 @@ package body .Clients is
        Name : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AttributeUpdate200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -814,6 +827,7 @@ package body .Clients is
       URI.Add_Param ("name", Name);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("lang_id", Lang_Id);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/attribute.update.json");
       Client.Call (Swagger.Clients.PUT, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -829,6 +843,7 @@ package body .Clients is
        Description : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AttributeAdd200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -842,6 +857,7 @@ package body .Clients is
       URI.Add_Param ("description", Description);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("lang_id", Lang_Id);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/attribute.value.add.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -880,6 +896,7 @@ package body .Clients is
        Code : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AttributeUpdate200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -894,6 +911,7 @@ package body .Clients is
       URI.Add_Param ("code", Code);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("lang_id", Lang_Id);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/attribute.value.update.json");
       Client.Call (Swagger.Clients.PUT, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -934,6 +952,7 @@ package body .Clients is
        Variant_Id : in Swagger.Nullable_UString;
        Quantity : in Swagger.Number;
        Store_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.BasketItemAdd200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -946,6 +965,7 @@ package body .Clients is
       URI.Add_Param ("variant_id", Variant_Id);
       URI.Add_Param ("quantity", Quantity);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/basket.item.add.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -958,6 +978,7 @@ package body .Clients is
        Name : in Swagger.UString;
        Callback : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.BasketLiveShippingServiceCreate200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -968,6 +989,7 @@ package body .Clients is
       URI.Add_Param ("name", Name);
       URI.Add_Param ("callback", Callback);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/basket.live_shipping_service.create.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -1191,6 +1213,7 @@ package body .Clients is
        Include_Tax : in Swagger.Nullable_Boolean;
        Include_Shipping : in Swagger.Nullable_Boolean;
        Store_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.BasketLiveShippingServiceDelete200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -1207,6 +1230,7 @@ package body .Clients is
       URI.Add_Param ("include_tax", Include_Tax);
       URI.Add_Param ("include_shipping", Include_Shipping);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/cart.coupon.condition.add.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -1334,6 +1358,7 @@ package body .Clients is
        Recipient_Email : in Swagger.Nullable_UString;
        Recipient_Name : in Swagger.Nullable_UString;
        Owner_Name : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.CartGiftcardAdd200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -1347,6 +1372,7 @@ package body .Clients is
       URI.Add_Param ("recipient_email", Recipient_Email);
       URI.Add_Param ("recipient_name", Recipient_Name);
       URI.Add_Param ("owner_name", Owner_Name);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/cart.giftcard.add.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -1489,6 +1515,7 @@ package body .Clients is
        Entity : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AttributeAdd200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -1503,6 +1530,7 @@ package body .Clients is
       URI.Add_Param ("entity", Entity);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("lang_id", Lang_Id);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/cart.meta_data.set.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -1584,6 +1612,7 @@ package body .Clients is
        Scope : in Swagger.Nullable_UString;
        Events : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.CartScriptAdd200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -1599,6 +1628,7 @@ package body .Clients is
       URI.Add_Param ("scope", Scope);
       URI.Add_Param ("events", Events);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/cart.script.add.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -1729,6 +1759,7 @@ package body .Clients is
        Store_Id : in Swagger.Nullable_UString;
        Stores_Ids : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.CategoryAdd200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -1751,6 +1782,7 @@ package body .Clients is
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("stores_ids", Stores_Ids);
       URI.Add_Param ("lang_id", Lang_Id);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/category.add.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -1782,6 +1814,7 @@ package body .Clients is
        Category_Id : in Swagger.UString;
        Product_Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.CategoryAssign200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -1792,6 +1825,7 @@ package body .Clients is
       URI.Add_Param ("category_id", Category_Id);
       URI.Add_Param ("product_id", Product_Id);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/category.assign.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -1859,6 +1893,25 @@ package body .Clients is
       .Models.Deserialize (Reply, "", Result);
    end Category_Delete;
 
+   --  category.delete.batch
+   --  Delete categories from the store.
+   procedure Category_Delete_Batch
+      (Client : in out Client_Type;
+       Category_Delete_Batch_Type : in .Models.CategoryDeleteBatch_Type;
+       Result : out .Models.CategoryAddBatch200Response_Type) is
+      URI   : Swagger.Clients.URI_Type;
+      Req   : Swagger.Clients.Request_Type;
+      Reply : Swagger.Value_Type;
+   begin
+      Client.Set_Accept (Media_List_1);
+      Client.Initialize (Req, Media_List_1);
+      .Models.Serialize (Req.Stream, "", Category_Delete_Batch_Type);
+
+      URI.Set_Path ("/category.delete.batch.json");
+      Client.Call (Swagger.Clients.POST, URI, Req, Reply);
+      .Models.Deserialize (Reply, "", Result);
+   end Category_Delete_Batch;
+
    --  category.find
    --  Search category in store. "Laptop" is specified here by default.
    procedure Category_Find
@@ -1897,6 +1950,7 @@ package body .Clients is
        Label : in Swagger.Nullable_UString;
        Mime : in Swagger.Nullable_UString;
        Position : in Swagger.Nullable_Integer;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.CategoryImageAdd200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -1912,6 +1966,7 @@ package body .Clients is
       URI.Add_Param ("label", Label);
       URI.Add_Param ("mime", Mime);
       URI.Add_Param ("position", Position);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/category.image.add.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -2036,6 +2091,7 @@ package body .Clients is
        Category_Id : in Swagger.UString;
        Product_Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.CategoryAssign200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -2046,6 +2102,7 @@ package body .Clients is
       URI.Add_Param ("category_id", Category_Id);
       URI.Add_Param ("product_id", Product_Id);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/category.unassign.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -2070,6 +2127,7 @@ package body .Clients is
        Store_Id : in Swagger.Nullable_UString;
        Stores_Ids : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AccountConfigUpdate200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -2092,6 +2150,7 @@ package body .Clients is
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("stores_ids", Stores_Ids);
       URI.Add_Param ("lang_id", Lang_Id);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/category.update.json");
       Client.Call (Swagger.Clients.PUT, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -2214,6 +2273,7 @@ package body .Clients is
    procedure Customer_Delete
       (Client : in out Client_Type;
        Id : in Swagger.UString;
+       Store_Id : in Swagger.Nullable_UString;
        Result : out .Models.CustomerDelete200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -2222,6 +2282,7 @@ package body .Clients is
 
 
       URI.Add_Param ("id", Id);
+      URI.Add_Param ("store_id", Store_Id);
       URI.Set_Path ("/customer.delete.json");
       Client.Call (Swagger.Clients.DELETE, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -2260,6 +2321,7 @@ package body .Clients is
        Name : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
        Stores_Ids : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.CustomerGroupAdd200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -2270,6 +2332,7 @@ package body .Clients is
       URI.Add_Param ("name", Name);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("stores_ids", Stores_Ids);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/customer.group.add.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -3133,6 +3196,7 @@ package body .Clients is
        Create_Invoice : in Swagger.Nullable_Boolean;
        Origin : in Swagger.Nullable_UString;
        Tags : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AccountConfigUpdate200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -3157,6 +3221,7 @@ package body .Clients is
       URI.Add_Param ("create_invoice", Create_Invoice);
       URI.Add_Param ("origin", Origin);
       URI.Add_Param ("tags", Tags);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/order.update.json");
       Client.Call (Swagger.Clients.PUT, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -3258,6 +3323,7 @@ package body .Clients is
        Value_Id : in Swagger.Nullable_Integer;
        Lang_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.ProductAttributeValueSet200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -3273,6 +3339,7 @@ package body .Clients is
       URI.Add_Param ("value_id", Value_Id);
       URI.Add_Param ("lang_id", Lang_Id);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/product.attribute.value.set.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -3288,6 +3355,7 @@ package body .Clients is
        Include_Default : in Swagger.Nullable_Boolean;
        Reindex : in Swagger.Nullable_Boolean;
        Clear_Cache : in Swagger.Nullable_Boolean;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.ProductAttributeValueUnset200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -3301,6 +3369,7 @@ package body .Clients is
       URI.Add_Param ("include_default", Include_Default);
       URI.Add_Param ("reindex", Reindex);
       URI.Add_Param ("clear_cache", Clear_Cache);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/product.attribute.value.unset.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -3553,6 +3622,7 @@ package body .Clients is
        Symbol_Left : in Swagger.Nullable_UString;
        Symbol_Right : in Swagger.Nullable_UString;
        Default : in Swagger.Nullable_Boolean;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.ProductCurrencyAdd200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -3567,6 +3637,7 @@ package body .Clients is
       URI.Add_Param ("symbol_left", Symbol_Left);
       URI.Add_Param ("symbol_right", Symbol_Right);
       URI.Add_Param ("default", Default);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/product.currency.add.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -3726,6 +3797,7 @@ package body .Clients is
        Label : in Swagger.Nullable_UString;
        Position : in Swagger.Nullable_Integer;
        Hidden : in Swagger.Nullable_Boolean;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.ProductImageUpdate200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -3743,6 +3815,7 @@ package body .Clients is
       URI.Add_Param ("label", Label);
       URI.Add_Param ("position", Position);
       URI.Add_Param ("hidden", Hidden);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/product.image.update.json");
       Client.Call (Swagger.Clients.PUT, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -3885,6 +3958,7 @@ package body .Clients is
        Search_Keywords : in Swagger.Nullable_UString;
        Image_Url : in Swagger.Nullable_UString;
        Seo_Url : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.ProductManufacturerAdd200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -3901,6 +3975,7 @@ package body .Clients is
       URI.Add_Param ("search_keywords", Search_Keywords);
       URI.Add_Param ("image_url", Image_Url);
       URI.Add_Param ("seo_url", Seo_Url);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/product.manufacturer.add.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -3935,6 +4010,7 @@ package body .Clients is
        Sort_Order : in Swagger.Nullable_Integer;
        Option_Values : in Swagger.Nullable_UString;
        Clear_Cache : in Swagger.Nullable_Boolean;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.ProductOptionAssign200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -3948,6 +4024,7 @@ package body .Clients is
       URI.Add_Param ("sort_order", Sort_Order);
       URI.Add_Param ("option_values", Option_Values);
       URI.Add_Param ("clear_cache", Clear_Cache);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/product.option.assign.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -4018,6 +4095,7 @@ package body .Clients is
        Display_Value : in Swagger.Nullable_UString;
        Is_Default : in Swagger.Nullable_Boolean;
        Clear_Cache : in Swagger.Nullable_Boolean;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.ProductOptionValueAdd200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -4032,6 +4110,7 @@ package body .Clients is
       URI.Add_Param ("display_value", Display_Value);
       URI.Add_Param ("is_default", Is_Default);
       URI.Add_Param ("clear_cache", Clear_Cache);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/product.option.value.add.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -4044,6 +4123,7 @@ package body .Clients is
        Product_Option_Id : in Integer;
        Option_Value_Id : in Swagger.UString;
        Clear_Cache : in Swagger.Nullable_Boolean;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.ProductOptionValueAssign200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -4054,6 +4134,7 @@ package body .Clients is
       URI.Add_Param ("product_option_id", Product_Option_Id);
       URI.Add_Param ("option_value_id", Option_Value_Id);
       URI.Add_Param ("clear_cache", Clear_Cache);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/product.option.value.assign.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -4095,6 +4176,7 @@ package body .Clients is
        Quantity : in Swagger.Number;
        Display_Value : in Swagger.Nullable_UString;
        Clear_Cache : in Swagger.Nullable_Boolean;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AccountConfigUpdate200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -4110,6 +4192,7 @@ package body .Clients is
       URI.Add_Param ("quantity", Quantity);
       URI.Add_Param ("display_value", Display_Value);
       URI.Add_Param ("clear_cache", Clear_Cache);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/product.option.value.update.json");
       Client.Call (Swagger.Clients.PUT, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -4229,6 +4312,7 @@ package body .Clients is
       (Client : in out Client_Type;
        Product_Id : in Swagger.UString;
        Store_Id : in Swagger.UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AccountConfigUpdate200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -4238,6 +4322,7 @@ package body .Clients is
 
       URI.Add_Param ("product_id", Product_Id);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/product.store.assign.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -4833,6 +4918,7 @@ package body .Clients is
        Active : in Swagger.Nullable_Boolean;
        Lang_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.BasketLiveShippingServiceCreate200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -4849,6 +4935,7 @@ package body .Clients is
       URI.Add_Param ("active", Active);
       URI.Add_Param ("lang_id", Lang_Id);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/webhook.create.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -4929,6 +5016,7 @@ package body .Clients is
        Response_Fields : in Swagger.Nullable_UString;
        Active : in Swagger.Nullable_Boolean;
        Lang_Id : in Swagger.Nullable_UString;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.ProductImageUpdate200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -4943,6 +5031,7 @@ package body .Clients is
       URI.Add_Param ("response_fields", Response_Fields);
       URI.Add_Param ("active", Active);
       URI.Add_Param ("lang_id", Lang_Id);
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/webhook.update.json");
       Client.Call (Swagger.Clients.PUT, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
