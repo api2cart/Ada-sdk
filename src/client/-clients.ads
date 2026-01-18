@@ -887,6 +887,7 @@ package .Clients is
        Exclude : in Swagger.Nullable_UString;
        Report_Request_Id : in Swagger.Nullable_UString;
        Disable_Report_Cache : in Swagger.Nullable_Boolean;
+       Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Result : out .Models.CategoryInfo200Response_Type);
 
    --  category.list
@@ -913,6 +914,7 @@ package .Clients is
        Report_Request_Id : in Swagger.Nullable_UString;
        Disable_Report_Cache : in Swagger.Nullable_Boolean;
        Disable_Cache : in Swagger.Nullable_Boolean;
+       Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Result : out .Models.ModelResponseCategoryList_Type);
 
    --  category.unassign

@@ -2007,6 +2007,7 @@ package body .Clients is
        Exclude : in Swagger.Nullable_UString;
        Report_Request_Id : in Swagger.Nullable_UString;
        Disable_Report_Cache : in Swagger.Nullable_Boolean;
+       Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Result : out .Models.CategoryInfo200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -2023,6 +2024,7 @@ package body .Clients is
       URI.Add_Param ("exclude", Exclude);
       URI.Add_Param ("report_request_id", Report_Request_Id);
       URI.Add_Param ("disable_report_cache", Disable_Report_Cache);
+      URI.Add_Param ("use_latest_api_version", Use_Latest_Api_Version);
       URI.Set_Path ("/category.info.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -2052,6 +2054,7 @@ package body .Clients is
        Report_Request_Id : in Swagger.Nullable_UString;
        Disable_Report_Cache : in Swagger.Nullable_Boolean;
        Disable_Cache : in Swagger.Nullable_Boolean;
+       Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Result : out .Models.ModelResponseCategoryList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -2079,6 +2082,7 @@ package body .Clients is
       URI.Add_Param ("report_request_id", Report_Request_Id);
       URI.Add_Param ("disable_report_cache", Disable_Report_Cache);
       URI.Add_Param ("disable_cache", Disable_Cache);
+      URI.Add_Param ("use_latest_api_version", Use_Latest_Api_Version);
       URI.Set_Path ("/category.list.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
