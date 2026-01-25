@@ -30,6 +30,7 @@ package .Clients is
        Store_Key : in Swagger.Nullable_UString;
        Request_From_Date : in Swagger.Nullable_UString;
        Request_To_Date : in Swagger.Nullable_UString;
+       Custom_Label : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
        Result : out .Models.AccountCartList200Response_Type);
@@ -41,6 +42,7 @@ package .Clients is
        Replace_Parameters : in Swagger.Nullable_Boolean;
        New_Store_Url : in Swagger.Nullable_UString;
        New_Store_Key : in Swagger.Nullable_UString;
+       Custom_Label : in Swagger.Nullable_UString;
        Bridge_Url : in Swagger.Nullable_UString;
        Store_Root : in Swagger.Nullable_UString;
        Db_Tables_Prefix : in Swagger.Nullable_UString;
@@ -170,6 +172,11 @@ package .Clients is
        Zid_Access_Token : in Swagger.Nullable_UString;
        Zid_Authorization : in Swagger.Nullable_UString;
        Zid_Refresh_Token : in Swagger.Nullable_UString;
+       Jumpseller_Client_Id : in Swagger.Nullable_UString;
+       Jumpseller_Client_Secret : in Swagger.Nullable_UString;
+       Jumpseller_Refresh_Token : in Swagger.Nullable_UString;
+       Jumpseller_Login : in Swagger.Nullable_UString;
+       Jumpseller_Authtoken : in Swagger.Nullable_UString;
        Flipkart_Client_Id : in Swagger.Nullable_UString;
        Flipkart_Client_Secret : in Swagger.Nullable_UString;
        Allegro_Client_Id : in Swagger.Nullable_UString;

@@ -101,6 +101,8 @@ package .Models is
        Url : Swagger.Nullable_UString;
        Store_Key : Swagger.Nullable_UString;
        Cart_Id : Swagger.Nullable_UString;
+       Custom_Label : Swagger.Nullable_UString;
+       Bridge_Version : Swagger.Nullable_UString;
        Total_Calls : Swagger.Nullable_UString;
      end record;
 
@@ -4870,6 +4872,8 @@ package .Models is
        Bridge_Url : Swagger.Nullable_UString;
        Store_Root : Swagger.Nullable_UString;
        Store_Key : Swagger.Nullable_UString;
+       Label : Swagger.Nullable_UString;
+       Custom_Label : Swagger.Nullable_UString;
        Validate_Version : Swagger.Nullable_Boolean;
        Verify : Swagger.Nullable_Boolean;
        Db_Tables_Prefix : Swagger.Nullable_UString;
@@ -5007,6 +5011,11 @@ package .Models is
        Zid_Access_Token : Swagger.Nullable_UString;
        Zid_Authorization : Swagger.Nullable_UString;
        Zid_Refresh_Token : Swagger.Nullable_UString;
+       Jumpseller_Client_Id : Swagger.Nullable_UString;
+       Jumpseller_Client_Secret : Swagger.Nullable_UString;
+       Jumpseller_Refresh_Token : Swagger.Nullable_UString;
+       Jumpseller_Login : Swagger.Nullable_UString;
+       Jumpseller_Authtoken : Swagger.Nullable_UString;
        Flipkart_Client_Id : Swagger.Nullable_UString;
        Flipkart_Client_Secret : Swagger.Nullable_UString;
        Allegro_Client_Id : Swagger.Nullable_UString;

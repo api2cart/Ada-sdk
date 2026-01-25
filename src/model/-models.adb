@@ -175,6 +175,12 @@ package body .Models is
       if not Value.Cart_Id.Is_Null then
          Into.Write_Entity ("cart_id", Value.Cart_Id);
       end if;
+      if not Value.Custom_Label.Is_Null then
+         Into.Write_Entity ("custom_label", Value.Custom_Label);
+      end if;
+      if not Value.Bridge_Version.Is_Null then
+         Into.Write_Entity ("bridge_version", Value.Bridge_Version);
+      end if;
       if not Value.Total_Calls.Is_Null then
          Into.Write_Entity ("total_calls", Value.Total_Calls);
       end if;
@@ -202,6 +208,8 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "url", Value.Url);
       Swagger.Streams.Deserialize (Object, "store_key", Value.Store_Key);
       Swagger.Streams.Deserialize (Object, "cart_id", Value.Cart_Id);
+      Swagger.Streams.Deserialize (Object, "custom_label", Value.Custom_Label);
+      Swagger.Streams.Deserialize (Object, "bridge_version", Value.Bridge_Version);
       Swagger.Streams.Deserialize (Object, "total_calls", Value.Total_Calls);
    end Deserialize;
 
@@ -9179,6 +9187,12 @@ package body .Models is
       if not Value.Store_Key.Is_Null then
          Into.Write_Entity ("store_key", Value.Store_Key);
       end if;
+      if not Value.Label.Is_Null then
+         Into.Write_Entity ("label", Value.Label);
+      end if;
+      if not Value.Custom_Label.Is_Null then
+         Into.Write_Entity ("custom_label", Value.Custom_Label);
+      end if;
       if not Value.Validate_Version.Is_Null then
          Into.Write_Entity ("validate_version", Value.Validate_Version);
       end if;
@@ -9588,6 +9602,21 @@ package body .Models is
       if not Value.Zid_Refresh_Token.Is_Null then
          Into.Write_Entity ("zid_refresh_token", Value.Zid_Refresh_Token);
       end if;
+      if not Value.Jumpseller_Client_Id.Is_Null then
+         Into.Write_Entity ("jumpseller_client_id", Value.Jumpseller_Client_Id);
+      end if;
+      if not Value.Jumpseller_Client_Secret.Is_Null then
+         Into.Write_Entity ("jumpseller_client_secret", Value.Jumpseller_Client_Secret);
+      end if;
+      if not Value.Jumpseller_Refresh_Token.Is_Null then
+         Into.Write_Entity ("jumpseller_refresh_token", Value.Jumpseller_Refresh_Token);
+      end if;
+      if not Value.Jumpseller_Login.Is_Null then
+         Into.Write_Entity ("jumpseller_login", Value.Jumpseller_Login);
+      end if;
+      if not Value.Jumpseller_Authtoken.Is_Null then
+         Into.Write_Entity ("jumpseller_authtoken", Value.Jumpseller_Authtoken);
+      end if;
       if not Value.Flipkart_Client_Id.Is_Null then
          Into.Write_Entity ("flipkart_client_id", Value.Flipkart_Client_Id);
       end if;
@@ -9715,6 +9744,8 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "bridge_url", Value.Bridge_Url);
       Swagger.Streams.Deserialize (Object, "store_root", Value.Store_Root);
       Swagger.Streams.Deserialize (Object, "store_key", Value.Store_Key);
+      Swagger.Streams.Deserialize (Object, "label", Value.Label);
+      Swagger.Streams.Deserialize (Object, "custom_label", Value.Custom_Label);
       Swagger.Streams.Deserialize (Object, "validate_version", Value.Validate_Version);
       Swagger.Streams.Deserialize (Object, "verify", Value.Verify);
       Swagger.Streams.Deserialize (Object, "db_tables_prefix", Value.Db_Tables_Prefix);
@@ -9852,6 +9883,11 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "zid_access_token", Value.Zid_Access_Token);
       Swagger.Streams.Deserialize (Object, "zid_authorization", Value.Zid_Authorization);
       Swagger.Streams.Deserialize (Object, "zid_refresh_token", Value.Zid_Refresh_Token);
+      Swagger.Streams.Deserialize (Object, "jumpseller_client_id", Value.Jumpseller_Client_Id);
+      Swagger.Streams.Deserialize (Object, "jumpseller_client_secret", Value.Jumpseller_Client_Secret);
+      Swagger.Streams.Deserialize (Object, "jumpseller_refresh_token", Value.Jumpseller_Refresh_Token);
+      Swagger.Streams.Deserialize (Object, "jumpseller_login", Value.Jumpseller_Login);
+      Swagger.Streams.Deserialize (Object, "jumpseller_authtoken", Value.Jumpseller_Authtoken);
       Swagger.Streams.Deserialize (Object, "flipkart_client_id", Value.Flipkart_Client_Id);
       Swagger.Streams.Deserialize (Object, "flipkart_client_secret", Value.Flipkart_Client_Secret);
       Swagger.Streams.Deserialize (Object, "allegro_client_id", Value.Allegro_Client_Id);

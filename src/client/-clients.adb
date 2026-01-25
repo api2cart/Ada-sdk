@@ -47,6 +47,7 @@ package body .Clients is
        Store_Key : in Swagger.Nullable_UString;
        Request_From_Date : in Swagger.Nullable_UString;
        Request_To_Date : in Swagger.Nullable_UString;
+       Custom_Label : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
        Result : out .Models.AccountCartList200Response_Type) is
@@ -60,6 +61,7 @@ package body .Clients is
       URI.Add_Param ("store_key", Store_Key);
       URI.Add_Param ("request_from_date", Request_From_Date);
       URI.Add_Param ("request_to_date", Request_To_Date);
+      URI.Add_Param ("custom_label", Custom_Label);
       URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);
       URI.Set_Path ("/account.cart.list.json");
@@ -74,6 +76,7 @@ package body .Clients is
        Replace_Parameters : in Swagger.Nullable_Boolean;
        New_Store_Url : in Swagger.Nullable_UString;
        New_Store_Key : in Swagger.Nullable_UString;
+       Custom_Label : in Swagger.Nullable_UString;
        Bridge_Url : in Swagger.Nullable_UString;
        Store_Root : in Swagger.Nullable_UString;
        Db_Tables_Prefix : in Swagger.Nullable_UString;
@@ -203,6 +206,11 @@ package body .Clients is
        Zid_Access_Token : in Swagger.Nullable_UString;
        Zid_Authorization : in Swagger.Nullable_UString;
        Zid_Refresh_Token : in Swagger.Nullable_UString;
+       Jumpseller_Client_Id : in Swagger.Nullable_UString;
+       Jumpseller_Client_Secret : in Swagger.Nullable_UString;
+       Jumpseller_Refresh_Token : in Swagger.Nullable_UString;
+       Jumpseller_Login : in Swagger.Nullable_UString;
+       Jumpseller_Authtoken : in Swagger.Nullable_UString;
        Flipkart_Client_Id : in Swagger.Nullable_UString;
        Flipkart_Client_Secret : in Swagger.Nullable_UString;
        Allegro_Client_Id : in Swagger.Nullable_UString;
@@ -251,6 +259,7 @@ package body .Clients is
       URI.Add_Param ("replace_parameters", Replace_Parameters);
       URI.Add_Param ("new_store_url", New_Store_Url);
       URI.Add_Param ("new_store_key", New_Store_Key);
+      URI.Add_Param ("custom_label", Custom_Label);
       URI.Add_Param ("bridge_url", Bridge_Url);
       URI.Add_Param ("store_root", Store_Root);
       URI.Add_Param ("db_tables_prefix", Db_Tables_Prefix);
@@ -380,6 +389,11 @@ package body .Clients is
       URI.Add_Param ("zid_access_token", Zid_Access_Token);
       URI.Add_Param ("zid_authorization", Zid_Authorization);
       URI.Add_Param ("zid_refresh_token", Zid_Refresh_Token);
+      URI.Add_Param ("jumpseller_client_id", Jumpseller_Client_Id);
+      URI.Add_Param ("jumpseller_client_secret", Jumpseller_Client_Secret);
+      URI.Add_Param ("jumpseller_refresh_token", Jumpseller_Refresh_Token);
+      URI.Add_Param ("jumpseller_login", Jumpseller_Login);
+      URI.Add_Param ("jumpseller_authtoken", Jumpseller_Authtoken);
       URI.Add_Param ("flipkart_client_id", Flipkart_Client_Id);
       URI.Add_Param ("flipkart_client_secret", Flipkart_Client_Secret);
       URI.Add_Param ("allegro_client_id", Allegro_Client_Id);
