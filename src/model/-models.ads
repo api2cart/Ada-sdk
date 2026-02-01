@@ -578,7 +578,7 @@ package .Models is
 
    type CartCatalogPriceRulesCount200ResponseResult_Type is
      record
-       Catalog_Price_Rules_Count : Swagger.Nullable_UString;
+       Catalog_Price_Rules_Count : Swagger.Nullable_Integer;
      end record;
 
 
@@ -702,7 +702,7 @@ package .Models is
 
    type CartCouponCount200ResponseResult_Type is
      record
-       Coupons_Count : Swagger.Nullable_UString;
+       Coupons_Count : Swagger.Nullable_Integer;
      end record;
 
 
@@ -778,7 +778,7 @@ package .Models is
 
    type CartGiftcardCount200ResponseResult_Type is
      record
-       Gift_Cards_Count : Swagger.Nullable_UString;
+       Gift_Cards_Count : Swagger.Nullable_Integer;
      end record;
 
 
@@ -7896,6 +7896,7 @@ package .Models is
        Return_Status_Id : Swagger.UString;
        Return_Action_Id : Swagger.UString;
        Return_Reason_Id : Swagger.UString;
+       Return_Action : Swagger.Nullable_UString;
        Return_Reason : Swagger.Nullable_UString;
        Item_Restock : Swagger.Nullable_Boolean;
        Staff_Note : Swagger.Nullable_UString;
@@ -7937,6 +7938,8 @@ package .Models is
        Comment : Swagger.Nullable_UString;
        Send_Notifications : Swagger.Nullable_Boolean;
        Reject_Reason : Swagger.Nullable_UString;
+       Return_Action : Swagger.Nullable_UString;
+       Return_Reason : Swagger.Nullable_UString;
        Idempotency_Key : Swagger.Nullable_UString;
        Order_Products : .Models.OrderReturnUpdateOrderProductsInner_Type_Vectors.Vector;
      end record;

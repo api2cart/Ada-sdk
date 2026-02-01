@@ -15318,6 +15318,9 @@ package body .Models is
       Into.Write_Entity ("return_status_id", Value.Return_Status_Id);
       Into.Write_Entity ("return_action_id", Value.Return_Action_Id);
       Into.Write_Entity ("return_reason_id", Value.Return_Reason_Id);
+      if not Value.Return_Action.Is_Null then
+         Into.Write_Entity ("return_action", Value.Return_Action);
+      end if;
       if not Value.Return_Reason.Is_Null then
          Into.Write_Entity ("return_reason", Value.Return_Reason);
       end if;
@@ -15365,6 +15368,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "return_status_id", Value.Return_Status_Id);
       Swagger.Streams.Deserialize (Object, "return_action_id", Value.Return_Action_Id);
       Swagger.Streams.Deserialize (Object, "return_reason_id", Value.Return_Reason_Id);
+      Swagger.Streams.Deserialize (Object, "return_action", Value.Return_Action);
       Swagger.Streams.Deserialize (Object, "return_reason", Value.Return_Reason);
       Swagger.Streams.Deserialize (Object, "item_restock", Value.Item_Restock);
       Swagger.Streams.Deserialize (Object, "staff_note", Value.Staff_Note);
@@ -15419,6 +15423,12 @@ package body .Models is
       if not Value.Reject_Reason.Is_Null then
          Into.Write_Entity ("reject_reason", Value.Reject_Reason);
       end if;
+      if not Value.Return_Action.Is_Null then
+         Into.Write_Entity ("return_action", Value.Return_Action);
+      end if;
+      if not Value.Return_Reason.Is_Null then
+         Into.Write_Entity ("return_reason", Value.Return_Reason);
+      end if;
       if not Value.Idempotency_Key.Is_Null then
          Into.Write_Entity ("idempotency_key", Value.Idempotency_Key);
       end if;
@@ -15452,6 +15462,8 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "comment", Value.Comment);
       Swagger.Streams.Deserialize (Object, "send_notifications", Value.Send_Notifications);
       Swagger.Streams.Deserialize (Object, "reject_reason", Value.Reject_Reason);
+      Swagger.Streams.Deserialize (Object, "return_action", Value.Return_Action);
+      Swagger.Streams.Deserialize (Object, "return_reason", Value.Return_Reason);
       Swagger.Streams.Deserialize (Object, "idempotency_key", Value.Idempotency_Key);
       Deserialize (Object, "order_products", Value.Order_Products);
    end Deserialize;
