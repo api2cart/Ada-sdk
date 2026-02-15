@@ -9775,6 +9775,7 @@ package .Models is
        Quantity : Swagger.Number;
        Increase_Quantity : Swagger.Number;
        Reduce_Quantity : Swagger.Number;
+       Prices_Inc_Tax : Swagger.Nullable_Boolean;
        Price : Swagger.Number;
        Special_Price : Swagger.Number;
        Retail_Price : Swagger.Number;
@@ -13066,6 +13067,7 @@ package .Models is
        Tier_Prices : .Models.ProductAddTierPricesInner_Type_Vectors.Vector;
        Measure_Unit : Swagger.Nullable_UString;
        Unit_Price : Swagger.Number;
+       Prices_Inc_Tax : Swagger.Nullable_Boolean;
        Quantity : Swagger.Number;
        Warehouse_Id : Swagger.Nullable_UString;
        In_Stock : Swagger.Nullable_Boolean;
@@ -13304,6 +13306,7 @@ package .Models is
        Name : Swagger.Nullable_UString;
        Description : Swagger.Nullable_UString;
        Short_Description : Swagger.Nullable_UString;
+       Prices_Inc_Tax : Swagger.Nullable_Boolean;
        Price : Swagger.Number;
        Old_Price : Swagger.Number;
        Special_Price : Swagger.Number;
@@ -13448,6 +13451,7 @@ package .Models is
        Reserve_Price : Swagger.Number;
        Measure_Unit : Swagger.Nullable_UString;
        Unit_Price : Swagger.Number;
+       Prices_Inc_Tax : Swagger.Nullable_Boolean;
        Quantity : Swagger.Number;
        In_Stock : Swagger.Nullable_Boolean;
        Manage_Stock : Swagger.Nullable_Boolean;
