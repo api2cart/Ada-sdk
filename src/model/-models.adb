@@ -22854,6 +22854,9 @@ package body .Models is
       if not Value.Status.Is_Null then
          Into.Write_Entity ("status", Value.Status);
       end if;
+      if not Value.Password.Is_Null then
+         Into.Write_Entity ("password", Value.Password);
+      end if;
       if not Value.Store_Id.Is_Null then
          Into.Write_Entity ("store_id", Value.Store_Id);
       end if;
@@ -22896,6 +22899,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "gender", Value.Gender);
       Swagger.Streams.Deserialize (Object, "note", Value.Note);
       Swagger.Streams.Deserialize (Object, "status", Value.Status);
+      Swagger.Streams.Deserialize (Object, "password", Value.Password);
       Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Swagger.Streams.Deserialize (Object, "idempotency_key", Value.Idempotency_Key);
       Deserialize (Object, "address", Value.Address);

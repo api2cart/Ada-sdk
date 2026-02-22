@@ -11685,6 +11685,7 @@ package .Models is
        Gender : Swagger.Nullable_UString;
        Note : Swagger.Nullable_UString;
        Status : Swagger.Nullable_UString;
+       Password : Swagger.Nullable_UString;
        Store_Id : Swagger.Nullable_UString;
        Idempotency_Key : Swagger.Nullable_UString;
        Address : .Models.CustomerUpdateAddressInner_Type_Vectors.Vector;

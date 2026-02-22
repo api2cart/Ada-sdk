@@ -1964,6 +1964,7 @@ package body .Clients is
        Label : in Swagger.Nullable_UString;
        Mime : in Swagger.Nullable_UString;
        Position : in Swagger.Nullable_Integer;
+       Apply_To_Translations : in Swagger.Nullable_Boolean;
        Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.CategoryImageAdd200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
@@ -1980,6 +1981,7 @@ package body .Clients is
       URI.Add_Param ("label", Label);
       URI.Add_Param ("mime", Mime);
       URI.Add_Param ("position", Position);
+      URI.Add_Param ("apply_to_translations", Apply_To_Translations);
       URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/category.image.add.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
@@ -1993,6 +1995,7 @@ package body .Clients is
        Category_Id : in Swagger.UString;
        Image_Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
+       Apply_To_Translations : in Swagger.Nullable_Boolean;
        Result : out .Models.AttributeDelete200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -2003,6 +2006,7 @@ package body .Clients is
       URI.Add_Param ("category_id", Category_Id);
       URI.Add_Param ("image_id", Image_Id);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("apply_to_translations", Apply_To_Translations);
       URI.Set_Path ("/category.image.delete.json");
       Client.Call (Swagger.Clients.DELETE, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -2217,6 +2221,7 @@ package body .Clients is
    procedure Customer_Attribute_List
       (Client : in out Client_Type;
        Customer_Id : in Swagger.UString;
+       Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
        Page_Cursor : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
@@ -2231,6 +2236,7 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
+      URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
       URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("customer_id", Customer_Id);
@@ -4870,6 +4876,7 @@ package body .Clients is
    procedure Tax_Class_List
       (Client : in out Client_Type;
        Count : in Swagger.Nullable_Integer;
+       Start : in Swagger.Nullable_Integer;
        Page_Cursor : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Find_Value : in Swagger.Nullable_UString;
@@ -4887,6 +4894,7 @@ package body .Clients is
 
 
       URI.Add_Param ("count", Count);
+      URI.Add_Param ("start", Start);
       URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("find_value", Find_Value);
