@@ -5930,6 +5930,63 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
+                        Value : in .Models.ProductAddPersonalizationQuestionsInner_Type) is
+   begin
+      Into.Start_Entity (Name);
+      Into.Write_Entity ("question_text", Value.Question_Text);
+      if not Value.Instructions.Is_Null then
+         Into.Write_Entity ("instructions", Value.Instructions);
+      end if;
+      Into.Write_Entity ("question_type", Value.Question_Type);
+      Into.Write_Entity ("required", Value.Required);
+      Into.Write_Entity ("max_allowed_characters", Value.Max_Allowed_Characters);
+      Into.Write_Entity ("max_allowed_files", Value.Max_Allowed_Files);
+      Serialize (Into, "options", Value.Options);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ProductAddPersonalizationQuestionsInner_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.ProductAddPersonalizationQuestionsInner_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "question_text", Value.Question_Text);
+      Swagger.Streams.Deserialize (Object, "instructions", Value.Instructions);
+      Swagger.Streams.Deserialize (Object, "question_type", Value.Question_Type);
+      Swagger.Streams.Deserialize (Object, "required", Value.Required);
+      Swagger.Streams.Deserialize (Object, "max_allowed_characters", Value.Max_Allowed_Characters);
+      Swagger.Streams.Deserialize (Object, "max_allowed_files", Value.Max_Allowed_Files);
+      Swagger.Streams.Deserialize (Object, "options", Value.Options);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out ProductAddPersonalizationQuestionsInner_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.ProductAddPersonalizationQuestionsInner_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
                         Value : in .Models.ProductAddSalesTax_Type) is
    begin
       Into.Start_Entity (Name);
@@ -10895,6 +10952,118 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
+                        Value : in .Models.Basket_Type) is
+   begin
+      Into.Start_Entity (Name);
+      if not Value.Id.Is_Null then
+         Into.Write_Entity ("id", Value.Id);
+      end if;
+      Serialize (Into, "customer", Value.Customer);
+      Into.Write_Entity ("basket_url", Value.Basket_Url);
+      Serialize (Into, "created_at", Value.Created_At);
+      Serialize (Into, "modified_at", Value.Modified_At);
+      Serialize (Into, "currency", Value.Currency);
+      Serialize (Into, "basket_products", Value.Basket_Products);
+      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
+      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Basket_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.Basket_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "id", Value.Id);
+      Deserialize (Object, "customer", Value.Customer);
+      Swagger.Streams.Deserialize (Object, "basket_url", Value.Basket_Url);
+      Deserialize (Object, "created_at", Value.Created_At);
+      Deserialize (Object, "modified_at", Value.Modified_At);
+      Deserialize (Object, "currency", Value.Currency);
+      Deserialize (Object, "basket_products", Value.Basket_Products);
+      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
+      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out Basket_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.Basket_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.BasketInfo200Response_Type) is
+   begin
+      Into.Start_Entity (Name);
+      if not Value.Return_Code.Is_Null then
+         Into.Write_Entity ("return_code", Value.Return_Code);
+      end if;
+      if not Value.Return_Message.Is_Null then
+         Into.Write_Entity ("return_message", Value.Return_Message);
+      end if;
+      Serialize (Into, "result", Value.Result);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in BasketInfo200Response_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.BasketInfo200Response_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "return_code", Value.Return_Code);
+      Swagger.Streams.Deserialize (Object, "return_message", Value.Return_Message);
+      Deserialize (Object, "result", Value.Result);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out BasketInfo200Response_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.BasketInfo200Response_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
                         Value : in .Models.BasketItemAdd200Response_Type) is
    begin
       Into.Start_Entity (Name);
@@ -11328,6 +11497,158 @@ package body .Models is
                           Value : in out BatchJob_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
       Item : .Models.BatchJob_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.Image_Type) is
+   begin
+      Into.Start_Entity (Name);
+      Into.Write_Entity ("id", Value.Id);
+      if not Value.Http_Path.Is_Null then
+         Into.Write_Entity ("http_path", Value.Http_Path);
+      end if;
+      Into.Write_Entity ("file_name", Value.File_Name);
+      Into.Write_Entity ("mime-type", Value.Mime_Type);
+      Into.Write_Entity ("size", Value.Size);
+      Serialize (Into, "create_at", Value.Create_At);
+      Serialize (Into, "modified_at", Value.Modified_At);
+      Into.Write_Entity ("alt", Value.Alt);
+      if not Value.Avail.Is_Null then
+         Into.Write_Entity ("avail", Value.Avail);
+      end if;
+      Into.Write_Entity ("sort_order", Value.Sort_Order);
+      if not Value.P_Type.Is_Null then
+         Into.Write_Entity ("type", Value.P_Type);
+      end if;
+      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
+      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Image_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.Image_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "id", Value.Id);
+      Swagger.Streams.Deserialize (Object, "http_path", Value.Http_Path);
+      Swagger.Streams.Deserialize (Object, "file_name", Value.File_Name);
+      Swagger.Streams.Deserialize (Object, "mime-type", Value.Mime_Type);
+      Swagger.Streams.Deserialize (Object, "size", Value.Size);
+      Deserialize (Object, "create_at", Value.Create_At);
+      Deserialize (Object, "modified_at", Value.Modified_At);
+      Swagger.Streams.Deserialize (Object, "alt", Value.Alt);
+      Swagger.Streams.Deserialize (Object, "avail", Value.Avail);
+      Swagger.Streams.Deserialize (Object, "sort_order", Value.Sort_Order);
+      Swagger.Streams.Deserialize (Object, "type", Value.P_Type);
+      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
+      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out Image_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.Image_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.Brand_Type) is
+   begin
+      Into.Start_Entity (Name);
+      if not Value.Id.Is_Null then
+         Into.Write_Entity ("id", Value.Id);
+      end if;
+      if not Value.Name.Is_Null then
+         Into.Write_Entity ("name", Value.Name);
+      end if;
+      Into.Write_Entity ("created_time", Value.Created_Time);
+      Into.Write_Entity ("modified_time", Value.Modified_Time);
+      Into.Write_Entity ("full_description", Value.Full_Description);
+      Into.Write_Entity ("short_description", Value.Short_Description);
+      Serialize (Into, "stores_ids", Value.Stores_Ids);
+      if not Value.Active.Is_Null then
+         Into.Write_Entity ("active", Value.Active);
+      end if;
+      if not Value.Url.Is_Null then
+         Into.Write_Entity ("url", Value.Url);
+      end if;
+      Into.Write_Entity ("meta_title", Value.Meta_Title);
+      Into.Write_Entity ("meta_keywords", Value.Meta_Keywords);
+      Into.Write_Entity ("meta_description", Value.Meta_Description);
+      Serialize (Into, "images", Value.Images);
+      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
+      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Brand_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.Brand_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "id", Value.Id);
+      Swagger.Streams.Deserialize (Object, "name", Value.Name);
+      Swagger.Streams.Deserialize (Object, "created_time", Value.Created_Time);
+      Swagger.Streams.Deserialize (Object, "modified_time", Value.Modified_Time);
+      Swagger.Streams.Deserialize (Object, "full_description", Value.Full_Description);
+      Swagger.Streams.Deserialize (Object, "short_description", Value.Short_Description);
+      Swagger.Streams.Deserialize (Object, "stores_ids", Value.Stores_Ids);
+      Swagger.Streams.Deserialize (Object, "active", Value.Active);
+      Swagger.Streams.Deserialize (Object, "url", Value.Url);
+      Swagger.Streams.Deserialize (Object, "meta_title", Value.Meta_Title);
+      Swagger.Streams.Deserialize (Object, "meta_keywords", Value.Meta_Keywords);
+      Swagger.Streams.Deserialize (Object, "meta_description", Value.Meta_Description);
+      Deserialize (Object, "images", Value.Images);
+      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
+      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out Brand_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.Brand_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);
@@ -11869,211 +12190,6 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in .Models.CustomerAddress_Type) is
-   begin
-      Into.Start_Entity (Name);
-      if not Value.Id.Is_Null then
-         Into.Write_Entity ("id", Value.Id);
-      end if;
-      if not Value.P_Type.Is_Null then
-         Into.Write_Entity ("type", Value.P_Type);
-      end if;
-      Into.Write_Entity ("first_name", Value.First_Name);
-      Into.Write_Entity ("last_name", Value.Last_Name);
-      if not Value.Postcode.Is_Null then
-         Into.Write_Entity ("postcode", Value.Postcode);
-      end if;
-      if not Value.Address_1.Is_Null then
-         Into.Write_Entity ("address1", Value.Address_1);
-      end if;
-      Into.Write_Entity ("address2", Value.Address_2);
-      Into.Write_Entity ("phone", Value.Phone);
-      Into.Write_Entity ("phone_mobile", Value.Phone_Mobile);
-      if not Value.City.Is_Null then
-         Into.Write_Entity ("city", Value.City);
-      end if;
-      Serialize (Into, "country", Value.Country);
-      Serialize (Into, "state", Value.State);
-      Into.Write_Entity ("company", Value.Company);
-      Into.Write_Entity ("fax", Value.Fax);
-      Into.Write_Entity ("website", Value.Website);
-      Into.Write_Entity ("gender", Value.Gender);
-      Into.Write_Entity ("region", Value.Region);
-      if not Value.Default.Is_Null then
-         Into.Write_Entity ("default", Value.Default);
-      end if;
-      Into.Write_Entity ("tax_id", Value.Tax_Id);
-      Into.Write_Entity ("identification_number", Value.Identification_Number);
-      Into.Write_Entity ("alias", Value.Alias);
-      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
-      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CustomerAddress_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.CustomerAddress_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "id", Value.Id);
-      Swagger.Streams.Deserialize (Object, "type", Value.P_Type);
-      Swagger.Streams.Deserialize (Object, "first_name", Value.First_Name);
-      Swagger.Streams.Deserialize (Object, "last_name", Value.Last_Name);
-      Swagger.Streams.Deserialize (Object, "postcode", Value.Postcode);
-      Swagger.Streams.Deserialize (Object, "address1", Value.Address_1);
-      Swagger.Streams.Deserialize (Object, "address2", Value.Address_2);
-      Swagger.Streams.Deserialize (Object, "phone", Value.Phone);
-      Swagger.Streams.Deserialize (Object, "phone_mobile", Value.Phone_Mobile);
-      Swagger.Streams.Deserialize (Object, "city", Value.City);
-      Deserialize (Object, "country", Value.Country);
-      Deserialize (Object, "state", Value.State);
-      Swagger.Streams.Deserialize (Object, "company", Value.Company);
-      Swagger.Streams.Deserialize (Object, "fax", Value.Fax);
-      Swagger.Streams.Deserialize (Object, "website", Value.Website);
-      Swagger.Streams.Deserialize (Object, "gender", Value.Gender);
-      Swagger.Streams.Deserialize (Object, "region", Value.Region);
-      Swagger.Streams.Deserialize (Object, "default", Value.Default);
-      Swagger.Streams.Deserialize (Object, "tax_id", Value.Tax_Id);
-      Swagger.Streams.Deserialize (Object, "identification_number", Value.Identification_Number);
-      Swagger.Streams.Deserialize (Object, "alias", Value.Alias);
-      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
-      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out CustomerAddress_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.CustomerAddress_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.CartPickupLocation_Type) is
-   begin
-      Into.Start_Entity (Name);
-      Into.Write_Entity ("id", Value.Id);
-      Into.Write_Entity ("name", Value.Name);
-      Into.Write_Entity ("avail", Value.Avail);
-      Serialize (Into, "address", Value.Address);
-      Into.Write_Entity ("pickup_instructions", Value.Pickup_Instructions);
-      Into.Write_Entity ("expected_ready_time", Value.Expected_Ready_Time);
-      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
-      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CartPickupLocation_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.CartPickupLocation_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "id", Value.Id);
-      Swagger.Streams.Deserialize (Object, "name", Value.Name);
-      Swagger.Streams.Deserialize (Object, "avail", Value.Avail);
-      Deserialize (Object, "address", Value.Address);
-      Swagger.Streams.Deserialize (Object, "pickup_instructions", Value.Pickup_Instructions);
-      Swagger.Streams.Deserialize (Object, "expected_ready_time", Value.Expected_Ready_Time);
-      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
-      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out CartPickupLocation_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.CartPickupLocation_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.PluginList_Type) is
-   begin
-      Into.Start_Entity (Name);
-      Into.Write_Entity ("all_plugins", Value.All_Plugins);
-      Serialize (Into, "plugins", Value.Plugins);
-      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
-      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in PluginList_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.PluginList_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "all_plugins", Value.All_Plugins);
-      Deserialize (Object, "plugins", Value.Plugins);
-      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
-      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out PluginList_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.PluginList_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
                         Value : in .Models.CartPluginList200ResponseResult_Type) is
    begin
       Into.Start_Entity (Name);
@@ -12339,16 +12455,21 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in .Models.CartWarehouse_Type) is
+                        Value : in .Models.CouponCondition_Type) is
    begin
       Into.Start_Entity (Name);
-      Into.Write_Entity ("id", Value.Id);
-      Into.Write_Entity ("name", Value.Name);
-      Into.Write_Entity ("description", Value.Description);
-      Into.Write_Entity ("avail", Value.Avail);
-      Serialize (Into, "address", Value.Address);
-      Serialize (Into, "carriers_ids", Value.Carriers_Ids);
-      Serialize (Into, "stores_ids", Value.Stores_Ids);
+      if not Value.Id.Is_Null then
+         Into.Write_Entity ("id", Value.Id);
+      end if;
+      if not Value.Entity.Is_Null then
+         Into.Write_Entity ("entity", Value.Entity);
+      end if;
+      Into.Write_Entity ("match_items", Value.Match_Items);
+      Into.Write_Entity ("key", Value.Key);
+      Into.Write_Entity ("operator", Value.Operator);
+      Into.Write_Entity ("value", Value.Value);
+      Into.Write_Entity ("logic_operator", Value.Logic_Operator);
+      Serialize (Into, "sub-conditions", Value.Sub_Conditions);
       Into.Write_Entity ("additional_fields", Value.Additional_Fields);
       Into.Write_Entity ("custom_fields", Value.Custom_Fields);
       Into.End_Entity (Name);
@@ -12356,7 +12477,7 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in CartWarehouse_Type_Vectors.Vector) is
+                        Value : in CouponCondition_Type_Vectors.Vector) is
    begin
       Into.Start_Array (Name);
       for Item of Value loop
@@ -12367,26 +12488,94 @@ package body .Models is
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out .Models.CartWarehouse_Type) is
+                          Value : out .Models.CouponCondition_Type) is
       Object : Swagger.Value_Type;
    begin
       Swagger.Streams.Deserialize (From, Name, Object);
       Swagger.Streams.Deserialize (Object, "id", Value.Id);
-      Swagger.Streams.Deserialize (Object, "name", Value.Name);
-      Swagger.Streams.Deserialize (Object, "description", Value.Description);
-      Swagger.Streams.Deserialize (Object, "avail", Value.Avail);
-      Deserialize (Object, "address", Value.Address);
-      Swagger.Streams.Deserialize (Object, "carriers_ids", Value.Carriers_Ids);
-      Swagger.Streams.Deserialize (Object, "stores_ids", Value.Stores_Ids);
+      Swagger.Streams.Deserialize (Object, "entity", Value.Entity);
+      Swagger.Streams.Deserialize (Object, "match_items", Value.Match_Items);
+      Swagger.Streams.Deserialize (Object, "key", Value.Key);
+      Swagger.Streams.Deserialize (Object, "operator", Value.Operator);
+      Swagger.Streams.Deserialize (Object, "value", Value.Value);
+      Swagger.Streams.Deserialize (Object, "logic_operator", Value.Logic_Operator);
+      Deserialize (Object, "sub-conditions", Value.Sub_Conditions);
       Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
       Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : in out CartWarehouse_Type_Vectors.Vector) is
+                          Value : in out CouponCondition_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
-      Item : .Models.CartWarehouse_Type;
+      Item : .Models.CouponCondition_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.CatalogPriceRuleAction_Type) is
+   begin
+      Into.Start_Entity (Name);
+      if not Value.Scope.Is_Null then
+         Into.Write_Entity ("scope", Value.Scope);
+      end if;
+      if not Value.Apply_To.Is_Null then
+         Into.Write_Entity ("apply_to", Value.Apply_To);
+      end if;
+      if not Value.P_Type.Is_Null then
+         Into.Write_Entity ("type", Value.P_Type);
+      end if;
+      Serialize (Into, "quantity", Value.Quantity);
+      Serialize (Into, "value", Value.Value);
+      Into.Write_Entity ("currency_code", Value.Currency_Code);
+      Into.Write_Entity ("include_tax", Value.Include_Tax);
+      Serialize (Into, "conditions", Value.Conditions);
+      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
+      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CatalogPriceRuleAction_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.CatalogPriceRuleAction_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "scope", Value.Scope);
+      Swagger.Streams.Deserialize (Object, "apply_to", Value.Apply_To);
+      Swagger.Streams.Deserialize (Object, "type", Value.P_Type);
+      Swagger.Streams.Deserialize (Object, "quantity", Value.Quantity);
+      Swagger.Streams.Deserialize (Object, "value", Value.Value);
+      Swagger.Streams.Deserialize (Object, "currency_code", Value.Currency_Code);
+      Swagger.Streams.Deserialize (Object, "include_tax", Value.Include_Tax);
+      Deserialize (Object, "conditions", Value.Conditions);
+      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
+      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out CatalogPriceRuleAction_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.CatalogPriceRuleAction_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);
@@ -13041,138 +13230,6 @@ package body .Models is
                           Value : in out CategoryInfo200Response_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
       Item : .Models.CategoryInfo200Response_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.CouponCondition_Type) is
-   begin
-      Into.Start_Entity (Name);
-      if not Value.Id.Is_Null then
-         Into.Write_Entity ("id", Value.Id);
-      end if;
-      if not Value.Entity.Is_Null then
-         Into.Write_Entity ("entity", Value.Entity);
-      end if;
-      Into.Write_Entity ("match_items", Value.Match_Items);
-      Into.Write_Entity ("key", Value.Key);
-      Into.Write_Entity ("operator", Value.Operator);
-      Into.Write_Entity ("value", Value.Value);
-      Into.Write_Entity ("logic_operator", Value.Logic_Operator);
-      Serialize (Into, "sub-conditions", Value.Sub_Conditions);
-      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
-      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CouponCondition_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.CouponCondition_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "id", Value.Id);
-      Swagger.Streams.Deserialize (Object, "entity", Value.Entity);
-      Swagger.Streams.Deserialize (Object, "match_items", Value.Match_Items);
-      Swagger.Streams.Deserialize (Object, "key", Value.Key);
-      Swagger.Streams.Deserialize (Object, "operator", Value.Operator);
-      Swagger.Streams.Deserialize (Object, "value", Value.Value);
-      Swagger.Streams.Deserialize (Object, "logic_operator", Value.Logic_Operator);
-      Deserialize (Object, "sub-conditions", Value.Sub_Conditions);
-      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
-      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out CouponCondition_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.CouponCondition_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.CatalogPriceRuleAction_Type) is
-   begin
-      Into.Start_Entity (Name);
-      if not Value.Scope.Is_Null then
-         Into.Write_Entity ("scope", Value.Scope);
-      end if;
-      if not Value.Apply_To.Is_Null then
-         Into.Write_Entity ("apply_to", Value.Apply_To);
-      end if;
-      if not Value.P_Type.Is_Null then
-         Into.Write_Entity ("type", Value.P_Type);
-      end if;
-      Serialize (Into, "quantity", Value.Quantity);
-      Serialize (Into, "value", Value.Value);
-      Into.Write_Entity ("currency_code", Value.Currency_Code);
-      Into.Write_Entity ("include_tax", Value.Include_Tax);
-      Serialize (Into, "conditions", Value.Conditions);
-      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
-      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CatalogPriceRuleAction_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.CatalogPriceRuleAction_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "scope", Value.Scope);
-      Swagger.Streams.Deserialize (Object, "apply_to", Value.Apply_To);
-      Swagger.Streams.Deserialize (Object, "type", Value.P_Type);
-      Swagger.Streams.Deserialize (Object, "quantity", Value.Quantity);
-      Swagger.Streams.Deserialize (Object, "value", Value.Value);
-      Swagger.Streams.Deserialize (Object, "currency_code", Value.Currency_Code);
-      Swagger.Streams.Deserialize (Object, "include_tax", Value.Include_Tax);
-      Deserialize (Object, "conditions", Value.Conditions);
-      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
-      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out CatalogPriceRuleAction_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.CatalogPriceRuleAction_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);
@@ -13857,158 +13914,6 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in .Models.Image_Type) is
-   begin
-      Into.Start_Entity (Name);
-      Into.Write_Entity ("id", Value.Id);
-      if not Value.Http_Path.Is_Null then
-         Into.Write_Entity ("http_path", Value.Http_Path);
-      end if;
-      Into.Write_Entity ("file_name", Value.File_Name);
-      Into.Write_Entity ("mime-type", Value.Mime_Type);
-      Into.Write_Entity ("size", Value.Size);
-      Serialize (Into, "create_at", Value.Create_At);
-      Serialize (Into, "modified_at", Value.Modified_At);
-      Into.Write_Entity ("alt", Value.Alt);
-      if not Value.Avail.Is_Null then
-         Into.Write_Entity ("avail", Value.Avail);
-      end if;
-      Into.Write_Entity ("sort_order", Value.Sort_Order);
-      if not Value.P_Type.Is_Null then
-         Into.Write_Entity ("type", Value.P_Type);
-      end if;
-      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
-      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Image_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.Image_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "id", Value.Id);
-      Swagger.Streams.Deserialize (Object, "http_path", Value.Http_Path);
-      Swagger.Streams.Deserialize (Object, "file_name", Value.File_Name);
-      Swagger.Streams.Deserialize (Object, "mime-type", Value.Mime_Type);
-      Swagger.Streams.Deserialize (Object, "size", Value.Size);
-      Deserialize (Object, "create_at", Value.Create_At);
-      Deserialize (Object, "modified_at", Value.Modified_At);
-      Swagger.Streams.Deserialize (Object, "alt", Value.Alt);
-      Swagger.Streams.Deserialize (Object, "avail", Value.Avail);
-      Swagger.Streams.Deserialize (Object, "sort_order", Value.Sort_Order);
-      Swagger.Streams.Deserialize (Object, "type", Value.P_Type);
-      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
-      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out Image_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.Image_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.Brand_Type) is
-   begin
-      Into.Start_Entity (Name);
-      if not Value.Id.Is_Null then
-         Into.Write_Entity ("id", Value.Id);
-      end if;
-      if not Value.Name.Is_Null then
-         Into.Write_Entity ("name", Value.Name);
-      end if;
-      Into.Write_Entity ("created_time", Value.Created_Time);
-      Into.Write_Entity ("modified_time", Value.Modified_Time);
-      Into.Write_Entity ("full_description", Value.Full_Description);
-      Into.Write_Entity ("short_description", Value.Short_Description);
-      Serialize (Into, "stores_ids", Value.Stores_Ids);
-      if not Value.Active.Is_Null then
-         Into.Write_Entity ("active", Value.Active);
-      end if;
-      if not Value.Url.Is_Null then
-         Into.Write_Entity ("url", Value.Url);
-      end if;
-      Into.Write_Entity ("meta_title", Value.Meta_Title);
-      Into.Write_Entity ("meta_keywords", Value.Meta_Keywords);
-      Into.Write_Entity ("meta_description", Value.Meta_Description);
-      Serialize (Into, "images", Value.Images);
-      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
-      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Brand_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.Brand_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "id", Value.Id);
-      Swagger.Streams.Deserialize (Object, "name", Value.Name);
-      Swagger.Streams.Deserialize (Object, "created_time", Value.Created_Time);
-      Swagger.Streams.Deserialize (Object, "modified_time", Value.Modified_Time);
-      Swagger.Streams.Deserialize (Object, "full_description", Value.Full_Description);
-      Swagger.Streams.Deserialize (Object, "short_description", Value.Short_Description);
-      Swagger.Streams.Deserialize (Object, "stores_ids", Value.Stores_Ids);
-      Swagger.Streams.Deserialize (Object, "active", Value.Active);
-      Swagger.Streams.Deserialize (Object, "url", Value.Url);
-      Swagger.Streams.Deserialize (Object, "meta_title", Value.Meta_Title);
-      Swagger.Streams.Deserialize (Object, "meta_keywords", Value.Meta_Keywords);
-      Swagger.Streams.Deserialize (Object, "meta_description", Value.Meta_Description);
-      Deserialize (Object, "images", Value.Images);
-      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
-      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out Brand_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.Brand_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
                         Value : in .Models.ResponseTaxClassInfoResult_Type) is
    begin
       Into.Start_Entity (Name);
@@ -14165,118 +14070,6 @@ package body .Models is
                           Value : in out OrderAdd200Response_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
       Item : .Models.OrderAdd200Response_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.OrderCalculate_Type) is
-   begin
-      Into.Start_Entity (Name);
-      Serialize (Into, "customer", Value.Customer);
-      Serialize (Into, "subtotal", Value.Subtotal);
-      Serialize (Into, "items", Value.Items);
-      Serialize (Into, "bundles", Value.Bundles);
-      Serialize (Into, "currency", Value.Currency);
-      Serialize (Into, "shipping_rates", Value.Shipping_Rates);
-      Serialize (Into, "tax_lines", Value.Tax_Lines);
-      Serialize (Into, "discounts", Value.Discounts);
-      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
-      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in OrderCalculate_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.OrderCalculate_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Deserialize (Object, "customer", Value.Customer);
-      Deserialize (Object, "subtotal", Value.Subtotal);
-      Deserialize (Object, "items", Value.Items);
-      Deserialize (Object, "bundles", Value.Bundles);
-      Deserialize (Object, "currency", Value.Currency);
-      Deserialize (Object, "shipping_rates", Value.Shipping_Rates);
-      Deserialize (Object, "tax_lines", Value.Tax_Lines);
-      Deserialize (Object, "discounts", Value.Discounts);
-      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
-      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out OrderCalculate_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.OrderCalculate_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.OrderCalculate200Response_Type) is
-   begin
-      Into.Start_Entity (Name);
-      if not Value.Return_Code.Is_Null then
-         Into.Write_Entity ("return_code", Value.Return_Code);
-      end if;
-      if not Value.Return_Message.Is_Null then
-         Into.Write_Entity ("return_message", Value.Return_Message);
-      end if;
-      Serialize (Into, "result", Value.Result);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in OrderCalculate200Response_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.OrderCalculate200Response_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "return_code", Value.Return_Code);
-      Swagger.Streams.Deserialize (Object, "return_message", Value.Return_Message);
-      Deserialize (Object, "result", Value.Result);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out OrderCalculate200Response_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.OrderCalculate200Response_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);
@@ -14496,6 +14289,118 @@ package body .Models is
                           Value : in out OrderCalculateOrderItemInner_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
       Item : .Models.OrderCalculateOrderItemInner_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.OrderCalculate_Type) is
+   begin
+      Into.Start_Entity (Name);
+      Serialize (Into, "customer", Value.Customer);
+      Serialize (Into, "subtotal", Value.Subtotal);
+      Serialize (Into, "items", Value.Items);
+      Serialize (Into, "bundles", Value.Bundles);
+      Serialize (Into, "currency", Value.Currency);
+      Serialize (Into, "shipping_rates", Value.Shipping_Rates);
+      Serialize (Into, "tax_lines", Value.Tax_Lines);
+      Serialize (Into, "discounts", Value.Discounts);
+      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
+      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in OrderCalculate_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.OrderCalculate_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Deserialize (Object, "customer", Value.Customer);
+      Deserialize (Object, "subtotal", Value.Subtotal);
+      Deserialize (Object, "items", Value.Items);
+      Deserialize (Object, "bundles", Value.Bundles);
+      Deserialize (Object, "currency", Value.Currency);
+      Deserialize (Object, "shipping_rates", Value.Shipping_Rates);
+      Deserialize (Object, "tax_lines", Value.Tax_Lines);
+      Deserialize (Object, "discounts", Value.Discounts);
+      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
+      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out OrderCalculate_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.OrderCalculate_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.OrderCalculate200Response_Type) is
+   begin
+      Into.Start_Entity (Name);
+      if not Value.Return_Code.Is_Null then
+         Into.Write_Entity ("return_code", Value.Return_Code);
+      end if;
+      if not Value.Return_Message.Is_Null then
+         Into.Write_Entity ("return_message", Value.Return_Message);
+      end if;
+      Serialize (Into, "result", Value.Result);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in OrderCalculate200Response_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.OrderCalculate200Response_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "return_code", Value.Return_Code);
+      Swagger.Streams.Deserialize (Object, "return_message", Value.Return_Message);
+      Deserialize (Object, "result", Value.Result);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out OrderCalculate200Response_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.OrderCalculate200Response_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);
@@ -16024,6 +15929,55 @@ package body .Models is
                           Value : in out OrderTransaction_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
       Item : .Models.OrderTransaction_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.PluginList_Type) is
+   begin
+      Into.Start_Entity (Name);
+      Into.Write_Entity ("all_plugins", Value.All_Plugins);
+      Serialize (Into, "plugins", Value.Plugins);
+      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
+      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in PluginList_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.PluginList_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "all_plugins", Value.All_Plugins);
+      Deserialize (Object, "plugins", Value.Plugins);
+      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
+      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out PluginList_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.PluginList_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);
@@ -20035,21 +19989,16 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in .Models.Script_Type) is
+                        Value : in .Models.CartShippingZone2_Type) is
    begin
       Into.Start_Entity (Name);
       if not Value.Id.Is_Null then
          Into.Write_Entity ("id", Value.Id);
       end if;
       Into.Write_Entity ("name", Value.Name);
-      Into.Write_Entity ("description", Value.Description);
-      Into.Write_Entity ("src", Value.Src);
-      Into.Write_Entity ("scope", Value.Scope);
-      Into.Write_Entity ("event", Value.Event);
-      Into.Write_Entity ("load_method", Value.Load_Method);
-      Into.Write_Entity ("html", Value.Html);
-      Serialize (Into, "created_time", Value.Created_Time);
-      Serialize (Into, "modified_time", Value.Modified_Time);
+      Into.Write_Entity ("enabled", Value.Enabled);
+      Serialize (Into, "countries", Value.Countries);
+      Serialize (Into, "shipping_methods", Value.Shipping_Methods);
       Into.Write_Entity ("additional_fields", Value.Additional_Fields);
       Into.Write_Entity ("custom_fields", Value.Custom_Fields);
       Into.End_Entity (Name);
@@ -20057,7 +20006,7 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in Script_Type_Vectors.Vector) is
+                        Value : in CartShippingZone2_Type_Vectors.Vector) is
    begin
       Into.Start_Array (Name);
       for Item of Value loop
@@ -20068,29 +20017,24 @@ package body .Models is
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out .Models.Script_Type) is
+                          Value : out .Models.CartShippingZone2_Type) is
       Object : Swagger.Value_Type;
    begin
       Swagger.Streams.Deserialize (From, Name, Object);
       Swagger.Streams.Deserialize (Object, "id", Value.Id);
       Swagger.Streams.Deserialize (Object, "name", Value.Name);
-      Swagger.Streams.Deserialize (Object, "description", Value.Description);
-      Swagger.Streams.Deserialize (Object, "src", Value.Src);
-      Swagger.Streams.Deserialize (Object, "scope", Value.Scope);
-      Swagger.Streams.Deserialize (Object, "event", Value.Event);
-      Swagger.Streams.Deserialize (Object, "load_method", Value.Load_Method);
-      Swagger.Streams.Deserialize (Object, "html", Value.Html);
-      Deserialize (Object, "created_time", Value.Created_Time);
-      Deserialize (Object, "modified_time", Value.Modified_Time);
+      Swagger.Streams.Deserialize (Object, "enabled", Value.Enabled);
+      Deserialize (Object, "countries", Value.Countries);
+      Deserialize (Object, "shipping_methods", Value.Shipping_Methods);
       Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
       Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : in out Script_Type_Vectors.Vector) is
+                          Value : in out CartShippingZone2_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
-      Item : .Models.Script_Type;
+      Item : .Models.CartShippingZone2_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);
@@ -20102,11 +20046,10 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in .Models.ResponseCartScriptListResult_Type) is
+                        Value : in .Models.ResponseCartShippingZonesListResult_Type) is
    begin
       Into.Start_Entity (Name);
-      Into.Write_Entity ("total_count", Value.Total_Count);
-      Serialize (Into, "scripts", Value.Scripts);
+      Serialize (Into, "shipping_zone", Value.Shipping_Zone);
       Into.Write_Entity ("additional_fields", Value.Additional_Fields);
       Into.Write_Entity ("custom_fields", Value.Custom_Fields);
       Into.End_Entity (Name);
@@ -20114,7 +20057,7 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in ResponseCartScriptListResult_Type_Vectors.Vector) is
+                        Value : in ResponseCartShippingZonesListResult_Type_Vectors.Vector) is
    begin
       Into.Start_Array (Name);
       for Item of Value loop
@@ -20125,21 +20068,69 @@ package body .Models is
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out .Models.ResponseCartScriptListResult_Type) is
+                          Value : out .Models.ResponseCartShippingZonesListResult_Type) is
       Object : Swagger.Value_Type;
    begin
       Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "total_count", Value.Total_Count);
-      Deserialize (Object, "scripts", Value.Scripts);
+      Deserialize (Object, "shipping_zone", Value.Shipping_Zone);
       Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
       Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : in out ResponseCartScriptListResult_Type_Vectors.Vector) is
+                          Value : in out ResponseCartShippingZonesListResult_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
-      Item : .Models.ResponseCartScriptListResult_Type;
+      Item : .Models.ResponseCartShippingZonesListResult_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.ResponseCategoryListResult_Type) is
+   begin
+      Into.Start_Entity (Name);
+      Into.Write_Entity ("categories_count", Value.Categories_Count);
+      Serialize (Into, "category", Value.Category);
+      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
+      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ResponseCategoryListResult_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.ResponseCategoryListResult_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "categories_count", Value.Categories_Count);
+      Deserialize (Object, "category", Value.Category);
+      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
+      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out ResponseCategoryListResult_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.ResponseCategoryListResult_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);
@@ -21549,6 +21540,118 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
+                        Value : in .Models.TaxClass_Type) is
+   begin
+      Into.Start_Entity (Name);
+      if not Value.Id.Is_Null then
+         Into.Write_Entity ("id", Value.Id);
+      end if;
+      if not Value.Name.Is_Null then
+         Into.Write_Entity ("name", Value.Name);
+      end if;
+      Into.Write_Entity ("avail", Value.Avail);
+      Serialize (Into, "tax", Value.Tax);
+      Into.Write_Entity ("tax_type", Value.Tax_Type);
+      Serialize (Into, "created_at", Value.Created_At);
+      Serialize (Into, "modified_at", Value.Modified_At);
+      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
+      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in TaxClass_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.TaxClass_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "id", Value.Id);
+      Swagger.Streams.Deserialize (Object, "name", Value.Name);
+      Swagger.Streams.Deserialize (Object, "avail", Value.Avail);
+      Swagger.Streams.Deserialize (Object, "tax", Value.Tax);
+      Swagger.Streams.Deserialize (Object, "tax_type", Value.Tax_Type);
+      Deserialize (Object, "created_at", Value.Created_At);
+      Deserialize (Object, "modified_at", Value.Modified_At);
+      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
+      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out TaxClass_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.TaxClass_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.ResponseTaxClassListResult_Type) is
+   begin
+      Into.Start_Entity (Name);
+      Into.Write_Entity ("total_count", Value.Total_Count);
+      Serialize (Into, "tax_classes", Value.Tax_Classes);
+      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
+      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ResponseTaxClassListResult_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.ResponseTaxClassListResult_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "total_count", Value.Total_Count);
+      Deserialize (Object, "tax_classes", Value.Tax_Classes);
+      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
+      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out ResponseTaxClassListResult_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.ResponseTaxClassListResult_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
                         Value : in .Models.ReturnActionList200ResponseResult_Type) is
    begin
       Into.Start_Entity (Name);
@@ -21933,6 +22036,122 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
+                        Value : in .Models.Script_Type) is
+   begin
+      Into.Start_Entity (Name);
+      if not Value.Id.Is_Null then
+         Into.Write_Entity ("id", Value.Id);
+      end if;
+      Into.Write_Entity ("name", Value.Name);
+      Into.Write_Entity ("description", Value.Description);
+      Into.Write_Entity ("src", Value.Src);
+      Into.Write_Entity ("scope", Value.Scope);
+      Into.Write_Entity ("event", Value.Event);
+      Into.Write_Entity ("load_method", Value.Load_Method);
+      Into.Write_Entity ("html", Value.Html);
+      Serialize (Into, "created_time", Value.Created_Time);
+      Serialize (Into, "modified_time", Value.Modified_Time);
+      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
+      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Script_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.Script_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "id", Value.Id);
+      Swagger.Streams.Deserialize (Object, "name", Value.Name);
+      Swagger.Streams.Deserialize (Object, "description", Value.Description);
+      Swagger.Streams.Deserialize (Object, "src", Value.Src);
+      Swagger.Streams.Deserialize (Object, "scope", Value.Scope);
+      Swagger.Streams.Deserialize (Object, "event", Value.Event);
+      Swagger.Streams.Deserialize (Object, "load_method", Value.Load_Method);
+      Swagger.Streams.Deserialize (Object, "html", Value.Html);
+      Deserialize (Object, "created_time", Value.Created_Time);
+      Deserialize (Object, "modified_time", Value.Modified_Time);
+      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
+      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out Script_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.Script_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.ResponseCartScriptListResult_Type) is
+   begin
+      Into.Start_Entity (Name);
+      Into.Write_Entity ("total_count", Value.Total_Count);
+      Serialize (Into, "scripts", Value.Scripts);
+      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
+      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ResponseCartScriptListResult_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.ResponseCartScriptListResult_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "total_count", Value.Total_Count);
+      Deserialize (Object, "scripts", Value.Scripts);
+      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
+      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out ResponseCartScriptListResult_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.ResponseCartScriptListResult_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
                         Value : in .Models.SpecialPrice_Type) is
    begin
       Into.Start_Entity (Name);
@@ -21979,6 +22198,59 @@ package body .Models is
                           Value : in out SpecialPrice_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
       Item : .Models.SpecialPrice_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.TaxClassZipCodes_Type) is
+   begin
+      Into.Start_Entity (Name);
+      if not Value.Is_Range.Is_Null then
+         Into.Write_Entity ("is_range", Value.Is_Range);
+      end if;
+      Serialize (Into, "range", Value.P_Range);
+      Serialize (Into, "fields", Value.Fields);
+      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
+      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in TaxClassZipCodes_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.TaxClassZipCodes_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "is_range", Value.Is_Range);
+      Swagger.Streams.Deserialize (Object, "range", Value.P_Range);
+      Deserialize (Object, "fields", Value.Fields);
+      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
+      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out TaxClassZipCodes_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.TaxClassZipCodes_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);
@@ -22105,171 +22377,6 @@ package body .Models is
                           Value : in out TaxClassCountries_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
       Item : .Models.TaxClassCountries_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.TaxClassZipCodes_Type) is
-   begin
-      Into.Start_Entity (Name);
-      if not Value.Is_Range.Is_Null then
-         Into.Write_Entity ("is_range", Value.Is_Range);
-      end if;
-      Serialize (Into, "range", Value.P_Range);
-      Serialize (Into, "fields", Value.Fields);
-      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
-      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in TaxClassZipCodes_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.TaxClassZipCodes_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "is_range", Value.Is_Range);
-      Swagger.Streams.Deserialize (Object, "range", Value.P_Range);
-      Deserialize (Object, "fields", Value.Fields);
-      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
-      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out TaxClassZipCodes_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.TaxClassZipCodes_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.TaxClass_Type) is
-   begin
-      Into.Start_Entity (Name);
-      if not Value.Id.Is_Null then
-         Into.Write_Entity ("id", Value.Id);
-      end if;
-      if not Value.Name.Is_Null then
-         Into.Write_Entity ("name", Value.Name);
-      end if;
-      Into.Write_Entity ("avail", Value.Avail);
-      Serialize (Into, "tax", Value.Tax);
-      Into.Write_Entity ("tax_type", Value.Tax_Type);
-      Serialize (Into, "created_at", Value.Created_At);
-      Serialize (Into, "modified_at", Value.Modified_At);
-      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
-      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in TaxClass_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.TaxClass_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "id", Value.Id);
-      Swagger.Streams.Deserialize (Object, "name", Value.Name);
-      Swagger.Streams.Deserialize (Object, "avail", Value.Avail);
-      Swagger.Streams.Deserialize (Object, "tax", Value.Tax);
-      Swagger.Streams.Deserialize (Object, "tax_type", Value.Tax_Type);
-      Deserialize (Object, "created_at", Value.Created_At);
-      Deserialize (Object, "modified_at", Value.Modified_At);
-      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
-      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out TaxClass_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.TaxClass_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.ResponseTaxClassListResult_Type) is
-   begin
-      Into.Start_Entity (Name);
-      Into.Write_Entity ("total_count", Value.Total_Count);
-      Serialize (Into, "tax_classes", Value.Tax_Classes);
-      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
-      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ResponseTaxClassListResult_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.ResponseTaxClassListResult_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "total_count", Value.Total_Count);
-      Deserialize (Object, "tax_classes", Value.Tax_Classes);
-      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
-      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out ResponseTaxClassListResult_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.ResponseTaxClassListResult_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);
@@ -22520,159 +22627,6 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in .Models.CartShippingZone2_Type) is
-   begin
-      Into.Start_Entity (Name);
-      if not Value.Id.Is_Null then
-         Into.Write_Entity ("id", Value.Id);
-      end if;
-      Into.Write_Entity ("name", Value.Name);
-      Into.Write_Entity ("enabled", Value.Enabled);
-      Serialize (Into, "countries", Value.Countries);
-      Serialize (Into, "shipping_methods", Value.Shipping_Methods);
-      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
-      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CartShippingZone2_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.CartShippingZone2_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "id", Value.Id);
-      Swagger.Streams.Deserialize (Object, "name", Value.Name);
-      Swagger.Streams.Deserialize (Object, "enabled", Value.Enabled);
-      Deserialize (Object, "countries", Value.Countries);
-      Deserialize (Object, "shipping_methods", Value.Shipping_Methods);
-      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
-      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out CartShippingZone2_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.CartShippingZone2_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.ResponseCartShippingZonesListResult_Type) is
-   begin
-      Into.Start_Entity (Name);
-      Serialize (Into, "shipping_zone", Value.Shipping_Zone);
-      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
-      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ResponseCartShippingZonesListResult_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.ResponseCartShippingZonesListResult_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Deserialize (Object, "shipping_zone", Value.Shipping_Zone);
-      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
-      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out ResponseCartShippingZonesListResult_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.ResponseCartShippingZonesListResult_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.ResponseCategoryListResult_Type) is
-   begin
-      Into.Start_Entity (Name);
-      Into.Write_Entity ("categories_count", Value.Categories_Count);
-      Serialize (Into, "category", Value.Category);
-      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
-      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ResponseCategoryListResult_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.ResponseCategoryListResult_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "categories_count", Value.Categories_Count);
-      Deserialize (Object, "category", Value.Category);
-      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
-      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out ResponseCategoryListResult_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.ResponseCategoryListResult_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
                         Value : in .Models.CustomerAdd_Type) is
    begin
       Into.Start_Entity (Name);
@@ -22797,6 +22751,221 @@ package body .Models is
                           Value : in out CustomerAdd_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
       Item : .Models.CustomerAdd_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.CustomerAddress_Type) is
+   begin
+      Into.Start_Entity (Name);
+      if not Value.Id.Is_Null then
+         Into.Write_Entity ("id", Value.Id);
+      end if;
+      if not Value.P_Type.Is_Null then
+         Into.Write_Entity ("type", Value.P_Type);
+      end if;
+      Into.Write_Entity ("first_name", Value.First_Name);
+      Into.Write_Entity ("last_name", Value.Last_Name);
+      if not Value.Postcode.Is_Null then
+         Into.Write_Entity ("postcode", Value.Postcode);
+      end if;
+      if not Value.Address_1.Is_Null then
+         Into.Write_Entity ("address1", Value.Address_1);
+      end if;
+      Into.Write_Entity ("address2", Value.Address_2);
+      Into.Write_Entity ("phone", Value.Phone);
+      Into.Write_Entity ("phone_mobile", Value.Phone_Mobile);
+      if not Value.City.Is_Null then
+         Into.Write_Entity ("city", Value.City);
+      end if;
+      Serialize (Into, "country", Value.Country);
+      Serialize (Into, "state", Value.State);
+      Into.Write_Entity ("company", Value.Company);
+      Into.Write_Entity ("fax", Value.Fax);
+      Into.Write_Entity ("website", Value.Website);
+      Into.Write_Entity ("gender", Value.Gender);
+      Into.Write_Entity ("region", Value.Region);
+      if not Value.Default.Is_Null then
+         Into.Write_Entity ("default", Value.Default);
+      end if;
+      Into.Write_Entity ("tax_id", Value.Tax_Id);
+      Into.Write_Entity ("identification_number", Value.Identification_Number);
+      Into.Write_Entity ("alias", Value.Alias);
+      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
+      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CustomerAddress_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.CustomerAddress_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "id", Value.Id);
+      Swagger.Streams.Deserialize (Object, "type", Value.P_Type);
+      Swagger.Streams.Deserialize (Object, "first_name", Value.First_Name);
+      Swagger.Streams.Deserialize (Object, "last_name", Value.Last_Name);
+      Swagger.Streams.Deserialize (Object, "postcode", Value.Postcode);
+      Swagger.Streams.Deserialize (Object, "address1", Value.Address_1);
+      Swagger.Streams.Deserialize (Object, "address2", Value.Address_2);
+      Swagger.Streams.Deserialize (Object, "phone", Value.Phone);
+      Swagger.Streams.Deserialize (Object, "phone_mobile", Value.Phone_Mobile);
+      Swagger.Streams.Deserialize (Object, "city", Value.City);
+      Deserialize (Object, "country", Value.Country);
+      Deserialize (Object, "state", Value.State);
+      Swagger.Streams.Deserialize (Object, "company", Value.Company);
+      Swagger.Streams.Deserialize (Object, "fax", Value.Fax);
+      Swagger.Streams.Deserialize (Object, "website", Value.Website);
+      Swagger.Streams.Deserialize (Object, "gender", Value.Gender);
+      Swagger.Streams.Deserialize (Object, "region", Value.Region);
+      Swagger.Streams.Deserialize (Object, "default", Value.Default);
+      Swagger.Streams.Deserialize (Object, "tax_id", Value.Tax_Id);
+      Swagger.Streams.Deserialize (Object, "identification_number", Value.Identification_Number);
+      Swagger.Streams.Deserialize (Object, "alias", Value.Alias);
+      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
+      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out CustomerAddress_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.CustomerAddress_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.CartPickupLocation_Type) is
+   begin
+      Into.Start_Entity (Name);
+      Into.Write_Entity ("id", Value.Id);
+      Into.Write_Entity ("name", Value.Name);
+      Into.Write_Entity ("avail", Value.Avail);
+      Serialize (Into, "address", Value.Address);
+      Into.Write_Entity ("pickup_instructions", Value.Pickup_Instructions);
+      Into.Write_Entity ("expected_ready_time", Value.Expected_Ready_Time);
+      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
+      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CartPickupLocation_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.CartPickupLocation_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "id", Value.Id);
+      Swagger.Streams.Deserialize (Object, "name", Value.Name);
+      Swagger.Streams.Deserialize (Object, "avail", Value.Avail);
+      Deserialize (Object, "address", Value.Address);
+      Swagger.Streams.Deserialize (Object, "pickup_instructions", Value.Pickup_Instructions);
+      Swagger.Streams.Deserialize (Object, "expected_ready_time", Value.Expected_Ready_Time);
+      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
+      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out CartPickupLocation_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.CartPickupLocation_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.CartWarehouse_Type) is
+   begin
+      Into.Start_Entity (Name);
+      Into.Write_Entity ("id", Value.Id);
+      Into.Write_Entity ("name", Value.Name);
+      Into.Write_Entity ("description", Value.Description);
+      Into.Write_Entity ("avail", Value.Avail);
+      Serialize (Into, "address", Value.Address);
+      Serialize (Into, "carriers_ids", Value.Carriers_Ids);
+      Serialize (Into, "stores_ids", Value.Stores_Ids);
+      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
+      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CartWarehouse_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.CartWarehouse_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "id", Value.Id);
+      Swagger.Streams.Deserialize (Object, "name", Value.Name);
+      Swagger.Streams.Deserialize (Object, "description", Value.Description);
+      Swagger.Streams.Deserialize (Object, "avail", Value.Avail);
+      Deserialize (Object, "address", Value.Address);
+      Swagger.Streams.Deserialize (Object, "carriers_ids", Value.Carriers_Ids);
+      Swagger.Streams.Deserialize (Object, "stores_ids", Value.Stores_Ids);
+      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
+      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out CartWarehouse_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.CartWarehouse_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);
@@ -25792,6 +25961,71 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
+                        Value : in .Models.ProductAddSpecificsInner_Type) is
+   begin
+      Into.Start_Entity (Name);
+      if not Value.Name.Is_Null then
+         Into.Write_Entity ("name", Value.Name);
+      end if;
+      if not Value.Value.Is_Null then
+         Into.Write_Entity ("value", Value.Value);
+      end if;
+      Serialize (Into, "values", Value.Values);
+      if not Value.Used_For_Variations.Is_Null then
+         Into.Write_Entity ("used_for_variations", Value.Used_For_Variations);
+      end if;
+      Into.Write_Entity ("scale_id", Value.Scale_Id);
+      Into.Write_Entity ("input_value", Value.Input_Value);
+      Serialize (Into, "food_details", Value.Food_Details);
+      Serialize (Into, "group_products_details", Value.Group_Products_Details);
+      Serialize (Into, "booking_details", Value.Booking_Details);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ProductAddSpecificsInner_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.ProductAddSpecificsInner_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "name", Value.Name);
+      Swagger.Streams.Deserialize (Object, "value", Value.Value);
+      Swagger.Streams.Deserialize (Object, "values", Value.Values);
+      Swagger.Streams.Deserialize (Object, "used_for_variations", Value.Used_For_Variations);
+      Swagger.Streams.Deserialize (Object, "scale_id", Value.Scale_Id);
+      Swagger.Streams.Deserialize (Object, "input_value", Value.Input_Value);
+      Deserialize (Object, "food_details", Value.Food_Details);
+      Deserialize (Object, "group_products_details", Value.Group_Products_Details);
+      Deserialize (Object, "booking_details", Value.Booking_Details);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out ProductAddSpecificsInner_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.ProductAddSpecificsInner_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
                         Value : in .Models.CartStoreInfo_Type) is
    begin
       Into.Start_Entity (Name);
@@ -25866,183 +26100,6 @@ package body .Models is
                           Value : in out CartStoreInfo_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
       Item : .Models.CartStoreInfo_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.ProductAddSpecificsInner_Type) is
-   begin
-      Into.Start_Entity (Name);
-      if not Value.Name.Is_Null then
-         Into.Write_Entity ("name", Value.Name);
-      end if;
-      if not Value.Value.Is_Null then
-         Into.Write_Entity ("value", Value.Value);
-      end if;
-      Serialize (Into, "values", Value.Values);
-      if not Value.Used_For_Variations.Is_Null then
-         Into.Write_Entity ("used_for_variations", Value.Used_For_Variations);
-      end if;
-      Into.Write_Entity ("scale_id", Value.Scale_Id);
-      Into.Write_Entity ("input_value", Value.Input_Value);
-      Serialize (Into, "food_details", Value.Food_Details);
-      Serialize (Into, "group_products_details", Value.Group_Products_Details);
-      Serialize (Into, "booking_details", Value.Booking_Details);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ProductAddSpecificsInner_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.ProductAddSpecificsInner_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "name", Value.Name);
-      Swagger.Streams.Deserialize (Object, "value", Value.Value);
-      Swagger.Streams.Deserialize (Object, "values", Value.Values);
-      Swagger.Streams.Deserialize (Object, "used_for_variations", Value.Used_For_Variations);
-      Swagger.Streams.Deserialize (Object, "scale_id", Value.Scale_Id);
-      Swagger.Streams.Deserialize (Object, "input_value", Value.Input_Value);
-      Deserialize (Object, "food_details", Value.Food_Details);
-      Deserialize (Object, "group_products_details", Value.Group_Products_Details);
-      Deserialize (Object, "booking_details", Value.Booking_Details);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out ProductAddSpecificsInner_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.ProductAddSpecificsInner_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.Basket_Type) is
-   begin
-      Into.Start_Entity (Name);
-      if not Value.Id.Is_Null then
-         Into.Write_Entity ("id", Value.Id);
-      end if;
-      Serialize (Into, "customer", Value.Customer);
-      Into.Write_Entity ("basket_url", Value.Basket_Url);
-      Serialize (Into, "created_at", Value.Created_At);
-      Serialize (Into, "modified_at", Value.Modified_At);
-      Serialize (Into, "currency", Value.Currency);
-      Serialize (Into, "basket_products", Value.Basket_Products);
-      Into.Write_Entity ("additional_fields", Value.Additional_Fields);
-      Into.Write_Entity ("custom_fields", Value.Custom_Fields);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Basket_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.Basket_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "id", Value.Id);
-      Deserialize (Object, "customer", Value.Customer);
-      Swagger.Streams.Deserialize (Object, "basket_url", Value.Basket_Url);
-      Deserialize (Object, "created_at", Value.Created_At);
-      Deserialize (Object, "modified_at", Value.Modified_At);
-      Deserialize (Object, "currency", Value.Currency);
-      Deserialize (Object, "basket_products", Value.Basket_Products);
-      Swagger.Streams.Deserialize (Object, "additional_fields", Value.Additional_Fields);
-      Swagger.Streams.Deserialize (Object, "custom_fields", Value.Custom_Fields);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out Basket_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.Basket_Type;
-   begin
-      Value.Clear;
-      Swagger.Streams.Deserialize (From, Name, List);
-      for Data of List loop
-         Deserialize (Data, "", Item);
-         Value.Append (Item);
-      end loop;
-   end Deserialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.BasketInfo200Response_Type) is
-   begin
-      Into.Start_Entity (Name);
-      if not Value.Return_Code.Is_Null then
-         Into.Write_Entity ("return_code", Value.Return_Code);
-      end if;
-      if not Value.Return_Message.Is_Null then
-         Into.Write_Entity ("return_message", Value.Return_Message);
-      end if;
-      Serialize (Into, "result", Value.Result);
-      Into.End_Entity (Name);
-   end Serialize;
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in BasketInfo200Response_Type_Vectors.Vector) is
-   begin
-      Into.Start_Array (Name);
-      for Item of Value loop
-         Serialize (Into, "", Item);
-      end loop;
-      Into.End_Array (Name);
-   end Serialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.BasketInfo200Response_Type) is
-      Object : Swagger.Value_Type;
-   begin
-      Swagger.Streams.Deserialize (From, Name, Object);
-      Swagger.Streams.Deserialize (Object, "return_code", Value.Return_Code);
-      Swagger.Streams.Deserialize (Object, "return_message", Value.Return_Message);
-      Deserialize (Object, "result", Value.Result);
-   end Deserialize;
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out BasketInfo200Response_Type_Vectors.Vector) is
-      List : Swagger.Value_Array_Type;
-      Item : .Models.BasketInfo200Response_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);
@@ -26282,6 +26339,7 @@ package body .Models is
          Into.Write_Entity ("shop_section_id", Value.Shop_Section_Id);
       end if;
       Serialize (Into, "personalization_details", Value.Personalization_Details);
+      Serialize (Into, "personalization_questions", Value.Personalization_Questions);
       if not Value.External_Product_Link.Is_Null then
          Into.Write_Entity ("external_product_link", Value.External_Product_Link);
       end if;
@@ -26403,6 +26461,7 @@ package body .Models is
       Deserialize (Object, "specifics", Value.Specifics);
       Swagger.Streams.Deserialize (Object, "shop_section_id", Value.Shop_Section_Id);
       Deserialize (Object, "personalization_details", Value.Personalization_Details);
+      Deserialize (Object, "personalization_questions", Value.Personalization_Questions);
       Swagger.Streams.Deserialize (Object, "external_product_link", Value.External_Product_Link);
       Swagger.Streams.Deserialize (Object, "marketplace_item_properties", Value.Marketplace_Item_Properties);
       Swagger.Streams.Deserialize (Object, "min_order_quantity", Value.Min_Order_Quantity);
@@ -26720,6 +26779,7 @@ package body .Models is
          Into.Write_Entity ("return_policy_id", Value.Return_Policy_Id);
       end if;
       Serialize (Into, "personalization_details", Value.Personalization_Details);
+      Serialize (Into, "personalization_questions", Value.Personalization_Questions);
       if not Value.Idempotency_Key.Is_Null then
          Into.Write_Entity ("idempotency_key", Value.Idempotency_Key);
       end if;
@@ -26865,6 +26925,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "shop_section_id", Value.Shop_Section_Id);
       Swagger.Streams.Deserialize (Object, "return_policy_id", Value.Return_Policy_Id);
       Deserialize (Object, "personalization_details", Value.Personalization_Details);
+      Deserialize (Object, "personalization_questions", Value.Personalization_Questions);
       Swagger.Streams.Deserialize (Object, "idempotency_key", Value.Idempotency_Key);
    end Deserialize;
 
