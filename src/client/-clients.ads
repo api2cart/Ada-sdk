@@ -1187,6 +1187,7 @@ package .Clients is
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
+       Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Result : out .Models.OrderCount200Response_Type);
 
    --  order.financial_status.list
@@ -2135,16 +2136,7 @@ package .Clients is
    --  Create webhook on the store and subscribe to it.
    procedure Webhook_Create
       (Client : in out Client_Type;
-       Entity : in Swagger.UString;
-       Action : in Swagger.UString;
-       Callback : in Swagger.Nullable_UString;
-       Label : in Swagger.Nullable_UString;
-       Fields : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Active : in Swagger.Nullable_Boolean;
-       Lang_Id : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
-       Idempotency_Key : in Swagger.Nullable_UString;
+       Webhook_Create_Type : in .Models.WebhookCreate_Type;
        Result : out .Models.BasketLiveShippingServiceCreate200Response_Type);
 
    --  webhook.delete
@@ -2177,14 +2169,7 @@ package .Clients is
    --  Update Webhooks parameters.
    procedure Webhook_Update
       (Client : in out Client_Type;
-       Id : in Swagger.UString;
-       Callback : in Swagger.Nullable_UString;
-       Label : in Swagger.Nullable_UString;
-       Fields : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Active : in Swagger.Nullable_Boolean;
-       Lang_Id : in Swagger.Nullable_UString;
-       Idempotency_Key : in Swagger.Nullable_UString;
+       Webhook_Update_Type : in .Models.WebhookUpdate_Type;
        Result : out .Models.ProductImageUpdate200Response_Type);
 
 end .Clients;

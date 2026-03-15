@@ -2681,6 +2681,7 @@ package body .Clients is
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
+       Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Result : out .Models.OrderCount200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -2708,6 +2709,7 @@ package body .Clients is
       URI.Add_Param ("created_to", Created_To);
       URI.Add_Param ("modified_from", Modified_From);
       URI.Add_Param ("modified_to", Modified_To);
+      URI.Add_Param ("use_latest_api_version", Use_Latest_Api_Version);
       URI.Set_Path ("/order.count.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -4935,35 +4937,18 @@ package body .Clients is
    --  Create webhook on the store and subscribe to it.
    procedure Webhook_Create
       (Client : in out Client_Type;
-       Entity : in Swagger.UString;
-       Action : in Swagger.UString;
-       Callback : in Swagger.Nullable_UString;
-       Label : in Swagger.Nullable_UString;
-       Fields : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Active : in Swagger.Nullable_Boolean;
-       Lang_Id : in Swagger.Nullable_UString;
-       Store_Id : in Swagger.Nullable_UString;
-       Idempotency_Key : in Swagger.Nullable_UString;
+       Webhook_Create_Type : in .Models.WebhookCreate_Type;
        Result : out .Models.BasketLiveShippingServiceCreate200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
+      Req   : Swagger.Clients.Request_Type;
       Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
+      Client.Initialize (Req, Media_List_1);
+      .Models.Serialize (Req.Stream, "", Webhook_Create_Type);
 
-
-      URI.Add_Param ("entity", Entity);
-      URI.Add_Param ("action", Action);
-      URI.Add_Param ("callback", Callback);
-      URI.Add_Param ("label", Label);
-      URI.Add_Param ("fields", Fields);
-      URI.Add_Param ("response_fields", Response_Fields);
-      URI.Add_Param ("active", Active);
-      URI.Add_Param ("lang_id", Lang_Id);
-      URI.Add_Param ("store_id", Store_Id);
-      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/webhook.create.json");
-      Client.Call (Swagger.Clients.POST, URI, Reply);
+      Client.Call (Swagger.Clients.POST, URI, Req, Reply);
       .Models.Deserialize (Reply, "", Result);
    end Webhook_Create;
 
@@ -5035,31 +5020,18 @@ package body .Clients is
    --  Update Webhooks parameters.
    procedure Webhook_Update
       (Client : in out Client_Type;
-       Id : in Swagger.UString;
-       Callback : in Swagger.Nullable_UString;
-       Label : in Swagger.Nullable_UString;
-       Fields : in Swagger.Nullable_UString;
-       Response_Fields : in Swagger.Nullable_UString;
-       Active : in Swagger.Nullable_Boolean;
-       Lang_Id : in Swagger.Nullable_UString;
-       Idempotency_Key : in Swagger.Nullable_UString;
+       Webhook_Update_Type : in .Models.WebhookUpdate_Type;
        Result : out .Models.ProductImageUpdate200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
+      Req   : Swagger.Clients.Request_Type;
       Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
+      Client.Initialize (Req, Media_List_1);
+      .Models.Serialize (Req.Stream, "", Webhook_Update_Type);
 
-
-      URI.Add_Param ("id", Id);
-      URI.Add_Param ("callback", Callback);
-      URI.Add_Param ("label", Label);
-      URI.Add_Param ("fields", Fields);
-      URI.Add_Param ("response_fields", Response_Fields);
-      URI.Add_Param ("active", Active);
-      URI.Add_Param ("lang_id", Lang_Id);
-      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/webhook.update.json");
-      Client.Call (Swagger.Clients.PUT, URI, Reply);
+      Client.Call (Swagger.Clients.PUT, URI, Req, Reply);
       .Models.Deserialize (Reply, "", Result);
    end Webhook_Update;
 end .Clients;
