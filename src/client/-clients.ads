@@ -129,6 +129,7 @@ package .Clients is
        Bricklink_Consumer_Secret : in Swagger.Nullable_UString;
        Bricklink_Token : in Swagger.Nullable_UString;
        Bricklink_Token_Secret : in Swagger.Nullable_UString;
+       Nopcommerce_Token : in Swagger.Nullable_UString;
        Volusion_Login : in Swagger.Nullable_UString;
        Volusion_Password : in Swagger.Nullable_UString;
        Walmart_Client_Id : in Swagger.Nullable_UString;

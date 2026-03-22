@@ -4969,6 +4969,7 @@ package .Models is
        Bricklink_Consumer_Secret : Swagger.Nullable_UString;
        Bricklink_Token : Swagger.Nullable_UString;
        Bricklink_Token_Secret : Swagger.Nullable_UString;
+       Nopcommerce_Token : Swagger.Nullable_UString;
        Demandware_Client_Id : Swagger.Nullable_UString;
        Demandware_Api_Password : Swagger.Nullable_UString;
        Demandware_User_Name : Swagger.Nullable_UString;
@@ -13604,6 +13605,8 @@ package .Models is
        External_Product_Link : Swagger.Nullable_UString;
        Marketplace_Item_Properties : Swagger.Nullable_UString;
        Min_Order_Quantity : Swagger.Number;
+       Manufacturer_Ids : Swagger.Nullable_UString;
+       Responsible_Person_Ids : Swagger.Nullable_UString;
        Idempotency_Key : Swagger.Nullable_UString;
      end record;
 
@@ -13752,6 +13755,8 @@ package .Models is
        Return_Policy_Id : Swagger.Nullable_Integer;
        Personalization_Details : .Models.ProductAddPersonalizationDetails_Type;
        Personalization_Questions : .Models.ProductAddPersonalizationQuestionsInner_Type_Vectors.Vector;
+       Manufacturer_Ids : Swagger.Nullable_UString;
+       Responsible_Person_Ids : Swagger.Nullable_UString;
        Idempotency_Key : Swagger.Nullable_UString;
      end record;
 

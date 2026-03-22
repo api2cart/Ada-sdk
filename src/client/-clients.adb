@@ -163,6 +163,7 @@ package body .Clients is
        Bricklink_Consumer_Secret : in Swagger.Nullable_UString;
        Bricklink_Token : in Swagger.Nullable_UString;
        Bricklink_Token_Secret : in Swagger.Nullable_UString;
+       Nopcommerce_Token : in Swagger.Nullable_UString;
        Volusion_Login : in Swagger.Nullable_UString;
        Volusion_Password : in Swagger.Nullable_UString;
        Walmart_Client_Id : in Swagger.Nullable_UString;
@@ -346,6 +347,7 @@ package body .Clients is
       URI.Add_Param ("bricklink_consumer_secret", Bricklink_Consumer_Secret);
       URI.Add_Param ("bricklink_token", Bricklink_Token);
       URI.Add_Param ("bricklink_token_secret", Bricklink_Token_Secret);
+      URI.Add_Param ("nopcommerce_token", Nopcommerce_Token);
       URI.Add_Param ("volusion_login", Volusion_Login);
       URI.Add_Param ("volusion_password", Volusion_Password);
       URI.Add_Param ("walmart_client_id", Walmart_Client_Id);

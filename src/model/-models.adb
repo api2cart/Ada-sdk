@@ -9416,6 +9416,9 @@ package body .Models is
       if not Value.Bricklink_Token_Secret.Is_Null then
          Into.Write_Entity ("bricklink_token_secret", Value.Bricklink_Token_Secret);
       end if;
+      if not Value.Nopcommerce_Token.Is_Null then
+         Into.Write_Entity ("nopcommerce_token", Value.Nopcommerce_Token);
+      end if;
       if not Value.Demandware_Client_Id.Is_Null then
          Into.Write_Entity ("demandware_client_id", Value.Demandware_Client_Id);
       end if;
@@ -9891,6 +9894,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "bricklink_consumer_secret", Value.Bricklink_Consumer_Secret);
       Swagger.Streams.Deserialize (Object, "bricklink_token", Value.Bricklink_Token);
       Swagger.Streams.Deserialize (Object, "bricklink_token_secret", Value.Bricklink_Token_Secret);
+      Swagger.Streams.Deserialize (Object, "nopcommerce_token", Value.Nopcommerce_Token);
       Swagger.Streams.Deserialize (Object, "demandware_client_id", Value.Demandware_Client_Id);
       Swagger.Streams.Deserialize (Object, "demandware_api_password", Value.Demandware_Api_Password);
       Swagger.Streams.Deserialize (Object, "demandware_user_name", Value.Demandware_User_Name);
@@ -26705,6 +26709,12 @@ package body .Models is
          Into.Write_Entity ("marketplace_item_properties", Value.Marketplace_Item_Properties);
       end if;
       Serialize (Into, "min_order_quantity", Value.Min_Order_Quantity);
+      if not Value.Manufacturer_Ids.Is_Null then
+         Into.Write_Entity ("manufacturer_ids", Value.Manufacturer_Ids);
+      end if;
+      if not Value.Responsible_Person_Ids.Is_Null then
+         Into.Write_Entity ("responsible_person_ids", Value.Responsible_Person_Ids);
+      end if;
       if not Value.Idempotency_Key.Is_Null then
          Into.Write_Entity ("idempotency_key", Value.Idempotency_Key);
       end if;
@@ -26823,6 +26833,8 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "external_product_link", Value.External_Product_Link);
       Swagger.Streams.Deserialize (Object, "marketplace_item_properties", Value.Marketplace_Item_Properties);
       Swagger.Streams.Deserialize (Object, "min_order_quantity", Value.Min_Order_Quantity);
+      Swagger.Streams.Deserialize (Object, "manufacturer_ids", Value.Manufacturer_Ids);
+      Swagger.Streams.Deserialize (Object, "responsible_person_ids", Value.Responsible_Person_Ids);
       Swagger.Streams.Deserialize (Object, "idempotency_key", Value.Idempotency_Key);
    end Deserialize;
 
@@ -27138,6 +27150,12 @@ package body .Models is
       end if;
       Serialize (Into, "personalization_details", Value.Personalization_Details);
       Serialize (Into, "personalization_questions", Value.Personalization_Questions);
+      if not Value.Manufacturer_Ids.Is_Null then
+         Into.Write_Entity ("manufacturer_ids", Value.Manufacturer_Ids);
+      end if;
+      if not Value.Responsible_Person_Ids.Is_Null then
+         Into.Write_Entity ("responsible_person_ids", Value.Responsible_Person_Ids);
+      end if;
       if not Value.Idempotency_Key.Is_Null then
          Into.Write_Entity ("idempotency_key", Value.Idempotency_Key);
       end if;
@@ -27284,6 +27302,8 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "return_policy_id", Value.Return_Policy_Id);
       Deserialize (Object, "personalization_details", Value.Personalization_Details);
       Deserialize (Object, "personalization_questions", Value.Personalization_Questions);
+      Swagger.Streams.Deserialize (Object, "manufacturer_ids", Value.Manufacturer_Ids);
+      Swagger.Streams.Deserialize (Object, "responsible_person_ids", Value.Responsible_Person_Ids);
       Swagger.Streams.Deserialize (Object, "idempotency_key", Value.Idempotency_Key);
    end Deserialize;
 
