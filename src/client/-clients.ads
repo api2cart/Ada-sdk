@@ -1145,6 +1145,7 @@ package .Clients is
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
        Skip_Empty_Email : in Swagger.Nullable_Boolean;
+       Rounding_Precision : in Swagger.Nullable_Integer;
        Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;

@@ -13665,6 +13665,7 @@ package .Models is
        Measure_Unit : Swagger.Nullable_UString;
        Unit_Price : Swagger.Number;
        Prices_Inc_Tax : Swagger.Nullable_Boolean;
+       Retail_Price : Swagger.Number;
        Quantity : Swagger.Number;
        In_Stock : Swagger.Nullable_Boolean;
        Manage_Stock : Swagger.Nullable_Boolean;

@@ -26928,6 +26928,7 @@ package body .Models is
       if not Value.Prices_Inc_Tax.Is_Null then
          Into.Write_Entity ("prices_inc_tax", Value.Prices_Inc_Tax);
       end if;
+      Serialize (Into, "retail_price", Value.Retail_Price);
       Serialize (Into, "quantity", Value.Quantity);
       if not Value.In_Stock.Is_Null then
          Into.Write_Entity ("in_stock", Value.In_Stock);
@@ -27212,6 +27213,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "measure_unit", Value.Measure_Unit);
       Swagger.Streams.Deserialize (Object, "unit_price", Value.Unit_Price);
       Swagger.Streams.Deserialize (Object, "prices_inc_tax", Value.Prices_Inc_Tax);
+      Swagger.Streams.Deserialize (Object, "retail_price", Value.Retail_Price);
       Swagger.Streams.Deserialize (Object, "quantity", Value.Quantity);
       Swagger.Streams.Deserialize (Object, "in_stock", Value.In_Stock);
       Swagger.Streams.Deserialize (Object, "manage_stock", Value.Manage_Stock);

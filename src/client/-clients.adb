@@ -2592,6 +2592,7 @@ package body .Clients is
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
        Skip_Empty_Email : in Swagger.Nullable_Boolean;
+       Rounding_Precision : in Swagger.Nullable_Integer;
        Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
@@ -2613,6 +2614,7 @@ package body .Clients is
       URI.Add_Param ("modified_from", Modified_From);
       URI.Add_Param ("modified_to", Modified_To);
       URI.Add_Param ("skip_empty_email", Skip_Empty_Email);
+      URI.Add_Param ("rounding_precision", Rounding_Precision);
       URI.Add_Param ("response_fields", Response_Fields);
       URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);
