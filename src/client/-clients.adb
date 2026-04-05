@@ -2686,6 +2686,7 @@ package body .Clients is
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
+       Vendor_Id : in Swagger.Nullable_UString;
        Result : out .Models.OrderCount200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -2714,6 +2715,7 @@ package body .Clients is
       URI.Add_Param ("modified_from", Modified_From);
       URI.Add_Param ("modified_to", Modified_To);
       URI.Add_Param ("use_latest_api_version", Use_Latest_Api_Version);
+      URI.Add_Param ("vendor_id", Vendor_Id);
       URI.Set_Path ("/order.count.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -2800,6 +2802,7 @@ package body .Clients is
        Order_Ids : in Swagger.Nullable_UString;
        Since_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Vendor_Id : in Swagger.Nullable_UString;
        Customer_Id : in Swagger.Nullable_UString;
        Customer_Email : in Swagger.Nullable_UString;
        Basket_Id : in Swagger.Nullable_UString;
@@ -2847,6 +2850,7 @@ package body .Clients is
       URI.Add_Param ("order_ids", Order_Ids);
       URI.Add_Param ("since_id", Since_Id);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("vendor_id", Vendor_Id);
       URI.Add_Param ("customer_id", Customer_Id);
       URI.Add_Param ("customer_email", Customer_Email);
       URI.Add_Param ("basket_id", Basket_Id);
@@ -3423,6 +3427,7 @@ package body .Clients is
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
+       Avail : in Swagger.Nullable_Boolean;
        Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
@@ -3447,6 +3452,7 @@ package body .Clients is
       URI.Add_Param ("created_to", Created_To);
       URI.Add_Param ("modified_from", Modified_From);
       URI.Add_Param ("modified_to", Modified_To);
+      URI.Add_Param ("avail", Avail);
       URI.Add_Param ("response_fields", Response_Fields);
       URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);
@@ -3585,6 +3591,7 @@ package body .Clients is
        Categories_Ids : in Swagger.Nullable_UString;
        Category_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Vendor_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Avail_View : in Swagger.Nullable_Boolean;
        Avail_Sale : in Swagger.Nullable_Boolean;
@@ -3617,6 +3624,7 @@ package body .Clients is
       URI.Add_Param ("categories_ids", Categories_Ids);
       URI.Add_Param ("category_id", Category_Id);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("vendor_id", Vendor_Id);
       URI.Add_Param ("lang_id", Lang_Id);
       URI.Add_Param ("avail_view", Avail_View);
       URI.Add_Param ("avail_sale", Avail_Sale);
@@ -3857,6 +3865,7 @@ package body .Clients is
       (Client : in out Client_Type;
        Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
+       Vendor_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Currency_Id : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
@@ -3874,6 +3883,7 @@ package body .Clients is
 
       URI.Add_Param ("id", Id);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("vendor_id", Vendor_Id);
       URI.Add_Param ("lang_id", Lang_Id);
       URI.Add_Param ("currency_id", Currency_Id);
       URI.Add_Param ("response_fields", Response_Fields);
@@ -3899,6 +3909,7 @@ package body .Clients is
        Categories_Ids : in Swagger.Nullable_UString;
        Category_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Vendor_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Currency_Id : in Swagger.Nullable_UString;
        Avail_View : in Swagger.Nullable_Boolean;
@@ -3942,6 +3953,7 @@ package body .Clients is
       URI.Add_Param ("categories_ids", Categories_Ids);
       URI.Add_Param ("category_id", Category_Id);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("vendor_id", Vendor_Id);
       URI.Add_Param ("lang_id", Lang_Id);
       URI.Add_Param ("currency_id", Currency_Id);
       URI.Add_Param ("avail_view", Avail_View);

@@ -1190,6 +1190,7 @@ package .Clients is
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
+       Vendor_Id : in Swagger.Nullable_UString;
        Result : out .Models.OrderCount200Response_Type);
 
    --  order.financial_status.list
@@ -1232,6 +1233,7 @@ package .Clients is
        Order_Ids : in Swagger.Nullable_UString;
        Since_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Vendor_Id : in Swagger.Nullable_UString;
        Customer_Id : in Swagger.Nullable_UString;
        Customer_Email : in Swagger.Nullable_UString;
        Basket_Id : in Swagger.Nullable_UString;
@@ -1500,6 +1502,7 @@ package .Clients is
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
+       Avail : in Swagger.Nullable_Boolean;
        Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
@@ -1569,6 +1572,7 @@ package .Clients is
        Categories_Ids : in Swagger.Nullable_UString;
        Category_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Vendor_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Avail_View : in Swagger.Nullable_Boolean;
        Avail_Sale : in Swagger.Nullable_Boolean;
@@ -1684,6 +1688,7 @@ package .Clients is
       (Client : in out Client_Type;
        Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
+       Vendor_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Currency_Id : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
@@ -1706,6 +1711,7 @@ package .Clients is
        Categories_Ids : in Swagger.Nullable_UString;
        Category_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
+       Vendor_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Currency_Id : in Swagger.Nullable_UString;
        Avail_View : in Swagger.Nullable_Boolean;
