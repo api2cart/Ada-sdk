@@ -3656,7 +3656,7 @@ package .Models is
      record
        Child_Item_Id : Swagger.Nullable_UString;
        Product_Id : Swagger.Nullable_UString;
-       Default_Qty_In_Pack : Swagger.Nullable_UString;
+       Default_Qty_In_Pack : Swagger.Number;
        Is_Qty_In_Pack_Fixed : Swagger.Nullable_Boolean;
        Price : Swagger.Number;
        Additional_Fields : Swagger.Object;
@@ -3946,8 +3946,8 @@ package .Models is
        Product_Option_Item_Id : Swagger.Nullable_UString;
        Name : Swagger.Nullable_UString;
        Sort_Order : Swagger.Nullable_Integer;
-       Price : Swagger.Nullable_UString;
-       Weight : Swagger.Nullable_UString;
+       Price : Swagger.Number;
+       Weight : Swagger.Number;
        Quantity : Swagger.Nullable_Integer;
        Type_Price : Swagger.Nullable_UString;
        Sku : Swagger.Nullable_UString;
@@ -5029,6 +5029,7 @@ package .Models is
        Shopware_Api_Secret : Swagger.Nullable_UString;
        Miva_Access_Token : Swagger.Nullable_UString;
        Miva_Signature : Swagger.Nullable_UString;
+       Mirakl_Api_Key : Swagger.Nullable_UString;
        Tiendanube_User_Id : Swagger.Nullable_Integer;
        Tiendanube_Access_Token : Swagger.Nullable_UString;
        Tiendanube_Client_Secret : Swagger.Nullable_UString;

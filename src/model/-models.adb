@@ -6886,9 +6886,7 @@ package body .Models is
       if not Value.Product_Id.Is_Null then
          Into.Write_Entity ("product_id", Value.Product_Id);
       end if;
-      if not Value.Default_Qty_In_Pack.Is_Null then
-         Into.Write_Entity ("default_qty_in_pack", Value.Default_Qty_In_Pack);
-      end if;
+      Serialize (Into, "default_qty_in_pack", Value.Default_Qty_In_Pack);
       Into.Write_Entity ("is_qty_in_pack_fixed", Value.Is_Qty_In_Pack_Fixed);
       Serialize (Into, "price", Value.Price);
       Into.Write_Entity ("additional_fields", Value.Additional_Fields);
@@ -7446,8 +7444,8 @@ package body .Models is
          Into.Write_Entity ("name", Value.Name);
       end if;
       Into.Write_Entity ("sort_order", Value.Sort_Order);
-      Into.Write_Entity ("price", Value.Price);
-      Into.Write_Entity ("weight", Value.Weight);
+      Serialize (Into, "price", Value.Price);
+      Serialize (Into, "weight", Value.Weight);
       Into.Write_Entity ("quantity", Value.Quantity);
       Into.Write_Entity ("type_price", Value.Type_Price);
       Into.Write_Entity ("sku", Value.Sku);
@@ -9596,6 +9594,9 @@ package body .Models is
       if not Value.Miva_Signature.Is_Null then
          Into.Write_Entity ("miva_signature", Value.Miva_Signature);
       end if;
+      if not Value.Mirakl_Api_Key.Is_Null then
+         Into.Write_Entity ("mirakl_api_key", Value.Mirakl_Api_Key);
+      end if;
       if not Value.Tiendanube_User_Id.Is_Null then
          Into.Write_Entity ("tiendanube_user_id", Value.Tiendanube_User_Id);
       end if;
@@ -9954,6 +9955,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "shopware_api_secret", Value.Shopware_Api_Secret);
       Swagger.Streams.Deserialize (Object, "miva_access_token", Value.Miva_Access_Token);
       Swagger.Streams.Deserialize (Object, "miva_signature", Value.Miva_Signature);
+      Swagger.Streams.Deserialize (Object, "mirakl_api_key", Value.Mirakl_Api_Key);
       Swagger.Streams.Deserialize (Object, "tiendanube_user_id", Value.Tiendanube_User_Id);
       Swagger.Streams.Deserialize (Object, "tiendanube_access_token", Value.Tiendanube_Access_Token);
       Swagger.Streams.Deserialize (Object, "tiendanube_client_secret", Value.Tiendanube_Client_Secret);

@@ -153,6 +153,7 @@ package body .Clients is
        Shoplazza_Shared_Secret : in Swagger.Nullable_UString;
        Miva_Access_Token : in Swagger.Nullable_UString;
        Miva_Signature : in Swagger.Nullable_UString;
+       Mirakl_Api_Key : in Swagger.Nullable_UString;
        Shopware_Access_Key : in Swagger.Nullable_UString;
        Unas_Api_Key : in Swagger.Nullable_UString;
        Shopware_Api_Key : in Swagger.Nullable_UString;
@@ -337,6 +338,7 @@ package body .Clients is
       URI.Add_Param ("shoplazza_shared_secret", Shoplazza_Shared_Secret);
       URI.Add_Param ("miva_access_token", Miva_Access_Token);
       URI.Add_Param ("miva_signature", Miva_Signature);
+      URI.Add_Param ("mirakl_api_key", Mirakl_Api_Key);
       URI.Add_Param ("shopware_access_key", Shopware_Access_Key);
       URI.Add_Param ("unas_api_key", Unas_Api_Key);
       URI.Add_Param ("shopware_api_key", Shopware_Api_Key);
