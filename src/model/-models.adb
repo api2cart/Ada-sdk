@@ -22988,6 +22988,15 @@ package body .Models is
       if not Value.Country.Is_Null then
          Into.Write_Entity ("country", Value.Country);
       end if;
+      if not Value.Currency_Id.Is_Null then
+         Into.Write_Entity ("currency_id", Value.Currency_Id);
+      end if;
+      if not Value.Is_Tax_Exempt.Is_Null then
+         Into.Write_Entity ("is_tax_exempt", Value.Is_Tax_Exempt);
+      end if;
+      if not Value.Vendor_Id.Is_Null then
+         Into.Write_Entity ("vendor_id", Value.Vendor_Id);
+      end if;
       if not Value.Store_Id.Is_Null then
          Into.Write_Entity ("store_id", Value.Store_Id);
       end if;
@@ -23037,6 +23046,9 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "phone", Value.Phone);
       Swagger.Streams.Deserialize (Object, "note", Value.Note);
       Swagger.Streams.Deserialize (Object, "country", Value.Country);
+      Swagger.Streams.Deserialize (Object, "currency_id", Value.Currency_Id);
+      Swagger.Streams.Deserialize (Object, "is_tax_exempt", Value.Is_Tax_Exempt);
+      Swagger.Streams.Deserialize (Object, "vendor_id", Value.Vendor_Id);
       Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Swagger.Streams.Deserialize (Object, "idempotency_key", Value.Idempotency_Key);
       Deserialize (Object, "address", Value.Address);
@@ -23164,6 +23176,15 @@ package body .Models is
       if not Value.Password.Is_Null then
          Into.Write_Entity ("password", Value.Password);
       end if;
+      if not Value.Currency_Id.Is_Null then
+         Into.Write_Entity ("currency_id", Value.Currency_Id);
+      end if;
+      if not Value.Is_Tax_Exempt.Is_Null then
+         Into.Write_Entity ("is_tax_exempt", Value.Is_Tax_Exempt);
+      end if;
+      if not Value.Vendor_Id.Is_Null then
+         Into.Write_Entity ("vendor_id", Value.Vendor_Id);
+      end if;
       if not Value.Store_Id.Is_Null then
          Into.Write_Entity ("store_id", Value.Store_Id);
       end if;
@@ -23207,6 +23228,9 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "note", Value.Note);
       Swagger.Streams.Deserialize (Object, "status", Value.Status);
       Swagger.Streams.Deserialize (Object, "password", Value.Password);
+      Swagger.Streams.Deserialize (Object, "currency_id", Value.Currency_Id);
+      Swagger.Streams.Deserialize (Object, "is_tax_exempt", Value.Is_Tax_Exempt);
+      Swagger.Streams.Deserialize (Object, "vendor_id", Value.Vendor_Id);
       Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Swagger.Streams.Deserialize (Object, "idempotency_key", Value.Idempotency_Key);
       Deserialize (Object, "address", Value.Address);

@@ -11759,6 +11759,9 @@ package .Models is
        Phone : Swagger.Nullable_UString;
        Note : Swagger.Nullable_UString;
        Country : Swagger.Nullable_UString;
+       Currency_Id : Swagger.Nullable_UString;
+       Is_Tax_Exempt : Swagger.Nullable_Boolean;
+       Vendor_Id : Swagger.Nullable_UString;
        Store_Id : Swagger.Nullable_UString;
        Idempotency_Key : Swagger.Nullable_UString;
        Address : .Models.CustomerAddAddressInner_Type_Vectors.Vector;
@@ -11834,6 +11837,9 @@ package .Models is
        Note : Swagger.Nullable_UString;
        Status : Swagger.Nullable_UString;
        Password : Swagger.Nullable_UString;
+       Currency_Id : Swagger.Nullable_UString;
+       Is_Tax_Exempt : Swagger.Nullable_Boolean;
+       Vendor_Id : Swagger.Nullable_UString;
        Store_Id : Swagger.Nullable_UString;
        Idempotency_Key : Swagger.Nullable_UString;
        Address : .Models.CustomerUpdateAddressInner_Type_Vectors.Vector;
