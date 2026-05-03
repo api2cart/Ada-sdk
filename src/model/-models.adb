@@ -3181,6 +3181,9 @@ package body .Models is
       if not Value.Address_Book_Gender.Is_Null then
          Into.Write_Entity ("address_book_gender", Value.Address_Book_Gender);
       end if;
+      if not Value.Address_Book_Region.Is_Null then
+         Into.Write_Entity ("address_book_region", Value.Address_Book_Region);
+      end if;
       if not Value.Address_Book_Alias.Is_Null then
          Into.Write_Entity ("address_book_alias", Value.Address_Book_Alias);
       end if;
@@ -3226,6 +3229,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "address_book_tax_id", Value.Address_Book_Tax_Id);
       Swagger.Streams.Deserialize (Object, "address_book_identification_number", Value.Address_Book_Identification_Number);
       Swagger.Streams.Deserialize (Object, "address_book_gender", Value.Address_Book_Gender);
+      Swagger.Streams.Deserialize (Object, "address_book_region", Value.Address_Book_Region);
       Swagger.Streams.Deserialize (Object, "address_book_alias", Value.Address_Book_Alias);
       Swagger.Streams.Deserialize (Object, "address_book_type", Value.Address_Book_Type);
       Swagger.Streams.Deserialize (Object, "address_book_default", Value.Address_Book_Default);
@@ -8014,6 +8018,7 @@ package body .Models is
          Into.Write_Entity ("attribute_value", Value.Attribute_Value);
       end if;
       Serialize (Into, "attribute_price", Value.Attribute_Price);
+      Serialize (Into, "attribute_weight", Value.Attribute_Weight);
       Into.End_Entity (Name);
    end Serialize;
 
@@ -8037,6 +8042,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "attribute_name", Value.Attribute_Name);
       Swagger.Streams.Deserialize (Object, "attribute_value", Value.Attribute_Value);
       Swagger.Streams.Deserialize (Object, "attribute_price", Value.Attribute_Price);
+      Swagger.Streams.Deserialize (Object, "attribute_weight", Value.Attribute_Weight);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;
@@ -23179,6 +23185,18 @@ package body .Models is
       if not Value.Currency_Id.Is_Null then
          Into.Write_Entity ("currency_id", Value.Currency_Id);
       end if;
+      if not Value.Company.Is_Null then
+         Into.Write_Entity ("company", Value.Company);
+      end if;
+      if not Value.Country.Is_Null then
+         Into.Write_Entity ("country", Value.Country);
+      end if;
+      if not Value.Fax.Is_Null then
+         Into.Write_Entity ("fax", Value.Fax);
+      end if;
+      if not Value.Tax_Id.Is_Null then
+         Into.Write_Entity ("tax_id", Value.Tax_Id);
+      end if;
       if not Value.Is_Tax_Exempt.Is_Null then
          Into.Write_Entity ("is_tax_exempt", Value.Is_Tax_Exempt);
       end if;
@@ -23229,6 +23247,10 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "status", Value.Status);
       Swagger.Streams.Deserialize (Object, "password", Value.Password);
       Swagger.Streams.Deserialize (Object, "currency_id", Value.Currency_Id);
+      Swagger.Streams.Deserialize (Object, "company", Value.Company);
+      Swagger.Streams.Deserialize (Object, "country", Value.Country);
+      Swagger.Streams.Deserialize (Object, "fax", Value.Fax);
+      Swagger.Streams.Deserialize (Object, "tax_id", Value.Tax_Id);
       Swagger.Streams.Deserialize (Object, "is_tax_exempt", Value.Is_Tax_Exempt);
       Swagger.Streams.Deserialize (Object, "vendor_id", Value.Vendor_Id);
       Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
@@ -26598,6 +26620,8 @@ package body .Models is
       Serialize (Into, "increase_quantity", Value.Increase_Quantity);
       Serialize (Into, "reduce_quantity", Value.Reduce_Quantity);
       Serialize (Into, "low_stock_threshold", Value.Low_Stock_Threshold);
+      Serialize (Into, "min_order_quantity", Value.Min_Order_Quantity);
+      Serialize (Into, "max_order_quantity", Value.Max_Order_Quantity);
       if not Value.Warehouse_Id.Is_Null then
          Into.Write_Entity ("warehouse_id", Value.Warehouse_Id);
       end if;
@@ -26640,6 +26664,9 @@ package body .Models is
       end if;
       if not Value.Manufacturer_Id.Is_Null then
          Into.Write_Entity ("manufacturer_id", Value.Manufacturer_Id);
+      end if;
+      if not Value.Vendor_Id.Is_Null then
+         Into.Write_Entity ("vendor_id", Value.Vendor_Id);
       end if;
       if not Value.Categories_Ids.Is_Null then
          Into.Write_Entity ("categories_ids", Value.Categories_Ids);
@@ -26734,7 +26761,6 @@ package body .Models is
       if not Value.Marketplace_Item_Properties.Is_Null then
          Into.Write_Entity ("marketplace_item_properties", Value.Marketplace_Item_Properties);
       end if;
-      Serialize (Into, "min_order_quantity", Value.Min_Order_Quantity);
       if not Value.Manufacturer_Ids.Is_Null then
          Into.Write_Entity ("manufacturer_ids", Value.Manufacturer_Ids);
       end if;
@@ -26806,6 +26832,8 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "increase_quantity", Value.Increase_Quantity);
       Swagger.Streams.Deserialize (Object, "reduce_quantity", Value.Reduce_Quantity);
       Swagger.Streams.Deserialize (Object, "low_stock_threshold", Value.Low_Stock_Threshold);
+      Swagger.Streams.Deserialize (Object, "min_order_quantity", Value.Min_Order_Quantity);
+      Swagger.Streams.Deserialize (Object, "max_order_quantity", Value.Max_Order_Quantity);
       Swagger.Streams.Deserialize (Object, "warehouse_id", Value.Warehouse_Id);
       Swagger.Streams.Deserialize (Object, "weight", Value.Weight);
       Swagger.Streams.Deserialize (Object, "weight_unit", Value.Weight_Unit);
@@ -26823,6 +26851,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "barcode", Value.Barcode);
       Swagger.Streams.Deserialize (Object, "manufacturer", Value.Manufacturer);
       Swagger.Streams.Deserialize (Object, "manufacturer_id", Value.Manufacturer_Id);
+      Swagger.Streams.Deserialize (Object, "vendor_id", Value.Vendor_Id);
       Swagger.Streams.Deserialize (Object, "categories_ids", Value.Categories_Ids);
       Swagger.Streams.Deserialize (Object, "related_products_ids", Value.Related_Products_Ids);
       Swagger.Streams.Deserialize (Object, "up_sell_products_ids", Value.Up_Sell_Products_Ids);
@@ -26858,7 +26887,6 @@ package body .Models is
       Deserialize (Object, "personalization_questions", Value.Personalization_Questions);
       Swagger.Streams.Deserialize (Object, "external_product_link", Value.External_Product_Link);
       Swagger.Streams.Deserialize (Object, "marketplace_item_properties", Value.Marketplace_Item_Properties);
-      Swagger.Streams.Deserialize (Object, "min_order_quantity", Value.Min_Order_Quantity);
       Swagger.Streams.Deserialize (Object, "manufacturer_ids", Value.Manufacturer_Ids);
       Swagger.Streams.Deserialize (Object, "responsible_person_ids", Value.Responsible_Person_Ids);
       Swagger.Streams.Deserialize (Object, "idempotency_key", Value.Idempotency_Key);
@@ -27169,6 +27197,9 @@ package body .Models is
       if not Value.Ordered_Count.Is_Null then
          Into.Write_Entity ("ordered_count", Value.Ordered_Count);
       end if;
+      if not Value.Vendor_Id.Is_Null then
+         Into.Write_Entity ("vendor_id", Value.Vendor_Id);
+      end if;
       if not Value.Shop_Section_Id.Is_Null then
          Into.Write_Entity ("shop_section_id", Value.Shop_Section_Id);
       end if;
@@ -27326,6 +27357,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "clear_cache", Value.Clear_Cache);
       Swagger.Streams.Deserialize (Object, "viewed_count", Value.Viewed_Count);
       Swagger.Streams.Deserialize (Object, "ordered_count", Value.Ordered_Count);
+      Swagger.Streams.Deserialize (Object, "vendor_id", Value.Vendor_Id);
       Swagger.Streams.Deserialize (Object, "shop_section_id", Value.Shop_Section_Id);
       Swagger.Streams.Deserialize (Object, "return_policy_id", Value.Return_Policy_Id);
       Deserialize (Object, "personalization_details", Value.Personalization_Details);

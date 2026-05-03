@@ -729,6 +729,7 @@ package body .Clients is
       (Client : in out Client_Type;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
        Attribute_Ids : in Swagger.Nullable_UString;
        Attribute_Set_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
@@ -749,6 +750,7 @@ package body .Clients is
 
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
+      URI.Add_Param ("page_cursor", Page_Cursor);
       URI.Add_Param ("attribute_ids", Attribute_Ids);
       URI.Add_Param ("attribute_set_id", Attribute_Set_Id);
       URI.Add_Param ("store_id", Store_Id);
@@ -830,7 +832,9 @@ package body .Clients is
    procedure Attribute_Update
       (Client : in out Client_Type;
        Id : in Swagger.UString;
-       Name : in Swagger.UString;
+       Name : in Swagger.Nullable_UString;
+       Visible : in Swagger.Nullable_Boolean;
+       Position : in Swagger.Nullable_Integer;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Idempotency_Key : in Swagger.Nullable_UString;
@@ -843,6 +847,8 @@ package body .Clients is
 
       URI.Add_Param ("id", Id);
       URI.Add_Param ("name", Name);
+      URI.Add_Param ("visible", Visible);
+      URI.Add_Param ("position", Position);
       URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("lang_id", Lang_Id);
       URI.Add_Param ("idempotency_key", Idempotency_Key);
@@ -3996,6 +4002,7 @@ package body .Clients is
        Product_Id : in Swagger.UString;
        Manufacturer : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
+       Description : in Swagger.Nullable_UString;
        Meta_Title : in Swagger.Nullable_UString;
        Meta_Keywords : in Swagger.Nullable_UString;
        Meta_Description : in Swagger.Nullable_UString;
@@ -4013,6 +4020,7 @@ package body .Clients is
       URI.Add_Param ("product_id", Product_Id);
       URI.Add_Param ("manufacturer", Manufacturer);
       URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("description", Description);
       URI.Add_Param ("meta_title", Meta_Title);
       URI.Add_Param ("meta_keywords", Meta_Keywords);
       URI.Add_Param ("meta_description", Meta_Description);

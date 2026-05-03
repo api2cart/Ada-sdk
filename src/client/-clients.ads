@@ -346,6 +346,7 @@ package .Clients is
       (Client : in out Client_Type;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
        Attribute_Ids : in Swagger.Nullable_UString;
        Attribute_Set_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
@@ -388,7 +389,9 @@ package .Clients is
    procedure Attribute_Update
       (Client : in out Client_Type;
        Id : in Swagger.UString;
-       Name : in Swagger.UString;
+       Name : in Swagger.Nullable_UString;
+       Visible : in Swagger.Nullable_Boolean;
+       Position : in Swagger.Nullable_Integer;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Idempotency_Key : in Swagger.Nullable_UString;
@@ -1750,6 +1753,7 @@ package .Clients is
        Product_Id : in Swagger.UString;
        Manufacturer : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
+       Description : in Swagger.Nullable_UString;
        Meta_Title : in Swagger.Nullable_UString;
        Meta_Keywords : in Swagger.Nullable_UString;
        Meta_Description : in Swagger.Nullable_UString;

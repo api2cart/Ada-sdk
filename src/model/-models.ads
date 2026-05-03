@@ -1673,6 +1673,7 @@ package .Models is
        Address_Book_Tax_Id : Swagger.Nullable_UString;
        Address_Book_Identification_Number : Swagger.Nullable_UString;
        Address_Book_Gender : Swagger.Nullable_UString;
+       Address_Book_Region : Swagger.Nullable_UString;
        Address_Book_Alias : Swagger.Nullable_UString;
        Address_Book_Type : Swagger.Nullable_UString;
        Address_Book_Default : Swagger.Nullable_Boolean;
@@ -4250,6 +4251,7 @@ package .Models is
        Attribute_Name : Swagger.Nullable_UString;
        Attribute_Value : Swagger.Nullable_UString;
        Attribute_Price : Swagger.Number;
+       Attribute_Weight : Swagger.Number;
      end record;
 
 
@@ -11838,6 +11840,10 @@ package .Models is
        Status : Swagger.Nullable_UString;
        Password : Swagger.Nullable_UString;
        Currency_Id : Swagger.Nullable_UString;
+       Company : Swagger.Nullable_UString;
+       Country : Swagger.Nullable_UString;
+       Fax : Swagger.Nullable_UString;
+       Tax_Id : Swagger.Nullable_UString;
        Is_Tax_Exempt : Swagger.Nullable_Boolean;
        Vendor_Id : Swagger.Nullable_UString;
        Store_Id : Swagger.Nullable_UString;
@@ -13559,6 +13565,8 @@ package .Models is
        Increase_Quantity : Swagger.Number;
        Reduce_Quantity : Swagger.Number;
        Low_Stock_Threshold : Swagger.Number;
+       Min_Order_Quantity : Swagger.Number;
+       Max_Order_Quantity : Swagger.Number;
        Warehouse_Id : Swagger.Nullable_UString;
        Weight : Swagger.Number;
        Weight_Unit : Swagger.Nullable_UString;
@@ -13576,6 +13584,7 @@ package .Models is
        Barcode : Swagger.Nullable_UString;
        Manufacturer : Swagger.Nullable_UString;
        Manufacturer_Id : Swagger.Nullable_UString;
+       Vendor_Id : Swagger.Nullable_UString;
        Categories_Ids : Swagger.Nullable_UString;
        Related_Products_Ids : Swagger.Nullable_UString;
        Up_Sell_Products_Ids : Swagger.Nullable_UString;
@@ -13611,7 +13620,6 @@ package .Models is
        Personalization_Questions : .Models.ProductAddPersonalizationQuestionsInner_Type_Vectors.Vector;
        External_Product_Link : Swagger.Nullable_UString;
        Marketplace_Item_Properties : Swagger.Nullable_UString;
-       Min_Order_Quantity : Swagger.Number;
        Manufacturer_Ids : Swagger.Nullable_UString;
        Responsible_Person_Ids : Swagger.Nullable_UString;
        Idempotency_Key : Swagger.Nullable_UString;
@@ -13759,6 +13767,7 @@ package .Models is
        Clear_Cache : Swagger.Nullable_Boolean;
        Viewed_Count : Swagger.Nullable_Integer;
        Ordered_Count : Swagger.Nullable_Integer;
+       Vendor_Id : Swagger.Nullable_UString;
        Shop_Section_Id : Swagger.Nullable_Integer;
        Return_Policy_Id : Swagger.Nullable_Integer;
        Personalization_Details : .Models.ProductAddPersonalizationDetails_Type;
