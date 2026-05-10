@@ -3055,6 +3055,55 @@ package body .Clients is
       .Models.Deserialize (Reply, "", Result);
    end Order_Shipment_Delete;
 
+   --  order.shipment.event.add
+   --  Add a tracking event to the shipment.
+   procedure Order_Shipment_Event_Add
+      (Client : in out Client_Type;
+       Order_Shipment_Event_Add_Type : in .Models.OrderShipmentEventAdd_Type;
+       Result : out .Models.AttributeAdd200Response_Type) is
+      URI   : Swagger.Clients.URI_Type;
+      Req   : Swagger.Clients.Request_Type;
+      Reply : Swagger.Value_Type;
+   begin
+      Client.Set_Accept (Media_List_1);
+      Client.Initialize (Req, Media_List_1);
+      .Models.Serialize (Req.Stream, "", Order_Shipment_Event_Add_Type);
+
+      URI.Set_Path ("/order.shipment.event.add.json");
+      Client.Call (Swagger.Clients.POST, URI, Req, Reply);
+      .Models.Deserialize (Reply, "", Result);
+   end Order_Shipment_Event_Add;
+
+   --  order.shipment.event.list
+   --  Get list of shipment tracking events.
+   procedure Order_Shipment_Event_List
+      (Client : in out Client_Type;
+       Shipment_Id : in Swagger.UString;
+       Order_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Start : in Swagger.Nullable_Integer;
+       Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Result : out .Models.ModelResponseOrderShipmentEventList_Type) is
+      URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
+   begin
+      Client.Set_Accept (Media_List_1);
+
+
+      URI.Add_Param ("shipment_id", Shipment_Id);
+      URI.Add_Param ("order_id", Order_Id);
+      URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("start", Start);
+      URI.Add_Param ("count", Count);
+      URI.Add_Param ("page_cursor", Page_Cursor);
+      URI.Add_Param ("response_fields", Response_Fields);
+      URI.Set_Path ("/order.shipment.event.list.json");
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
+   end Order_Shipment_Event_List;
+
    --  order.shipment.info
    --  Get information of shipment.
    procedure Order_Shipment_Info

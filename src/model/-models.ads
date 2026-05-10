@@ -2521,6 +2521,45 @@ package .Models is
 
 
 
+   type OrderShipmentEventAdd_Type is
+     record
+       Shipment_Id : Swagger.UString;
+       Order_Id : Swagger.Nullable_UString;
+       Status : Swagger.UString;
+       Store_Id : Swagger.Nullable_UString;
+       Address_1 : Swagger.Nullable_UString;
+       City : Swagger.Nullable_UString;
+       Country : Swagger.Nullable_UString;
+       State : Swagger.Nullable_UString;
+       Postcode : Swagger.Nullable_UString;
+       Message : Swagger.Nullable_UString;
+       Latitude : Swagger.Number;
+       Longitude : Swagger.Number;
+       Created_At : Swagger.Nullable_UString;
+       Estimated_Delivery_At : Swagger.Nullable_UString;
+       Idempotency_Key : Swagger.Nullable_UString;
+     end record;
+
+
+   package OrderShipmentEventAdd_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.OrderShipmentEventAdd_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.OrderShipmentEventAdd_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in OrderShipmentEventAdd_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.OrderShipmentEventAdd_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out OrderShipmentEventAdd_Type_Vectors.Vector);
+
+
+
    type OrderShipmentTrackingAdd200ResponseResult_Type is
      record
        Shipment_Tracking_Id : Swagger.Nullable_UString;
@@ -5875,82 +5914,6 @@ package .Models is
 
 
 
-   type Image_Type is
-     record
-       Id : Swagger.Nullable_UString;
-       Http_Path : Swagger.Nullable_UString;
-       File_Name : Swagger.Nullable_UString;
-       Mime_Type : Swagger.Nullable_UString;
-       Size : Swagger.Nullable_Integer;
-       Create_At : .Models.A2CDateTime_Type;
-       Modified_At : .Models.A2CDateTime_Type;
-       Alt : Swagger.Nullable_UString;
-       Avail : Swagger.Nullable_Boolean;
-       Sort_Order : Swagger.Nullable_Integer;
-       P_Type : Swagger.Nullable_UString;
-       Additional_Fields : Swagger.Object;
-       Custom_Fields : Swagger.Object;
-     end record;
-
-
-   package Image_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.Image_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.Image_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Image_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.Image_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out Image_Type_Vectors.Vector);
-
-
-
-   type Brand_Type is
-     record
-       Id : Swagger.Nullable_UString;
-       Name : Swagger.Nullable_UString;
-       Created_Time : Swagger.Nullable_UString;
-       Modified_Time : Swagger.Nullable_UString;
-       Full_Description : Swagger.Nullable_UString;
-       Short_Description : Swagger.Nullable_UString;
-       Stores_Ids : Swagger.UString_Vectors.Vector;
-       Active : Swagger.Nullable_Boolean;
-       Url : Swagger.Nullable_UString;
-       Meta_Title : Swagger.Nullable_UString;
-       Meta_Keywords : Swagger.Nullable_UString;
-       Meta_Description : Swagger.Nullable_UString;
-       Images : .Models.Image_Type_Vectors.Vector;
-       Additional_Fields : Swagger.Object;
-       Custom_Fields : Swagger.Object;
-     end record;
-
-
-   package Brand_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.Brand_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.Brand_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Brand_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.Brand_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out Brand_Type_Vectors.Vector);
-
-
-
    type Carrier_Type is
      record
        Id : Swagger.Nullable_UString;
@@ -6143,6 +6106,68 @@ package .Models is
 
 
 
+   type Cart_Type is
+     record
+       Name : Swagger.Nullable_UString;
+       Url : Swagger.Nullable_UString;
+       Version : Swagger.Nullable_UString;
+       Bridge_Version : Swagger.Nullable_UString;
+       Default_Rounding_Precision : Swagger.Nullable_Integer;
+       Db_Prefix : Swagger.Nullable_UString;
+       Stores_Info : .Models.CartStoreInfo_Type_Vectors.Vector;
+       Warehouses : .Models.CartWarehouse_Type_Vectors.Vector;
+       Shipping_Zones : .Models.CartShippingZone_Type_Vectors.Vector;
+       Additional_Fields : Swagger.Object;
+       Custom_Fields : Swagger.Object;
+     end record;
+
+
+   package Cart_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.Cart_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.Cart_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Cart_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.Cart_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out Cart_Type_Vectors.Vector);
+
+
+
+   type CartInfo200Response_Type is
+     record
+       Return_Code : Swagger.Nullable_Integer;
+       Return_Message : Swagger.Nullable_UString;
+       Result : .Models.Cart_Type;
+     end record;
+
+
+   package CartInfo200Response_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.CartInfo200Response_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.CartInfo200Response_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CartInfo200Response_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.CartInfo200Response_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out CartInfo200Response_Type_Vectors.Vector);
+
+
+
    type CartMethods200Response_Type is
      record
        Return_Code : Swagger.Nullable_Integer;
@@ -6167,6 +6192,113 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : in out CartMethods200Response_Type_Vectors.Vector);
+
+
+
+   type CustomerAddress_Type is
+     record
+       Id : Swagger.Nullable_UString;
+       P_Type : Swagger.Nullable_UString;
+       First_Name : Swagger.Nullable_UString;
+       Last_Name : Swagger.Nullable_UString;
+       Postcode : Swagger.Nullable_UString;
+       Address_1 : Swagger.Nullable_UString;
+       Address_2 : Swagger.Nullable_UString;
+       Phone : Swagger.Nullable_UString;
+       Phone_Mobile : Swagger.Nullable_UString;
+       City : Swagger.Nullable_UString;
+       Country : .Models.Country_Type;
+       State : .Models.State_Type;
+       Company : Swagger.Nullable_UString;
+       Fax : Swagger.Nullable_UString;
+       Website : Swagger.Nullable_UString;
+       Gender : Swagger.Nullable_UString;
+       Region : Swagger.Nullable_UString;
+       Default : Swagger.Nullable_Boolean;
+       Tax_Id : Swagger.Nullable_UString;
+       Identification_Number : Swagger.Nullable_UString;
+       Alias : Swagger.Nullable_UString;
+       Additional_Fields : Swagger.Object;
+       Custom_Fields : Swagger.Object;
+     end record;
+
+
+   package CustomerAddress_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.CustomerAddress_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.CustomerAddress_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CustomerAddress_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.CustomerAddress_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out CustomerAddress_Type_Vectors.Vector);
+
+
+
+   type CartPickupLocation_Type is
+     record
+       Id : Swagger.Nullable_UString;
+       Name : Swagger.Nullable_UString;
+       Avail : Swagger.Nullable_Boolean;
+       Address : .Models.CustomerAddress_Type;
+       Pickup_Instructions : Swagger.Nullable_UString;
+       Expected_Ready_Time : Swagger.Nullable_UString;
+       Additional_Fields : Swagger.Object;
+       Custom_Fields : Swagger.Object;
+     end record;
+
+
+   package CartPickupLocation_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.CartPickupLocation_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.CartPickupLocation_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in CartPickupLocation_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.CartPickupLocation_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out CartPickupLocation_Type_Vectors.Vector);
+
+
+
+   type PluginList_Type is
+     record
+       All_Plugins : Swagger.Nullable_Integer;
+       Plugins : .Models.Plugin_Type_Vectors.Vector;
+       Additional_Fields : Swagger.Object;
+       Custom_Fields : Swagger.Object;
+     end record;
+
+
+   package PluginList_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.PluginList_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.PluginList_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in PluginList_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.PluginList_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out PluginList_Type_Vectors.Vector);
 
 
 
@@ -6310,53 +6442,6 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : in out CartValidate200Response_Type_Vectors.Vector);
-
-
-
-   type CustomerAddress_Type is
-     record
-       Id : Swagger.Nullable_UString;
-       P_Type : Swagger.Nullable_UString;
-       First_Name : Swagger.Nullable_UString;
-       Last_Name : Swagger.Nullable_UString;
-       Postcode : Swagger.Nullable_UString;
-       Address_1 : Swagger.Nullable_UString;
-       Address_2 : Swagger.Nullable_UString;
-       Phone : Swagger.Nullable_UString;
-       Phone_Mobile : Swagger.Nullable_UString;
-       City : Swagger.Nullable_UString;
-       Country : .Models.Country_Type;
-       State : .Models.State_Type;
-       Company : Swagger.Nullable_UString;
-       Fax : Swagger.Nullable_UString;
-       Website : Swagger.Nullable_UString;
-       Gender : Swagger.Nullable_UString;
-       Region : Swagger.Nullable_UString;
-       Default : Swagger.Nullable_Boolean;
-       Tax_Id : Swagger.Nullable_UString;
-       Identification_Number : Swagger.Nullable_UString;
-       Alias : Swagger.Nullable_UString;
-       Additional_Fields : Swagger.Object;
-       Custom_Fields : Swagger.Object;
-     end record;
-
-
-   package CustomerAddress_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.CustomerAddress_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.CustomerAddress_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CustomerAddress_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.CustomerAddress_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out CustomerAddress_Type_Vectors.Vector);
 
 
 
@@ -7154,6 +7239,117 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : in out GiftCard_Type_Vectors.Vector);
+
+
+
+   type Image_Type is
+     record
+       Id : Swagger.Nullable_UString;
+       Http_Path : Swagger.Nullable_UString;
+       File_Name : Swagger.Nullable_UString;
+       Mime_Type : Swagger.Nullable_UString;
+       Size : Swagger.Nullable_Integer;
+       Create_At : .Models.A2CDateTime_Type;
+       Modified_At : .Models.A2CDateTime_Type;
+       Alt : Swagger.Nullable_UString;
+       Avail : Swagger.Nullable_Boolean;
+       Sort_Order : Swagger.Nullable_Integer;
+       P_Type : Swagger.Nullable_UString;
+       Additional_Fields : Swagger.Object;
+       Custom_Fields : Swagger.Object;
+     end record;
+
+
+   package Image_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.Image_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.Image_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Image_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.Image_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out Image_Type_Vectors.Vector);
+
+
+
+   type Brand_Type is
+     record
+       Id : Swagger.Nullable_UString;
+       Name : Swagger.Nullable_UString;
+       Created_Time : Swagger.Nullable_UString;
+       Modified_Time : Swagger.Nullable_UString;
+       Full_Description : Swagger.Nullable_UString;
+       Short_Description : Swagger.Nullable_UString;
+       Stores_Ids : Swagger.UString_Vectors.Vector;
+       Active : Swagger.Nullable_Boolean;
+       Url : Swagger.Nullable_UString;
+       Meta_Title : Swagger.Nullable_UString;
+       Meta_Keywords : Swagger.Nullable_UString;
+       Meta_Description : Swagger.Nullable_UString;
+       Images : .Models.Image_Type_Vectors.Vector;
+       Additional_Fields : Swagger.Object;
+       Custom_Fields : Swagger.Object;
+     end record;
+
+
+   package Brand_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.Brand_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.Brand_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Brand_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.Brand_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out Brand_Type_Vectors.Vector);
+
+
+
+   type TaxClassRate_Type is
+     record
+       Id : Swagger.Nullable_UString;
+       Name : Swagger.Nullable_UString;
+       Tax : Swagger.Number;
+       Tax_Type : Swagger.Nullable_Integer;
+       Tax_Based_On : Swagger.Nullable_UString;
+       Countries : .Models.TaxClassCountries_Type_Vectors.Vector;
+       Cities : Swagger.UString_Vectors.Vector;
+       Address : Swagger.UString_Vectors.Vector;
+       Zip_Codes : .Models.TaxClassZipCodes_Type_Vectors.Vector;
+       Additional_Fields : Swagger.Object;
+       Custom_Fields : Swagger.Object;
+     end record;
+
+
+   package TaxClassRate_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.TaxClassRate_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.TaxClassRate_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in TaxClassRate_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.TaxClassRate_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out TaxClassRate_Type_Vectors.Vector);
 
 
 
@@ -8238,34 +8434,6 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : in out ParamDefinitionFilteringConditionsFilterRule_Type_Vectors.Vector);
-
-
-
-   type PluginList_Type is
-     record
-       All_Plugins : Swagger.Nullable_Integer;
-       Plugins : .Models.Plugin_Type_Vectors.Vector;
-       Additional_Fields : Swagger.Object;
-       Custom_Fields : Swagger.Object;
-     end record;
-
-
-   package PluginList_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.PluginList_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.PluginList_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in PluginList_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.PluginList_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out PluginList_Type_Vectors.Vector);
 
 
 
@@ -10244,34 +10412,6 @@ package .Models is
 
 
 
-   type ResponseCategoryListResult_Type is
-     record
-       Categories_Count : Swagger.Nullable_Integer;
-       Category : .Models.Category_Type_Vectors.Vector;
-       Additional_Fields : Swagger.Object;
-       Custom_Fields : Swagger.Object;
-     end record;
-
-
-   package ResponseCategoryListResult_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.ResponseCategoryListResult_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.ResponseCategoryListResult_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in ResponseCategoryListResult_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.ResponseCategoryListResult_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out ResponseCategoryListResult_Type_Vectors.Vector);
-
-
-
    type ResponseCustomerAttributeListResult_Type is
      record
        Total_Count : Swagger.Nullable_Integer;
@@ -10608,6 +10748,66 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : in out ResponseOrderPreestimateShippingListResult_Type_Vectors.Vector);
+
+
+
+   type ShipmentEvent_Type is
+     record
+       Id : Swagger.Nullable_UString;
+       Status : Swagger.Nullable_UString;
+       Created_At : .Models.A2CDateTime_Type;
+       Estimated_Delivery_At : .Models.A2CDateTime_Type;
+       Message : Swagger.Nullable_UString;
+       Address : .Models.CustomerAddress_Type;
+       Additional_Fields : Swagger.Object;
+       Custom_Fields : Swagger.Object;
+     end record;
+
+
+   package ShipmentEvent_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.ShipmentEvent_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.ShipmentEvent_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ShipmentEvent_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.ShipmentEvent_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out ShipmentEvent_Type_Vectors.Vector);
+
+
+
+   type ResponseOrderShipmentEventListResult_Type is
+     record
+       Total_Count : Swagger.Nullable_Integer;
+       Events : .Models.ShipmentEvent_Type_Vectors.Vector;
+       Additional_Fields : Swagger.Object;
+       Custom_Fields : Swagger.Object;
+     end record;
+
+
+   package ResponseOrderShipmentEventListResult_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.ResponseOrderShipmentEventListResult_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.ResponseOrderShipmentEventListResult_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ResponseOrderShipmentEventListResult_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.ResponseOrderShipmentEventListResult_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out ResponseOrderShipmentEventListResult_Type_Vectors.Vector);
 
 
 
@@ -11296,35 +11496,6 @@ package .Models is
 
 
 
-   type TaxClassZipCodes_Type is
-     record
-       Is_Range : Swagger.Nullable_Boolean;
-       P_Range : Swagger.UString_Vectors.Vector;
-       Fields : .Models.TaxClassZipCodesRange_Type_Vectors.Vector;
-       Additional_Fields : Swagger.Object;
-       Custom_Fields : Swagger.Object;
-     end record;
-
-
-   package TaxClassZipCodes_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.TaxClassZipCodes_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.TaxClassZipCodes_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in TaxClassZipCodes_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.TaxClassZipCodes_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out TaxClassZipCodes_Type_Vectors.Vector);
-
-
-
    type TaxClassStates_Type is
      record
        Id : Swagger.Nullable_UString;
@@ -11386,6 +11557,35 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : in out TaxClassCountries_Type_Vectors.Vector);
+
+
+
+   type TaxClassZipCodes_Type is
+     record
+       Is_Range : Swagger.Nullable_Boolean;
+       P_Range : Swagger.UString_Vectors.Vector;
+       Fields : .Models.TaxClassZipCodesRange_Type_Vectors.Vector;
+       Additional_Fields : Swagger.Object;
+       Custom_Fields : Swagger.Object;
+     end record;
+
+
+   package TaxClassZipCodes_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.TaxClassZipCodes_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.TaxClassZipCodes_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in TaxClassZipCodes_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.TaxClassZipCodes_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out TaxClassZipCodes_Type_Vectors.Vector);
 
 
 
@@ -11737,6 +11937,34 @@ package .Models is
 
 
 
+   type ResponseCategoryListResult_Type is
+     record
+       Categories_Count : Swagger.Nullable_Integer;
+       Category : .Models.Category_Type_Vectors.Vector;
+       Additional_Fields : Swagger.Object;
+       Custom_Fields : Swagger.Object;
+     end record;
+
+
+   package ResponseCategoryListResult_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.ResponseCategoryListResult_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.ResponseCategoryListResult_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ResponseCategoryListResult_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.ResponseCategoryListResult_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out ResponseCategoryListResult_Type_Vectors.Vector);
+
+
+
    type CustomerAdd_Type is
      record
        Email : Swagger.UString;
@@ -11786,38 +12014,6 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : in out CustomerAdd_Type_Vectors.Vector);
-
-
-
-   type CartPickupLocation_Type is
-     record
-       Id : Swagger.Nullable_UString;
-       Name : Swagger.Nullable_UString;
-       Avail : Swagger.Nullable_Boolean;
-       Address : .Models.CustomerAddress_Type;
-       Pickup_Instructions : Swagger.Nullable_UString;
-       Expected_Ready_Time : Swagger.Nullable_UString;
-       Additional_Fields : Swagger.Object;
-       Custom_Fields : Swagger.Object;
-     end record;
-
-
-   package CartPickupLocation_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.CartPickupLocation_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.CartPickupLocation_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CartPickupLocation_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.CartPickupLocation_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out CartPickupLocation_Type_Vectors.Vector);
 
 
 
@@ -12438,6 +12634,36 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : in out ModelResponseOrderPreestimateShippingList_Type_Vectors.Vector);
+
+
+
+   type ModelResponseOrderShipmentEventList_Type is
+     record
+       Return_Code : Swagger.Nullable_Integer;
+       Return_Message : Swagger.Nullable_UString;
+       Pagination : .Models.Pagination_Type;
+       Result : .Models.ResponseOrderShipmentEventListResult_Type;
+       Additional_Fields : Swagger.Object;
+       Custom_Fields : Swagger.Object;
+     end record;
+
+
+   package ModelResponseOrderShipmentEventList_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.ModelResponseOrderShipmentEventList_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.ModelResponseOrderShipmentEventList_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ModelResponseOrderShipmentEventList_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.ModelResponseOrderShipmentEventList_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out ModelResponseOrderShipmentEventList_Type_Vectors.Vector);
 
 
 
@@ -13286,41 +13512,6 @@ package .Models is
 
 
 
-   type TaxClassRate_Type is
-     record
-       Id : Swagger.Nullable_UString;
-       Name : Swagger.Nullable_UString;
-       Tax : Swagger.Number;
-       Tax_Type : Swagger.Nullable_Integer;
-       Tax_Based_On : Swagger.Nullable_UString;
-       Countries : .Models.TaxClassCountries_Type_Vectors.Vector;
-       Cities : Swagger.UString_Vectors.Vector;
-       Address : Swagger.UString_Vectors.Vector;
-       Zip_Codes : .Models.TaxClassZipCodes_Type_Vectors.Vector;
-       Additional_Fields : Swagger.Object;
-       Custom_Fields : Swagger.Object;
-     end record;
-
-
-   package TaxClassRate_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.TaxClassRate_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.TaxClassRate_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in TaxClassRate_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.TaxClassRate_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out TaxClassRate_Type_Vectors.Vector);
-
-
-
    type CartStoreInfo_Type is
      record
        Store_Id : Swagger.Nullable_UString;
@@ -13363,68 +13554,6 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : in out CartStoreInfo_Type_Vectors.Vector);
-
-
-
-   type Cart_Type is
-     record
-       Name : Swagger.Nullable_UString;
-       Url : Swagger.Nullable_UString;
-       Version : Swagger.Nullable_UString;
-       Bridge_Version : Swagger.Nullable_UString;
-       Default_Rounding_Precision : Swagger.Nullable_Integer;
-       Db_Prefix : Swagger.Nullable_UString;
-       Stores_Info : .Models.CartStoreInfo_Type_Vectors.Vector;
-       Warehouses : .Models.CartWarehouse_Type_Vectors.Vector;
-       Shipping_Zones : .Models.CartShippingZone_Type_Vectors.Vector;
-       Additional_Fields : Swagger.Object;
-       Custom_Fields : Swagger.Object;
-     end record;
-
-
-   package Cart_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.Cart_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.Cart_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Cart_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.Cart_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out Cart_Type_Vectors.Vector);
-
-
-
-   type CartInfo200Response_Type is
-     record
-       Return_Code : Swagger.Nullable_Integer;
-       Return_Message : Swagger.Nullable_UString;
-       Result : .Models.Cart_Type;
-     end record;
-
-
-   package CartInfo200Response_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => .Models.CartInfo200Response_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in .Models.CartInfo200Response_Type);
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in CartInfo200Response_Type_Vectors.Vector);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out .Models.CartInfo200Response_Type);
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : in out CartInfo200Response_Type_Vectors.Vector);
 
 
 

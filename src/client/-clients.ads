@@ -1333,6 +1333,26 @@ package .Clients is
        Store_Id : in Swagger.Nullable_UString;
        Result : out .Models.OrderShipmentDelete200Response_Type);
 
+   --  order.shipment.event.add
+   --  Add a tracking event to the shipment.
+   procedure Order_Shipment_Event_Add
+      (Client : in out Client_Type;
+       Order_Shipment_Event_Add_Type : in .Models.OrderShipmentEventAdd_Type;
+       Result : out .Models.AttributeAdd200Response_Type);
+
+   --  order.shipment.event.list
+   --  Get list of shipment tracking events.
+   procedure Order_Shipment_Event_List
+      (Client : in out Client_Type;
+       Shipment_Id : in Swagger.UString;
+       Order_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Start : in Swagger.Nullable_Integer;
+       Count : in Swagger.Nullable_Integer;
+       Page_Cursor : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Result : out .Models.ModelResponseOrderShipmentEventList_Type);
+
    --  order.shipment.info
    --  Get information of shipment.
    procedure Order_Shipment_Info
