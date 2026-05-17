@@ -7972,6 +7972,7 @@ package .Models is
        Item_Restock : Swagger.Nullable_Boolean;
        Send_Notifications : Swagger.Nullable_Boolean;
        Date : Swagger.Nullable_UString;
+       Store_Id : Swagger.Nullable_UString;
        Is_Online : Swagger.Nullable_Boolean;
        Idempotency_Key : Swagger.Nullable_UString;
      end record;

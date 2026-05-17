@@ -15482,6 +15482,9 @@ package body .Models is
       if not Value.Date.Is_Null then
          Into.Write_Entity ("date", Value.Date);
       end if;
+      if not Value.Store_Id.Is_Null then
+         Into.Write_Entity ("store_id", Value.Store_Id);
+      end if;
       if not Value.Is_Online.Is_Null then
          Into.Write_Entity ("is_online", Value.Is_Online);
       end if;
@@ -15517,6 +15520,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "item_restock", Value.Item_Restock);
       Swagger.Streams.Deserialize (Object, "send_notifications", Value.Send_Notifications);
       Swagger.Streams.Deserialize (Object, "date", Value.Date);
+      Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Swagger.Streams.Deserialize (Object, "is_online", Value.Is_Online);
       Swagger.Streams.Deserialize (Object, "idempotency_key", Value.Idempotency_Key);
    end Deserialize;
