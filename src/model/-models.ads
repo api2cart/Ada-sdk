@@ -4290,7 +4290,6 @@ package .Models is
        Attribute_Name : Swagger.Nullable_UString;
        Attribute_Value : Swagger.Nullable_UString;
        Attribute_Price : Swagger.Number;
-       Attribute_Weight : Swagger.Number;
      end record;
 
 
@@ -8036,8 +8035,12 @@ package .Models is
        Item_Restock : Swagger.Nullable_Boolean;
        Staff_Note : Swagger.Nullable_UString;
        Comment : Swagger.Nullable_UString;
+       Message : Swagger.Nullable_UString;
        Send_Notifications : Swagger.Nullable_Boolean;
        Reject_Reason : Swagger.Nullable_UString;
+       Is_Online : Swagger.Nullable_Boolean;
+       Fee_Price : Swagger.Number;
+       Shipping_Price : Swagger.Number;
        Idempotency_Key : Swagger.Nullable_UString;
        Order_Products : .Models.OrderReturnAddOrderProductsInner_Type_Vectors.Vector;
      end record;
@@ -8069,12 +8072,18 @@ package .Models is
        Store_Id : Swagger.Nullable_UString;
        Item_Restock : Swagger.Nullable_Boolean;
        Return_Status_Id : Swagger.Nullable_UString;
+       Return_Reason_Id : Swagger.Nullable_UString;
+       Return_Action_Id : Swagger.Nullable_UString;
        Staff_Note : Swagger.Nullable_UString;
        Comment : Swagger.Nullable_UString;
+       Message : Swagger.Nullable_UString;
        Send_Notifications : Swagger.Nullable_Boolean;
        Reject_Reason : Swagger.Nullable_UString;
        Return_Action : Swagger.Nullable_UString;
        Return_Reason : Swagger.Nullable_UString;
+       Is_Online : Swagger.Nullable_Boolean;
+       Fee_Price : Swagger.Number;
+       Shipping_Price : Swagger.Number;
        Idempotency_Key : Swagger.Nullable_UString;
        Order_Products : .Models.OrderReturnUpdateOrderProductsInner_Type_Vectors.Vector;
      end record;
@@ -13167,6 +13176,7 @@ package .Models is
        External_Source : Swagger.Nullable_UString;
        Inventory_Behaviour : Swagger.Nullable_UString;
        Create_Invoice : Swagger.Nullable_Boolean;
+       Invoice_Admin_Comment : Swagger.Nullable_UString;
        Note_Attributes : .Models.OrderAddNoteAttributesInner_Type_Vectors.Vector;
        Clear_Cache : Swagger.Nullable_Boolean;
        Origin : Swagger.Nullable_UString;
@@ -13246,6 +13256,7 @@ package .Models is
        Check_Process_Status : Swagger.Nullable_Boolean;
        Tracking_Provider : Swagger.Nullable_UString;
        Use_Latest_Api_Version : Swagger.Nullable_Boolean;
+       Admin_Comment : Swagger.Nullable_UString;
        Idempotency_Key : Swagger.Nullable_UString;
      end record;
 
@@ -13283,6 +13294,7 @@ package .Models is
        Send_Notifications : Swagger.Nullable_Boolean;
        Tracking_Provider : Swagger.Nullable_UString;
        Items : .Models.OrderShipmentAddItemsInner_Type_Vectors.Vector;
+       Admin_Comment : Swagger.Nullable_UString;
        Idempotency_Key : Swagger.Nullable_UString;
      end record;
 

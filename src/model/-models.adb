@@ -8111,7 +8111,6 @@ package body .Models is
          Into.Write_Entity ("attribute_value", Value.Attribute_Value);
       end if;
       Serialize (Into, "attribute_price", Value.Attribute_Price);
-      Serialize (Into, "attribute_weight", Value.Attribute_Weight);
       Into.End_Entity (Name);
    end Serialize;
 
@@ -8135,7 +8134,6 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "attribute_name", Value.Attribute_Name);
       Swagger.Streams.Deserialize (Object, "attribute_value", Value.Attribute_Value);
       Swagger.Streams.Deserialize (Object, "attribute_price", Value.Attribute_Price);
-      Swagger.Streams.Deserialize (Object, "attribute_weight", Value.Attribute_Weight);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;
@@ -15619,12 +15617,20 @@ package body .Models is
       if not Value.Comment.Is_Null then
          Into.Write_Entity ("comment", Value.Comment);
       end if;
+      if not Value.Message.Is_Null then
+         Into.Write_Entity ("message", Value.Message);
+      end if;
       if not Value.Send_Notifications.Is_Null then
          Into.Write_Entity ("send_notifications", Value.Send_Notifications);
       end if;
       if not Value.Reject_Reason.Is_Null then
          Into.Write_Entity ("reject_reason", Value.Reject_Reason);
       end if;
+      if not Value.Is_Online.Is_Null then
+         Into.Write_Entity ("is_online", Value.Is_Online);
+      end if;
+      Serialize (Into, "fee_price", Value.Fee_Price);
+      Serialize (Into, "shipping_price", Value.Shipping_Price);
       if not Value.Idempotency_Key.Is_Null then
          Into.Write_Entity ("idempotency_key", Value.Idempotency_Key);
       end if;
@@ -15659,8 +15665,12 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "item_restock", Value.Item_Restock);
       Swagger.Streams.Deserialize (Object, "staff_note", Value.Staff_Note);
       Swagger.Streams.Deserialize (Object, "comment", Value.Comment);
+      Swagger.Streams.Deserialize (Object, "message", Value.Message);
       Swagger.Streams.Deserialize (Object, "send_notifications", Value.Send_Notifications);
       Swagger.Streams.Deserialize (Object, "reject_reason", Value.Reject_Reason);
+      Swagger.Streams.Deserialize (Object, "is_online", Value.Is_Online);
+      Swagger.Streams.Deserialize (Object, "fee_price", Value.Fee_Price);
+      Swagger.Streams.Deserialize (Object, "shipping_price", Value.Shipping_Price);
       Swagger.Streams.Deserialize (Object, "idempotency_key", Value.Idempotency_Key);
       Deserialize (Object, "order_products", Value.Order_Products);
    end Deserialize;
@@ -15697,11 +15707,20 @@ package body .Models is
       if not Value.Return_Status_Id.Is_Null then
          Into.Write_Entity ("return_status_id", Value.Return_Status_Id);
       end if;
+      if not Value.Return_Reason_Id.Is_Null then
+         Into.Write_Entity ("return_reason_id", Value.Return_Reason_Id);
+      end if;
+      if not Value.Return_Action_Id.Is_Null then
+         Into.Write_Entity ("return_action_id", Value.Return_Action_Id);
+      end if;
       if not Value.Staff_Note.Is_Null then
          Into.Write_Entity ("staff_note", Value.Staff_Note);
       end if;
       if not Value.Comment.Is_Null then
          Into.Write_Entity ("comment", Value.Comment);
+      end if;
+      if not Value.Message.Is_Null then
+         Into.Write_Entity ("message", Value.Message);
       end if;
       if not Value.Send_Notifications.Is_Null then
          Into.Write_Entity ("send_notifications", Value.Send_Notifications);
@@ -15715,6 +15734,11 @@ package body .Models is
       if not Value.Return_Reason.Is_Null then
          Into.Write_Entity ("return_reason", Value.Return_Reason);
       end if;
+      if not Value.Is_Online.Is_Null then
+         Into.Write_Entity ("is_online", Value.Is_Online);
+      end if;
+      Serialize (Into, "fee_price", Value.Fee_Price);
+      Serialize (Into, "shipping_price", Value.Shipping_Price);
       if not Value.Idempotency_Key.Is_Null then
          Into.Write_Entity ("idempotency_key", Value.Idempotency_Key);
       end if;
@@ -15744,12 +15768,18 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "store_id", Value.Store_Id);
       Swagger.Streams.Deserialize (Object, "item_restock", Value.Item_Restock);
       Swagger.Streams.Deserialize (Object, "return_status_id", Value.Return_Status_Id);
+      Swagger.Streams.Deserialize (Object, "return_reason_id", Value.Return_Reason_Id);
+      Swagger.Streams.Deserialize (Object, "return_action_id", Value.Return_Action_Id);
       Swagger.Streams.Deserialize (Object, "staff_note", Value.Staff_Note);
       Swagger.Streams.Deserialize (Object, "comment", Value.Comment);
+      Swagger.Streams.Deserialize (Object, "message", Value.Message);
       Swagger.Streams.Deserialize (Object, "send_notifications", Value.Send_Notifications);
       Swagger.Streams.Deserialize (Object, "reject_reason", Value.Reject_Reason);
       Swagger.Streams.Deserialize (Object, "return_action", Value.Return_Action);
       Swagger.Streams.Deserialize (Object, "return_reason", Value.Return_Reason);
+      Swagger.Streams.Deserialize (Object, "is_online", Value.Is_Online);
+      Swagger.Streams.Deserialize (Object, "fee_price", Value.Fee_Price);
+      Swagger.Streams.Deserialize (Object, "shipping_price", Value.Shipping_Price);
       Swagger.Streams.Deserialize (Object, "idempotency_key", Value.Idempotency_Key);
       Deserialize (Object, "order_products", Value.Order_Products);
    end Deserialize;
@@ -25670,6 +25700,9 @@ package body .Models is
       if not Value.Create_Invoice.Is_Null then
          Into.Write_Entity ("create_invoice", Value.Create_Invoice);
       end if;
+      if not Value.Invoice_Admin_Comment.Is_Null then
+         Into.Write_Entity ("invoice_admin_comment", Value.Invoice_Admin_Comment);
+      end if;
       Serialize (Into, "note_attributes", Value.Note_Attributes);
       if not Value.Clear_Cache.Is_Null then
          Into.Write_Entity ("clear_cache", Value.Clear_Cache);
@@ -25769,6 +25802,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "external_source", Value.External_Source);
       Swagger.Streams.Deserialize (Object, "inventory_behaviour", Value.Inventory_Behaviour);
       Swagger.Streams.Deserialize (Object, "create_invoice", Value.Create_Invoice);
+      Swagger.Streams.Deserialize (Object, "invoice_admin_comment", Value.Invoice_Admin_Comment);
       Deserialize (Object, "note_attributes", Value.Note_Attributes);
       Swagger.Streams.Deserialize (Object, "clear_cache", Value.Clear_Cache);
       Swagger.Streams.Deserialize (Object, "origin", Value.Origin);
@@ -25898,6 +25932,9 @@ package body .Models is
       if not Value.Use_Latest_Api_Version.Is_Null then
          Into.Write_Entity ("use_latest_api_version", Value.Use_Latest_Api_Version);
       end if;
+      if not Value.Admin_Comment.Is_Null then
+         Into.Write_Entity ("admin_comment", Value.Admin_Comment);
+      end if;
       if not Value.Idempotency_Key.Is_Null then
          Into.Write_Entity ("idempotency_key", Value.Idempotency_Key);
       end if;
@@ -25936,6 +25973,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "check_process_status", Value.Check_Process_Status);
       Swagger.Streams.Deserialize (Object, "tracking_provider", Value.Tracking_Provider);
       Swagger.Streams.Deserialize (Object, "use_latest_api_version", Value.Use_Latest_Api_Version);
+      Swagger.Streams.Deserialize (Object, "admin_comment", Value.Admin_Comment);
       Swagger.Streams.Deserialize (Object, "idempotency_key", Value.Idempotency_Key);
    end Deserialize;
 
@@ -25988,6 +26026,9 @@ package body .Models is
          Into.Write_Entity ("tracking_provider", Value.Tracking_Provider);
       end if;
       Serialize (Into, "items", Value.Items);
+      if not Value.Admin_Comment.Is_Null then
+         Into.Write_Entity ("admin_comment", Value.Admin_Comment);
+      end if;
       if not Value.Idempotency_Key.Is_Null then
          Into.Write_Entity ("idempotency_key", Value.Idempotency_Key);
       end if;
@@ -26023,6 +26064,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "send_notifications", Value.Send_Notifications);
       Swagger.Streams.Deserialize (Object, "tracking_provider", Value.Tracking_Provider);
       Deserialize (Object, "items", Value.Items);
+      Swagger.Streams.Deserialize (Object, "admin_comment", Value.Admin_Comment);
       Swagger.Streams.Deserialize (Object, "idempotency_key", Value.Idempotency_Key);
    end Deserialize;
 
