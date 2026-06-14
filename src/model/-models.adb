@@ -9514,6 +9514,9 @@ package body .Models is
       if not Value.Nopcommerce_Token.Is_Null then
          Into.Write_Entity ("nopcommerce_token", Value.Nopcommerce_Token);
       end if;
+      if not Value.Nopcommerce_Secret.Is_Null then
+         Into.Write_Entity ("nopcommerce_secret", Value.Nopcommerce_Secret);
+      end if;
       if not Value.Demandware_Client_Id.Is_Null then
          Into.Write_Entity ("demandware_client_id", Value.Demandware_Client_Id);
       end if;
@@ -9993,6 +9996,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "bricklink_token", Value.Bricklink_Token);
       Swagger.Streams.Deserialize (Object, "bricklink_token_secret", Value.Bricklink_Token_Secret);
       Swagger.Streams.Deserialize (Object, "nopcommerce_token", Value.Nopcommerce_Token);
+      Swagger.Streams.Deserialize (Object, "nopcommerce_secret", Value.Nopcommerce_Secret);
       Swagger.Streams.Deserialize (Object, "demandware_client_id", Value.Demandware_Client_Id);
       Swagger.Streams.Deserialize (Object, "demandware_api_password", Value.Demandware_Api_Password);
       Swagger.Streams.Deserialize (Object, "demandware_user_name", Value.Demandware_User_Name);
@@ -23451,6 +23455,9 @@ package body .Models is
       if not Value.News_Letter_Subscription.Is_Null then
          Into.Write_Entity ("news_letter_subscription", Value.News_Letter_Subscription);
       end if;
+      if not Value.Partner_Offers_Subscription.Is_Null then
+         Into.Write_Entity ("partner_offers_subscription", Value.Partner_Offers_Subscription);
+      end if;
       Serialize (Into, "consents", Value.Consents);
       if not Value.Gender.Is_Null then
          Into.Write_Entity ("gender", Value.Gender);
@@ -23523,6 +23530,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "last_login", Value.Last_Login);
       Swagger.Streams.Deserialize (Object, "birth_day", Value.Birth_Day);
       Swagger.Streams.Deserialize (Object, "news_letter_subscription", Value.News_Letter_Subscription);
+      Swagger.Streams.Deserialize (Object, "partner_offers_subscription", Value.Partner_Offers_Subscription);
       Deserialize (Object, "consents", Value.Consents);
       Swagger.Streams.Deserialize (Object, "gender", Value.Gender);
       Swagger.Streams.Deserialize (Object, "website", Value.Website);
@@ -23588,6 +23596,9 @@ package body .Models is
       if not Value.News_Letter_Subscription.Is_Null then
          Into.Write_Entity ("news_letter_subscription", Value.News_Letter_Subscription);
       end if;
+      if not Value.Partner_Offers_Subscription.Is_Null then
+         Into.Write_Entity ("partner_offers_subscription", Value.Partner_Offers_Subscription);
+      end if;
       Serialize (Into, "consents", Value.Consents);
       if not Value.Tags.Is_Null then
          Into.Write_Entity ("tags", Value.Tags);
@@ -23609,6 +23620,9 @@ package body .Models is
       end if;
       if not Value.Company.Is_Null then
          Into.Write_Entity ("company", Value.Company);
+      end if;
+      if not Value.Website.Is_Null then
+         Into.Write_Entity ("website", Value.Website);
       end if;
       if not Value.Country.Is_Null then
          Into.Write_Entity ("country", Value.Country);
@@ -23662,6 +23676,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "last_name", Value.Last_Name);
       Swagger.Streams.Deserialize (Object, "birth_day", Value.Birth_Day);
       Swagger.Streams.Deserialize (Object, "news_letter_subscription", Value.News_Letter_Subscription);
+      Swagger.Streams.Deserialize (Object, "partner_offers_subscription", Value.Partner_Offers_Subscription);
       Deserialize (Object, "consents", Value.Consents);
       Swagger.Streams.Deserialize (Object, "tags", Value.Tags);
       Swagger.Streams.Deserialize (Object, "gender", Value.Gender);
@@ -23670,6 +23685,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "password", Value.Password);
       Swagger.Streams.Deserialize (Object, "currency_id", Value.Currency_Id);
       Swagger.Streams.Deserialize (Object, "company", Value.Company);
+      Swagger.Streams.Deserialize (Object, "website", Value.Website);
       Swagger.Streams.Deserialize (Object, "country", Value.Country);
       Swagger.Streams.Deserialize (Object, "fax", Value.Fax);
       Swagger.Streams.Deserialize (Object, "tax_id", Value.Tax_Id);

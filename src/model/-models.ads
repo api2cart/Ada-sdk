@@ -5010,6 +5010,7 @@ package .Models is
        Bricklink_Token : Swagger.Nullable_UString;
        Bricklink_Token_Secret : Swagger.Nullable_UString;
        Nopcommerce_Token : Swagger.Nullable_UString;
+       Nopcommerce_Secret : Swagger.Nullable_UString;
        Demandware_Client_Id : Swagger.Nullable_UString;
        Demandware_Api_Password : Swagger.Nullable_UString;
        Demandware_User_Name : Swagger.Nullable_UString;
@@ -11991,6 +11992,7 @@ package .Models is
        Last_Login : Swagger.Nullable_UString;
        Birth_Day : Swagger.Nullable_UString;
        News_Letter_Subscription : Swagger.Nullable_Boolean;
+       Partner_Offers_Subscription : Swagger.Nullable_Boolean;
        Consents : .Models.CustomerAddConsentsInner_Type_Vectors.Vector;
        Gender : Swagger.Nullable_UString;
        Website : Swagger.Nullable_UString;
@@ -12039,6 +12041,7 @@ package .Models is
        Last_Name : Swagger.Nullable_UString;
        Birth_Day : Swagger.Nullable_UString;
        News_Letter_Subscription : Swagger.Nullable_Boolean;
+       Partner_Offers_Subscription : Swagger.Nullable_Boolean;
        Consents : .Models.CustomerAddConsentsInner_Type_Vectors.Vector;
        Tags : Swagger.Nullable_UString;
        Gender : Swagger.Nullable_UString;
@@ -12047,6 +12050,7 @@ package .Models is
        Password : Swagger.Nullable_UString;
        Currency_Id : Swagger.Nullable_UString;
        Company : Swagger.Nullable_UString;
+       Website : Swagger.Nullable_UString;
        Country : Swagger.Nullable_UString;
        Fax : Swagger.Nullable_UString;
        Tax_Id : Swagger.Nullable_UString;
