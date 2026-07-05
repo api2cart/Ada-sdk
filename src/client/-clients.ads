@@ -233,7 +233,7 @@ package .Clients is
    --  Use this method to retrieve a list of supported platforms and the sets of parameters required for connecting to each of them. Note: some platforms may have multiple connection methods so that the response will contain multiple sets of parameters.
    procedure Account_Supported_Platforms
       (Client : in out Client_Type;
-       Result : out .Models.AccountSupportedPlatforms200Response_Type);
+       Result : out .Models.ModelResponseAccountSupportedPlatforms_Type);
 
    --  attribute.add
    --  Add new attribute
@@ -305,7 +305,7 @@ package .Clients is
        Visible : in Swagger.Nullable_Boolean;
        Required : in Swagger.Nullable_Boolean;
        System : in Swagger.Nullable_Boolean;
-       Result : out .Models.AttributeCount200Response_Type);
+       Result : out .Models.ModelResponseAttributeCount_Type);
 
    --  attribute.delete
    --  Delete attribute from store
@@ -365,7 +365,7 @@ package .Clients is
    --  Get list of supported attributes types
    procedure Attribute_Type_List
       (Client : in out Client_Type;
-       Result : out .Models.AttributeTypeList200Response_Type);
+       Result : out .Models.ModelResponseAttributeTypeList_Type);
 
    --  attribute.unassign.group
    --  Unassign attribute from group
@@ -527,7 +527,7 @@ package .Clients is
    --  Get count of cart catalog price rules discounts.
    procedure Cart_Catalog_Price_Rules_Count
       (Client : in out Client_Type;
-       Result : out .Models.CartCatalogPriceRulesCount200Response_Type);
+       Result : out .Models.ModelResponseCartCatalogPriceRulesCount_Type);
 
    --  cart.catalog_price_rules.list
    --  Get cart catalog price rules discounts.
@@ -575,7 +575,7 @@ package .Clients is
        Date_Start_To : in Swagger.Nullable_UString;
        Date_End_From : in Swagger.Nullable_UString;
        Date_End_To : in Swagger.Nullable_UString;
-       Result : out .Models.CartCouponCount200Response_Type);
+       Result : out .Models.ModelResponseCartCouponCount_Type);
 
    --  cart.coupon.delete
    --  Delete coupon
@@ -618,11 +618,15 @@ package .Clients is
    procedure Cart_Giftcard_Add
       (Client : in out Client_Type;
        Amount : in Swagger.Number;
+       Currency : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
        Code : in Swagger.Nullable_UString;
+       Name : in Swagger.Nullable_UString;
        Owner_Email : in Swagger.Nullable_UString;
+       Owner_Name : in Swagger.Nullable_UString;
        Recipient_Email : in Swagger.Nullable_UString;
        Recipient_Name : in Swagger.Nullable_UString;
-       Owner_Name : in Swagger.Nullable_UString;
+       Message : in Swagger.Nullable_UString;
        Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.CartGiftcardAdd200Response_Type);
 
@@ -631,19 +635,21 @@ package .Clients is
    procedure Cart_Giftcard_Count
       (Client : in out Client_Type;
        Store_Id : in Swagger.Nullable_UString;
-       Result : out .Models.CartGiftcardCount200Response_Type);
+       Result : out .Models.ModelResponseCartGiftcardCount_Type);
 
    --  cart.giftcard.delete
    --  Delete giftcard
    procedure Cart_Giftcard_Delete
       (Client : in out Client_Type;
        Id : in Swagger.UString;
+       Store_Id : in Swagger.Nullable_UString;
        Result : out .Models.AttributeDelete200Response_Type);
 
    --  cart.giftcard.list
    --  Get gift cards list.
    procedure Cart_Giftcard_List
       (Client : in out Client_Type;
+       Ids : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
        Page_Cursor : in Swagger.Nullable_UString;
@@ -664,7 +670,7 @@ package .Clients is
        Result : out .Models.CartInfo200Response_Type);
 
    --  cart.meta_data.list
-   --  Using this method, you can get a list of metadata for various entities (products, options, customers, orders). Usually this is data created by third-party plugins.
+   --  Using this method, you can get a list of metadata for various entities. Entities supported may differ across platforms. To get the list of supported entities, pass an invalid value in the <code>entity</code> parameter. The response will contain the list of entities supported by the specific platform. Usually this is data created by third-party plugins.
    procedure Cart_Meta_Data_List
       (Client : in out Client_Type;
        Entity_Id : in Swagger.UString;
@@ -680,7 +686,7 @@ package .Clients is
        Result : out .Models.ModelResponseCartMetaDataList_Type);
 
    --  cart.meta_data.set
-   --  Set meta data for a specific entity
+   --  Set metadata for a specific entity. Entities supported may differ across platforms. To get the list of supported entities, pass an invalid value in the <code>entity</code> parameter. The response will contain the list of entities supported by the specific platform. Usually this is data created by third-party plugins.
    procedure Cart_Meta_Data_Set
       (Client : in out Client_Type;
        Entity_Id : in Swagger.UString;
@@ -708,7 +714,7 @@ package .Clients is
    --  Returns a list of supported API methods.
    procedure Cart_Methods
       (Client : in out Client_Type;
-       Result : out .Models.CartMethods200Response_Type);
+       Result : out .Models.ModelResponseCartMethods_Type);
 
    --  cart.plugin.list
    --  Get a list of third-party plugins installed on the store.
@@ -816,7 +822,7 @@ package .Clients is
        Product_Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
        Idempotency_Key : in Swagger.Nullable_UString;
-       Result : out .Models.CategoryAssign200Response_Type);
+       Result : out .Models.ModelResponseCategoryAssign_Type);
 
    --  category.count
    --  Count categories in store.
@@ -835,7 +841,7 @@ package .Clients is
        Find_Where : in Swagger.Nullable_UString;
        Report_Request_Id : in Swagger.Nullable_UString;
        Disable_Report_Cache : in Swagger.Nullable_Boolean;
-       Result : out .Models.CategoryCount200Response_Type);
+       Result : out .Models.ModelResponseCategoryCount_Type);
 
    --  category.delete
    --  Delete category in store
@@ -861,7 +867,7 @@ package .Clients is
        Find_Params : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
-       Result : out .Models.CategoryFind200Response_Type);
+       Result : out .Models.ModelResponseCategoryFind_Type);
 
    --  category.image.add
    --  Add image to category
@@ -940,7 +946,7 @@ package .Clients is
        Product_Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
        Idempotency_Key : in Swagger.Nullable_UString;
-       Result : out .Models.CategoryAssign200Response_Type);
+       Result : out .Models.ModelResponseCategoryUnassign_Type);
 
    --  category.update
    --  Update category in store
@@ -1010,7 +1016,7 @@ package .Clients is
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Result : out .Models.CustomerCount200Response_Type);
+       Result : out .Models.ModelResponseCustomerCount_Type);
 
    --  customer.delete
    --  Delete customer from store.
@@ -1029,7 +1035,7 @@ package .Clients is
        Find_Params : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Include_Guests : in Swagger.Nullable_Boolean;
-       Result : out .Models.CustomerFind200Response_Type);
+       Result : out .Models.ModelResponseCustomerFind_Type);
 
    --  customer.group.add
    --  Create customer group.
@@ -1196,20 +1202,20 @@ package .Clients is
        Modified_To : in Swagger.Nullable_UString;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Vendor_Id : in Swagger.Nullable_UString;
-       Result : out .Models.OrderCount200Response_Type);
+       Result : out .Models.ModelResponseOrderCount_Type);
 
    --  order.financial_status.list
    --  Retrieve list of financial statuses
    procedure Order_Financial_Status_List
       (Client : in out Client_Type;
-       Result : out .Models.OrderFinancialStatusList200Response_Type);
+       Result : out .Models.ModelResponseOrderFinancialStatusList_Type);
 
    --  order.fulfillment_status.list
    --  Retrieve list of fulfillment statuses
    procedure Order_Fulfillment_Status_List
       (Client : in out Client_Type;
        Action : in Swagger.Nullable_UString;
-       Result : out .Models.OrderFulfillmentStatusList200Response_Type);
+       Result : out .Models.ModelResponseOrderFulfillmentStatusList_Type);
 
    --  order.info
    --  Info about a specific order by ID
@@ -1541,7 +1547,7 @@ package .Clients is
        Find_Where : in Swagger.Nullable_UString;
        Find_Params : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
-       Result : out .Models.ProductChildItemFind200Response_Type);
+       Result : out .Models.ModelResponseProductChildItemFind_Type);
 
    --  product.child_item.info
    --  Get child for specific product.
@@ -1617,7 +1623,7 @@ package .Clients is
        Return_Global : in Swagger.Nullable_Boolean;
        Disable_Report_Cache : in Swagger.Nullable_Boolean;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
-       Result : out .Models.ProductCount200Response_Type);
+       Result : out .Models.ModelResponseProductCount_Type);
 
    --  product.currency.add
    --  Add currency and/or set default in store
@@ -1672,7 +1678,7 @@ package .Clients is
        Find_What : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
-       Result : out .Models.ProductFind200Response_Type);
+       Result : out .Models.ModelResponseProductFind_Type);
 
    --  product.image.add
    --  Add image to product
@@ -2040,7 +2046,7 @@ package .Clients is
    --  Retrieve list of return actions
    procedure Return_Action_List
       (Client : in out Client_Type;
-       Result : out .Models.ReturnActionList200Response_Type);
+       Result : out .Models.ModelResponseReturnActionList_Type);
 
    --  return.count
    --  Count returns in store
@@ -2057,7 +2063,7 @@ package .Clients is
        Modified_To : in Swagger.Nullable_UString;
        Report_Request_Id : in Swagger.Nullable_UString;
        Disable_Report_Cache : in Swagger.Nullable_Boolean;
-       Result : out .Models.ReturnCount200Response_Type);
+       Result : out .Models.ModelResponseReturnCount_Type);
 
    --  return.info
    --  Retrieve return information.
@@ -2100,13 +2106,13 @@ package .Clients is
    procedure Return_Reason_List
       (Client : in out Client_Type;
        Store_Id : in Swagger.Nullable_UString;
-       Result : out .Models.ReturnReasonList200Response_Type);
+       Result : out .Models.ModelResponseReturnReasonList_Type);
 
    --  return.status.list
    --  Retrieve list of statuses
    procedure Return_Status_List
       (Client : in out Client_Type;
-       Result : out .Models.ReturnStatusList200Response_Type);
+       Result : out .Models.ModelResponseReturnStatusList_Type);
 
    --  subscriber.list
    --  Get subscribers list
@@ -2164,7 +2170,7 @@ package .Clients is
        Entity : in Swagger.Nullable_UString;
        Action : in Swagger.Nullable_UString;
        Active : in Swagger.Nullable_Boolean;
-       Result : out .Models.WebhookCount200Response_Type);
+       Result : out .Models.ModelResponseWebhookCount_Type);
 
    --  webhook.create
    --  Create webhook on the store and subscribe to it.
@@ -2184,7 +2190,7 @@ package .Clients is
    --  List all Webhooks that are available on this store.
    procedure Webhook_Events
       (Client : in out Client_Type;
-       Result : out .Models.WebhookEvents200Response_Type);
+       Result : out .Models.ModelResponseWebhookEvents_Type);
 
    --  webhook.list
    --  List registered webhook on the store.

@@ -469,7 +469,7 @@ package body .Clients is
    --  Use this method to retrieve a list of supported platforms and the sets of parameters required for connecting to each of them. Note: some platforms may have multiple connection methods so that the response will contain multiple sets of parameters.
    procedure Account_Supported_Platforms
       (Client : in out Client_Type;
-       Result : out .Models.AccountSupportedPlatforms200Response_Type) is
+       Result : out .Models.ModelResponseAccountSupportedPlatforms_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -626,7 +626,7 @@ package body .Clients is
        Visible : in Swagger.Nullable_Boolean;
        Required : in Swagger.Nullable_Boolean;
        System : in Swagger.Nullable_Boolean;
-       Result : out .Models.AttributeCount200Response_Type) is
+       Result : out .Models.ModelResponseAttributeCount_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -773,7 +773,7 @@ package body .Clients is
    --  Get list of supported attributes types
    procedure Attribute_Type_List
       (Client : in out Client_Type;
-       Result : out .Models.AttributeTypeList200Response_Type) is
+       Result : out .Models.ModelResponseAttributeTypeList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -1165,7 +1165,7 @@ package body .Clients is
    --  Get count of cart catalog price rules discounts.
    procedure Cart_Catalog_Price_Rules_Count
       (Client : in out Client_Type;
-       Result : out .Models.CartCatalogPriceRulesCount200Response_Type) is
+       Result : out .Models.ModelResponseCartCatalogPriceRulesCount_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -1272,7 +1272,7 @@ package body .Clients is
        Date_Start_To : in Swagger.Nullable_UString;
        Date_End_From : in Swagger.Nullable_UString;
        Date_End_To : in Swagger.Nullable_UString;
-       Result : out .Models.CartCouponCount200Response_Type) is
+       Result : out .Models.ModelResponseCartCouponCount_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -1379,11 +1379,15 @@ package body .Clients is
    procedure Cart_Giftcard_Add
       (Client : in out Client_Type;
        Amount : in Swagger.Number;
+       Currency : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
        Code : in Swagger.Nullable_UString;
+       Name : in Swagger.Nullable_UString;
        Owner_Email : in Swagger.Nullable_UString;
+       Owner_Name : in Swagger.Nullable_UString;
        Recipient_Email : in Swagger.Nullable_UString;
        Recipient_Name : in Swagger.Nullable_UString;
-       Owner_Name : in Swagger.Nullable_UString;
+       Message : in Swagger.Nullable_UString;
        Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.CartGiftcardAdd200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
@@ -1393,11 +1397,15 @@ package body .Clients is
 
 
       URI.Add_Param ("amount", Amount);
+      URI.Add_Param ("currency", Currency);
+      URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("code", Code);
+      URI.Add_Param ("name", Name);
       URI.Add_Param ("owner_email", Owner_Email);
+      URI.Add_Param ("owner_name", Owner_Name);
       URI.Add_Param ("recipient_email", Recipient_Email);
       URI.Add_Param ("recipient_name", Recipient_Name);
-      URI.Add_Param ("owner_name", Owner_Name);
+      URI.Add_Param ("message", Message);
       URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/cart.giftcard.add.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
@@ -1409,7 +1417,7 @@ package body .Clients is
    procedure Cart_Giftcard_Count
       (Client : in out Client_Type;
        Store_Id : in Swagger.Nullable_UString;
-       Result : out .Models.CartGiftcardCount200Response_Type) is
+       Result : out .Models.ModelResponseCartGiftcardCount_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -1427,6 +1435,7 @@ package body .Clients is
    procedure Cart_Giftcard_Delete
       (Client : in out Client_Type;
        Id : in Swagger.UString;
+       Store_Id : in Swagger.Nullable_UString;
        Result : out .Models.AttributeDelete200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -1435,6 +1444,7 @@ package body .Clients is
 
 
       URI.Add_Param ("id", Id);
+      URI.Add_Param ("store_id", Store_Id);
       URI.Set_Path ("/cart.giftcard.delete.json");
       Client.Call (Swagger.Clients.DELETE, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -1444,6 +1454,7 @@ package body .Clients is
    --  Get gift cards list.
    procedure Cart_Giftcard_List
       (Client : in out Client_Type;
+       Ids : in Swagger.Nullable_UString;
        Start : in Swagger.Nullable_Integer;
        Count : in Swagger.Nullable_Integer;
        Page_Cursor : in Swagger.Nullable_UString;
@@ -1458,6 +1469,7 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
+      URI.Add_Param ("ids", Ids);
       URI.Add_Param ("start", Start);
       URI.Add_Param ("count", Count);
       URI.Add_Param ("page_cursor", Page_Cursor);
@@ -1495,7 +1507,7 @@ package body .Clients is
    end Cart_Info;
 
    --  cart.meta_data.list
-   --  Using this method, you can get a list of metadata for various entities (products, options, customers, orders). Usually this is data created by third-party plugins.
+   --  Using this method, you can get a list of metadata for various entities. Entities supported may differ across platforms. To get the list of supported entities, pass an invalid value in the <code>entity</code> parameter. The response will contain the list of entities supported by the specific platform. Usually this is data created by third-party plugins.
    procedure Cart_Meta_Data_List
       (Client : in out Client_Type;
        Entity_Id : in Swagger.UString;
@@ -1531,7 +1543,7 @@ package body .Clients is
    end Cart_Meta_Data_List;
 
    --  cart.meta_data.set
-   --  Set meta data for a specific entity
+   --  Set metadata for a specific entity. Entities supported may differ across platforms. To get the list of supported entities, pass an invalid value in the <code>entity</code> parameter. The response will contain the list of entities supported by the specific platform. Usually this is data created by third-party plugins.
    procedure Cart_Meta_Data_Set
       (Client : in out Client_Type;
        Entity_Id : in Swagger.UString;
@@ -1592,7 +1604,7 @@ package body .Clients is
    --  Returns a list of supported API methods.
    procedure Cart_Methods
       (Client : in out Client_Type;
-       Result : out .Models.CartMethods200Response_Type) is
+       Result : out .Models.ModelResponseCartMethods_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -1841,7 +1853,7 @@ package body .Clients is
        Product_Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
        Idempotency_Key : in Swagger.Nullable_UString;
-       Result : out .Models.CategoryAssign200Response_Type) is
+       Result : out .Models.ModelResponseCategoryAssign_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -1874,7 +1886,7 @@ package body .Clients is
        Find_Where : in Swagger.Nullable_UString;
        Report_Request_Id : in Swagger.Nullable_UString;
        Disable_Report_Cache : in Swagger.Nullable_Boolean;
-       Result : out .Models.CategoryCount200Response_Type) is
+       Result : out .Models.ModelResponseCategoryCount_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -1947,7 +1959,7 @@ package body .Clients is
        Find_Params : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
-       Result : out .Models.CategoryFind200Response_Type) is
+       Result : out .Models.ModelResponseCategoryFind_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -2126,7 +2138,7 @@ package body .Clients is
        Product_Id : in Swagger.UString;
        Store_Id : in Swagger.Nullable_UString;
        Idempotency_Key : in Swagger.Nullable_UString;
-       Result : out .Models.CategoryAssign200Response_Type) is
+       Result : out .Models.ModelResponseCategoryUnassign_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -2279,7 +2291,7 @@ package body .Clients is
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
        Modified_To : in Swagger.Nullable_UString;
-       Result : out .Models.CustomerCount200Response_Type) is
+       Result : out .Models.ModelResponseCustomerCount_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -2333,7 +2345,7 @@ package body .Clients is
        Find_Params : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
        Include_Guests : in Swagger.Nullable_Boolean;
-       Result : out .Models.CustomerFind200Response_Type) is
+       Result : out .Models.ModelResponseCustomerFind_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -2697,7 +2709,7 @@ package body .Clients is
        Modified_To : in Swagger.Nullable_UString;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Vendor_Id : in Swagger.Nullable_UString;
-       Result : out .Models.OrderCount200Response_Type) is
+       Result : out .Models.ModelResponseOrderCount_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -2735,7 +2747,7 @@ package body .Clients is
    --  Retrieve list of financial statuses
    procedure Order_Financial_Status_List
       (Client : in out Client_Type;
-       Result : out .Models.OrderFinancialStatusList200Response_Type) is
+       Result : out .Models.ModelResponseOrderFinancialStatusList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -2752,7 +2764,7 @@ package body .Clients is
    procedure Order_Fulfillment_Status_List
       (Client : in out Client_Type;
        Action : in Swagger.Nullable_UString;
-       Result : out .Models.OrderFulfillmentStatusList200Response_Type) is
+       Result : out .Models.ModelResponseOrderFulfillmentStatusList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -3528,7 +3540,7 @@ package body .Clients is
        Find_Where : in Swagger.Nullable_UString;
        Find_Params : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
-       Result : out .Models.ProductChildItemFind200Response_Type) is
+       Result : out .Models.ModelResponseProductChildItemFind_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -3670,7 +3682,7 @@ package body .Clients is
        Return_Global : in Swagger.Nullable_Boolean;
        Disable_Report_Cache : in Swagger.Nullable_Boolean;
        Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
-       Result : out .Models.ProductCount200Response_Type) is
+       Result : out .Models.ModelResponseProductCount_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -3821,7 +3833,7 @@ package body .Clients is
        Find_What : in Swagger.Nullable_UString;
        Lang_Id : in Swagger.Nullable_UString;
        Store_Id : in Swagger.Nullable_UString;
-       Result : out .Models.ProductFind200Response_Type) is
+       Result : out .Models.ModelResponseProductFind_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -4714,7 +4726,7 @@ package body .Clients is
    --  Retrieve list of return actions
    procedure Return_Action_List
       (Client : in out Client_Type;
-       Result : out .Models.ReturnActionList200Response_Type) is
+       Result : out .Models.ModelResponseReturnActionList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -4741,7 +4753,7 @@ package body .Clients is
        Modified_To : in Swagger.Nullable_UString;
        Report_Request_Id : in Swagger.Nullable_UString;
        Disable_Report_Cache : in Swagger.Nullable_Boolean;
-       Result : out .Models.ReturnCount200Response_Type) is
+       Result : out .Models.ModelResponseReturnCount_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -4849,7 +4861,7 @@ package body .Clients is
    procedure Return_Reason_List
       (Client : in out Client_Type;
        Store_Id : in Swagger.Nullable_UString;
-       Result : out .Models.ReturnReasonList200Response_Type) is
+       Result : out .Models.ModelResponseReturnReasonList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -4866,7 +4878,7 @@ package body .Clients is
    --  Retrieve list of statuses
    procedure Return_Status_List
       (Client : in out Client_Type;
-       Result : out .Models.ReturnStatusList200Response_Type) is
+       Result : out .Models.ModelResponseReturnStatusList_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -4995,7 +5007,7 @@ package body .Clients is
        Entity : in Swagger.Nullable_UString;
        Action : in Swagger.Nullable_UString;
        Active : in Swagger.Nullable_Boolean;
-       Result : out .Models.WebhookCount200Response_Type) is
+       Result : out .Models.ModelResponseWebhookCount_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -5051,7 +5063,7 @@ package body .Clients is
    --  List all Webhooks that are available on this store.
    procedure Webhook_Events
       (Client : in out Client_Type;
-       Result : out .Models.WebhookEvents200Response_Type) is
+       Result : out .Models.ModelResponseWebhookEvents_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
