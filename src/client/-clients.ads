@@ -235,6 +235,56 @@ package .Clients is
       (Client : in out Client_Type;
        Result : out .Models.ModelResponseAccountSupportedPlatforms_Type);
 
+   --  analytics.customer_report
+   --  Get customer-level analytics for a store over a given period.
+   procedure Analytics_Customer_Report
+      (Client : in out Client_Type;
+       Date_From : in Swagger.Nullable_UString;
+       Date_To : in Swagger.Nullable_UString;
+       Count : in Swagger.Nullable_Integer;
+       Currency_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Customer_Type : in Swagger.Nullable_UString;
+       Email : in Swagger.Nullable_UString;
+       Sort_By : in Swagger.Nullable_UString;
+       Sort_Direction : in Swagger.Nullable_UString;
+       Page_Cursor : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Result : out .Models.ResponseAnalyticsCustomerReportResult_Type);
+
+   --  analytics.product_report
+   --  Get product-level analytics for a store over a given period.
+   procedure Analytics_Product_Report
+      (Client : in out Client_Type;
+       Date_From : in Swagger.Nullable_UString;
+       Date_To : in Swagger.Nullable_UString;
+       Count : in Swagger.Nullable_Integer;
+       Product_Ids : in Swagger.Nullable_UString;
+       Currency_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Categories_Ids : in Swagger.Nullable_UString;
+       Sort_By : in Swagger.Nullable_UString;
+       Sort_Direction : in Swagger.Nullable_UString;
+       Page_Cursor : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Result : out .Models.ResponseAnalyticsProductReportResult_Type);
+
+   --  analytics.report
+   --  Get analytics report with totals and optional interval breakdown for a store over a given period.
+   procedure Analytics_Report
+      (Client : in out Client_Type;
+       Date_From : in Swagger.UString;
+       Date_To : in Swagger.Nullable_UString;
+       Interval : in Swagger.Nullable_UString;
+       Order_Status : in Swagger.Nullable_UString;
+       Financial_Status : in Swagger.Nullable_UString;
+       Currency_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Sort_By : in Swagger.Nullable_UString;
+       Sort_Direction : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Result : out .Models.ResponseAnalyticsReportResult_Type);
+
    --  attribute.add
    --  Add new attribute
    procedure Attribute_Add

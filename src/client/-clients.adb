@@ -481,6 +481,118 @@ package body .Clients is
       .Models.Deserialize (Reply, "", Result);
    end Account_Supported_Platforms;
 
+   --  analytics.customer_report
+   --  Get customer-level analytics for a store over a given period.
+   procedure Analytics_Customer_Report
+      (Client : in out Client_Type;
+       Date_From : in Swagger.Nullable_UString;
+       Date_To : in Swagger.Nullable_UString;
+       Count : in Swagger.Nullable_Integer;
+       Currency_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Customer_Type : in Swagger.Nullable_UString;
+       Email : in Swagger.Nullable_UString;
+       Sort_By : in Swagger.Nullable_UString;
+       Sort_Direction : in Swagger.Nullable_UString;
+       Page_Cursor : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Result : out .Models.ResponseAnalyticsCustomerReportResult_Type) is
+      URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
+   begin
+      Client.Set_Accept (Media_List_1);
+
+
+      URI.Add_Param ("date_from", Date_From);
+      URI.Add_Param ("date_to", Date_To);
+      URI.Add_Param ("count", Count);
+      URI.Add_Param ("currency_id", Currency_Id);
+      URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("customer_type", Customer_Type);
+      URI.Add_Param ("email", Email);
+      URI.Add_Param ("sort_by", Sort_By);
+      URI.Add_Param ("sort_direction", Sort_Direction);
+      URI.Add_Param ("page_cursor", Page_Cursor);
+      URI.Add_Param ("response_fields", Response_Fields);
+      URI.Set_Path ("/analytics.customer_report.json");
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
+   end Analytics_Customer_Report;
+
+   --  analytics.product_report
+   --  Get product-level analytics for a store over a given period.
+   procedure Analytics_Product_Report
+      (Client : in out Client_Type;
+       Date_From : in Swagger.Nullable_UString;
+       Date_To : in Swagger.Nullable_UString;
+       Count : in Swagger.Nullable_Integer;
+       Product_Ids : in Swagger.Nullable_UString;
+       Currency_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Categories_Ids : in Swagger.Nullable_UString;
+       Sort_By : in Swagger.Nullable_UString;
+       Sort_Direction : in Swagger.Nullable_UString;
+       Page_Cursor : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Result : out .Models.ResponseAnalyticsProductReportResult_Type) is
+      URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
+   begin
+      Client.Set_Accept (Media_List_1);
+
+
+      URI.Add_Param ("date_from", Date_From);
+      URI.Add_Param ("date_to", Date_To);
+      URI.Add_Param ("count", Count);
+      URI.Add_Param ("product_ids", Product_Ids);
+      URI.Add_Param ("currency_id", Currency_Id);
+      URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("categories_ids", Categories_Ids);
+      URI.Add_Param ("sort_by", Sort_By);
+      URI.Add_Param ("sort_direction", Sort_Direction);
+      URI.Add_Param ("page_cursor", Page_Cursor);
+      URI.Add_Param ("response_fields", Response_Fields);
+      URI.Set_Path ("/analytics.product_report.json");
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
+   end Analytics_Product_Report;
+
+   --  analytics.report
+   --  Get analytics report with totals and optional interval breakdown for a store over a given period.
+   procedure Analytics_Report
+      (Client : in out Client_Type;
+       Date_From : in Swagger.UString;
+       Date_To : in Swagger.Nullable_UString;
+       Interval : in Swagger.Nullable_UString;
+       Order_Status : in Swagger.Nullable_UString;
+       Financial_Status : in Swagger.Nullable_UString;
+       Currency_Id : in Swagger.Nullable_UString;
+       Store_Id : in Swagger.Nullable_UString;
+       Sort_By : in Swagger.Nullable_UString;
+       Sort_Direction : in Swagger.Nullable_UString;
+       Response_Fields : in Swagger.Nullable_UString;
+       Result : out .Models.ResponseAnalyticsReportResult_Type) is
+      URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
+   begin
+      Client.Set_Accept (Media_List_1);
+
+
+      URI.Add_Param ("date_from", Date_From);
+      URI.Add_Param ("date_to", Date_To);
+      URI.Add_Param ("interval", Interval);
+      URI.Add_Param ("order_status", Order_Status);
+      URI.Add_Param ("financial_status", Financial_Status);
+      URI.Add_Param ("currency_id", Currency_Id);
+      URI.Add_Param ("store_id", Store_Id);
+      URI.Add_Param ("sort_by", Sort_By);
+      URI.Add_Param ("sort_direction", Sort_Direction);
+      URI.Add_Param ("response_fields", Response_Fields);
+      URI.Set_Path ("/analytics.report.json");
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
+   end Analytics_Report;
+
    --  attribute.add
    --  Add new attribute
    procedure Attribute_Add
