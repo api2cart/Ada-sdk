@@ -12253,7 +12253,7 @@ package .Models is
      record
        Entity : Swagger.UString;
        Action : Swagger.UString;
-       Callback : Swagger.Nullable_UString;
+       Callback : Swagger.UString;
        Label : Swagger.Nullable_UString;
        Fields : Swagger.Nullable_UString;
        Response_Fields : Swagger.Nullable_UString;
@@ -13649,11 +13649,27 @@ package .Models is
        Is_Shipped : Swagger.Nullable_Boolean;
        Send_Notifications : Swagger.Nullable_Boolean;
        Adjust_Stock : Swagger.Nullable_Boolean;
-       Enable_Cache : Swagger.Nullable_Boolean;
        Check_Process_Status : Swagger.Nullable_Boolean;
        Tracking_Provider : Swagger.Nullable_UString;
-       Use_Latest_Api_Version : Swagger.Nullable_Boolean;
        Admin_Comment : Swagger.Nullable_UString;
+       Mail_Class : Swagger.Nullable_UString;
+       Ship_Date : Swagger.Nullable_UString;
+       Weight : Swagger.Number;
+       Weight_Unit : Swagger.Nullable_UString;
+       Length : Swagger.Number;
+       Width : Swagger.Number;
+       Height : Swagger.Number;
+       Dimensions_Unit : Swagger.Nullable_UString;
+       Shipping_Label_Cost : Swagger.Number;
+       Shipping_Label_Currency : Swagger.Nullable_UString;
+       Revenue_Eligibility : Swagger.Nullable_Boolean;
+       Ship_From_Country : Swagger.Nullable_UString;
+       Ship_To_Country : Swagger.Nullable_UString;
+       Incoterm : Swagger.Nullable_UString;
+       Duty_Amount : Swagger.Number;
+       Duty_Currency : Swagger.Nullable_UString;
+       Enable_Cache : Swagger.Nullable_Boolean;
+       Use_Latest_Api_Version : Swagger.Nullable_Boolean;
        Idempotency_Key : Swagger.Nullable_UString;
      end record;
 

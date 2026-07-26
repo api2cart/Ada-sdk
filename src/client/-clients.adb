@@ -469,6 +469,7 @@ package body .Clients is
    --  Use this method to retrieve a list of supported platforms and the sets of parameters required for connecting to each of them. Note: some platforms may have multiple connection methods so that the response will contain multiple sets of parameters.
    procedure Account_Supported_Platforms
       (Client : in out Client_Type;
+       Cart_Id : in Swagger.Nullable_UString;
        Result : out .Models.ModelResponseAccountSupportedPlatforms_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -476,6 +477,7 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
+      URI.Add_Param ("cart_id", Cart_Id);
       URI.Set_Path ("/account.supported_platforms.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -1598,7 +1600,6 @@ package body .Clients is
    --  This method allows you to get various information about the store, including a list of stores (in the case of a multistore configuration), a list of supported languages, currencies, carriers, warehouses, and many other information. This information contains data that is relatively stable and rarely changes, so API2Cart can cache certain data to reduce the load on the store and speed up the execution of the request. We also recommend that you cache the response of this method on your side to save requests. If you need to clear the cache for a specific store, then use the cart.validate method.
    procedure Cart_Info
       (Client : in out Client_Type;
-       Store_Id : in Swagger.Nullable_UString;
        Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
@@ -1609,7 +1610,6 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
-      URI.Add_Param ("store_id", Store_Id);
       URI.Add_Param ("response_fields", Response_Fields);
       URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);

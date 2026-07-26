@@ -23748,9 +23748,7 @@ package body .Models is
       Into.Start_Entity (Name);
       Into.Write_Entity ("entity", Value.Entity);
       Into.Write_Entity ("action", Value.Action);
-      if not Value.Callback.Is_Null then
-         Into.Write_Entity ("callback", Value.Callback);
-      end if;
+      Into.Write_Entity ("callback", Value.Callback);
       if not Value.Label.Is_Null then
          Into.Write_Entity ("label", Value.Label);
       end if;
@@ -26513,20 +26511,56 @@ package body .Models is
       if not Value.Adjust_Stock.Is_Null then
          Into.Write_Entity ("adjust_stock", Value.Adjust_Stock);
       end if;
-      if not Value.Enable_Cache.Is_Null then
-         Into.Write_Entity ("enable_cache", Value.Enable_Cache);
-      end if;
       if not Value.Check_Process_Status.Is_Null then
          Into.Write_Entity ("check_process_status", Value.Check_Process_Status);
       end if;
       if not Value.Tracking_Provider.Is_Null then
          Into.Write_Entity ("tracking_provider", Value.Tracking_Provider);
       end if;
-      if not Value.Use_Latest_Api_Version.Is_Null then
-         Into.Write_Entity ("use_latest_api_version", Value.Use_Latest_Api_Version);
-      end if;
       if not Value.Admin_Comment.Is_Null then
          Into.Write_Entity ("admin_comment", Value.Admin_Comment);
+      end if;
+      if not Value.Mail_Class.Is_Null then
+         Into.Write_Entity ("mail_class", Value.Mail_Class);
+      end if;
+      if not Value.Ship_Date.Is_Null then
+         Into.Write_Entity ("ship_date", Value.Ship_Date);
+      end if;
+      Serialize (Into, "weight", Value.Weight);
+      if not Value.Weight_Unit.Is_Null then
+         Into.Write_Entity ("weight_unit", Value.Weight_Unit);
+      end if;
+      Serialize (Into, "length", Value.Length);
+      Serialize (Into, "width", Value.Width);
+      Serialize (Into, "height", Value.Height);
+      if not Value.Dimensions_Unit.Is_Null then
+         Into.Write_Entity ("dimensions_unit", Value.Dimensions_Unit);
+      end if;
+      Serialize (Into, "shipping_label_cost", Value.Shipping_Label_Cost);
+      if not Value.Shipping_Label_Currency.Is_Null then
+         Into.Write_Entity ("shipping_label_currency", Value.Shipping_Label_Currency);
+      end if;
+      if not Value.Revenue_Eligibility.Is_Null then
+         Into.Write_Entity ("revenue_eligibility", Value.Revenue_Eligibility);
+      end if;
+      if not Value.Ship_From_Country.Is_Null then
+         Into.Write_Entity ("ship_from_country", Value.Ship_From_Country);
+      end if;
+      if not Value.Ship_To_Country.Is_Null then
+         Into.Write_Entity ("ship_to_country", Value.Ship_To_Country);
+      end if;
+      if not Value.Incoterm.Is_Null then
+         Into.Write_Entity ("incoterm", Value.Incoterm);
+      end if;
+      Serialize (Into, "duty_amount", Value.Duty_Amount);
+      if not Value.Duty_Currency.Is_Null then
+         Into.Write_Entity ("duty_currency", Value.Duty_Currency);
+      end if;
+      if not Value.Enable_Cache.Is_Null then
+         Into.Write_Entity ("enable_cache", Value.Enable_Cache);
+      end if;
+      if not Value.Use_Latest_Api_Version.Is_Null then
+         Into.Write_Entity ("use_latest_api_version", Value.Use_Latest_Api_Version);
       end if;
       if not Value.Idempotency_Key.Is_Null then
          Into.Write_Entity ("idempotency_key", Value.Idempotency_Key);
@@ -26562,11 +26596,27 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "is_shipped", Value.Is_Shipped);
       Swagger.Streams.Deserialize (Object, "send_notifications", Value.Send_Notifications);
       Swagger.Streams.Deserialize (Object, "adjust_stock", Value.Adjust_Stock);
-      Swagger.Streams.Deserialize (Object, "enable_cache", Value.Enable_Cache);
       Swagger.Streams.Deserialize (Object, "check_process_status", Value.Check_Process_Status);
       Swagger.Streams.Deserialize (Object, "tracking_provider", Value.Tracking_Provider);
-      Swagger.Streams.Deserialize (Object, "use_latest_api_version", Value.Use_Latest_Api_Version);
       Swagger.Streams.Deserialize (Object, "admin_comment", Value.Admin_Comment);
+      Swagger.Streams.Deserialize (Object, "mail_class", Value.Mail_Class);
+      Swagger.Streams.Deserialize (Object, "ship_date", Value.Ship_Date);
+      Swagger.Streams.Deserialize (Object, "weight", Value.Weight);
+      Swagger.Streams.Deserialize (Object, "weight_unit", Value.Weight_Unit);
+      Swagger.Streams.Deserialize (Object, "length", Value.Length);
+      Swagger.Streams.Deserialize (Object, "width", Value.Width);
+      Swagger.Streams.Deserialize (Object, "height", Value.Height);
+      Swagger.Streams.Deserialize (Object, "dimensions_unit", Value.Dimensions_Unit);
+      Swagger.Streams.Deserialize (Object, "shipping_label_cost", Value.Shipping_Label_Cost);
+      Swagger.Streams.Deserialize (Object, "shipping_label_currency", Value.Shipping_Label_Currency);
+      Swagger.Streams.Deserialize (Object, "revenue_eligibility", Value.Revenue_Eligibility);
+      Swagger.Streams.Deserialize (Object, "ship_from_country", Value.Ship_From_Country);
+      Swagger.Streams.Deserialize (Object, "ship_to_country", Value.Ship_To_Country);
+      Swagger.Streams.Deserialize (Object, "incoterm", Value.Incoterm);
+      Swagger.Streams.Deserialize (Object, "duty_amount", Value.Duty_Amount);
+      Swagger.Streams.Deserialize (Object, "duty_currency", Value.Duty_Currency);
+      Swagger.Streams.Deserialize (Object, "enable_cache", Value.Enable_Cache);
+      Swagger.Streams.Deserialize (Object, "use_latest_api_version", Value.Use_Latest_Api_Version);
       Swagger.Streams.Deserialize (Object, "idempotency_key", Value.Idempotency_Key);
    end Deserialize;
 
