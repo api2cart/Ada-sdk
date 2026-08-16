@@ -9648,6 +9648,12 @@ package body .Models is
       if not Value.Walmart_Region.Is_Null then
          Into.Write_Entity ("walmart_region", Value.Walmart_Region);
       end if;
+      if not Value.Walmart_Refresh_Token.Is_Null then
+         Into.Write_Entity ("walmart_refresh_token", Value.Walmart_Refresh_Token);
+      end if;
+      if not Value.Walmart_Seller_Id.Is_Null then
+         Into.Write_Entity ("walmart_seller_id", Value.Walmart_Seller_Id);
+      end if;
       if not Value.Ecwid_Acess_Token.Is_Null then
          Into.Write_Entity ("ecwid_acess_token", Value.Ecwid_Acess_Token);
       end if;
@@ -10096,6 +10102,8 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "walmart_environment", Value.Walmart_Environment);
       Swagger.Streams.Deserialize (Object, "walmart_channel_type", Value.Walmart_Channel_Type);
       Swagger.Streams.Deserialize (Object, "walmart_region", Value.Walmart_Region);
+      Swagger.Streams.Deserialize (Object, "walmart_refresh_token", Value.Walmart_Refresh_Token);
+      Swagger.Streams.Deserialize (Object, "walmart_seller_id", Value.Walmart_Seller_Id);
       Swagger.Streams.Deserialize (Object, "ecwid_acess_token", Value.Ecwid_Acess_Token);
       Swagger.Streams.Deserialize (Object, "ecwid_store_id", Value.Ecwid_Store_Id);
       Swagger.Streams.Deserialize (Object, "lazada_app_id", Value.Lazada_App_Id);
@@ -17912,6 +17920,7 @@ package body .Models is
          Into.Write_Entity ("operator", Value.Operator);
       end if;
       Serialize (Into, "value", Value.Value);
+      Into.Write_Entity ("match_items", Value.Match_Items);
       Into.End_Entity (Name);
    end Serialize;
 
@@ -17935,6 +17944,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "field", Value.Field);
       Swagger.Streams.Deserialize (Object, "operator", Value.Operator);
       Deserialize (Object, "value", Value.Value);
+      Swagger.Streams.Deserialize (Object, "match_items", Value.Match_Items);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;
@@ -23699,6 +23709,9 @@ package body .Models is
          Into.Write_Entity ("operator", Value.Operator);
       end if;
       Serialize (Into, "value", Value.Value);
+      if not Value.Match_Items.Is_Null then
+         Into.Write_Entity ("match_items", Value.Match_Items);
+      end if;
       Into.End_Entity (Name);
    end Serialize;
 
@@ -23725,6 +23738,7 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "field", Value.Field);
       Swagger.Streams.Deserialize (Object, "operator", Value.Operator);
       Deserialize (Object, "value", Value.Value);
+      Swagger.Streams.Deserialize (Object, "match_items", Value.Match_Items);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;

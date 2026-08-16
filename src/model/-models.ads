@@ -5099,6 +5099,8 @@ package .Models is
        Walmart_Environment : Swagger.Nullable_UString;
        Walmart_Channel_Type : Swagger.Nullable_UString;
        Walmart_Region : Swagger.Nullable_UString;
+       Walmart_Refresh_Token : Swagger.Nullable_UString;
+       Walmart_Seller_Id : Swagger.Nullable_UString;
        Ecwid_Acess_Token : Swagger.Nullable_UString;
        Ecwid_Store_Id : Swagger.Nullable_UString;
        Lazada_App_Id : Swagger.Nullable_UString;
@@ -9312,6 +9314,7 @@ package .Models is
        Field : Swagger.Nullable_UString;
        Operator : Swagger.Nullable_UString;
        Value : .Models.ParamDefinitionFilteringConditionsFilterRuleValue_Type;
+       Match_Items : Swagger.Nullable_UString;
      end record;
 
 
@@ -12227,6 +12230,7 @@ package .Models is
        Field : Swagger.Nullable_UString;
        Operator : Swagger.Nullable_UString;
        Value : .Models.ParamDefinitionFilteringConditionsFilterRuleValue_Type;
+       Match_Items : Swagger.Nullable_UString;
      end record;
 
 

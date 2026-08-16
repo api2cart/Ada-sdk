@@ -139,6 +139,8 @@ package .Clients is
        Walmart_Environment : in Swagger.Nullable_UString;
        Walmart_Channel_Type : in Swagger.Nullable_UString;
        Walmart_Region : in Swagger.Nullable_UString;
+       Walmart_Refresh_Token : in Swagger.Nullable_UString;
+       Walmart_Seller_Id : in Swagger.Nullable_UString;
        Square_Client_Id : in Swagger.Nullable_UString;
        Square_Client_Secret : in Swagger.Nullable_UString;
        Square_Refresh_Token : in Swagger.Nullable_UString;

@@ -173,6 +173,8 @@ package body .Clients is
        Walmart_Environment : in Swagger.Nullable_UString;
        Walmart_Channel_Type : in Swagger.Nullable_UString;
        Walmart_Region : in Swagger.Nullable_UString;
+       Walmart_Refresh_Token : in Swagger.Nullable_UString;
+       Walmart_Seller_Id : in Swagger.Nullable_UString;
        Square_Client_Id : in Swagger.Nullable_UString;
        Square_Client_Secret : in Swagger.Nullable_UString;
        Square_Refresh_Token : in Swagger.Nullable_UString;
@@ -359,6 +361,8 @@ package body .Clients is
       URI.Add_Param ("walmart_environment", Walmart_Environment);
       URI.Add_Param ("walmart_channel_type", Walmart_Channel_Type);
       URI.Add_Param ("walmart_region", Walmart_Region);
+      URI.Add_Param ("walmart_refresh_token", Walmart_Refresh_Token);
+      URI.Add_Param ("walmart_seller_id", Walmart_Seller_Id);
       URI.Add_Param ("square_client_id", Square_Client_Id);
       URI.Add_Param ("square_client_secret", Square_Client_Secret);
       URI.Add_Param ("square_refresh_token", Square_Refresh_Token);
