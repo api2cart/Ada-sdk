@@ -1607,6 +1607,7 @@ package body .Clients is
        Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
+       Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Result : out .Models.CartInfo200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -1617,6 +1618,7 @@ package body .Clients is
       URI.Add_Param ("response_fields", Response_Fields);
       URI.Add_Param ("params", Params);
       URI.Add_Param ("exclude", Exclude);
+      URI.Add_Param ("use_latest_api_version", Use_Latest_Api_Version);
       URI.Set_Path ("/cart.info.json");
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);

@@ -719,6 +719,7 @@ package .Clients is
        Response_Fields : in Swagger.Nullable_UString;
        Params : in Swagger.Nullable_UString;
        Exclude : in Swagger.Nullable_UString;
+       Use_Latest_Api_Version : in Swagger.Nullable_Boolean;
        Result : out .Models.CartInfo200Response_Type);
 
    --  cart.meta_data.list
