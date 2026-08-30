@@ -561,6 +561,7 @@ package .Clients is
    --  Delete bridge from the store.
    procedure Bridge_Delete
       (Client : in out Client_Type;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AttributeValueDelete200Response_Type);
 
    --  bridge.download
@@ -574,6 +575,7 @@ package .Clients is
    --  Update bridge in the store.
    procedure Bridge_Update
       (Client : in out Client_Type;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AttributeUpdate200Response_Type);
 
    --  cart.catalog_price_rules.count

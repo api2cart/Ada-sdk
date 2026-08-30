@@ -1233,6 +1233,7 @@ package body .Clients is
    --  Delete bridge from the store.
    procedure Bridge_Delete
       (Client : in out Client_Type;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AttributeValueDelete200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -1240,6 +1241,7 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/bridge.delete.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
@@ -1267,6 +1269,7 @@ package body .Clients is
    --  Update bridge in the store.
    procedure Bridge_Update
       (Client : in out Client_Type;
+       Idempotency_Key : in Swagger.Nullable_UString;
        Result : out .Models.AttributeUpdate200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
@@ -1274,6 +1277,7 @@ package body .Clients is
       Client.Set_Accept (Media_List_1);
 
 
+      URI.Add_Param ("idempotency_key", Idempotency_Key);
       URI.Set_Path ("/bridge.update.json");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
