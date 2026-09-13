@@ -26316,6 +26316,15 @@ package body .Models is
          Into.Write_Entity ("origin", Value.Origin);
       end if;
       Serialize (Into, "fee_price", Value.Fee_Price);
+      if not Value.Shipp_National_Address.Is_Null then
+         Into.Write_Entity ("shipp_national_address", Value.Shipp_National_Address);
+      end if;
+      if not Value.Shipp_Building_Number.Is_Null then
+         Into.Write_Entity ("shipp_building_number", Value.Shipp_Building_Number);
+      end if;
+      if not Value.Shipp_Additional_Number.Is_Null then
+         Into.Write_Entity ("shipp_additional_number", Value.Shipp_Additional_Number);
+      end if;
       if not Value.Idempotency_Key.Is_Null then
          Into.Write_Entity ("idempotency_key", Value.Idempotency_Key);
       end if;
@@ -26412,6 +26421,9 @@ package body .Models is
       Swagger.Streams.Deserialize (Object, "clear_cache", Value.Clear_Cache);
       Swagger.Streams.Deserialize (Object, "origin", Value.Origin);
       Swagger.Streams.Deserialize (Object, "fee_price", Value.Fee_Price);
+      Swagger.Streams.Deserialize (Object, "shipp_national_address", Value.Shipp_National_Address);
+      Swagger.Streams.Deserialize (Object, "shipp_building_number", Value.Shipp_Building_Number);
+      Swagger.Streams.Deserialize (Object, "shipp_additional_number", Value.Shipp_Additional_Number);
       Swagger.Streams.Deserialize (Object, "idempotency_key", Value.Idempotency_Key);
       Deserialize (Object, "order_item", Value.Order_Item);
    end Deserialize;

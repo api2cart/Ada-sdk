@@ -13582,6 +13582,9 @@ package .Models is
        Clear_Cache : Swagger.Nullable_Boolean;
        Origin : Swagger.Nullable_UString;
        Fee_Price : Swagger.Number;
+       Shipp_National_Address : Swagger.Nullable_UString;
+       Shipp_Building_Number : Swagger.Nullable_UString;
+       Shipp_Additional_Number : Swagger.Nullable_UString;
        Idempotency_Key : Swagger.Nullable_UString;
        Order_Item : .Models.OrderAddOrderItemInner_Type_Vectors.Vector;
      end record;
