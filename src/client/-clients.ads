@@ -1662,6 +1662,7 @@ package .Clients is
        Lang_Id : in Swagger.Nullable_UString;
        Avail_View : in Swagger.Nullable_Boolean;
        Avail_Sale : in Swagger.Nullable_Boolean;
+       Is_Partial_Or_Full_Out_Of_Stock : in Swagger.Nullable_Boolean;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
@@ -1802,6 +1803,7 @@ package .Clients is
        Currency_Id : in Swagger.Nullable_UString;
        Avail_View : in Swagger.Nullable_Boolean;
        Avail_Sale : in Swagger.Nullable_Boolean;
+       Is_Partial_Or_Full_Out_Of_Stock : in Swagger.Nullable_Boolean;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;

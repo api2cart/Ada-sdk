@@ -3788,6 +3788,7 @@ package body .Clients is
        Lang_Id : in Swagger.Nullable_UString;
        Avail_View : in Swagger.Nullable_Boolean;
        Avail_Sale : in Swagger.Nullable_Boolean;
+       Is_Partial_Or_Full_Out_Of_Stock : in Swagger.Nullable_Boolean;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
@@ -3821,6 +3822,7 @@ package body .Clients is
       URI.Add_Param ("lang_id", Lang_Id);
       URI.Add_Param ("avail_view", Avail_View);
       URI.Add_Param ("avail_sale", Avail_Sale);
+      URI.Add_Param ("is_partial_or_full_out_of_stock", Is_Partial_Or_Full_Out_Of_Stock);
       URI.Add_Param ("created_from", Created_From);
       URI.Add_Param ("created_to", Created_To);
       URI.Add_Param ("modified_from", Modified_From);
@@ -4107,6 +4109,7 @@ package body .Clients is
        Currency_Id : in Swagger.Nullable_UString;
        Avail_View : in Swagger.Nullable_Boolean;
        Avail_Sale : in Swagger.Nullable_Boolean;
+       Is_Partial_Or_Full_Out_Of_Stock : in Swagger.Nullable_Boolean;
        Created_From : in Swagger.Nullable_UString;
        Created_To : in Swagger.Nullable_UString;
        Modified_From : in Swagger.Nullable_UString;
@@ -4151,6 +4154,7 @@ package body .Clients is
       URI.Add_Param ("currency_id", Currency_Id);
       URI.Add_Param ("avail_view", Avail_View);
       URI.Add_Param ("avail_sale", Avail_Sale);
+      URI.Add_Param ("is_partial_or_full_out_of_stock", Is_Partial_Or_Full_Out_Of_Stock);
       URI.Add_Param ("created_from", Created_From);
       URI.Add_Param ("created_to", Created_To);
       URI.Add_Param ("modified_from", Modified_From);
